@@ -29,10 +29,10 @@ The divblox installation checker is designed to ensure that your divblox project
 The main checks performed are listed below:
 - Checks for php >= 7.2
 - Checks for mariadb >= 10.3 or mysql >= 5.6
-- Checks your IonCube loader is installed. <a href="/#/?id=prerequisites">Learn why IonCube is required</a>
+- Checks your IonCube loader is installed. <a href="/#/?id=prerequisites">Learn why IonCube is required</a> in the prerequisites section
 
-# dx Api key
-- Required to use dx. When making use of the dx build functions, dx checks that you have a valid license. The dx Api key is used to enable this license check
+# divblox Api key
+- When making use of the divblox build functions, divblox always checks that you have a valid license. The divblox Api key is used to enable this license check
 
 # dx Admin Password
 - This password is used to manage your divblox project and allows access to this setup page and various other system features.
