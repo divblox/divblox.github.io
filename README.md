@@ -1,13 +1,23 @@
 # Introduction
-> divblox is a web and mobile app development platform that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time. 
+> Build full stack apps using javascript, html & php in a data driven way.<br/>
+divblox is a web and mobile app development platform that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time. 
+
 
 # Getting started
 ## Prerequisites
-- Apache/nginx, php, mysql/mariadb environment
-- Ioncube loader for php 7.2
+
+The divblox server-side functionality is built in php and therefor requires a php environment to be setup in order to function correctly.
+- Download your favourite Apache/Php/Mysql distribution and configure to use the following:
+    - Latest version of Apache/nginx
+    - Php 7.2 or later
+    - MySQL 5.6 or later or MariaDB 10.3 or later
+    - The easiest way to get started is to download and install MAMP for either windows or mac: https://www.mamp.info/en/
+
+Some of the core divblox code is encoded using IonCube. To ensure that your divblox installation functions correctly, download and install the IonCube loader for Php 7.2 or later for your operating system.
+- Download here: https://www.ioncube.com/loaders.php
 
 ## Download divblox
-- Explain where to download
+- You can download divblox zipped from https://divblox.com/releases or fork the divblox public repo on github here: https://github.com/divblox/divblox
 - Add to your www folder
 - Run apache and browse to localhost
 - dx will check your installation and provide further guidelines on how to finish you installation
