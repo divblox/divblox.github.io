@@ -35,13 +35,16 @@
 	  window.$docsify = {
       name: 'divblox',
       repo: '',
+      coverpage: true,
       loadSidebar: true,
       subMaxLevel: 0,
       logo: '/_media/divblox-logo-1.png',
       // complete configuration parameters
       search: {
           maxAge: 86400000, // Expiration time, the default one day
-          paths: ['/'], // or 'auto'
+          paths: [
+          	  '/',
+              'introduction'],
           placeholder: 'Type to search',
           noData: 'No Results!',
           // Headline depth, 1 - 6
