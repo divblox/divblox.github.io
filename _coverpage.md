@@ -6,7 +6,7 @@
 
 > Create experiences. Not just apps.
 
-- Build full stack apps using javascript, html & php in a data driven way.
+- Build full stack experiences using javascript, html & php in a data driven way.
 
 [GitHub](https://github.com/divblox/divblox/)
 [Download](https://divblox.com/releases/)

@@ -2,7 +2,7 @@
 ## Start at the beginning
 Every divblox project starts with the data model. 
 A well designed data model can be the difference between an app that works brilliantly and one that just doesn't cut it. 
-The divblox data modeler allows you to create and manage your app's data model in a visual environment<br><br>
+The divblox data modeler allows you to create and manage your app's data model in a visual environment.<br><br>
 Once a data model is defined, the Data Modeler ensures that the underlying databases are synchronized to its specification and then generates the object relational model classes.
 This makes communication with your databases seemless and easy to manage in an object oriented way.
 
@@ -61,7 +61,7 @@ The querying logic behind all the Load methods in divblox ORM classes is powered
 
 While the ORM classes utilize basic, straightforward SELECT statements in its Load methods, dxQ is capable of infinitely more complex queries. In fact, any SELECT a developer would need to do against a database should be possible with dxQ.
 
-At its core, any dxQ query will return a collection of objects of the same type (e.g. a collection of Task objects). But the power of dxQ is that we can branch beyond this core collection by bringing in any related objects, performing any SQL-based clause (including WHERE, ORDER BY, JOIN, aggregations, etc.) on both the core set of Task rows andany of these related objects rows.
+At its core, any dxQ query will return a collection of objects of the same type (e.g. a collection of Task objects). But the power of dxQ is that we can branch beyond this core collection by bringing in any related objects, performing any SQL-based clause (including WHERE, ORDER BY, JOIN, aggregations, etc.) on both the core set of Task rows and any of these related objects rows.
 
 >Every code generated class in your ORM will have the three following static dxQuery methods:
 
