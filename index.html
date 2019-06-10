@@ -39,29 +39,12 @@
       loadSidebar: '_toc.md',
       subMaxLevel: 10,
       logo: '/_media/divblox-logo-1.png',
+      auto2top: true,
       // complete configuration parameters
       search: {
-          maxAge: 86400000, // Expiration time, the default one day
-          paths: [],/*
-          	  '/',
-              '/component-builder',
-	          '/data-modeler',
-	          '/divblox-apis',
-	          '/divblox-js',
-	          '/getting-started',
-	          '/global-request-handler',
-	          '/native-support',
-	          '/project-classes',
-	          '/project-functions',
-	          '/project-js'],*/
+          paths: 'auto',
           placeholder: 'Type to search',
-          noData: 'No Results!',
-          // Headline depth, 1 - 6
-          depth: 6,
-          hideOtherSidebarContent: false, // whether or not to hide other sidebar content
-          // To avoid search index collision
-          // between multiple websites under the same domain
-          namespace: 'website-1',
+          noData: 'No Results!'
       },
       themeColor: '#2c5f7c'
     }
@@ -69,5 +52,6 @@
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@ Below is a visual representation of a complete divblox data model for the exampl
 >Based on the data model, the following is generated or can be generated as required:
 
 - **The project's ORM:** These are the ORM classes that describe the current underlying database. For each database table there will be corresponding ORM classes that will allow for the CRUD behaviour for that entity. In essence, the ORM caters for the communication with the database without the need for the developer to write sql queries.
-- **Data model related components:** These are the components that allow for exposing the entity's CRUD functionality to the front-end. More on this can be found in the [components](#component-builder) section.
+- **Data model related components:** These are the components that allow for exposing the entity's CRUD functionality to the front-end. More on this can be found in the [components](component-builder.md) section.
 
 >Code is generated using the following approach:
 
