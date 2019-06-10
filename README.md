@@ -18,18 +18,18 @@ Some of the core divblox code is encoded using IonCube. To ensure that your divb
 
 ## Download divblox
 - You can download divblox zipped from https://divblox.com/releases or fork the divblox public repo on github here: https://github.com/divblox/divblox
-- Add to your www folder
-- Run apache and browse to localhost
-- dx will check your installation and provide further guidelines on how to finish you installation
-- Browse to /divblox and login to the setup page
-- Open the installation checker and ensure that all systems indicate an OK status
-- You are now ready to build with dx
+- Add the downloaded content to your apache "public_html" or "www" folder
+- Ensure that your web server is running and navigate to http://localhost/ or http://localhost/[your-project-folder]
+- divblox will check your installation and, if needed, provide further guidelines on how to finish the installation
+- To open the divblox setup page, Browse to http://localhost/divblox or http://localhost/[your-project-folder]/divblox, depending on your installation
+- Open the installation checker to ensure that all systems indicate an OK status. Once the installation checker indicates all is OK, you are ready to build with divblox
 
 ## Installation checker
-- Checks for php>=7.2
+The divblox installation checker is designed to ensure that your divblox project meets all the <a href="/#/?id=prerequisites"> prerequisites</a> described above. It will also provide useful guidelines on how to solve installation related problems.
+The main checks performed are listed below:
+- Checks for php >= 7.2
 - Checks for mariadb >= 10.3 or mysql >= 5.6
-- Checks your ioncube loader is installed. Explain why ioncube is required
-- Provides guidelines on how to fix installation issues
+- Checks your IonCube loader is installed. <a href="/#/?id=prerequisites">Learn why IonCube is required</a>
 
 # dx Api key
 - Required to use dx. When making use of the dx build functions, dx checks that you have a valid license. The dx Api key is used to enable this license check
