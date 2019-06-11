@@ -14,11 +14,19 @@
 
 # Core Ingredients
 
-Front End | Back end
------------- | -------------
-HTML | Php with a dynamically generated ORM 
-Javascript
-CSS
-Bootstrap & jQuery
+> Front End
 
-Check out the [getting started](gettin-started.md) section. g
+![HTML](_media/html.ico ':size=100') HTML
+![CSS](_media/css.png ':size=85') CSS
+![Javascript](_media/js.jpg ':size=88')
+![Bootstrap](_media/bootstrap.png ':size=100')
+![jquery](_media/jquery.png ':size=85')
+
+> Back End
+
+![PHP](_media/php.png ':size=100')
+![MariaDB](_media/mariadb.png ':size=85')
+
+<br/>
+
+Check out the [getting started](getting-started.md) section.

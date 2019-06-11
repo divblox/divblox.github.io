@@ -241,16 +241,16 @@ A column is the final containing element within which you can place your compone
 
 ### Adding a sub component
 You can add a component as a sub component to the current page (which in itself is a component). See below:
-![Component Builder - Adding Sub Components](_media/_screenshots/to-be-replaced-by-gif-adding-components.png)
+![Component Builder - Adding Sub Components](_media/_gifs/Adding-Components.gif)
 
 ### Adding a basic component
 You can add a basic component to the current component. See below:
-![Component Builder - Adding Basic Components](_media/_screenshots/to-be-replaced-by-gif-adding-basic-components.png)
+![Component Builder - Adding Basic Components](_media/_gifs/Adding-Basic-Components.gif)
 
 ### Adding custom html
 You can add custom html to the current component. See below:
-![Component Builder - Adding Custom HTML](_media/_screenshots/to-be-replaced-by-gif-adding-custom-html.png)
+![Component Builder - Adding Custom HTML](_media/_gifs/Adding-Custom-Html.gif)
 
 ### Modify a component
 The builder interface allows you to modify your component in the browser at any time. See below:
-![Component Builder - Modify Component](_media/_screenshots/to-be-replaced-by-gif-modify-component.png)
+![Component Builder - Modify Component](_media/_gifs/Modify-Component.gif)
