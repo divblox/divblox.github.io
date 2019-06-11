@@ -189,8 +189,68 @@ $ComponentObj = new DemoComponentController("demo_component");
 The component's JSON file is used for component configuration. By default this is empty
 
 # Component Builder 
+The divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
+![Main Component Builder Page](_media/_screenshots/component-builder-overview.png)
 
-- The component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
-- Talk about the default component builder page (creating new components and the various options for this. Searching for and Opening an existing component for modification). Talk about the default data model type components that can be generated
-- Talk about the builder interface
+>From the default component builder page you can do the following:
+- Search for existing components using the search bar at the top right of the page
+- Open an existing component in order to work on it
+- Create a new component, either from an existing one or from scratch
 
+## Creating a new component
+Clicking the + Component button brings up the following modal:
+![Component Builder - New Component](_media/_screenshots/component-builder-new-component.png)
+Here you can give your new component a name and select the type of component you want to create.
+
+### Creating a data model component
+Selecting a [Data Model Component](#data-model-components) will provide you with the options to select the entity for which you want to generate, as well as the type of data model component to create:
+![Component Builder - New Data Model Component Select Entity](_media/_screenshots/component-builder-new-datamodel-component-entity-select.png)
+![Component Builder - New Data Model Component Select Type](_media/_screenshots/component-builder-new-datamodel-component-type-select.png)
+
+Once you selected your entity and component type, you can configure the attributes and/or validations that you would like divblox to generate for the component.<br><br>
+The example below shows a typical configuration modal for a "CREATE" type of component, which allows you to configure which attributes to display and to select the specific validations you require for them:
+![Component Builder - New Data Model Component Create Config](_media/_screenshots/component-builder-new-datamodel-component-create-config.png)
+
+The example below shows a typical configuration modal for a "DATA TABLE" type of component, which allows you to configure which attributes to display in the table:
+![Component Builder - New Data Model Component Data Table Config](_media/_screenshots/component-builder-new-datamodel-component-data-table-config.png)
+
+### Creating from an existing component
+You can easily copy the functionality from an existing component be selecting the "**From Existing Component**" option. This will allow you to specialize the functionality of that component for your needs.
+![Component Builder - From Existing](_media/_screenshots/component-builder-from-existing.png)
+
+!>Notice the "Grouping" field above. This field allows you to group certain components together in folders for a better organized project.
+
+### Creating a custom component
+You can also create a custom component by selecting the "**Custom Component**" option. This simply allows you to provide a name and grouping for your component.
+![Component Builder - Custom Component](_media/_screenshots/component-builder-custom.png)
+
+!>Custom components **ALWAYS** start out as blank components
+
+## Visual Builder Interface
+The component builder visual interface allows you to create any type of layout that you might require. 
+Using Bootstrap's grid system, it allows you to place the following containing elements on the screen to begin with:
+- **Containers**:<br>
+Containers are the most basic layout element in Bootstrap and are required when using the grid system. Choose from a responsive, fixed-width container (meaning its max-width changes at each breakpoint) or fluid-width (meaning it’s 100% wide all the time).
+- **Rows**:<br>
+Multiple rows can be placed inside each container and they serve the purpose of being wrappers for columns
+- **Columns**:<br>
+A column is the final containing element within which you can place your components
+- Learn more about Bootstrap's grid system [here](https://getbootstrap.com/docs/4.3/layout/grid/#how-it-works)
+
+![Component Builder - Containing Elements](_media/_screenshots/component-builder-containing-elements.png)
+
+### Adding a sub component
+You can add a component as a sub component to the current page (which in itself is a component). See below:
+![Component Builder - Adding Sub Components](_media/_screenshots/to-be-replaced-by-gif-adding-components.png)
+
+### Adding a basic component
+You can add a basic component to the current component. See below:
+![Component Builder - Adding Basic Components](_media/_screenshots/to-be-replaced-by-gif-adding-basic-components.png)
+
+### Adding custom html
+You can add custom html to the current component. See below:
+![Component Builder - Adding Custom HTML](_media/_screenshots/to-be-replaced-by-gif-adding-custom-html.png)
+
+### Modify a component
+The builder interface allows you to modify your component in the browser at any time. See below:
+![Component Builder - Modify Component](_media/_screenshots/to-be-replaced-by-gif-modify-component.png)
