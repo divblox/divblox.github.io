@@ -11,5 +11,3 @@
 [GitHub](https://github.com/divblox/divblox/)
 [Download](https://divblox.com/releases/)
 [Get Started](#divblox)
-
-<!--![color](linear-gradient(to left bottom, hsl(178, 100%, 85%) 0%,hsl(219, 100%, 85%) 100%))-->

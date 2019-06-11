@@ -79,7 +79,7 @@ At its core, any dxQ query will return a collection of objects of the same type 
 
 #### Basic Example:
 
-```
+``` php
 // Retrieve a single Task from the database
 $TaskObj = Task::QuerySingle(dxQ::All());
 
@@ -141,7 +141,7 @@ Because And/Or/Not conditions can take in any other condition, including other A
 
 >Example
 
-```
+``` php
 //Select all Tasks where the TaskName is alphabetically "greater than" the Description
 $TaskArray = Task::QueryArray(
     dxQ::GreaterThan(
@@ -203,7 +203,7 @@ All dxQuery method calls take in an optional set of dxQ Clauses. dxQ Clauses all
 
 >Example
 
-```
+``` php
 //Select all Tasks, Ordered by Description then TaskName
 $TaskArray = Task::QueryArray(
     dxQ::All(), 
