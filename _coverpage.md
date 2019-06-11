@@ -10,4 +10,4 @@
 
 [GitHub](https://github.com/divblox/divblox/)
 [Download](https://divblox.com/releases/)
-[Get Started](#divblox)
+[Get Started](#what-is-divblox)
