@@ -1,6 +1,6 @@
   - [Getting Started](getting-started.md)
   - [Data Modeler](data-modeler.md)
-  - [Component Builder](component-builder.md)
+  - [divblox Components](component-builder.md)
   - [divblox.js](divblox-js.md)
   - [project.js](project-js.md)
   - [Global Request Handler](global-request-handler.md)
