@@ -16,8 +16,8 @@
 
 > Front End
 
-![HTML](_media/html.ico ':size=100') HTML
-![CSS](_media/css.png ':size=85') CSS
+![HTML](_media/html.ico ':size=100') 
+![CSS](_media/css.png ':size=85') 
 ![Javascript](_media/js.jpg ':size=88')
 ![Bootstrap](_media/bootstrap.png ':size=100')
 ![jquery](_media/jquery.png ':size=85')
