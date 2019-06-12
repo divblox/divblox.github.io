@@ -1,6 +1,8 @@
 ## Prerequisites
 >The divblox server-side functionality is built in php and therefor requires a php environment to be setup in order to function correctly.
 
+>You can [skip ahead](hello-world.md) an just see the "Hello World" example to get a sense for how to build with divblox
+
 - Download your favourite Apache/Php/Mysql distribution and configure to use the following:
     - Latest version of Apache/nginx
     - Php 7.2 or later
