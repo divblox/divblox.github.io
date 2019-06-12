@@ -10,9 +10,9 @@
 <div style="text-align:center;">
 
 ![Download & Install](_media/dx_download_install.svg ':size=180')
-![Download & Install](_media/dx_configure_environments.svg ':size=180')
-![Download & Install](_media/dx_create_a_data_model.svg ':size=180')
-![Download & Install](_media/dx_components_generate.svg ':size=180')
+![Configure Environments](_media/dx_configure_environments.svg ':size=180')
+![Create Data Model](_media/dx_create_a_data_model.svg ':size=180')
+![Generate Components](_media/dx_components_generate.svg ':size=180')
 
 </div>
 # Core Ingredients
