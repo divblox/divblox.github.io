@@ -7,11 +7,14 @@
 <p>With divblox you can build progressive web apps that can also seemlessly be converted to native mobile apps, all with ONE code base.</p>
 
 # Overview
+<div style="text-align:center;">
+
 ![Download & Install](_media/dx_download_install.svg ':size=180')
 ![Download & Install](_media/dx_configure_environments.svg ':size=180')
 ![Download & Install](_media/dx_create_a_data_model.svg ':size=180')
 ![Download & Install](_media/dx_components_generate.svg ':size=180')
 
+</div>
 # Core Ingredients
 
 > Front End
