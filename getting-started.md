@@ -29,7 +29,7 @@ The main checks performed are listed below:
 - Checks for mariadb >= 10.3 or mysql >= 5.6
 - Checks your IonCube loader is installed. [Learn why IonCube is required](#prerequisites) in the prerequisites section
 
-!> The installation checker might fail if your [environments](#environments) have to yet been configured properly
+!> The installation checker might fail if your [environments](#environments) have not yet been configured properly
 
 # Configuration
 ## Modules
