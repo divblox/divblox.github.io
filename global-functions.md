@@ -79,6 +79,21 @@ You can add any custom classes to the project_classes.php script to make them gl
 The core project classes are: 
 - **ProjectAccessManager**, which extends AccessManager as is responsible for managing access to components and objects, 
 based on the currently logged in user
+
+!>By default, compononent access is open to **ANY** user to allow the developer to get started quickly. This should be removed 
+as soon as possible to enforce proper security for your solution:
+```php
+public static function getComponentAccess($AccountId = -1, $ComponentName = '') {
+        $InitialReturn = parent::getComponentAccess($AccountId,$ComponentName);
+        if ($InitialReturn == true) {
+            return true;
+        }
+        // THIS LINE SHOULD BE REMOVED
+        return true; // TODO: This is a temporary measure to allow you to get started quickly without restrictions.
+        // Remove this and implement correctly for your solution. NB! THIS GIVES ACCESS TO ALL COMPONENTS TO ANY USER!!!
+...
+```
+
 - **ProjectComponentController**, which extends ComponentController and allows for component php scripts to function correctly
 - **FileUploader**, which deals with storing files as data objects once they are uploaded to the server
 - **PublicApi**, which extends PublicApi_Base and provides the outline for how to expose a divblox api via an endpoint

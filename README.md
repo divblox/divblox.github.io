@@ -15,6 +15,7 @@
 ![Generate Components](_media/dx_components_generate.svg ':size=180')
 
 </div>
+
 # Core Ingredients
 
 > Front End

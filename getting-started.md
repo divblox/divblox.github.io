@@ -4,7 +4,7 @@
 >You can [skip ahead](hello-world.md) an just see the "Hello World" example to get a sense for how to build with divblox
 
 - Download your favourite Apache/Php/Mysql distribution and configure to use the following:
-    - Latest version of Apache/nginx
+    - Latest version of Apache
     - Php 7.2 or later
     - MySQL 5.6 or later or MariaDB 10.3 or later
     - The easiest way to get started is to download and install MAMP for either windows or mac: https://www.mamp.info/en/
