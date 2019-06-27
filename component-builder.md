@@ -90,61 +90,172 @@ The component's CSS file provides any special styling that is required by the co
 The component's Javascript file controls the component's behaviour.
 The basic structure of any component's Javascript follows the following pattern:
 ``` javascript
-if (typeof(on_ungrouped_demo_component_ready) === "undefined") {
-	function on_ungrouped_demo_component_ready(load_arguments) {
-		// This is required for any component to be registered to the DOM as a divblox component
-		this.dom_component_obj = new DivbloxDOMComponent(load_arguments);
-		// A catch function for the component's error event
-		this.handleComponentError = function(ErrorMessage) {
-			this.dom_component_obj.handleComponentError(this,ErrorMessage);
-		}.bind(this);
-		// A catch function for the component's success event which happens after a successful load
-		this.handleComponentSuccess = function() {
-			this.dom_component_obj.handleComponentSuccess(this);
-		}.bind(this);
-		// A catch function for the component's reset event. Is called once the component has loaded, but can be called
-		// multiple times
-		this.reset = function(inputs) {}.bind(this);
-		// A catch function for the component's loaded event
-		this.on_component_loaded = function() {
-			this.dom_component_obj.on_component_loaded(this);
-		}.bind(this);
-		// A catch function for when a sub component has successfully loaded
-		this.subComponentLoadedCallBack = function(component) {
-			// Implement additional required functionality for sub components after load here
-		}.bind(this);
-		// Can be used to get an array of sub components for the current component
-		this.getSubComponents = function() {
-			return this.dom_component_obj.getSubComponents(this);
-		}.bind(this);
-		// Gets the current component's unique id. Each component has a UID that allows for calling it from elsewhere
-		// in your app
-		this.getUid = function() {
-			return this.dom_component_obj.getUid();
-		}.bind(this);
-		// Component specific code below
-		// Empty array means ANY user role has access. NB! This is merely for UX purposes.
-		// Do not rely on this as a security measure. User role security MUST be managed on the server's side
-		this.allowedAccessArray = [];
-		// A catch function for when a page-wide event was triggered
-		this.eventTriggered = function(event_name,parameters_obj) {
-			// Handle specific events here. This is useful if the component needs to update because one of its
-			// sub-components did something
-			switch(event_name) {
-				case '[event_name]':
-				default:
-			    dxLog("Event triggered: "+event_name+": "+JSON.stringify(parameters_obj));
-			}
-			// Let's pass the event to all sub components
-			this.dom_component_obj.propagateEventTriggered(event_name,parameters_obj);
-		}.bind(this);
-		// Sub component config start
-		this.sub_components = {};
-		// Sub component config end
-		// Custom functions and declarations to be added below
+if (typeof component_classes['ungrouped_demo_component'] === "undefined") {
+	class ungrouped_demo_component extends DivbloxDomBaseComponent {
+		constructor(inputs,supports_native,requires_native) {
+			super(inputs,supports_native,requires_native);
+			// Sub component config start
+			this.sub_component_definitions = [];
+			// Sub component config end
+		}
 	}
+	component_classes['ungrouped_demo_component'] = ungrouped_demo_component;
 }
 
+/* Below is the DivbloxDomBaseComponent class from which every divblox component inherits
+This class manages the following behaviour for each component:
+- Loading workflow, which includes checking of prerequisites and dependencies
+- Error handling
+- Component & Subcomponent resets
+- Event handling and propagation
+*/
+class DivbloxDomBaseComponent {
+	constructor(inputs,supports_native,requires_native) {
+		this.arguments = inputs;
+		if (typeof supports_native === "undefined") {
+			supports_native = true;
+		}
+		if (typeof requires_native === "undefined") {
+			requires_native = false;
+		}
+		this.supports_native = supports_native;
+		this.requires_native = requires_native;
+		if (typeof(this.arguments["uid"]) !== "undefined") {
+			this.uid = this.arguments["uid"];
+		} else {
+			this.uid = this.arguments["component_name"] + "_" + this.arguments["dom_index"];
+		}
+		this.component_success = false;
+		this.sub_component_definitions = {};
+		this.sub_component_objects = [];
+		this.allowed_access_array = [];
+	}
+	loadPrerequisites(success_callback,fail_callback) {
+		if (typeof success_callback !== "function") {
+			success_callback = function(){};
+		}
+		if (typeof fail_callback !== "function") {
+			fail_callback = function(){};
+		}
+		success_callback();
+	}
+	on_component_loaded(confirm_success) {
+		if (isNative()) {
+			if (!this.supports_native) {
+				this.handleComponentError("Component "+this.uid+" does not support native.");
+				return;
+			}
+		} else {
+			if (this.requires_native) {
+				this.handleComponentError("Component "+this.uid+" requires a native implementation.");
+				return;
+			}
+		}
+		if (typeof confirm_success === "undefined") {
+			confirm_success = true;
+		}
+		this.loadPrerequisites(function() {
+			dxCheckCurrentUserRole(this.allowed_access_array,function() {
+				this.handleComponentError("Access denied");
+			}.bind(this), function() {
+				if (confirm_success) {
+					this.handleComponentSuccess();
+				}
+				this.registerDomEvents();
+				this.initCustomFunctions();
+				// Load additional components here
+				let sub_component_definition_keys = Object.keys(this.sub_component_definitions);
+				sub_component_definition_keys.forEach(function(sub_component_definition_key) {
+					let sub_component_definition = this.sub_component_definitions[sub_component_definition_key];
+					loadComponent(sub_component_definition.component_load_path,this.uid,sub_component_definition.parent_element,sub_component_definition.loading_arguments,false,false,this.subComponentLoadedCallBack.bind(this));
+				}.bind(this));
+				this.reset();
+			}.bind(this));
+		}.bind(this),function () {
+			this.handleComponentError("Error loading component dependencies");
+		}.bind(this));
+	}
+	reset(inputs) {
+		dxLog("Reset for "+this.getComponentName()+" not implemented");
+	}
+	resetSubComponents() {
+		this.sub_component_objects.forEach(function(component) {
+			component.reset();
+		}.bind(this));
+	}
+	getReadyState() {
+		return this.component_success;
+	}
+	handleComponentSuccess(additional_input) {
+		if (this.component_success === true) {
+			return;
+		}
+		this.component_success = true;
+		$("#"+this.uid+"_ComponentContent").show();
+		$("#"+this.uid+"_ComponentPlaceholder").hide();
+		if (typeof cb_active !== "undefined") {
+			if (cb_active) {
+				on_divblox_component_success(this);
+			}
+		}
+	}
+	handleComponentError(ErrorMessage) {
+		this.component_success = false;
+		$("#"+this.uid+"_ComponentContent").hide();
+		$("#"+this.uid+"_ComponentPlaceholder").show();
+		$("#"+this.uid+"_ComponentFeedback").html('<div class="alert alert-danger alert-danger-component"><strong><i' +
+			' class="fa fa-exclamation-triangle ComponentErrorExclamation" aria-hidden="true"></i>' +
+			' </strong><br>'+ErrorMessage+'</div>');
+		if (typeof cb_active !== "undefined") {
+			if (cb_active) {
+				on_divblox_component_error(this);
+			}
+		}
+	}
+	registerDomEvents() {/*To be overridden in sub class as needed*/}
+	initCustomFunctions() {/*To be overridden in sub class as needed*/}
+	subComponentLoadedCallBack(component) {
+		this.sub_component_objects.push(component);
+		// JGL: Override as needed
+	}
+	getSubComponents() {
+		return this.sub_component_objects;
+	}
+	getSubComponentDefinitions() {
+		return this.sub_component_definitions;
+	}
+	getUid() {
+		return this.uid;
+	}
+	getComponentName() {
+		return this.arguments['component_name'];
+	}
+	getLoadArgument(argument) {
+		if (typeof this.arguments[argument] !== "undefined") {
+			return this.arguments[argument];
+		}
+		if (typeof this.arguments["url_parameters"] !== "undefined") {
+			if (typeof this.arguments["url_parameters"][argument] !== "undefined") {
+				return this.arguments["url_parameters"][argument];
+			}
+		}
+		return null;
+	}
+	eventTriggered(event_name,parameters_obj) {
+		switch(event_name) {
+			case '[event_name]':
+			default:
+				dxLog("Event triggered: "+event_name+": "+JSON.stringify(parameters_obj));
+		}
+		// Let's pass the event to all sub components
+		this.propagateEventTriggered(event_name,parameters_obj);
+	}
+	propagateEventTriggered(event_name,parameters_obj) {
+		this.sub_component_objects.forEach(function(component) {
+			component.eventTriggered(event_name,parameters_obj);
+		});
+	}
+}
 ```
 
 ## Component Php
