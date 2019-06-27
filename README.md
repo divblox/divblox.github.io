@@ -28,8 +28,9 @@
 
 > Back End
 
-![PHP](_media/php.png ':size=100')
-![MariaDB](_media/mariadb.png ':size=85')
+![PHP](_media/php.png ':size=85')&nbsp;&nbsp;
+![MySQL](_media/mysql_logo.png ':size=100') &nbsp;&nbsp;
+![MariaDB](_media/mariadb.png ':size=85') &nbsp;&nbsp;
 
 <br/>
 
