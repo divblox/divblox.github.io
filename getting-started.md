@@ -57,7 +57,7 @@ When you start up divblox for the first time, it will automatically generate the
 
 ## divblox Api key
 - When making use of the divblox build functions, divblox always checks that you have a valid license. The divblox Api key is used to enable this license check.
-- Currently divblox Api keys are issued on request only. Please [contact us](https://divblox.com/#contact) to request your *FREE* Api key
+- Currently divblox Api keys are issued on request only. Please [contact us](https://divblox.com/#contact) (support@divblox.com) to request your *FREE* Api key
 
 ![divblox Api Key](_media/_screenshots/setup-configure-api-key.png)
 

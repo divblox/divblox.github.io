@@ -47,37 +47,54 @@ Let's open the newly created component to work on it using the Component Builder
 ### Step 3 - Component Customization
 Let's do some basic customization on our image to display our logo
 - The imageviewer component has a function called `updateImage()` which we can use to display our logo. Let's update our hello_world component javascript to do this.
-- Find the following code:
+- Add the following code to the bottom of the hello_world component class to override the subComponentLoadedCallBack function to update the image:
 
 ```javascript
-this.subComponentLoadedCallBack = function(component) {
-    // Implement additional required functionality for sub components after load here
-    // dxLog("Sub component loaded: "+JSON.stringify(component));
-}.bind(this);
-```
-
-- And update to the following:
-
-```javascript
-this.subComponentLoadedCallBack = function(component) {
-	// Let's check if the sub component that was loaded is the imageviewer and, 
-	// if so call its updateImage function
-    if (component.dom_component_obj.getComponentName() == 'ungrouped_imageviewer') {
-    	component.updateImage('https://divblox.github.io/_media/divblox-logo-1.png');
+subComponentLoadedCallBack(component) {
+    super.subComponentLoadedCallBack(component);
+    if (component.getComponentName() === 'ungrouped_imageviewer') {
+        component.updateImage('https://divblox.github.io/_media/divblox-logo-1.png');
     }
-}.bind(this);
+}
 ```
 
-<video id="HelloWorldStep3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Hello-World-Step-3.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('HelloWorldStep3')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('HelloWorldStep3')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
+- Our hello_world component javascript should now look like this:
+
+```javascript
+if (typeof component_classes['pages_hello_world'] === "undefined") {
+	class pages_hello_world extends DivbloxDomBaseComponent {
+		constructor(inputs,supports_native,requires_native) {
+			super(inputs,supports_native,requires_native);
+			// Sub component config start
+        	this.sub_component_definitions =
+            [{"component_load_path":"ungrouped/imageviewer","parent_element":"qJTep","arguments":{}}];
+        	// Sub component config end
+		}
+	    initCustomFunctions() {
+            // n3CEV_button Related functionality
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            getComponentElementById(this,"n3CEV_btn").on("click", function() {
+                // Add the trigger element to the loading element array. This shows a loading animation on the trigger
+                // element while it waits for a response or function return
+                let element_id = addTriggerElementToLoadingElementArray($(this).attr("id"),"Nice Loading text");
+                // Example: once your function has executed, call removeTriggerElementFromLoadingElementArray to remove
+                // loading animation
+                setTimeout(function() {
+                    removeTriggerElementFromLoadingElementArray(element_id);
+                },3000);
+            }.bind(this));
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
+		subComponentLoadedCallBack(component) {
+			super.subComponentLoadedCallBack(component);
+			if (component.getComponentName() === 'ungrouped_imageviewer') {
+				component.updateImage('https://divblox.github.io/_media/divblox-logo-1.png');
+			}
+		}
+   	}
+	component_classes['pages_hello_world'] = pages_hello_world;
+}
+```
 
 ### Step 4 - Processing Input
 Let's now send the input to the server and get a response
@@ -87,32 +104,34 @@ using divblox's build in request function to send the data to the server and han
 Right now it simply mimicks that something is happening when you click the button
 
 ```javascript
-// ngy6j_button Related functionality
+// n3CEV_button Related functionality
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-getComponentElementById(this,"ngy6j_btn").on("click", function() {
+getComponentElementById(this,"n3CEV_btn").on("click", function() {
     // Add the trigger element to the loading element array. This shows a loading animation on the trigger
     // element while it waits for a response or function return
-    let element_id = addTriggerElementToLoadingElementArray($(this),"Nice Loading text");
+    let element_id = addTriggerElementToLoadingElementArray($(this).attr("id"),"Nice Loading text");
     // Example: once your function has executed, call removeTriggerElementFromLoadingElementArray to remove
     // loading animation
     setTimeout(function() {
         removeTriggerElementFromLoadingElementArray(element_id);
     },3000);
 }.bind(this));
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ```
 
 - Let's change the click handler function to achieve our goal:
 
 ```javascript
-// ngy6j_button Related functionality
+// n3CEV_button Related functionality
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-getComponentElementById(this,"ngy6j_btn").on("click", function() {
+getComponentElementById(this,"n3CEV_btn").on("click", function() {
     dxRequestInternal(// divblox's wrapper function for doing a POST request to the server
         getComponentControllerPath(this),// Get's the path on the server where this component's .php file resides
         {f:"checkEmailAddress", // Indicates the function that the .php file should execute
-            email_address:getComponentElementById(this,'iPvJl_FormControlInput').val() // We are also
-            // sending the email address as input to the .php file
+            email_address:getComponentElementById(this,'baNsD_FormControlInput').val() // We are also
+            // sending the email address as input to the .php file. 
+            // NB! CHECK YOUR ELEMENT ID. DIVBLOX AUTO-GENERATES
+            // THIS ID, MEANING YOURS MIGHT NOT BE "baNsD_FormControlInput"
         },
         function(data_obj) {
             // The function that is called when the server provides a "Success" response
