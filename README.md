@@ -3,7 +3,7 @@
 > Create experiences. Not just apps.
 
 # What is divblox?
-<p>divblox is a full stack web and mobile app development platform that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time.</p>
+<p>divblox is a full stack web and mobile app development framework that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time.</p>
 <p>With divblox you can build progressive web apps that can also seemlessly be converted to native mobile apps, all with ONE code base.</p>
 
 # Overview

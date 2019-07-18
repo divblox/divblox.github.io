@@ -28,7 +28,7 @@ showToast(title,toast_message,position,icon_path,toast_time_stamp,auto_hide);
 // Allows for presenting a Bootstrap toast type message on the screen
 ```
 
-!>divblox.js should not be modified since the platform relies on its integrity. The developer should rather use [project.js](project-js.md) to override specific functions as required
+!>divblox.js should not be modified since the framework relies on its integrity. The developer should rather use [project.js](project-js.md) to override specific functions as required
 
 # Project.js
 !>project.js is located at /project/assets/js/project.js

@@ -95,7 +95,7 @@ $TaskArray = Task::QueryArray(dxQ::Equal(dxQN::Task()->TaskName,"A test task"));
 
 >Notice that dxQuery doesn't have any construct to describe what would normally be your SELECT clause. 
 This is because we take advantage of the code generation process to allow dxQuery to automagically "know" which fields should be SELECT-ed based on the query, conditions and clauses you are performing. 
-This will allow a lot greater flexibility in your data model. Because the platform is now taking care of column names, etc., instead of the developer needing to manually hard code it, you can make changes to columns in your tables without needing to rewrite your dxQuery calls.
+This will allow a lot greater flexibility in your data model. Because the framework is now taking care of column names, etc., instead of the developer needing to manually hard code it, you can make changes to columns in your tables without needing to rewrite your dxQuery calls.
 
 #### dxQuery Nodes
 
