@@ -185,6 +185,7 @@ All dxQuery method calls take in an optional set of dxQ Clauses. dxQ Clauses all
 - `dxQ::Sum(dxQNode, string)`
 - `dxQ::LimitInfo(integer[, integer = 0])`
 - `dxQ::Distinct()`
+- `dxQ::Select(array/list of dxQNodes)`
 
 >Explanation
 
@@ -197,7 +198,9 @@ All dxQuery method calls take in an optional set of dxQ Clauses. dxQ Clauses all
 
 - LimitInfo will limit the result set. The first integer is the maximum number of rows you wish to limit the query to. The optional second integer is the offset (if any).
 
-- And finally, Distinct will cause the query to be called with SELECT DISTINCT.
+- Distinct will cause the query to be called with SELECT DISTINCT.
+
+- The select clause will allow you to manually specify the specific columns you wish to return for the query.
 
 !>All clauses must be wrapped around a single dxQ::Clause() call, which takes in any number of clause classes for your query.
 
