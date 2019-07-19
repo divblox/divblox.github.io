@@ -5,4 +5,5 @@
   - [Extending with API's](divblox-apis.md)
   - [Native Support](native-support.md)
   - [Hello World](hello-world.md)
+  - [Training Exercise](training-exercise.md)
   - [Troubleshooting](troubleshooting.md)

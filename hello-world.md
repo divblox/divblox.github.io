@@ -1,7 +1,7 @@
 # Hello World
 Now that we have divblox configured and we understand the basic concepts, let's create a simple 1-page "Hello World" app.
 
->In this example we will create simple 1-page app that will display the following:
+>In this example we will create a simple 1-page app that will display the following:
 
 - A logo for our app, using a separate image viewer component
 - An input box that we will use to send some text to the server
