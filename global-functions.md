@@ -77,10 +77,10 @@ This means that you can call the following from any php script the requires divb
 You can add any custom classes to the project_classes.php script to make them globally available.
 
 The core project classes are: 
-- **ProjectAccessManager**, which extends AccessManager as is responsible for managing access to components and objects, 
+- **ProjectAccessManager**, which extends AccessManager and is responsible for managing access to components and objects, 
 based on the currently logged in user
 
-!>By default, compononent access is open to **ANY** user to allow the developer to get started quickly. This should be removed 
+!>By default, component access is open to **ANY** user to allow the developer to get started quickly. This should be removed 
 as soon as possible to enforce proper security for your solution:
 ```php
 public static function getComponentAccess($AccountId = -1, $ComponentName = '') {

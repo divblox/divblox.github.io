@@ -99,7 +99,7 @@ if (typeof component_classes['pages_hello_world'] === "undefined") {
 ### Step 4 - Processing Input
 Let's now send the input to the server and get a response
 - We will adapt the functionality that is currently handling the button click by 
-using divblox's build in request function to send the data to the server and handle the response
+using divblox's built in request function to send the data to the server and handle the response
 - The code below handles the click action for our button. 
 Right now it simply mimicks that something is happening when you click the button
 
