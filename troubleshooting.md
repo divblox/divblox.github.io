@@ -12,7 +12,7 @@ divblox makes use of code generation to create its components and ORM class file
 required in order for everything to work correctly. To avoid most of the common issues in this regard, ensure that the user
 that is used to run your web server has ownership and write permission for the divblox folder.
 ## ionCube
-When you open your divblox project in the browser for the first time, you might encounter strange behaviour is ionCube 
+When you open your divblox project in the browser for the first time, you might encounter strange behaviour if ionCube 
 has not been installed. Please follow [these steps](https://www.ioncube.com/loaders.php) to install ionCube for your OS.
 ## Installation checker
 The [installation checker](getting-started.md?id=installation-checker) might fail if you do not already have a database 
