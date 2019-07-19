@@ -278,7 +278,7 @@ To do this, we will copy the provided api_example endpoint and modify it for our
 </button>
 
 ### Summary
-In this exercise your learned about all the basic elements of a divblox project. If you understand step 1 - 7 completely, you should be able to build
+In this exercise you learned about all the basic elements of a divblox project. If you understand step 1 - 7 completely, you should be able to build
 virtually any divblox project.
 
 If you would like to receive further hands-on training from the divblox team, please reach out to us at support@divblox.com and we will arrange a consultation.
