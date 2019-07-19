@@ -15,7 +15,7 @@ Some of the core divblox code is encoded using IonCube. To ensure that your divb
 - Don't worry if you have some trouble installing this. The [Installation checker](#installation-checker) will guide you through this process a bit later on as well.
 
 # Download divblox
-- You can download divblox zipped from https://divblox.com/releases or fork the divblox public repo on github here: https://github.com/divblox/divblox
+- You can download or fork the divblox public repo on github here: https://github.com/divblox/divblox
 - Add the downloaded content to your apache "public_html" or "www" folder
 - Ensure that your web server is running and navigate to http://localhost/ or http://localhost/[your-project-folder] (if you placed divblox within a sub folder)
 - divblox will check your installation and, if needed, provide further guidelines on how to finish the installation
