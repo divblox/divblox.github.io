@@ -20,7 +20,7 @@ that is used to run your web server has ownership and write permission for the d
 
 ## Windows
 divblox was created on a UNIX based operating system and it is recommended that you use MacOS for the best experience when developing with the framework. However, we do try to support Windows as far as possible. The following are common issues users experience when setting up divblox on Windows environments:
-### Basecamp Communication error (SSL)
+### Basecamp communication error (SSL)
 The installation wizard complains that the connection to basecamp cannot be established because of an SSL Certificate problem. Specifically: unable to get local issuer certificate. To solve this problem, follow these steps:
 
 1. Download cURL's cacert.pem certificate from the official cURL website [here](https://curl.haxx.se/docs/caextract.html)
@@ -43,7 +43,7 @@ extension=php_openssl.dll
 ```
 5. Restart your webserver and refresh the divblox installation checker to confirm that things are working now.
 
-### Lowercase Table Names
+### Lowercase table names
 divblox relies on code generation to create the ORM for you project. This generation is done, based on the tables in your database. If the tables in your database do not have case-sensitive names, the classes in the corresponding ORM might fail to work correctly. The installation checker will display the following error:
 ```
 Database table names case configuration: Failed! Please ensure that the database variable 'lower_case_table_names' is set to 2
