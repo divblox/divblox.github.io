@@ -35,6 +35,7 @@ To enable php_openssl.dll, you will need to uncomment the following line in your
 extension=php_openssl.dll
 ```
 5. Restart your webserver and refresh the divblox installation checker to confirm that things are working now.
+
 ## ionCube
 When you open your divblox project in the browser for the first time, you might encounter strange behaviour if ionCube 
 has not been installed. Please follow [these steps](https://www.ioncube.com/loaders.php) to install ionCube for your OS.
