@@ -49,7 +49,10 @@ divblox relies on code generation to create the ORM for you project. This genera
 Database table names case configuration: Failed! Please ensure that the database variable 'lower_case_table_names' is set to 2
 ```
 To solve this, open your mysql configuration file and add the following:
-- Look for: # The MySQL server [mysqld] and add this right below it: lower_case_table_names = 2
+- Look for: # The MySQL server [mysqld] and add this right below it: 
+```
+lower_case_table_names = 2
+```
 - Save the file and restart MySQL service
 
 ## ionCube
