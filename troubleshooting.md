@@ -22,6 +22,7 @@ curl.cainfo="C:\MAMP\cacert.pem"
 openssl.cafile="C:\MAMP\cacert.pem"
 ```
 Note, that your path may be different, depending on the webserver and path you chose to save the file.
+
 4. Next, you need to enable mod_ssl and php_openssl.dll. To enable mod_ssl, you can add the following to your Apache configuration file:
 ```
 LoadModule ssl_module C:\MAMP\bin\apache\modules\mod_ssl.so
