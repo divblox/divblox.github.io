@@ -60,7 +60,7 @@ When you start up divblox for the first time, it will automatically generate the
 - Your *FREE* divblox Api key can be obtained in the following way:
 
     1. Go to [divblox basecamp](https://basecamp.divblox.com), and register for an account.
-    2. Then, log in and, on the dashboard, click "+ Project" to create a new project. This will automatically generate your Api key.
+    2. Then log in and, on the dashboard, click "+ Project" to create a new project. This will automatically generate your Api key.
     3. Save your project and copy your Api key into your project configuration.
 
 - If you have any trouble creating your project and getting a key, please [contact us](https://divblox.com/#contact) (support@divblox.com) to request your *FREE* Api key
