@@ -1,5 +1,5 @@
 ## Prerequisites
->The divblox server-side functionality is built in php and therefor requires a php environment to be setup in order to function correctly.
+>The divblox server-side functionality is built in php and therefore requires a php environment to be setup in order to function correctly.
 
 >You can [skip ahead](hello-world.md) and just see the "Hello World" example to get a sense for how to build with divblox
 
