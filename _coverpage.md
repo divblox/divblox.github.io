@@ -9,5 +9,5 @@
 - Build full stack experiences using javascript, html & php in a data driven way.
 
 [GitHub](https://github.com/divblox/divblox/)
-[Download](https://github.com/divblox/divblox/)
+[Sign Up - Free](https://basecamp.divblox.com/?view=register)
 [Documentation](#what-is-divblox)
