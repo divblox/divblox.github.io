@@ -56,6 +56,8 @@ These can include, but are not limited to:
 - A local web server on a development computer
 - A cloud based web server
 
+>A divblox sandbox is a special type of deployment environment that is created and owned by divblox. This environment runs on divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
+
 ## Prerequisites
 !>The following sections are only relevant for local and/or self provisioned server setup. For sandboxes, you can skip ahead to the [Data Modeler](data-modeler.md) section
 
