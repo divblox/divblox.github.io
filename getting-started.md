@@ -1,4 +1,64 @@
+## Typical Project Development Approach
+Below is a visualization of the typical development approach you will follow when builing a divblox project.
+
+<div class="img-vertical-middle">
+
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/1_basecamp.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">1.</span> Sign in to [basecamp.divblox.com](https://basecamp.divblox.com/?view=login) <br>
+    
+</div>
+<i class="fa fa-arrow-down"></i>
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/2_sandbox.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">2.</span> Create a new project and click "Open in Sandbox" <br>
+
+</div>
+<i class="fa fa-arrow-down"></i>
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/3_data_modeler.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">3.</span> Start by modeling your data structure using the divblox data modeler <br>
+
+</div>
+<i class="fa fa-arrow-down"></i>
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/4_component_builder.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">4.</span> Use the divblox component builder to create various components that will provide your app's functionality  <br>
+
+</div>
+<i class="fa fa-arrow-down"></i>
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/5_local_environment.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">5.</span> Initialize a local deployment environment (also called a development environment) to pull in your sandbox changes  <br>
+
+</div>
+<i class="fa fa-arrow-down"></i>
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_media/6_server.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">6.</span> Deploy your app to another deployment environment (any server of your choice) <br>
+
+</div>
+
+</div>
+
+>Everything in divblox is a component, from basic on screen elements, to full-blown pages. You can build sophisticated pages
+using the divblox component builder by creating the layouts you need and combining various components to fulfil your needs.
+
+>In a local deployment environment, more advanced features are available:
+- You can configure your server variables and modules
+- You can configure your database connections
+- You can export to native
+- You have full access to your entire code base
+- You can deploy your app to another deployment environment
+
+>A deployment environment is defined as an instance of a project, that is hosted on a web server, which is accessible by a user.
+These can include, but are not limited to:
+- A local web server on a development computer
+- A cloud based web server
+
 ## Prerequisites
+!>The following sections are only relevant for local and/or self provisioned server setup. For sandboxes, you can skip ahead to the [Data Modeler](data-modeler.md) section
+
 >The divblox server-side functionality is built in php and therefore requires a php environment to be setup in order to function correctly.
 
 >You can [skip ahead](hello-world.md) and just see the "Hello World" example to get a sense for how to build with divblox
@@ -33,10 +93,12 @@ The main checks performed are listed below:
 
 # Configuration
 ## Modules
+
 divblox allows you to define multiple modules for your project. Modules are useful for grouping related data objects. At least one module (The *Main* module) is required. 
 Modules are essentially separate databases that ring-fence certain data objects
 
 ## Environments
+
 divblox allows you to define multiple environments for your project (local, test, staging, production, etc). 
 When you start up divblox for the first time, it will automatically generate the default environment for your current project.
 
