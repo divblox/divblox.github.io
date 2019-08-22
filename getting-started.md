@@ -29,7 +29,7 @@ Below is a visualization of the typical development approach you will follow whe
 <i class="fa fa-arrow-down"></i>
 <div class="dev-approach-step" style="background:#f7f7f7;">
 
-![Sign in](_media/5_local_environment.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">5.</span> Initialize a local deployment environment (also called a development environment) to pull in your sandbox changes  <br>
+![Sign in](_media/5_local_environment.png ':size=180') <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">5.</span> Initialize a local deployment environment (also called a development environment) to pull in your sandbox changes and get your project ready for production  <br>
 
 </div>
 <i class="fa fa-arrow-down"></i>
