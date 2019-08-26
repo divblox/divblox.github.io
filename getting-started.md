@@ -56,7 +56,37 @@ These can include, but are not limited to:
 - A local web server on a development computer
 - A cloud based web server
 
+## Sandboxes
 >A divblox sandbox is a special type of deployment environment that is created and owned by divblox. This environment runs on divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
+
+### Initializing a new Sandbox
+Creating a new sandbox is easy:
+1. Start by creating your project at [basecamp.divblox.com](https://basecamp.divblox.com/?view=login)
+![Sandbox Step 1](_media/_screenshots/sandbox-step1.png)
+2. Complete the required fields and click "Create"
+![Sandbox Step 2](_media/_screenshots/sandbox-step2.png)
+2. You are now ready to launch your sandbox by clicking on "Open in Sandbox"
+![Sandbox Step 3](_media/_screenshots/sandbox-step3.png)
+
+### Downloading a Sandbox
+Sandboxes are great for prototyping and even to deploy small projects, but if you are serious about your project, 
+at some point you will need to download your sandbox progress and continue on a local development environment.
+
+To download your sandbox, all you need is a local installation of divblox with your [project's API key](#divblox-api-key) configured.
+
+![Sandbox Step 4](_media/_screenshots/sandbox-step4.png)
+
+>Sandboxes are controlled by your local deployment environments. 
+This means that you can deploy to your sandboxes from any local deployment environment as well as download any changes that were made in your sandboxes to your local environments
+
+### Sandbox best practices
+divblox makes it super easy to transfer content between your local deployment environments and your sandboxes, but this can also be risky. 
+When downloading your sandbox to a local environment, always make sure that you have backed up your local project files. The following is a 
+shortlist of tips to help you get the most out of sandboxes:
+1. Always make use of a code versioning service such as GitHub, GitLab or BitBucket
+2. When downloading sandbox changes to a local environment, make sure to do this in a feature branch which can be reviewed before merging with your master project branch.
+3. Re-initializing a sandbox every now and then can be a good idea to ensure data integrity.
+4. Make regular backups of your sandbox data through the Data Modeler "Data Export" tool
 
 ## Prerequisites
 !>The following sections are only relevant for local and/or self provisioned server setup. For sandboxes, you can skip ahead to the [Data Modeler](data-modeler.md) section
