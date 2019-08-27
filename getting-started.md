@@ -62,10 +62,15 @@ These can include, but are not limited to:
 ### Initializing a new Sandbox
 Creating a new sandbox is easy:
 1. Start by creating your project at [basecamp.divblox.com](https://basecamp.divblox.com/?view=login)
+
 ![Sandbox Step 1](_media/_screenshots/sandbox-step1.png)
+
 2. Complete the required fields and click "Create"
+
 ![Sandbox Step 2](_media/_screenshots/sandbox-step2.png)
+
 2. You are now ready to launch your sandbox by clicking on "Open in Sandbox"
+
 ![Sandbox Step 3](_media/_screenshots/sandbox-step3.png)
 
 ### Downloading a Sandbox

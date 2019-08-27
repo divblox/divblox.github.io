@@ -58,3 +58,23 @@ lower_case_table_names = 2
 ## ionCube
 When you open your divblox project in the browser for the first time, you might encounter strange behaviour if ionCube 
 has not been installed. Please follow [these steps](https://www.ioncube.com/loaders.php) to install ionCube for your OS.
+
+# Sandboxes
+## Re-initializing a sandbox
+You can re-initialize your sandbox at any time by simply removing it and initializing it again.
+
+!>Important! This process removes ALL files and data from your sandbox
+
+1. Click the "Modify Project" icon to open your project
+
+![Sandbox Step Re-init 1](_media/_screenshots/sandbox-re-init-step1.png)
+
+2. Click "Manage Deployment Environments"
+
+![Sandbox Step Re-init 2](_media/_screenshots/sandbox-re-init-step2.png)
+
+3. Click remove on your sandbox
+
+![Sandbox Step Re-init 3](_media/_screenshots/sandbox-re-init-step3.png)
+
+4. Follow the steps in [Getting Started](getting-started.md?id=initializing-a-new-sandbox) to initialize a new sandbox for your project
