@@ -181,7 +181,7 @@ The main configurable items for the divblox javascript engine can be configured 
 ### SPA Mode
 **Single Page Application mode** is ideal for apps that will function in multiple forms, from web, to progressive, to native. 
 divblox allows you to configure your web app to run as a single page application or as a normal web application. 
-When in SPA mode, divblox does open a new web page when loading a new page, but rather updates the DOM with the new page content.
+When in SPA mode, divblox does not open a new web page when loading a new page, but rather updates the DOM with the new page content.
 
 !>If you are building for web only, it is recommended to turn SPA mode off.
 
