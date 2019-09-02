@@ -128,7 +128,9 @@ class DivbloxDomBaseComponent {
 		this.component_success = false;
 		this.sub_component_definitions = {};
 		this.sub_component_objects = [];
+		this.sub_component_loaded_count = 0;
 		this.allowed_access_array = [];
+		this.is_loading = false;
 	}
 	loadPrerequisites(success_callback,fail_callback) {
 		if (typeof success_callback !== "function") {
@@ -139,7 +141,7 @@ class DivbloxDomBaseComponent {
 		}
 		success_callback();
 	}
-	on_component_loaded(confirm_success) {
+	on_component_loaded(confirm_success,callback) {
 		if (isNative()) {
 			if (!this.supports_native) {
 				this.handleComponentError("Component "+this.uid+" does not support native.");
@@ -154,9 +156,13 @@ class DivbloxDomBaseComponent {
 		if (typeof confirm_success === "undefined") {
 			confirm_success = true;
 		}
+		if (typeof callback !== "function") {
+			callback = function(){};
+		}
 		this.loadPrerequisites(function() {
+			callback();
 			dxCheckCurrentUserRole(this.allowed_access_array,function() {
-				this.handleComponentError("Access denied");
+				this.handleComponentAccessError("Access denied");
 			}.bind(this), function() {
 				if (confirm_success) {
 					this.handleComponentSuccess();
@@ -164,23 +170,39 @@ class DivbloxDomBaseComponent {
 				this.registerDomEvents();
 				this.initCustomFunctions();
 				// Load additional components here
-				let sub_component_definition_keys = Object.keys(this.sub_component_definitions);
-				sub_component_definition_keys.forEach(function(sub_component_definition_key) {
-					let sub_component_definition = this.sub_component_definitions[sub_component_definition_key];
-					loadComponent(sub_component_definition.component_load_path,this.uid,sub_component_definition.parent_element,sub_component_definition.loading_arguments,false,false,this.subComponentLoadedCallBack.bind(this));
-				}.bind(this));
-				this.reset();
+				this.loadSubComponent();
+				if (checkComponentBuilderActive()) {
+					setTimeout(function() {
+						//JGL: Some components might not remove their loading state if they do not receive
+						// initialization inputs. When we are in the component builder, we want to override this
+						if (this.is_loading) {
+							dxLog("Removing loading state if "+this.getComponentName()+" for component builder");
+							this.removeLoadingState();
+						}
+					}.bind(this),1000);
+				}
 			}.bind(this));
 		}.bind(this),function () {
 			this.handleComponentError("Error loading component dependencies");
 		}.bind(this));
 	}
 	reset(inputs) {
-		dxLog("Reset for "+this.getComponentName()+" not implemented");
+		this.resetSubComponents(inputs);
 	}
-	resetSubComponents() {
+	setLoadingState() {
+		this.is_loading = true;
+		$("#"+this.uid+"_ComponentContent").hide();
+		$("#"+this.uid+"_ComponentPlaceholder").show();
+		$("#"+this.uid+"_ComponentFeedback").html('');
+	}
+	removeLoadingState() {
+		this.is_loading = false;
+		$("#"+this.uid+"_ComponentContent").show();
+		$("#"+this.uid+"_ComponentPlaceholder").hide();
+	}
+	resetSubComponents(inputs) {
 		this.sub_component_objects.forEach(function(component) {
-			component.reset();
+			component.reset(inputs);
 		}.bind(this));
 	}
 	getReadyState() {
@@ -212,11 +234,24 @@ class DivbloxDomBaseComponent {
 			}
 		}
 	}
+	handleComponentAccessError(ErrorMessage) {
+		this.handleComponentError(ErrorMessage);
+	}
 	registerDomEvents() {/*To be overridden in sub class as needed*/}
 	initCustomFunctions() {/*To be overridden in sub class as needed*/}
 	subComponentLoadedCallBack(component) {
 		this.sub_component_objects.push(component);
+		this.sub_component_loaded_count++;
+		this.loadSubComponent();
 		// JGL: Override as needed
+	}
+	loadSubComponent() {
+		if (typeof this.sub_component_definitions[this.sub_component_loaded_count] !== "undefined") {
+			let sub_component_definition = this.sub_component_definitions[this.sub_component_loaded_count];
+			loadComponent(sub_component_definition.component_load_path,this.uid,sub_component_definition.parent_element,sub_component_definition.arguments,false,false,this.subComponentLoadedCallBack.bind(this));
+		} else {
+			this.reset();
+		}
 	}
 	getSubComponents() {
 		return this.sub_component_objects;

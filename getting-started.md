@@ -174,16 +174,34 @@ This password is used to manage your divblox project and allows access to the se
 
 ![Admin password](_media/_screenshots/setup-configure-admin-password.png)
 
-## Service worker
+## JS Config
+The main configurable items for the divblox javascript engine can be configured from the JS Config setup block.
+![JS Config](_media/_screenshots/setup-js-config.png)
+
+### SPA Mode
+**Single Page Application mode** is ideal for apps that will function in multiple forms, from web, to progressive, to native. 
+divblox allows you to configure your web app to run as a single page application or as a normal web application. 
+When in SPA mode, divblox does open a new web page when loading a new page, but rather updates the DOM with the new page content.
+
+!>If you are building for web only, it is recommended to turn SPA mode off.
+
+### Service Worker
 divblox allows you to configure a service worker to handle and cache requests. You can decide to toggle it on or off. It is also sometimes useful to force the service worker to reload when assets are modified.
 
 !>When the service worker is on during development (debug), ensure that you have the option to "Update on reload" enabled in your browser.
 
 !>It is recommended to disable the service worker during development, since this can cause assets to be loaded from cache.
 
-![Service Worker](_media/_screenshots/setup-configure-service-worker.png)
+### Debug Mode
+Debug mode enables robust logging of your web application. This is useful when in development mode, but can slow down your app in production environments.
 
+!>It is recommended to turn debug mode off for production environments, but to keep it on in local/development environments.
 
+### Allow Feedback
+divblox allows you to toggle the project-wide feedback functionality on/off. When this is on, the user will always see a feedback button on the right of the screen.
+This will allow you to collect feature requests and bug reports for your pages.
+
+!>Feedback is stored at basecamp.divblox.com. This means that feedback is accessible project-wide, for any environment.
 
 
 
