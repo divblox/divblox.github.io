@@ -93,9 +93,9 @@ shortlist of tips to help you get the most out of sandboxes:
 2. When downloading sandbox changes to a local environment, make sure to do this in a feature branch which can be reviewed before merging with your master project branch.
 3. Re-initializing a sandbox every now and then can be a good idea to ensure data integrity.
 4. Make regular backups of your sandbox data through the Data Modeler "Data Export" tool
-<!--
+
 # Downloading Divblox
-Divblox provides a fully configured VirtualBox image that allows you to start building Divblox apps in no time. Simply ... [tbc] -->
+Divblox provides a fully configured VirtualBox image that allows you to start building Divblox apps in no time. Simply ... [tbc] 
 
 # Configuration
 ## Modules
