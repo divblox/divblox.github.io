@@ -94,8 +94,75 @@ shortlist of tips to help you get the most out of sandboxes:
 3. Re-initializing a sandbox every now and then can be a good idea to ensure data integrity.
 4. Make regular backups of your sandbox data through the Data Modeler "Data Export" tool
 
-# Downloading Divblox
-Divblox provides a fully configured VirtualBox image that allows you to start building Divblox apps in no time. Simply ... [tbc] 
+# Downloading Divblox 
+Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start building Divblox apps in no time. The purpose of having this Virtual Machine (VM) is to be able to setup Divblox in a single neat package that is already pre-configured to simplify the installation process, although, Divblox can be installed on your primary OS (see advanced setup) it is not reccomended.
+
+## VirtualBox Download
+!> Note: the virtual machine image is a 5Gb download.
+
+The latest verson of Oracle's VirtualBox should be [downloaded](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly. 
+
+The VM (.ova file) that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/file/d/1bIVx1KMsO8K1IHNgqq_RTc5h619dHBMH/view).
+
+## Loading the  Virtual machine 
+After installing VirtualBox on your device and running the application add the image by opening "File" -> "Import Appliance".
+
+
+<p align="center">
+  <img  src=_media/_screenshots/virtual-machine-setup1.png>
+</p>
+
+From here find and add the Divblox VM image file (.ova). On the following window you will be prompted to "Import". Adding the image may take several minutes to install and configure.
+
+<p align="center">
+  <img  src=_media/_screenshots/virtual-machine-setup2.png>
+</p>
+
+Once your VM has been loaded it can be started by "double-clicking" on the newly added machine in the VirtualBox application. This will then open a seperate window and begin booting up the Divblox image.
+
+!> Note: The boot sequence is complete when you are greeted by the Welcome page.
+
+## Starting with Divblox
+
+<p align="center">
+  <img  src=_media/_screenshots/virtual-machine-setup3.png>
+</p>
+
+The Welcome page is necessary to read through in order to opperate the virtual machine.
+It contains information such as:
+- Username and passwords for the VM
+- Relevant file locations and permissions
+- Quick start links 
+- Information about the VM software
+
+After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's DivBlox API key.
+
+1. Navigate to the DivBlox basecamp login page from [here](https://basecamp.divblox.com/?view=login) or via the quick links on the Welcome page.
+2. Login, or Register, to access the Dashboard.
+3. Once in the dashboard open a new project by clicking "+ Project" under "My Projects". This will automatically generate an API key.
+
+<p align="center">
+  <img  src=_media/_screenshots/divblox-api-setup1.png>
+</p>
+
+4. After filling in the project details, copy the projects API key under "DivBlox License Key".
+
+<p align="center">
+  <img  src=_media/_screenshots/divblox-api-setup2.png>
+</p>
+
+5. Open the local starter project from the link located under "Quick Start links" on the welcome Page.
+
+6. Click "dx API key" to open the dialog that allows you to update your API key
+
+<p align="center">
+  <img  src=_media/_screenshots/setup-configure-api-key.png>
+</p>
+
+
+
+
+
 
 # Configuration
 ## Modules
