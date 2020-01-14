@@ -7,3 +7,4 @@
   - [Hello World](hello-world.md)
   - [Training Exercise](training-exercise.md)
   - [Troubleshooting](troubleshooting.md)
+  - [Deployment](deployment.md)
