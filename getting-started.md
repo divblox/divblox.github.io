@@ -98,15 +98,14 @@ shortlist of tips to help you get the most out of sandboxes:
 Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start building Divblox apps in no time. The purpose of having this Virtual Machine (VM) is to be able to setup Divblox in a single neat package that is already pre-configured to simplify the installation process, although, Divblox can be installed on your primary OS (see advanced setup) it is not reccomended.
 
 ## VirtualBox Download
-!> Note: the virtual machine image is a 5Gb download.
+!> Note: the virtual machine image is a 5 GB download.
 
 The latest verson of Oracle's VirtualBox should be [downloaded](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly. 
 
 The VM (.ova file) that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/file/d/1bIVx1KMsO8K1IHNgqq_RTc5h619dHBMH/view).
 
-## Loading the  Virtual machine 
+## Loading the Virtual machine 
 After installing VirtualBox on your device and running the application add the image by opening "File" -> "Import Appliance".
-
 
 <p align="center">
   <img  src=_media/_screenshots/virtual-machine-setup1.png>
@@ -158,6 +157,7 @@ After you have familiarised yourself with the introduction page, the first thing
 <p align="center">
   <img  src=_media/_screenshots/setup-configure-api-key.png>
 </p>
+
 
 
 
