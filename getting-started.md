@@ -95,7 +95,7 @@ shortlist of tips to help you get the most out of sandboxes:
 4. Make regular backups of your sandbox data through the Data Modeler "Data Export" tool
 
 # Downloading Divblox 
-Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start building Divblox apps in no time. The purpose of having this Virtual Machine (VM) is to be able to setup Divblox in a single neat package that is already pre-configured to simplify the installation process, although, Divblox can be installed on your primary OS (see advanced setup) it is not reccomended.
+Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start building Divblox apps in no time. The purpose of having this Virtual Machine (VM) is to be able to setup Divblox in a single neat package that is already pre-configured to simplify the installation process, although, Divblox can be installed on your local OS (see [Deployment](https://divblox.github.io/#/deployment)), but is not reccomended.
 
 ## VirtualBox Download
 !> Note: the virtual machine image is a 5 GB download.
@@ -134,7 +134,7 @@ It contains information such as:
 - Quick start links 
 - Information about the VM software
 
-After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's DivBlox API key.
+After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's _Free_ DivBlox API key.
 
 1. Navigate to the DivBlox basecamp login page from [here](https://basecamp.divblox.com/?view=login) or via the quick links on the Welcome page.
 2. Login, or Register, to access the Dashboard.
@@ -150,7 +150,7 @@ After you have familiarised yourself with the introduction page, the first thing
   <img  src=_media/_screenshots/divblox-api-setup2.png>
 </p>
 
-5. Open the local starter project from the link located under "Quick Start links" on the welcome Page.
+5. Open the "local starter project" from the link located under "Quick Start links" on the welcome Page.
 
 6. Click "dx API key" to open the dialog that allows you to update your API key
 
