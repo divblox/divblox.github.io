@@ -1,5 +1,5 @@
 # Hello World
-Now that we have divblox configured and we understand the basic concepts, let's create a simple 1-page "Hello World" app.
+Now that we have Divblox configured and we understand the basic concepts, let's create a simple 1-page "Hello World" app.
 
 >In this example we will create a simple 1-page app that will display the following:
 
@@ -9,8 +9,8 @@ Now that we have divblox configured and we understand the basic concepts, let's 
 
 ### Step 1 - A New Component
 Let's create a new component that will serve as our app's page.
-- Login to the divblox setup page at /divblox in your project's folder on localhost. 
-For example: http://localhost/my-app/divblox or http://localhost/divblox (if you project is in the webserver's root path)
+- Login to the Divblox setup page at /Divblox in your project's folder on localhost. 
+For example: http://localhost/my-app/Divblox or http://localhost/Divblox (if you project is in the webserver's root path)
 - Open the Component Builder and create a new custom component called "hello world". This component should be placed in the grouping "pages" in order to be used as a page.
 
 <video id="HelloWorldStep1" muted="" playsinline="" preload="auto" autoplay>
@@ -53,7 +53,7 @@ Let's do some basic customization on our image to display our logo
 subComponentLoadedCallBack(component) {
     super.subComponentLoadedCallBack(component);
     if (component.getComponentName() === 'ungrouped_imageviewer') {
-        component.updateImage('https://divblox.github.io/_media/divblox-logo-1.png');
+        component.updateImage('https://Divblox.github.io/_media/Divblox-logo-1.png');
     }
 }
 ```
@@ -88,7 +88,7 @@ if (typeof component_classes['pages_hello_world'] === "undefined") {
 		subComponentLoadedCallBack(component) {
 			super.subComponentLoadedCallBack(component);
 			if (component.getComponentName() === 'ungrouped_imageviewer') {
-				component.updateImage('https://divblox.github.io/_media/divblox-logo-1.png');
+				component.updateImage('https://Divblox.github.io/_media/Divblox-logo-1.png');
 			}
 		}
    	}
@@ -99,7 +99,7 @@ if (typeof component_classes['pages_hello_world'] === "undefined") {
 ### Step 4 - Processing Input
 Let's now send the input to the server and get a response
 - We will adapt the functionality that is currently handling the button click by 
-using divblox's built in request function to send the data to the server and handle the response
+using Divblox's built in request function to send the data to the server and handle the response
 - The code below handles the click action for our button. 
 Right now it simply mimicks that something is happening when you click the button
 
@@ -125,12 +125,12 @@ getComponentElementById(this,"n3CEV_btn").on("click", function() {
 // n3CEV_button Related functionality
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 getComponentElementById(this,"n3CEV_btn").on("click", function() {
-    dxRequestInternal(// divblox's wrapper function for doing a POST request to the server
+    dxRequestInternal(// Divblox's wrapper function for doing a POST request to the server
         getComponentControllerPath(this),// Get's the path on the server where this component's .php file resides
         {f:"checkEmailAddress", // Indicates the function that the .php file should execute
             email_address:getComponentElementById(this,'baNsD_FormControlInput').val() // We are also
             // sending the email address as input to the .php file. 
-            // NB! CHECK YOUR ELEMENT ID. DIVBLOX AUTO-GENERATES
+            // NB! CHECK YOUR ELEMENT ID. Divblox AUTO-GENERATES
             // THIS ID, MEANING YOURS MIGHT NOT BE "baNsD_FormControlInput"
         },
         function(data_obj) {
@@ -185,8 +185,8 @@ public function checkEmailAddress() {
 </button>
 
 ### Step 5 - Finishing Up
-divblox will show a landing page for the anonymous user by default. If we want to rather load our newly created page as
-the default we need to tell divblox this by updating our project.js file:
+Divblox will show a landing page for the anonymous user by default. If we want to rather load our newly created page as
+the default we need to tell Divblox this by updating our project.js file:
 ```javascript
 // Update the user_role_landing_pages array to force the anonymous user to load our new page:
 let user_role_landing_pages = {
@@ -196,7 +196,7 @@ let user_role_landing_pages = {
 };
 ```
 
-And that's it! We just created a basic app that touches on the core divblox concepts. We can now view our app at:
+And that's it! We just created a basic app that touches on the core Divblox concepts. We can now view our app at:
 http://localhost/my-app/ or http://localhost/ (if you project is in the webserver's root path)
 
 <video id="HelloWorldStep6" muted="" playsinline="" preload="auto" autoplay>

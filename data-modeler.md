@@ -1,8 +1,8 @@
 # Data modeler
 ## Start at the beginning
-Every divblox project starts with the data model. 
+Every Divblox project starts with the data model. 
 A well designed data model can be the difference between an app that works brilliantly and one that just doesn't cut it. 
-The divblox data modeler allows you to create and manage your app's data model in a visual environment.<br><br>
+The Divblox data modeler allows you to create and manage your app's data model in a visual environment.<br><br>
 Once a data model is defined, the Data Modeler ensures that the underlying databases are synchronized to its specification and then generates the object relational model classes.
 This makes communication with your databases seemless and easy to manage in an object oriented way.
 
@@ -27,22 +27,22 @@ This makes communication with your databases seemless and easy to manage in an o
 - A Task has a single relationship to both Person and Project, meaning a person and/or project can have multiple tasks associated with it
 - A SubTask has a single relationship to a Task, meaning a Task can have multiple SubTasks linked to it
 
-**The divblox data model is broken up into 2 main parts:**
+**The Divblox data model is broken up into 2 main parts:**
 
-- **The System Entities** - Defined by divblox and used internally to perform certain core functions (Audit Logs, Authentication, File Management, etc)
+- **The System Entities** - Defined by Divblox and used internally to perform certain core functions (Audit Logs, Authentication, File Management, etc)
 - **The Project Entities** - Defined by the developer to serve the purposes of their project
 
-Below is a visual representation of the divblox System Entities. These entities should not be edited, but rather reused where needed, since they might be affected by future divblox updates. The developer is free to create relationships to these entities to leverage their existing functionality. 
+Below is a visual representation of the Divblox System Entities. These entities should not be edited, but rather reused where needed, since they might be affected by future Divblox updates. The developer is free to create relationships to these entities to leverage their existing functionality. 
 
 ![System Entities](_media/_screenshots/data-modeler-system-entities.png)
 
-The final data model for your app will be the combination of the system entities and the project entities. Once this is defined, divblox can generate the app's object relational model and CRUD (Create, Read, Update, Delete) components. <br>
+The final data model for your app will be the combination of the system entities and the project entities. Once this is defined, Divblox can generate the app's object relational model and CRUD (Create, Read, Update, Delete) components. <br>
 <br>In essence, simply by defining a data model, you already have CRUD ability for every entity in your data model. More on this in later topics.<br>
-Below is a visual representation of a complete divblox data model for the example provided [above](#basic-data-modeling-concepts)
+Below is a visual representation of a complete Divblox data model for the example provided [above](#basic-data-modeling-concepts)
 
 ![Data model example](_media/_screenshots/data-modeler-example.png)
 
-## The divblox ORM (Server side)
+## The Divblox ORM (Server side)
 ### ORM Code Generation
 
 >Based on the data model, the following is generated or can be generated as required:
@@ -54,10 +54,10 @@ Below is a visual representation of a complete divblox data model for the exampl
 
 Each entity will have its own base classes for the ORM. These base classes will always be regenerated when code is generated to ensure that the foundation of your solution is always inline with the database.
 Each entity will then also have implemented classes that inherit from their base classes. These classes allow for the developer to change the way a certain class works from the default way, since the code in these classes will never be regenerated.
-This base class/implemented class approach is true for every area where divblox generates ORM code.
+This base class/implemented class approach is true for every area where Divblox generates ORM code.
 
 ### divbox ORM Queries
-The querying logic behind all the Load methods in divblox ORM classes is powered by dxQuery, or dxQ for short. Put simply, dxQ is a completely object oriented API to perform any SELECT-based query on your database to return any result or hierarchy of your ORM objects.
+The querying logic behind all the Load methods in Divblox ORM classes is powered by dxQuery, or dxQ for short. Put simply, dxQ is a completely object oriented API to perform any SELECT-based query on your database to return any result or hierarchy of your ORM objects.
 
 While the ORM classes utilize basic, straightforward SELECT statements in their Load methods, dxQ is capable of infinitely more complex queries. In fact, any SELECT a developer would need to do against a database should be possible with dxQ.
 

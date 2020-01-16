@@ -1,5 +1,5 @@
 # Export to native
-divblox allows you to export your progressive web app to a native project using [Cordova](https://cordova.apache.org/)
+Divblox allows you to export your progressive web app to a native project using [Cordova](https://cordova.apache.org/)
 To export to a native project you need the following:
 - Your web app needs to be deployed on a server with an ssl certificate
 - You need to configure your environment for native export:

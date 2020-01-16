@@ -1,11 +1,11 @@
 # Basic Troubleshooting tips
-Because of the nature of web development, divblox supports multiple operating systems. 
-The recommended OS for divblox development is MacOS, since it will allow for all functionality, including export
+Because of the nature of web development, Divblox supports multiple operating systems. 
+The recommended OS for Divblox development is MacOS, since it will allow for all functionality, including export
 to iOS, to function correctly. However, both Windows and Linux are also supported.
 
 # Most common issues
 ## Browser console
-divblox makes use of the browser console to inform the developer of errors. Ensure that the browser console is open during 
+Divblox makes use of the browser console to inform the developer of errors. Ensure that the browser console is open during 
 installation and/or development to quickly diagnose the most common problems.
 
 ## Installation checker
@@ -14,12 +14,12 @@ connection configured. If your minimum database requirements are not met accordi
 [configure your database settings](getting-started.md?id=environments) before checking again.
 
 ## Linux
-divblox makes use of code generation to create its components and ORM class files. This means that full write access is 
+Divblox makes use of code generation to create its components and ORM class files. This means that full write access is 
 required in order for everything to work correctly. To avoid most of the common issues in this regard, ensure that the user
-that is used to run your web server has ownership and write permission for the divblox folder.
+that is used to run your web server has ownership and write permission for the Divblox folder.
 
 ## Windows
-divblox was created on a UNIX based operating system and it is recommended that you use MacOS for the best experience when developing with the framework. However, we do try to support Windows as far as possible. The following are common issues users experience when setting up divblox on Windows environments:
+Divblox was created on a UNIX based operating system and it is recommended that you use MacOS for the best experience when developing with the framework. However, we do try to support Windows as far as possible. The following are common issues users experience when setting up Divblox on Windows environments:
 ### Basecamp communication error (SSL)
 The installation wizard complains that the connection to basecamp cannot be established because of an SSL Certificate problem. Specifically: unable to get local issuer certificate. To solve this problem, follow these steps:
 
@@ -41,10 +41,10 @@ To enable php_openssl.dll, you will need to uncomment the following line in your
 ```
 extension=php_openssl.dll
 ```
-5. Restart your webserver and refresh the divblox installation checker to confirm that things are working now.
+5. Restart your webserver and refresh the Divblox installation checker to confirm that things are working now.
 
 ### Lowercase table names
-divblox relies on code generation to create the ORM for you project. This generation is done, based on the tables in your database. If the tables in your database do not have case-sensitive names, the classes in the corresponding ORM might fail to work correctly. The installation checker will display the following error:
+Divblox relies on code generation to create the ORM for you project. This generation is done, based on the tables in your database. If the tables in your database do not have case-sensitive names, the classes in the corresponding ORM might fail to work correctly. The installation checker will display the following error:
 ```
 Database table names case configuration: Failed! Please ensure that the database variable 'lower_case_table_names' is set to 2
 ```
@@ -56,7 +56,7 @@ lower_case_table_names = 2
 - Save the file and restart MySQL service
 
 ## ionCube
-When you open your divblox project in the browser for the first time, you might encounter strange behaviour if ionCube 
+When you open your Divblox project in the browser for the first time, you might encounter strange behaviour if ionCube 
 has not been installed. Please follow [these steps](https://www.ioncube.com/loaders.php) to install ionCube for your OS.
 
 # Sandboxes

@@ -1,13 +1,13 @@
 <!-- _coverpage.md -->
 
-![logo](_media/divblox-logo-1.png)
+![logo](_media/Divblox-logo-1.png)
 
-# divblox <small>2.0.2</small>
+# Divblox <small>2.0.2</small>
 
 > Create experiences. Not just apps.
 
 - Build full stack experiences using javascript, html & php in a data driven way.
 
-[GitHub](https://github.com/divblox/divblox/)
-[Sign Up - Free](https://basecamp.divblox.com/?view=register)
-[Documentation](#what-is-divblox)
+[GitHub](https://github.com/Divblox/Divblox/)
+[Sign Up - Free](https://basecamp.Divblox.com/?view=register)
+[Documentation](#what-is-Divblox)

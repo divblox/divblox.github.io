@@ -1,15 +1,15 @@
-# divblox Components
-Virtually everything in divblox is a component. Components are used as the building blocks for your project. 
+# Divblox Components
+Virtually everything in Divblox is a component. Components are used as the building blocks for your project. 
 You can create any type of component for your specific requirement, from a basic image viewer to a full blown page that is made up of multiple individual components.
 
 # Component Types
->divblox allows you to create any of the following types of components:
+>Divblox allows you to create any of the following types of components:
 - [Data model](data-modeler.md) related components
 - Custom components
 - Basic components
 
 ## Data model components
-Data model components allow for the CRUD behaviour of any of your data model entities. divblox can generate the following CRUD components from your data model:
+Data model components allow for the CRUD behaviour of any of your data model entities. Divblox can generate the following CRUD components from your data model:
 - **Create component:** 
     - Displays input boxes for the relevant attributes of your entity along with a save button. 
     - Processes the request to the server to create a new instance of your entity and store it in the database
@@ -36,7 +36,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
 
 ## Custom components
 Custom components allow you to create any specific type of functionality for your app. 
-Create anything from an image viewer or an html editor, to file uploaders and charting tools. divblox ships standard with the following custom components:
+Create anything from an image viewer or an html editor, to file uploaders and charting tools. Divblox ships standard with the following custom components:
 - **Data Visualization:** Chartjs with examples
 - **Navigation:** Various types of navbars, including top, bottom and side navbars
 - **System:** 
@@ -51,7 +51,7 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
 Basic components are typically components that do not necessarily have a server-side requirement. 
 These can range from simple alerts and buttons, to modals and progress bars.
 
-> divblox ships standard with the majority of [bootstrap's](https://getbootstrap.com/docs/4.3/components/alerts/) UI components
+> Divblox ships standard with the majority of [bootstrap's](https://getbootstrap.com/docs/4.3/components/alerts/) UI components
 
 # Component DNA 
 Components are typically made up of the following parts:
@@ -102,7 +102,7 @@ if (typeof component_classes['ungrouped_demo_component'] === "undefined") {
 	component_classes['ungrouped_demo_component'] = ungrouped_demo_component;
 }
 
-/* Below is the DivbloxDomBaseComponent class from which every divblox component inherits
+/* Below is the DivbloxDomBaseComponent class from which every Divblox component inherits
 This class manages the following behaviour for each component:
 - Loading workflow, which includes checking of prerequisites and dependencies
 - Error handling
@@ -217,7 +217,7 @@ class DivbloxDomBaseComponent {
 		$("#"+this.uid+"_ComponentPlaceholder").hide();
 		if (typeof cb_active !== "undefined") {
 			if (cb_active) {
-				on_divblox_component_success(this);
+				on_Divblox_component_success(this);
 			}
 		}
 	}
@@ -230,7 +230,7 @@ class DivbloxDomBaseComponent {
 			' </strong><br>'+ErrorMessage+'</div>');
 		if (typeof cb_active !== "undefined") {
 			if (cb_active) {
-				on_divblox_component_error(this);
+				on_Divblox_component_error(this);
 			}
 		}
 	}
@@ -297,8 +297,8 @@ class DivbloxDomBaseComponent {
 The component's Php file handles server-side requests for the component.
 The basic structure of any component's Php follows the following pattern:
 ``` php
-// We need to require the divblox initialization in order to have access to divblox's classes and functions
-require("../../../../divblox/divblox.php");
+// We need to require the Divblox initialization in order to have access to Divblox's classes and functions
+require("../../../../Divblox/Divblox.php");
 /* Every component controller class will inherit from the ProjectComponentController class.
   The ProjectComponentController handles things like 
   - POST variables, 
@@ -335,7 +335,7 @@ $ComponentObj = new DemoComponentController("demo_component");
 The component's JSON file is used for component configuration. By default this is empty
 
 # Component Builder 
-The divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
+The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
 ![Main Component Builder Page](_media/_screenshots/component-builder-overview.png)
 
 >From the default component builder page you can do the following:
@@ -353,7 +353,7 @@ Selecting a [Data Model Component](#data-model-components) will provide you with
 ![Component Builder - New Data Model Component Select Entity](_media/_screenshots/component-builder-new-datamodel-component-entity-select.png)
 ![Component Builder - New Data Model Component Select Type](_media/_screenshots/component-builder-new-datamodel-component-type-select.png)
 
-Once you selected your entity and component type, you can configure the attributes and/or validations that you would like divblox to generate for the component.<br><br>
+Once you selected your entity and component type, you can configure the attributes and/or validations that you would like Divblox to generate for the component.<br><br>
 The example below shows a typical configuration modal for a "CREATE" type of component, which allows you to configure which attributes to display and to select the specific validations you require for them:
 ![Component Builder - New Data Model Component Create Config](_media/_screenshots/component-builder-new-datamodel-component-create-config.png)
 
