@@ -38,7 +38,7 @@
 
 Demonstration:
 <video id="examplePageCreateVid" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/example-page-create-vid1.webm" type="video/webm">
+  <source src="_videos/example-page-create-vid1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('examplePageCreateVid')" type="button" class="video-control-button">
@@ -76,7 +76,7 @@ Demonstration:
 
 ```html
 <li class="nav-item">
-    <a id="ADD_YOUR_ITEM_NAME_HERE" class="nav-link navigation-activate-on-item3" href="#"><i class="fa fa-link" aria-hidden="true"></i><br/>ADD YOUR ITEM TILE HERE</a>
+    <a id="[ADD_YOUR_ITEM_NAME_HERE]" class="nav-link navigation-activate-on-item3" href="#"><i class="fa fa-link" aria-hidden="true"></i><br/>[ADD YOUR ITEM TILE HERE]</a>
 </li> 
 <!-- change the Item ID and Title above -->
 
@@ -89,11 +89,11 @@ Demonstration:
 
 ```javascript
 
-getComponentElementById(this,'ADD_YOUR_ITEM_NAME_HERE').on("click", function () {
-    loadPageComponent("page_component_name");
+getComponentElementById(this,'[ADD_YOUR_ITEM_NAME_HERE]').on("click", function () {
+    loadPageComponent("[page_component_name]");
     return false;
 });
-// add your navigation bar item ID above
+// add your navigation bar item ID above and your page_component_name
 
 ```
 
@@ -115,7 +115,7 @@ getComponentElementById(this,'ADD_YOUR_ITEM_NAME_HERE').on("click", function () 
 
 Demonstration:
 <video id="examplePageCreateVid" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/example-page-sidebar-item-vid1.webm" type="video/webm">
+  <source src="_videos/example-page-sidebar-item-vid1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('examplePageCreateVid')" type="button" class="video-control-button">
@@ -124,3 +124,60 @@ Demonstration:
 <button onclick="fullScreenVideo('examplePageCreateVid')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
+
+## Adding Custom fonts to your project
+
+>In this example we will add a new font to our project and then have that font present for offline applications as well.
+
+
+1. Start by finding a font for your project. This example will add Google's fonts as they're free to use and easily accessible. See [here](https://fonts.google.com/).
+
+2. Once you've chosen the font that will work, select it by clicking the " + " in the corner of the font tile.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font1.png>
+</p>
+
+3. By selecting it, a window should open in the bottom right of the page containing a link that could normally be added to your HTML header, but if you want to export your application to a native environment, or even just to have it functioning offline, the CSS and font files will need to be added manually. 
+
+<p align="center">
+  <img  src=_media/_screenshots/example-add-new-font2.png>
+</p>
+
+4. By opening the link in the HTML snippet in a new tab, we can see the font's CSS code.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font3.png>
+</p>
+
+5. The fonts can now be placed into your project by copying the CSS code and pasting it in the "Custom Global Styles" section found at the top of the "UI configuration" in the "theme.css" file in the Divblox setup.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font4.png>
+</p>
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font5.png>
+</p>
+
+6. You have now added a custom font to your project, but this is only going to work for online apps that are able to retrieve the font files. To have a native app the font files need to be downloaded. To get these files copy the URL of the font file, which is found in the CSS code that was just copied, into a new browser tab. Opening the URL will start the download of the file. This should be saved in "divblox-master/projects/assets/fonts". Repeat this step for all the file links found in the CSS code that was copied as the links are all unique.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font6.png>
+</p>
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font7.png>
+</p>
+
+7. The saved files need to be linked to the CSS code. Rather than having the URL to the file, it can be replaced with :
+
+```
+../assets/fonts/[ PLACE_FONT_FILE_NAME_HERE ]
+
+```
+<p align="left">
+  <img  src=_media/_screenshots/example-add-new-font8.png>
+</p>
+
+8. Your project should have locally stored fonts. Remember to save the UI configuration before moving on.
