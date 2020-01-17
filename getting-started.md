@@ -77,7 +77,7 @@ Creating a new sandbox is easy:
 Sandboxes are great for prototyping and even to deploy small projects, but if you are serious about your project, 
 at some point you will need to download your sandbox progress and continue on a local development environment.
 
-To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](#Divblox-api-key) configured. 
+To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](#divblox-api-key) configured. 
 From here you can click on the "Sandboxes" setup block to download your sandbox or deploy your local changes to your sandbox.
 
 ![Sandbox Step 4](_media/_screenshots/sandbox-step4.png)
@@ -141,7 +141,7 @@ It contains information such as:
 
 After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's _Free_ Divblox API key.
 
-1. To generate your new API see [Divblox API key](https://Divblox.github.io/#/getting-started?id=Divblox-api-key).
+1. To generate your new API see [Divblox API key](https://Divblox.github.io/#/getting-started?id=divblox-api-key).
 
 2. Open the "local starter project" from the link located under "Quick Start links" on the welcome Page.
 

@@ -2,7 +2,7 @@
   - [Data Modeler](data-modeler.md)
   - [Divblox Components](component-builder.md)
   - [Global Functions & Classes](global-functions.md)
-  - [Extending with API's](Divblox-apis.md)
+  - [Extending with API's](divblox-apis.md)
   - [Native Support](native-support.md)
   - [Hello World](hello-world.md)
   - [Training Exercise](training-exercise.md)
