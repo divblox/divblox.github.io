@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-![logo](_media/Divblox-logo-1.png)
+![logo](_media/divblox-logo-1.png)
 
 # Divblox <small>2.0.2</small>
 

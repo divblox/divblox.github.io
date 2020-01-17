@@ -1,4 +1,4 @@
-![logo](_media/Divblox-logo-1.png ':size=200')
+![logo](_media/divblox-logo-1.png ':size=200')
 
 > Create experiences. Not just apps.
 

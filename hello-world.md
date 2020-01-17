@@ -53,7 +53,7 @@ Let's do some basic customization on our image to display our logo
 subComponentLoadedCallBack(component) {
     super.subComponentLoadedCallBack(component);
     if (component.getComponentName() === 'ungrouped_imageviewer') {
-        component.updateImage('https://Divblox.github.io/_media/Divblox-logo-1.png');
+        component.updateImage('https://Divblox.github.io/_media/divblox-logo-1.png');
     }
 }
 ```
@@ -88,7 +88,7 @@ if (typeof component_classes['pages_hello_world'] === "undefined") {
 		subComponentLoadedCallBack(component) {
 			super.subComponentLoadedCallBack(component);
 			if (component.getComponentName() === 'ungrouped_imageviewer') {
-				component.updateImage('https://Divblox.github.io/_media/Divblox-logo-1.png');
+				component.updateImage('https://Divblox.github.io/_media/divblox-logo-1.png');
 			}
 		}
    	}
