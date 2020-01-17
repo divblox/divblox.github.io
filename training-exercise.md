@@ -28,7 +28,7 @@ We will be creating a data model with the following entities and attributes:
 - **TicketStatus**: StatusLabel
 
 <video id="TrainingExerciseStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-data_model.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-data_model.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep1')" type="button" class="video-control-button">
@@ -43,7 +43,7 @@ Now that our data model is created and synchronized with our database,
 let's generate some CRUD components (using the component builder) for Ticket and TicketStatus.
 
 <video id="TrainingExerciseStep2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-crud_components.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-crud_components.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2')" type="button" class="video-control-button">
@@ -63,7 +63,7 @@ be modifying the default side bar component to have links to 2 pages:
 - A "New Ticket" page where users can create new tickets
 
 <video id="TrainingExerciseStep3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-sidebar.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-sidebar.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3')" type="button" class="video-control-button">
@@ -78,7 +78,7 @@ Ok, we now have components that allow us to create our data. We have also update
 access our page components. Let's create a page component where we can use our CRUD components.
 
 <video id="TrainingExerciseStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-full_crud_admin_page.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-full_crud_admin_page.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
@@ -91,7 +91,7 @@ access our page components. Let's create a page component where we can use our C
 We can now also reuse our CREATE component for tickets on a new page called "New Ticket" to allow users to create their tickets
 
 <video id="TrainingExerciseStep4a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-reuse_ticket_create.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-reuse_ticket_create.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep4a')" type="button" class="video-control-button">
@@ -112,7 +112,7 @@ information about our ticket via an API. To generate this unique ID, we will mak
 returning the ID. This means we need to add a new function to global_request_handler.php (project/assets/php/global_request_handler.php) to deal with this.
 
 <video id="TrainingExerciseStep5" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-global_functions_1.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-global_functions_1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5')" type="button" class="video-control-button">
@@ -185,7 +185,7 @@ Now we have our global functions ready. Let's add a button to our ticket CREATE 
 the value returned from our global function.
 
 <video id="TrainingExerciseStep5a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-global_functions_2.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-global_functions_2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5a')" type="button" class="video-control-button">
@@ -203,7 +203,7 @@ need to register a new user that can log in.
 !>You can access the register page by navigating to [your_project_root]/?view=register. New users are registered with the user role "User" by default
 
 <video id="TrainingExerciseStep6" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-security_1.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-security_1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6')" type="button" class="video-control-button">
@@ -237,7 +237,7 @@ $UserRoleSpecificComponentArray = array(
 This tells the system explicitly which user roles have access to which components. Once this rule is applied, try to open the admin page with your newly created user.
 
 <video id="TrainingExerciseStep6a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-security_2.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-security_2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6a')" type="button" class="video-control-button">
@@ -254,7 +254,7 @@ To do this, we will copy the provided api_example endpoint and modify it for our
 !>Divblox automatically handles the routing for your API endpoint. API endpoints are available at [your_project_root]/api/endpoint
 
 <video id="TrainingExerciseStep7" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-apis_1.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-apis_1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7')" type="button" class="video-control-button">
@@ -267,7 +267,7 @@ To do this, we will copy the provided api_example endpoint and modify it for our
 >Let's see our API in action
 
 <video id="TrainingExerciseStep7a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Divblox_exercise-apis_2.mp4" type="video/mp4">
+  <source src="_videos/divblox_exercise-apis_2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7a')" type="button" class="video-control-button">
