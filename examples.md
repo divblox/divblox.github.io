@@ -13,7 +13,7 @@
 </p>
 
 3. Give the page a unique and relevant name, then open the "Create" drop down menu.
-4. Select "From existing component" as we want would like to inherit the properties and functionality from the already existing pages.
+4. Select "From existing component" as we would want like to inherit the properties and functionality from the already existing pages.
 5. Ensure the grouping for your page as "page" so that Divblox knows that this component can be used as an app page and not just a component. 
 
  <p align="left">
