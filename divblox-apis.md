@@ -127,7 +127,7 @@ function dummyOperation2() {
   <img  src=_media/_screenshots/API-exposing-an-api5.png>
 </p>
 
-## Securing API operation with an API key
+## Securing API operations with an API key
 
 When creating your own API it will be completely exposed and wont require and API key to be accessed. To secure your API operations we can add them to the list of API operations that are under "api_operation_administration" and create a key to control its accessibility. 
 
@@ -202,4 +202,56 @@ When creating your own API it will be completely exposed and wont require and AP
 
 <p align="center">
   <img  src=_media/_screenshots/API-securing-an-api12.png>
+</p>
+
+## Creating default CRUD API's
+
+Making and exposing access controlled CRUD API operations for new data model entities. 
+
+1. Open the "Data Modeler" from the Divblox setup page.
+
+<p align="left">
+  <img  src=_media/_screenshots/API-default-CRUD1.png>
+</p>
+
+2. This is the Default data model for Divblox. New Entities are added by "Double-clicking" in empty space. 
+
+<p align="center">
+  <img  src=_media/_screenshots/API-default-CRUD2.png>
+</p>
+
+3. Name your new data model entity and click "Create". The name of the data model entity is used as the CRUD API path as well. For this example an entity named "Car" will be created.
+
+<p align="left">
+  <img  src=_media/_screenshots/API-default-CRUD3.png>
+</p>
+
+4. Start by selecting the module where you want your new entity to be placed. Add new entity attributes by filling in the attribute "name" and "data type" and then add it with the green " + " at the end of the row. Add relationships in the same way, by selecting the entity you need a relationship with and add it using the green " + "  at the end of the row. Finish by saving the changes made to the entity 
+
+<p align="canter">
+  <img  src=_media/_screenshots/API-default-CRUD4.png>
+</p>
+
+5.  Sync your data model. Ensure that Divblox's data model is synced so that the CRUD operations can be used.
+
+<p align="left">
+  <img  src=_media/_screenshots/API-default-CRUD5.png>
+</p>
+
+6. View the auto-generated documentation for the newly created entity using the entity name from before and the path "/api/[your API name]/doc". These are the default CRUD operations that get created with new data model entities. 
+
+<p align="left">
+  <img  src=_media/_screenshots/API-default-CRUD6.png>
+</p>
+
+7. Divblox automatically requires an API key for any auto generated operation as they get added and listed in "api_operation_adminstration" (For more see [Securing API operations with an API key](#Securing-API-operations-with-an-API-key)). Therefore we must create an API key and link it to the operations we want to expose, thus still keeping them secure with a key. Create the key in the "api_key_administration" component. Select the new key and add the operations using the " + Api Operation" button and select the operations you want from the drop down menu.
+
+<p align="center">
+  <img  src=_media/_screenshots/API-default-CRUD7.png>
+</p>
+
+8. The API operations are now exposed and can be accessed using the key that was just created. Testing the "Create Car" operation we will get back a confirmation that the data entry was successful and the "List Car" operation will show the new car that was created.
+
+<p align="center">
+  <img  src=_media/_screenshots/API-default-CRUD8.png>
 </p>
