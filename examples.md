@@ -180,4 +180,4 @@ Demonstration:
   <img  src=_media/_screenshots/example-add-new-font8.png>
 </p>
 
-8. Your project should have locally stored fonts. Remember to save the UI configuration before moving on.
+8. Your project should have locally stored fonts. Remember to save the UI configuration before moving on. 
