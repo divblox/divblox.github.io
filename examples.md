@@ -50,13 +50,75 @@ Demonstration:
 
 ## Page Navigation 
 
-Now that you are able to create new pages (see [Creating a new page](#Creating-a-new-page)), you're going to want to navigate between them. The two primary modes used to get between pages are "Navigation bars" and "page redirects". Navigation bars allow a user to chose which page they want to end up on, for example being on a home page and wanting to see your profile page. Page redirections come into play when the page is no longer required by the user and therefore the site will move you somewhere more relevant, for instance when a user is done with the login page and submit their credentials the home page should be loaded in or if a user is no longer logged into a site they'll be redirected to the login page when trying to access the site. Therefore in order to navigate the site these two methods must be included into your project.
+Now that you are able to create new pages (see [Creating a new page](#Creating-a-new-page)), you're going to want to navigate between them. The two primary modes used to get between pages are "Navigation bars" and "page redirections". Navigation bars allow a user to chose which page they want to end up on, for example being on a home page and wanting to see your profile page. Page redirections come into play when the page is no longer required by the user and therefore the site will move you somewhere more relevant, for instance if a user is no longer logged into a site they'll be redirected to the login page when trying to access the site because their user roles switched from "user" to "anonymous". Therefore in order to navigate the site these two methods must be included into your project.
 
-### Landing pages and page redirection
+### Landing pages 
+
+<!-- Applications are created by developers, managed by administrators and used by users. Each of these roles  -->
+
+Everyone accessing a site, from new users to developers, has a "user role" that defines what a individual will see when they attempt to access the site(See [User roles]()). Managing which "landing page redirection" the user will experience is found in the Divblox "Global Functions" and updates can be made to it to specify what each "user role" is going to see.
+
+1. Open the "Global Functions" tab from the Divblox setup page.
+
+ <p align="left">
+  <img  src=_media/_screenshots/example-landing-pages-redirections1.png>
+</p>
+
+2. Under the heading "Global functions" and inside the file "project.js", a function named "user_role_landing_pages()" handles the page that a user sees when accessing the site. To add a user role, place the "user role name" such as "User" or "Administrator", followed by the the name of the page as it's read in the "Component Builder".
+
+<p align="center">
+  <img  src=_media/_screenshots/example-landing-pages-redirections2.png>
+</p>
 
 ### Adding a navigation bar
 
+Navigation bars come as a default component with Divblox. Adding the Navigation bars to a page is a similar procedure as a adding any other component , with an extra step that requires additional CSS statements to be added to all other containers on the page so that the interaction between the navigation bar and the page is smooth. If the additional statements aren't added you could have containers slipping under the navigation bar.
+
+1. Create a blank page from "blank_page" in the "Component builder"
+
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-navbar1.png>
+</p>
+
+2. To add a new component to the page without having to select a container click " + Component ".
+
+<p align="left">
+  <img  src=_media/_screenshots/example-add-navbar2.png>
+</p>
+
+3. Use the search bar to find the navigation bars and select the one that you want to add by selecting it clicking "Insert Component".
+
+<p align="center">
+  <img  src=_media/_screenshots/example-add-navbar3.png>
+</p>
+
+3. The navigation bar is now added to your page. This is acceptable for the top, instance and bottom navigation bars but not for the side bar as the containers aren't configured to support it and as a result the container slips behind the navigation bar. To configure the container click the "gear" symbol found in the top right hand corner of the container.
+
+
+<p align="center">
+  <img  src=_media/_screenshots/example-add-navbar4.png>
+</p>
+
+4. Add the following CSS statement to the containers configuration to ensure the container works with the side navigation bar.
+
+``` CSS
+component-wrapper-compact-sidebar sidebar_compact_left_visible
+```
+ 
+<p align="center">
+  <img  src=_media/_screenshots/example-add-navbar5.png>
+</p>
+
+5. Inspecting the container, it can be see that now the row inside the component sits next to the navigation bar and not behind it anymore.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-add-navbar6.png>
+</p>
+
 ### Adding items to the navigation bar
+
+Now that a navigation bar is on your page, we can add items to it. Once these items have been created they can be linked to a specific web page through a user defined page component name.
 
 1. Create a new page from an existing component. In this example we will use the blank page with a sidebar . See [Creating a new page](#creating-a-new-page) for more info.
 
@@ -270,13 +332,25 @@ The aesthetics of a page is primarily controlled by CSS. It is a coding syntax t
   <img  src=_media/_screenshots/example-look-and-feel1.png>
 </p>
 
-2. Either add new CSS statements, or edit the existing ones, inside "theme.css".
+2. Either add new CSS statements, or edit the existing ones, inside "theme.css". To view the statements click the "bi-directional arrow" to expand the code folds.
 
 <p align="center">
   <img  src=_media/_screenshots/example-look-and-feel2.png>
 </p>
 
-3. By using these statements we can change the look of a certain item. When a component is placed on a page, it calls the CSS statement from its HTML script. For instance in the   
+3. By using these statements we can change the look of a certain item. When a component is placed on a page, it calls the CSS statement from its HTML script. For instance inside the "side_navbar" component's HTML tab, and inside the HTML "navigation tag" is where the CSS statement is referenced. Changing this will result in style changes to the navigation bar.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-look-and-feel3.png>
+</p>
+
+4. Using the CSS statements in "theme.css", the navigation bar can be changed from dark to light using the statements "sidebar-dark" or "sidebar-light".
+
+  
+ 
+<p align="left">
+  <img  src=_media/_screenshots/example-look-and-feel4.png>
+</p>
 
 
 ## Adding Custom fonts to your project
