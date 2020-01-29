@@ -7,5 +7,6 @@
   - [Hello World](hello-world.md)
   - [Training Exercise](training-exercise.md)
   - [Examples](examples.md)
+  - [Divblox Best Practices](best-practices.md)
   - [Troubleshooting](troubleshooting.md)
   - [Deployment](deployment.md)

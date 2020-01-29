@@ -1,0 +1,71 @@
+
+Divblox is a unique tool for web development as opposed to more traditional software development tools. As a result a few "good practices" have emerged. These came about to ensure consistency across your application, increase development productivity and maximize the functionality that Divblox provides.
+
+>The recommended Divblox best practices that are demonstrated in the following examples include:
+- Using the default pages as a template to generate new pages
+- Replacing page components with a custom copy of that component
+- Overwriting default functions to add functionality to existing components
+
+## Default pages
+> This example covers creating a default page from which to work from to maintain functionality and aesthetics across a site without making changes to exsisting components that you want to use at a later time. Using the a page with a bottom navigation bar, we can create our own page that inherits all of the existing pages components.
+
+
+1. Create a new page component from the default "blank_page_with_bottom_nav". 
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-bottom-nav2.png>
+</p>
+
+2. For any future pages, you now have a default page from which to create all of your new pages from. This ensures consistency in both looks and feel. It makes the overall experience of the page a more imersive . For instance navigation items remain the same across pages, or your chosen background is now on all the pages without having to add it every time a new page is created. This practice leaves the original pages untouched incase you wish to create a new page from them. 
+
+
+## Customizing Components
+> Divblox comes with default components like pages and navigation bars, but you might not want yours to look the same or behave the same. To do this we can create custom versions of the existing components and to load them in place of the default ones. This will reduce the amount of time it would take to make a custom item by easing the process required to create new components. This is illustrated in the example below, where an existing navigation bar is duplicated, edited and then used to replace the existing navigation bar on a default page (see [Default pages](#Default-pages) ).
+
+1. Start by creating a new navigation bar from the existing "top_navbar" component. 
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-top-nav2.png>
+</p>
+
+2. All the changes you want can now be made to your new navigation bar, like adding new menu items or changing the look and feel without changing a default item. In this example the item titles have been altered.
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-top-nav3.png>
+</p> 
+
+3. Now that the custom navigation bar has been created it can be placed in your default page that will be used as a template for pages that require a top navigation bar. Start by creating the page from the existing blank page that contains the top navigation bar.
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-top-nav4.png>
+</p> 
+
+4. To replace the already present navigation bar with your custom one, open the page and edit the component. Inside the "Js" tab there is a method named "constructor()" that is used to populate the page with its sub-components. The inclusion of the navigation bar component is located here. Replace the component load path for the current "top_navbar" with the custom navigation bar and save the changes made. 
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-top-nav5.png>
+</p> 
+
+5. Your custom navigation bar in now in your default page. To make changes to the navigation bar, you can edit the custom navigation component in the component builder and it will be loaded across all pages made from your new default page with a custom navigation bar. 
+
+<p align="centre">
+  <img  src=_media/_screenshots/example-top-nav6.png>
+</p> 
+
+## Overwriting default functions
+
+> In Divblox it is common place to use the components provided as default, seen in [Customizing Components](#Customizing-Components). These components have been created with this purpose in mind and each component, such as the navigation bars, are filled with function place holders waiting for the a developer to fill them up with functionality. This example will uncover these place holder functions, specifically the ones located in the instance navigation bar, and to show where the functionality should be placed.
+
+1. Create a new navigation bar from the existing "top_instance_navbar".
+
+
+<p align="center">
+  <img  src=_media/_screenshots/example-instance-nav2.png>
+</p>
+
+2. Open and edit your new component. Under the "Js" tab are the functions that register that an action has been performed and which function to call when this event has occurred. "RegisterDomEvents()" handles the interaction and the "cancelFunction()" and "confirmFunction()" are the functions that get called as a result of a button click. By default there isn't any functionality present, just console logs. By overwriting these functions you can add new behavior to your buttons.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-instance-nav3.png>
+</p>
+

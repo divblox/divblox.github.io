@@ -268,7 +268,7 @@ The sidebar is more often than not placed on the left of the page, as to not int
 
 The bottom navigation bar is a tool most common with apps or webpages that are created for mobile devices. Having your navigation items placed at the bottom makes accessing it very easy because your fingers aren't required to stretch to the top side of the page.  <br>
 
-This is an element that usually remains the same across most pages, from a profile page to a main page the navigation items are not going to change, and therefore a good practice to keep these consistent is to use the existing pages as a template and create a copy of the given pages to have your own default page to work from (See [Default pages](#Default-pages)). 
+This is an element that usually remains the same across most pages, from a profile page to a main page the navigation items are not going to change, and therefore a good practice to keep these consistent is to use the existing pages as a template and create a copy of the given pages to have your own default page to work from (See [Default pages](https://divblox.github.io/#/best-practices?id=default-pages)). 
 
 
 
@@ -280,7 +280,7 @@ This is an element that usually remains the same across most pages, from a profi
 
 The top navigation bar is commonly used when designing website pages. This comes in the form of a universal navigation item that is always present at the top of the page and makes navigation between pages easier. Top navigation bars are often the first thing that get seen on a site as your eyes scan from top to bottom, which means you should include more site details such as a logo for looks or a user profile tab to make accessing it easier. <br>
 
-If you wish to make changes to the default bar to include your own logo or item list, it can be done by making a new component from the existing one and adding that to your default page(See [Customizing Components](#Customizing-Components)).
+If you wish to make changes to the default bar to include your own logo or item list, it can be done by making a new component from the existing one and adding that to your default page(See [Customizing Components](https://divblox.github.io/#/best-practices?id=customizing-components)).
 
 
 
@@ -294,82 +294,9 @@ If you wish to make changes to the default bar to include your own logo or item 
 Instance pages are pages that, more often than not, have two navigation options, namely "back", that returns to the previous page, and "confirm" that moves you from the current page to the next. A common application for this is for form pages, which collect information from a user. These have a "return" button to leave the form and a "confirm" to save changes made on that form, submit that data to a database, and then take you to a new page. <br>
 This is also frequently used in mobile applications and as the name suggests it is used in instances and isn't a permanent navigation bar. It adds navigation functionality to the page without changing the main navigation bar. 
 
-The instance navigation bar is an item that, although, looks the same and feels the same to use no matter where it pops up the functionality when a button is clicked can change dramatically between instances. Editing this functionality is as easy as creating a copy of the default "top_instance_navbar" and adding functionality to the existing callback functions that are triggered by the buttons in the navigation bar (See [Overwriting default functions](#Overwriting-default-functions)).
+The instance navigation bar is an item that, although, looks the same and feels the same to use no matter where it pops up the functionality when a button is clicked can change dramatically between instances. Editing this functionality is as easy as creating a copy of the default "top_instance_navbar" and adding functionality to the existing callback functions that are triggered by the buttons in the navigation bar (See [Overwriting default functions](https://divblox.github.io/#/best-practices?id=overwriting-default-functions)).
 
 
-
-
-## Divblox best practices 
-
-Divblox is a unique tool for web development as opposed to more traditional software development tools. As a result a few "good practices" have emerged. These came about to ensure consistency across your application, increase development productivity and maximize the functionality that Divblox provides.
-
->The recommended Divblox best practices that are demonstrated in the following examples include:
-- Using the default pages as a template to generate new pages
-- Replacing page components with a custom copy of that component
-- Overwriting default functions to add functionality to existing components
-
-### Default pages
-> This example covers creating a default page from which to work from to maintain functionality and aesthetics across a site without making changes to exsisting components that you want to use at a later time. Using the a page with a bottom navigation bar, we can create our own page that inherits all of the existing pages components.
-
-
-1. Create a new page component from the default "blank_page_with_bottom_nav". 
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-bottom-nav2.png>
-</p>
-
-2. For any future pages, you now have a default page from which to create all of your new pages from. This ensures consistency in both looks and feel. It makes the overall experience of the page a more imersive . For instance navigation items remain the same across pages, or your chosen background is now on all the pages without having to add it every time a new page is created. This practice leaves the original pages untouched incase you wish to create a new page from them. 
-
-
-### Customizing Components
-> Divblox comes with default components like pages and navigation bars, but you might not want yours to look the same or behave the same. To do this we can create custom versions of the existing components and to load them in place of the default ones. This will reduce the amount of time it would take to make a custom item by easing the process required to create new components. This is illustrated in the example below, where an existing navigation bar is duplicated, edited and then used to replace the exsisting navigation bar on a default page (see [Default pages](#Default-pages) ).
-
-1. Start by creating a new navigation bar from the existing "top_navbar" component. 
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-top-nav2.png>
-</p>
-
-2. All the changes you want can now be made to your new navigation bar, like adding new menu items or changing the look and feel without changing a default item. In this example the item titles have been altered.
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-top-nav3.png>
-</p> 
-
-3. Now that the custom navigation bar has been created it can be placed in your default page that will be used as a template for pages that require a top navigation bar. Start by creating the page from the existing blank page that contains the top navigation bar.
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-top-nav4.png>
-</p> 
-
-4. To replace the already present navigation bar with your custom one, open the page and edit the component. Inside the "Js" tab there is a method named "constructor()" that is used to populate the page with its sub-components. The inclusion of the navigation bar component is located here. Replace the component load path for the current "top_navbar" with the custom navigation bar and save the changes made. 
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-top-nav5.png>
-</p> 
-
-5. Your custom navigation bar in now in your default page. To make changes to the navigation bar, you can edit the custom navigation component in the component builder and it will be loaded across all pages made from your new default page with a custom navigation bar. 
-
-<p align="centre">
-  <img  src=_media/_screenshots/example-top-nav6.png>
-</p> 
-
-### Overwriting default functions
-
-> In Divblox it is common place to use the components provided as default, seen in [Customizing Components](#Customizing-Components). These components have been created with this purpose in mind and each component, such as the navigation bars, are filled with function place holders waiting for the a developer to fill them up with functionality. This example will uncover these place holder functions, specifically the ones located in the instance navigation bar, and to show where the functionality should be placed.
-
-1. Create a new navigation bar from the existing "top_instance_navbar".
-
-
-<p align="center">
-  <img  src=_media/_screenshots/example-instance-nav2.png>
-</p>
-
-2. Open and edit your new component. Under the "Js" tab are the functions that register that an action has been performed and which function to call when this event has occurred. "RegisterDomEvents()" handles the interaction and the "cancelFunction()" and "confirmFunction()" are the functions that get called as a result of a button click. By default there isn't any functionality present, just console logs. By overwriting these functions you can add new behavior to your buttons.
-
-<p align="center">
-  <img  src=_media/_screenshots/example-instance-nav3.png>
-</p>
 
 
 ## Update the look and feel 
@@ -496,3 +423,138 @@ function setGlobalVariable(name,value);
  */
   function getGlobalConstrainById(entity) ;
 ```
+
+## Changing the logo
+
+### For a standard web app
+
+For a standard web app or site changing the main logo and icon can be done by:
+
+1. Opening the "UI configuration" tile on the Divblox setup page.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-change-logo1.png>
+</p>
+
+2. Drag and drop your logo or icon of choice into the upload areas.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-change-logo2.png>
+</p>
+
+3. Divblox updates the logo upon adding the new image.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-change-logo3.png>
+</p>
+
+4. Opening up a page with the logo on it will show that it has been updated.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-change-logo4.png>
+</p>
+
+### For a progressive web application
+
+A progressive web application (PWA) is one that behaves more "app-like" by having features such as being independent of connectivity, can be installed to a home screen and have push notifications. 
+
+Since these applications can be placed on a home screen the app requires features that are outside of a app's pages, meaning that it will have both a launch icon and a splash page that gets displayed when the app is launched. 
+
+1. The icon can be set by changing the name of icon you have to that of the default icon, this way your logo will be loaded in. First, in "manifest.json" are the names for the app icons. Change the name of the images that you want to add to match these so that they can be used.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-change-plogo1.png>
+</p>
+
+2. Place the images inside your projects image folder, "/project/assets/images".
+
+
+3. The splash page is changed similarly. In the "index.html", inside of the header are all the file paths to the splash page and mobile application launch icons. Change the names the images that you have to match the name of the images used in this file. Place your images in "/project/assets/images".
+
+<p align="center">
+  <img  src=_media/_screenshots/example-change-plogo2.png>
+</p>
+
+!> Do not change the file paths in "manifest.json" and "index.html" to match your images.
+
+## Displaying your logo
+
+Displaying your application's logo on a page is done by simply adding the "app_logo" class into your HTML file where you need it to be displayed.
+
+1. The following HTML line is used to place the logo on your page.
+
+``` HTML
+<div class="app_logo" />
+```
+
+2. A way of adding it to a container is to start by opening the component you want to have a logo on in the "Component Builder".
+
+3. In a row of a container click " + Add Component" 
+
+4. Click "Add Custom Html" to insert the code for the logo into the container. 
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-logo1.png>
+</p>
+
+5. Add in the line, that includes the logo from step 1, into the HTML section.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-logo2.png>
+</p>
+
+6. Save and close to view the page. The logo should now be present in the container that was just created.
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-logo3.png>
+</p>
+
+7. By inspecting the new item we can see that it uses the "img-fluid" class, meaning the logo will adjust to the container's width when the original image's width is larger than that of the container's width, otherwise it will remain the same size as the original image. 
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-logo4.png>
+</p>
+
+## User Profile image
+
+This example will focus on placing the user profile image on any page.
+
+1. Choose and open a page in the "Component Builder". 
+
+2. Inside a container on the page, place a new component. Find and select "imageViewer". Before adding the image viewer to the page it will need a unique identifier, or "UID", so that it is identifiable and when placing the profile picture in it, it won't disrupt other image viewer components on the page. 
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-profilePic1.png>
+</p>
+
+3. Create the image viewer and take note that there is no image to be viewed.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-adding-profilePic2.png>
+</p>
+
+4. Edit the page and open the "Js" tab. You'll be able to see the "imageViewer" has been loaded in as a "sub-component". To add the profile picture to the viewer as the page is loaded we use "subComponentLoadedCallback()" which is called when each of the sub-components on the page have been loaded. In this function we can check for a specific UID to select a specific sub-component from the page, and then get the current user's profile picture path and update the image viewer's image. 
+
+<p align="center">
+  <img  src=_media/_screenshots/example-adding-profilePic3.png>
+</p>
+
+``` JavaScript
+
+subComponentLoadedCallBack(component) {
+
+			super.subComponentLoadedCallBack(component);
+			if (component.getUid() === "[Place_Your_Uid_Here]"){
+                getCurrentUserAttribute("ProfilePicturePath", function(logo_path){
+                    component.updateImage(logo_path);
+                })
+			}
+		}
+
+```
+
+5. Save and reload the page. The user profile picture has now be loaded into the image viewer as the page loads.
+
+<p align="left">
+  <img  src=_media/_screenshots/example-adding-profilePic4.png>
+</p>
