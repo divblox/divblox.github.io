@@ -10,7 +10,7 @@ Divblox.js is the main javascript function library that provides all of the core
 - Provides functions for components to communicate with their server side scripts
 - Provides various helper functions to simplify your app development
 
->Other Commonly used diblox.js functions
+>Other Commonly used Divblox.js functions
 ```javascript
 dxLog(Message,show_stack_trace);
 // A wrapper for console.log that provides more advanced logging capability 
