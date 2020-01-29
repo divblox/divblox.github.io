@@ -4,7 +4,6 @@
   - [Global Functions & Classes](global-functions.md)
   - [Extending with API's](divblox-apis.md)
   - [Native Support](native-support.md)
-  - [Hello World](hello-world.md)
   - [Examples](examples.md)
   - [Divblox Best Practices](best-practices.md)
   - [Training Exercise](training-exercise.md)
