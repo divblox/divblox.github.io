@@ -1,6 +1,6 @@
 # Install Ubuntu 18.04 image
 
-At time of writing, the latest stable version is Ubuntu 18.04, found [here]("https://ubuntu.com/download/desktop"). Download the (approx. 5 GB) .iso file.
+At time of writing, the latest stable version is Ubuntu 18.04, found [here](https://ubuntu.com/download/desktop). Download the .iso file (approx. 5 GB).
 
 # Create a bootable flashdrive
 
@@ -8,30 +8,29 @@ You will need a USB stick or portable hard drive with at least 8 GB of memory. N
 
 !> NOTE: All previous data will be erased!
 
-Download Rufus (recommended) ([linkhere])("www.com")), or another similar application which will enable you to turn your memory stick into a bootable device.
+Download Rufus (recommended) [here](https://rufus.ie/)), or another similar application which will enable you to turn your memory stick into a bootable device.
 
-Run Rufus. When you insert your USB stick, the device field should automatically update. You want to select the chosen memory stick, and _FreeDOS_ as your boot selection. Now you can select the image you want to use. The default search folder is Downloads, so if this is your first attempt you should only see the newly downloaded image file. Leave all the other settings as default. You may rename the device as you wish. Below are some snapshots of the process.
+Continuing with Rufus: When you insert your USB stick, the device field should automatically update. You want to select the chosen memory stick, and _FreeDOS_ as your boot selection. Now you can select the image you want to use. The default search folder is Downloads, so if this is your first attempt you should only see the newly downloaded image file. Leave all the other settings as default. You may rename the device as you wish. Below are some snapshots of the process.
 
 <!-- tabs:start -->
 
-<!-- #### ** Without USB stick **
+#### ** Without USB stick **
 
-![](RufusBefore.png ":size=425%")
+![](_linux-media/RufusBefore.png ":size=425%")
 
 #### ** With USB stick and .iso selected **
 
-![](RufusAfter.png ":size=400%")
+![](_linux-media/RufusAfter.png ":size=400%")
 
-#### ** Complete installation ** -->
+#### ** Complete installation **
 
-<!-- ![](RufusComplete.png ":size=400%") -->
-<!-- <img align="center" width="55%" src="RufusComplete.png"> -->
+<img align="center" width="55%" src="_linux-media/RufusComplete.png">
 
 <!-- tabs:end -->
 
 Once you are done, you can click _Close_ and eject your newly bootable flash disk.
 
-#### Restart machine with flashdrive inserted
+# Restart machine with flashdrive inserted
 
 To boot with Linux Ubuntu, you need to restart your chosen computer with the flash drive inserted. Your computer may automaticlly boot up from the drive, but if not, you need to press `F1`, `F2`, `ESC`, `F8` or `F10` as your PC is starting (depending on system). Below are screenshots of the Ubuntu installation process.
 
@@ -39,116 +38,379 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 
 #### ** 1.) Install Ubuntu **
 
-![](Ubuntu1.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li> Select Install Ubuntu. </li>
+        <li>You are also able to try Ubuntu without installing it. </li>
+    </ul>
+    <img  src="_linux-media/Ubuntu1.png" height='350'>
+</p>
 
 #### ** 2.) Select Language **
 
-![](Ubuntu2.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li> Select your prefered language.</li>
+        <li>Note that ENglish UK and ENglish US have a few special characters swapped around.</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu2.png" height='350'>
+</p>
 
 #### ** 3.) Installation options **
 
-![](Ubuntu3.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Select 'Normal Installation'. This comes with the default bundle of apps and utilities including a music player, games and lauchpad for Linux apps.</li>
+        <li>If you are comfortable with what you want and need however, you can proceed to the custom installation which will be a mocuh more lightweight isntallation.</li>
+        <li>It is adviced to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation proccess</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu3.png" height='350'>
+</p>
 
 #### ** 4.) Installation Type **
 
-![](Ubuntu4.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>We want to erase our entire disk and install a clean Ubuntu OS</li>
+        <li>The other options allow you to install Ubuntu alongside your current OS,</li>
+        <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu4.png" height='350'>
+</p>
 
 #### ** 5.) Location **
 
-![](Ubuntu5.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Select your location</li>
+        <li>If you have internet connection, this should be autopopulated</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu5.png" height='350'>
+</p>
 
 #### ** 6.) Personal **
 
-![](Ubuntu6.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Fill in you rpersonal details and password</li>
+        <li>Remember that this will be your user password, so make it a good one</li>
+        <li>You can also decide whether to be remembered or be asked to log in every time</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu6.png" height='350'>
+</p>
 
 #### ** 7.) Install Process **
 
-![](Ubuntu7.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Screenshot of the installation</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu7.png" height='350'>
+</p>
 
 #### ** 8.) Install Complete **
 
-![](Ubuntu8.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Screenshot of the completed installation</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu8.png" height='350'>
+</p>
 
 #### ** 9.) Sign In **
 
-![](Ubuntu9.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
+    </ul>
+    <img  src="_linux-media/Ubuntu9.png" height='350'>
+</p>
 
 <!-- tabs:end -->
 
+# Configure base Ubuntu OS
+
+In this step we will make minor changes to suite our needs. As you log in you will be prompted to do a few things:
 <!-- tabs:start -->
 
 #### ** 1.) Welcome **
 
-![](in1.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Note the changes to UX in newer version of Ubuntu</li>
+    </ul>
+    <img  src="_linux-media/in1.png" height='350'>
+</p>
 
 #### ** 2.) LivePatch **
 
-![](in2.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>There is no need to set up LivePatch for now</li>
+    </ul>
+    <img  src="_linux-media/in2.png" height='350'>
+</p>
 
-#### ** 3.) Create Virtual Memory **
+#### ** 3.) Ubuntu feedback **
 
-![](in3.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>You can decide whether or not to provide information to improve Ubuntu</li>
+    </ul>
+    <img  src="_linux-media/in3.png" height='350'>
+</p>
 
-#### ** 4.) Select Disk Type **
+#### ** 4.) App Store **
 
-![](in4.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
+    </ul>
+    <img  src="_linux-media/in4.png" height='350'>
+</p>
 
-#### ** 5.) Select Disk Memory Type **
+#### ** 5.) Ubuntu update **
 
-![](in5.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Allow Ubuntu to update (not compulsory)</li>
+    </ul>
+    <img  src="_linux-media/in5.png" height='350'>
+</p>
 
 <!-- tabs:end -->
 
-### Creating an Ubuntu Image
+# Installing and configuring the Divblox environment
 
-this is a ubuntu image
+To do this, we need a webserver, backend support as well as database system.
 
-This shoul dbe a code block
+# Webserver: Apache2
 
-`<?php phpinfo(); A CODE BLOCK?>`
+There are two main web servers you can use, namely Apache and Nginx, and either would work as they are both fast, secure, reliable and most importantly well-supported. We will be using Apache as it is the most popular.
 
-And now text again
+We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Wiindows when it comes to permissions. When running any memory changing commands like install, update or delete you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`. The following commands will:
 
-# Vue guide
+1. Install Apache
+```
+sudo apt install apache2
+```
+You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
-```html
-<ul>
-    <li v-for="i in 10">{{ i }}</li>
-</ul>
+<p align="center">
+    <img  src="_linux-media/Installs1.png" height="400">
+</p>
+
+
+2. Start the Apache Server
+```
+sudo systemctl start apache2
+```
+3. Enable Apache to automatically start up when the server boots up
+```
+sudo systemctl enable apache2
+```
+4. Check the current status of the web service
+```
+sudo systemctl status apache2
 ```
 
-```php
-$time = 10;
+<p align="center">
+    <img  src="_linux-media/Installs2.png" height="400">
+</p>
 
-for ($i=0; $i<10; $i++) {
-    echo i;
-}
+And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
+
+
+# Server Language: PHP 7.3
+
+For this step we will use Ondřej Surý’s PPA (Personal Package Archive) as it has everything we will need. To do this we will firstly need to install software-properties-common and python-software-properties packages.
+
 ```
+sudo apt install software-properties-common python-software-properties
+```
+
+Once the installations are complete we can proceed to add the PPA:
+
+```
+LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+```
+You can read about what is included in the PPA and click enter to start the download. We then update the sources to reflect any changes.
+```
+apt update
+```
+
+We now install PHP 7.3 by running and confirming the following command.
+
+```
+sudo apt install php7.3 php7.3-cli php7.3-common
+```
+
+We can also check if we already have PHP 7.3 by checking the current version:
+
+```
+php -v
+```
+
+This should give us:
+
+<p align="center">
+    <img  src="_linux-media/Installs3.png" height="180">
+</p>
+
+Now, we will install the most commonly used PHP modules with the following command:
+
+```
+sudo apt install php-pear php7.3-curl php7.3-dev php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-fpm libapache2-mod-php7.3 php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc php7.3-intl
+```
+
+If you want to install any further modules you can search for them with this command:
+
+```
+sudo apt-cache search php7.3
+```
+Or if you want to see all PHP modules available in Ubuntu, you can do so with:
+
+```
+sudo apt-cache search --names-only ^php
+```
+
+To make PHP 7.3 the default (although it should alreayd be it), run:
+
+```
+sudo update-alternatives --set php /usr/bin/php7.3
+```
+
+To reflec any changes, we must always resstart the apache server:
+
+```
+sudo systemctl restart apache2
+```
+
+Our PHP should now be working, but we can't yet test it as Linux permissions will not let us write into files so easily. Lets install a different File Explorer which can open up files as a superuser. The original file explorer is called Nautilus and we will be replacing it with Nemo. To download Nemo:
+
+```
+sudo apt install nemo
+```
+
+Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder. You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
+
+<p align="center">
+    <img  src="_linux-media/Installs4.png" height="320">
+</p>
+
+Once the code is saved, you can navigate to any browser, and search the URL `localhost/phpTest.php` and you should be able to see the following:
+
+<p align="center">
+    <img  src="_linux-media/Installs5.png" height="400">
+</p>
+
+If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed an dconfigured, we can move on and setup our database management.
+
+# Database Server: MySQL
+
+MySQL is a relational database management system based off of the language SQL. We create databases to structure collections of data. To install MySQL and all the relevant dependacies we run the following commands:
+
+```
+sudo apt-get update
+sudo apt-get install mysql-server
+```
+
+To set up some configurations we run:
+```
+sudo mysql_secure_installation utility
+```
+THe following options can be answered on the preference of the user, but here is what settings we used:
+
+1. Validate Password Plugin: NO
+2. Enter own password
+3. Remove Anonymous Users: YES
+4. Disallow root login remotely: YES
+5. Remove Test Database and access to it: YES
+6. Reload Privilege Tables Now: YES
+
+To ensure that the database server launches automatically even after a reboot:
+
+```
+sudo systemctl enable mysql
+```
+Now start the mysql shell (the most basic way of working with the mysql server):
+
+```
+sudo mysql -u root -p
+```
+
+You will be prompted for a password, this is the root password you set up on installation. Once you are in the mysql shell, you can execute mysql commands and queries. NOte that using all caps for sql query commands is standard, but is not syntax-enforced. Lets start with how to reset the root password:
+
+```
+UPDATE mysql.user SET authentication_string = PASSWORD('new_password') WHERE User = 'root';
+```
+
+Whenever we need to change user information, we must run the following command to reflect the changes:
+
+```
+FLUSH PRIVILEGES;
+```
+
+To see what users are stored in the database, we run the following command:
+```
+SELECT User, Host, authentication_string FROM mysql.user;
+```
+
+We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
+<p align="center">
+    <img  src="_linux-media/mysql1.png" height="320">
+</p>
+
+
+# Database Manager: phpMyAdmin
+
+phpMyAdmin is a web interface for database management. It is by far the most popular MySQL administration tool. To install it we run:
+
+```
+sudo apt update
+sudo apt install phpmyadmin php-mbstring php-gettext
+```
+
+For server selection: Select Apache 2. Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.
+
 
 <!-- tabs:start -->
 
-#### ** 1.) Name VM **
+#### ** 1.) Select Server **
 
-![](VB1.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Select Apache Server.</li>
+        <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+    </ul>
+    <img  src="_linux-media/phpmyadmin1.png" height='350'>
+</p>
 
-#### ** 2.) Allocate RAM **
+#### ** 2.) DB-Common **
 
-![](VB2.png ":size=425%")
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Select Yes</li>
+    </ul>
+    <img  src="_linux-media/phpmyadmin2.png" height='350'>
+</p>
 
-#### ** 3.) Create Virtual Memory **
-
-![](VB3.png ":size=425%")
-
-#### ** 4.) Select Disk Type **
-
-![](VB4.png ":size=425%")
-
-#### ** 5.) Select Disk Memory Type **
-
-![](VB5.png ":size=425%")
-
-#### ** 6.) Allocate ROM **
-
-![](VB6.png ":size=425%")
+#### ** 5.) Ubuntu update **
 
 <!-- tabs:end -->
