@@ -26,5 +26,3 @@
 <br/>
 
 Check out the [getting started](getting-started.md) section.
-OIEnbweoihwefoih weoifh woiefj wef
-ewf
