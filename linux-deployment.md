@@ -16,15 +16,15 @@ Continuing with Rufus: When you insert your USB stick, the device field should a
 
 #### ** Without USB stick **
 
-![](_linux-media/RufusBefore.png ":size=425%")
+![RufusBefore](_linux-media/RufusBefore.PNG)
 
 #### ** With USB stick and .iso selected **
 
-![](_linux-media/RufusAfter.png ":size=400%")
+![](_linux-media/RufusAfter.PNG ":size=400%")
 
 #### ** Complete installation **
 
-<img align="center" width="55%" src="_linux-media/RufusComplete.png">
+<img align="center" width="55%" src="_linux-media/RufusComplete.PNG">
 
 <!-- tabs:end -->
 
@@ -44,7 +44,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li> Select Install Ubuntu. </li>
         <li>You are also able to try Ubuntu without installing it. </li>
     </ul>
-    <img  src="_linux-media/Ubuntu1.png" height='350'>
+    <img  src="_linux-media/Ubuntu1.PNG" height='350'>
 </p>
 
 #### ** 2.) Select Language **
@@ -55,7 +55,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li> Select your prefered language.</li>
         <li>Note that ENglish UK and ENglish US have a few special characters swapped around.</li>
     </ul>
-    <img  src="_linux-media/Ubuntu2.png" height='350'>
+    <img  src="_linux-media/Ubuntu2.PNG" height='350'>
 </p>
 
 #### ** 3.) Installation options **
@@ -67,7 +67,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>If you are comfortable with what you want and need however, you can proceed to the custom installation which will be a mocuh more lightweight isntallation.</li>
         <li>It is adviced to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation proccess</li>
     </ul>
-    <img  src="_linux-media/Ubuntu3.png" height='350'>
+    <img  src="_linux-media/Ubuntu3.PNG" height='350'>
 </p>
 
 #### ** 4.) Installation Type **
@@ -79,7 +79,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>The other options allow you to install Ubuntu alongside your current OS,</li>
         <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
     </ul>
-    <img  src="_linux-media/Ubuntu4.png" height='350'>
+    <img  src="_linux-media/Ubuntu4.PNG" height='350'>
 </p>
 
 #### ** 5.) Location **
@@ -90,7 +90,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>Select your location</li>
         <li>If you have internet connection, this should be autopopulated</li>
     </ul>
-    <img  src="_linux-media/Ubuntu5.png" height='350'>
+    <img  src="_linux-media/Ubuntu5.PNG" height='350'>
 </p>
 
 #### ** 6.) Personal **
@@ -102,7 +102,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>Remember that this will be your user password, so make it a good one</li>
         <li>You can also decide whether to be remembered or be asked to log in every time</li>
     </ul>
-    <img  src="_linux-media/Ubuntu6.png" height='350'>
+    <img  src="_linux-media/Ubuntu6.PNG" height='350'>
 </p>
 
 #### ** 7.) Install Process **
@@ -112,7 +112,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the installation</li>
     </ul>
-    <img  src="_linux-media/Ubuntu7.png" height='350'>
+    <img  src="_linux-media/Ubuntu7.PNG" height='350'>
 </p>
 
 #### ** 8.) Install Complete **
@@ -122,7 +122,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the completed installation</li>
     </ul>
-    <img  src="_linux-media/Ubuntu8.png" height='350'>
+    <img  src="_linux-media/Ubuntu8.PNG" height='350'>
 </p>
 
 #### ** 9.) Sign In **
@@ -132,7 +132,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
     </ul>
-    <img  src="_linux-media/Ubuntu9.png" height='350'>
+    <img  src="_linux-media/Ubuntu9.PNG" height='350'>
 </p>
 
 <!-- tabs:end -->
@@ -149,7 +149,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Note the changes to UX in newer version of Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in1.png" height='350'>
+    <img  src="_linux-media/in1.PNG" height='350'>
 </p>
 
 #### ** 2.) LivePatch **
@@ -159,7 +159,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>There is no need to set up LivePatch for now</li>
     </ul>
-    <img  src="_linux-media/in2.png" height='350'>
+    <img  src="_linux-media/in2.PNG" height='350'>
 </p>
 
 #### ** 3.) Ubuntu feedback **
@@ -169,7 +169,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can decide whether or not to provide information to improve Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in3.png" height='350'>
+    <img  src="_linux-media/in3.PNG" height='350'>
 </p>
 
 #### ** 4.) App Store **
@@ -179,7 +179,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
     </ul>
-    <img  src="_linux-media/in4.png" height='350'>
+    <img  src="_linux-media/in4.PNG" height='350'>
 </p>
 
 #### ** 5.) Ubuntu update **
@@ -189,7 +189,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Allow Ubuntu to update (not compulsory)</li>
     </ul>
-    <img  src="_linux-media/in5.png" height='350'>
+    <img  src="_linux-media/in5.PNG" height='350'>
 </p>
 
 <!-- tabs:end -->
@@ -211,7 +211,7 @@ sudo apt install apache2
 You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
 <p align="center">
-    <img  src="_linux-media/Installs1.png" height="400">
+    <img  src="_linux-media/Installs1.PNG" height="400">
 </p>
 
 
@@ -229,7 +229,7 @@ sudo systemctl status apache2
 ```
 
 <p align="center">
-    <img  src="_linux-media/Installs2.png" height="400">
+    <img  src="_linux-media/Installs2.PNG" height="400">
 </p>
 
 And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
@@ -268,7 +268,7 @@ php -v
 This should give us:
 
 <p align="center">
-    <img  src="_linux-media/Installs3.png" height="180">
+    <img  src="_linux-media/Installs3.PNG" height="180">
 </p>
 
 Now, we will install the most commonly used PHP modules with the following command:
@@ -309,13 +309,13 @@ sudo apt install nemo
 Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder. You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
 
 <p align="center">
-    <img  src="_linux-media/Installs4.png" height="320">
+    <img  src="_linux-media/Installs4.PNG" height="320">
 </p>
 
 Once the code is saved, you can navigate to any browser, and search the URL `localhost/phpTest.php` and you should be able to see the following:
 
 <p align="center">
-    <img  src="_linux-media/Installs5.png" height="400">
+    <img  src="_linux-media/Installs5.PNG" height="400">
 </p>
 
 If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed an dconfigured, we can move on and setup our database management.
@@ -372,7 +372,7 @@ SELECT User, Host, authentication_string FROM mysql.user;
 
 We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
 <p align="center">
-    <img  src="_linux-media/mysql1.png" height="320">
+    <img  src="_linux-media/mysql1.PNG" height="320">
 </p>
 
 
@@ -398,8 +398,8 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
         <li>Select Apache Server.</li>
         <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin1.png" height='350'>
-    <!-- ![phpMyAdmin1](_linux-media/phpmyadmin1.png) -->
+    <img  src="_linux-media/phpmyadmin1.PNG" height='350'>
+    <!-- ![phpMyAdmin1](_linux-media/phpmyadmin1.PNG) -->
 </p>
 
 #### ** 2.) DB-Common **
@@ -409,7 +409,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
     <ul> 
         <li>Select Yes</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin2.png" height='350'>
+    <img  src="_linux-media/phpmyadmin2.PNG" height='350'>
 </p>
 
 #### ** 5.) Ubuntu update **
@@ -426,3 +426,30 @@ You can access Divblox's setup page [here](http://localhost/divblox-master/divbl
 Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server.
 
 
+<!-- tabs:start -->
+
+#### ** 1.) Before **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Download the zip file</li>
+        <li>Extract the folder in var/www/html</li>
+        <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+    </ul>
+    <img  src="_linux-media/IonCubeInitial.png" height='350'>
+    <!-- ![IonCubeInitial](_linux-media/IonCubeInitial.png) -->
+</p>
+
+#### ** 2.) After **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>Select Yes</li>
+    </ul>
+    <img  src="_linux-media/IonCubeFinal.png" height='350'>
+</p>
+
+
+<!-- tabs:end -->
