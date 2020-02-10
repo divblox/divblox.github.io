@@ -399,6 +399,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
         <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
     </ul>
     <img  src="_linux-media/phpmyadmin1.png" height='350'>
+    <!-- ![phpMyAdmin1](_linux-media/phpmyadmin1.png) -->
 </p>
 
 #### ** 2.) DB-Common **
@@ -414,3 +415,14 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
 #### ** 5.) Ubuntu update **
 
 <!-- tabs:end -->
+
+# Permissions
+
+Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it. 
+
+You can access Divblox's setup page [here](http://localhost/divblox-master/divblox/config/framework/divblox_admin/setup.php), using the password "1".  
+(Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox. 
+
+Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server.
+
+
