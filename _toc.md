@@ -1,4 +1,5 @@
 -   [Getting Started](getting-started.md)
+-   [Configuration](configuration.md)
 -   [Data Modeler](data-modeler.md)
 -   [Divblox Components](component-builder.md)
 -   [Global Functions & Classes](global-functions.md)
