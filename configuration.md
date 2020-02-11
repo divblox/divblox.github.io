@@ -92,15 +92,19 @@ This will allow you to collect feature requests and bug reports for your pages. 
 
 !>Feedback is stored at basecamp.Divblox.com. This means that feedback is accessible project-wide, for any environment.
 
+---
+
 # Global Functions
 
-This set of files represents all the functions (set up into classes) that need to be available globally in your project. 
+This set of files represents all the functions (set up into classes) that need to be available globally in your project. It is split up into 5 main files, as seen in the screenshot below. This includes both front-end javascript files as well as back-end php files. As mentioned before, whatever is edited in the project folder will override default Divblox functionality. The bulk of your project code will be either in these files, or in component-specific files.
+
+![GlobalFunctions](_config-media/globalfunctions1.png)
 
 ## Divblox.js
 
 !>Divblox.js is located at /Divblox/assets/js/Divblox.js
 
-Divblox.js is the main javascript function library that provides all of the core front-end Divblox functionality as globally available functions. It is required for Divblox to run and provides the following:
+Divblox.js is the main javascript function library that provides all of the core front-end Divblox functionality as globally available functions. It is required for Divblox to run and does the following:
 
 -   Manages the core dependencies
 -   Initializes and prepares the DOM
@@ -110,7 +114,7 @@ Divblox.js is the main javascript function library that provides all of the core
 -   Provides functions for components to communicate with their server side scripts
 -   Provides various helper functions to simplify your app development
 
-> Other Commonly used Divblox.js functions
+Some commonly used Divblox.js functions are:
 
 ```javascript
 dxLog(Message, show_stack_trace);
@@ -227,6 +231,33 @@ public static function getComponentAccess($AccountId = -1, $ComponentName = '') 
 -   **ProjectComponentController**, which extends ComponentController and allows for component php scripts to function correctly
 -   **FileUploader**, which deals with storing files as data objects once they are uploaded to the server
 -   **PublicApi**, which extends PublicApi_Base and provides the outline for how to expose a Divblox api via an endpoint
+
+# Service worker
+
+The file `dx.sw.js` is where all of the progressive application functionality is built. How and what the service worker caches as well as all further functionality is defined here.
+
+# Media Library
+
+[Kind find where that info was about where image is stored and as what name]
+This is a visual tool to help with importing media for those who prefer a 'drag and drop' approach.
+
+<!-- tabs:start -->
+
+#### ** Adding a file **
+
+<!-- ![MediaLibrary1](_config-media/medialibrary1.png) -->
+<img align="center" src="_config-media/medialibrary1.png">
+#### ** Editing an upload **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li> You can do basic editin gon the upload such as cropping and resizing</li>
+    </ul>
+    <img  src="_config-media/medialibrary2.png" height='350'>
+</p>
+
+<!-- tabs:end -->
 
 # Summary
 

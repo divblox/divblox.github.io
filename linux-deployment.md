@@ -53,7 +53,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 <p align="left">
     <ul> 
         <li> Select your prefered language.</li>
-        <li>Note that ENglish UK and ENglish US have a few special characters swapped around.</li>
+        <li>Note that English UK and ENglish US have a few special characters swapped around.</li>
     </ul>
     <img  src="_linux-media/Ubuntu2.PNG" height='350'>
 </p>
@@ -140,6 +140,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 # Configure base Ubuntu OS
 
 In this step we will make minor changes to suite our needs. As you log in you will be prompted to do a few things:
+
 <!-- tabs:start -->
 
 #### ** 1.) Welcome **
@@ -205,25 +206,31 @@ There are two main web servers you can use, namely Apache and Nginx, and either 
 We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Wiindows when it comes to permissions. When running any memory changing commands like install, update or delete you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`. The following commands will:
 
 1. Install Apache
+
 ```
 sudo apt install apache2
 ```
+
 You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
 <p align="center">
     <img  src="_linux-media/Installs1.PNG" height="400">
 </p>
 
-
 2. Start the Apache Server
+
 ```
 sudo systemctl start apache2
 ```
+
 3. Enable Apache to automatically start up when the server boots up
+
 ```
 sudo systemctl enable apache2
 ```
+
 4. Check the current status of the web service
+
 ```
 sudo systemctl status apache2
 ```
@@ -233,7 +240,6 @@ sudo systemctl status apache2
 </p>
 
 And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
-
 
 # Server Language: PHP 7.3
 
@@ -248,7 +254,9 @@ Once the installations are complete we can proceed to add the PPA:
 ```
 LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 ```
+
 You can read about what is included in the PPA and click enter to start the download. We then update the sources to reflect any changes.
+
 ```
 apt update
 ```
@@ -282,6 +290,7 @@ If you want to install any further modules you can search for them with this com
 ```
 sudo apt-cache search php7.3
 ```
+
 Or if you want to see all PHP modules available in Ubuntu, you can do so with:
 
 ```
@@ -330,9 +339,11 @@ sudo apt-get install mysql-server
 ```
 
 To set up some configurations we run:
+
 ```
 sudo mysql_secure_installation utility
 ```
+
 THe following options can be answered on the preference of the user, but here is what settings we used:
 
 1. Validate Password Plugin: NO
@@ -347,6 +358,7 @@ To ensure that the database server launches automatically even after a reboot:
 ```
 sudo systemctl enable mysql
 ```
+
 Now start the mysql shell (the most basic way of working with the mysql server):
 
 ```
@@ -366,15 +378,16 @@ FLUSH PRIVILEGES;
 ```
 
 To see what users are stored in the database, we run the following command:
+
 ```
 SELECT User, Host, authentication_string FROM mysql.user;
 ```
 
 We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
+
 <p align="center">
     <img  src="_linux-media/mysql1.PNG" height="320">
 </p>
-
 
 # Database Manager: phpMyAdmin
 
@@ -386,7 +399,6 @@ sudo apt install phpmyadmin php-mbstring php-gettext
 ```
 
 For server selection: Select Apache 2. Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.
-
 
 <!-- tabs:start -->
 
@@ -418,13 +430,12 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
 
 # Permissions
 
-Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it. 
+Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it.
 
 You can access Divblox's setup page [here](http://localhost/divblox-master/divblox/config/framework/divblox_admin/setup.php), using the password "1".  
-(Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox. 
+(Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox.
 
 Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server.
-
 
 <!-- tabs:start -->
 
@@ -450,6 +461,5 @@ Start with the right side of the page, downloading the IonCube zip and file requ
     </ul>
     <img  src="_linux-media/IonCubeFinal.png" height='350'>
 </p>
-
 
 <!-- tabs:end -->
