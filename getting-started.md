@@ -107,7 +107,7 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 
 The latest version of Oracle's VirtualBox should be [downloaded](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly. 
 
-The VM (.ova file) that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1cv-8LMeTsIpk4JLtSPDXAmyrbyNORx-m).
+The VM (.ova file) that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1cnNsjgVvxVCEJxcrext8r5YFtBYsXUs7).
 
 ## Loading the Virtual machine 
 After installing VirtualBox on your device and running the application add the image by opening "File" -> "Import Appliance".
