@@ -430,8 +430,36 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
 
 Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it.
 
-You can access Divblox's setup page [here](http://localhost/divblox-master/divblox/config/framework/divblox_admin/setup.php), using the password "1".  
-(Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox.
+To allow Divblox and ourselves to edit and write to that destination, we will have to edit the linux user and group permissions to that directory.
+
+### Apache access
+
+Firstly, we want to give Apache access to the folders and files via it's group, 'www-data'. We want to do this recursively for all subdirectories.
+
+```
+sudo chgrp -R www-data /var/www/html
+```
+
+We then give read, write and execute permissions to this group. This is shown in two steps, giving the same permissions for files and for directories. We need to give write permission to Apache due to Divblox's code generation.
+
+```
+sudo find /var/www/html -type d -exec chmod g+rwx {} +
+sudo find /var/www/html -type f -exec chmod g+rwx {} +
+```
+
+### User ownership
+
+We now need to give ownership to current user (divblox), and set up the according folder and file permissions.
+
+```
+sudo chown -R divblox /var/www/html
+sudo find /var/www/html -type d -exec chmod u+rwx {} +
+sudo find /var/www/html -type d -exec chmod u+rwx {} +
+```
+
+It is now also important to make sure that all newly created files are created with 'www-data' as the 'access' user. This is done by selecting the "set gid" option for the group. Now, files and folders inside these directories will always have 'www-data' as their group, permitting Apache access.
+
+You can access Divblox's setup page [here](http://localhost/divblox-master/divblox/config/framework/divblox_admin/setup.php), using the password "1" (Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox.
 
 Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server.
 
@@ -441,11 +469,6 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <p align="center">
 <p align="left">
-    <ul> 
-        <li>Download the zip file</li>
-        <li>Extract the folder in var/www/html</li>
-        <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
-    </ul>
     <img  src="_linux-media/IonCubeInitial.png" height='350'>
     <!-- ![IonCubeInitial](_linux-media/IonCubeInitial.png) -->
 </p>
@@ -454,9 +477,6 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <p align="center">
 <p align="left">
-    <ul> 
-        <li>Select Yes</li>
-    </ul>
     <img  src="_linux-media/IonCubeFinal.png" height='350'>
 </p>
 

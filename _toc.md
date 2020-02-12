@@ -8,5 +8,4 @@
 -   [**Divblox Best Practices**](best-practices.md)
 -   [**Training Exercise**](training-exercise.md)
 -   [**Troubleshooting**](troubleshooting.md)
--   [**Deployment**](deployment.md)
 -   [**Linux Deployment**](linux-deployment.md)

@@ -271,11 +271,11 @@ Once the upload is complete you can view:
 
 <!-- tabs:end -->
 
-# Summary
+<!-- # Summary
 
 To wrap this section up, let's summarize. The parts of this section described how to configure a global Divblox environment. It may also be helpful to discuss the execution chain of a Divblox application. Below is a screenshot of the `index.html` file.
 
 ![indexHtmlScreenshot](_config-media/indexHtmlScreenshot.png)
 
 As discussed before, the order of the css dependencies can be seen here. JQuery is also only loaded in the body of the document.
-The following sections will dive into more detail about the background data modelling process as well as other Divblox functionality.
+The following sections will dive into more detail about the background data modelling process as well as other Divblox functionality. -->
