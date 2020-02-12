@@ -424,8 +424,6 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
     <img  src="_linux-media/phpmyadmin2.PNG" height='350'>
 </p>
 
-#### ** 5.) Ubuntu update **
-
 <!-- tabs:end -->
 
 # Permissions
