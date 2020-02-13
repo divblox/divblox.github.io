@@ -437,7 +437,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
 Once the installation is done, we need to explicitly enable the `mbstring` Php extension,
 
 ```
-sudo phpencod mbstring
+sudo phpenmod mbstring
 ```
 
 And now restart the Apache2 server to reflect changes.
@@ -473,7 +473,7 @@ First we add our current user to the 'www-data' group
 sudo usermod -a -G www-data divblox
 ```
 
-Then we give recursive ownership of `\var\www/html` to 'www-data'.
+Then we give recursive ownership of `/var/www/html` to 'www-data'.
 
 ```
 sudo chown -R www-data /var/www/html

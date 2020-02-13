@@ -274,13 +274,13 @@ Once the upload is complete you can view:
 
 # Updates
 
-If there are any updates to the Divblox framework, you will be notified in the Divblox basecamp.
+When Divblox updates become available, you will be notified in the bottom right corner of the setup page.
 
 ![Update](_config-media/update1.png)
 
-It is important to understand what this update actually does to prevent loss of user data. When the auto-updater is run, core Divblox files will be replaced on your local machine by newer versions. This is why it is highly encouraged to leave Divblox specific files untouched and use project-specific files to override any functionality. This is also a good time to stress the importance of using some sort of version control system like git to make sure that all of your work is saved and stored in the cloud.
+To prevent unexpected data loss, it is important to understand how the Divblox auto-updater works. When the auto-updater is run, core Divblox files will be replaced on your local machine with newer versions. This is why it is highly encouraged to leave Divblox-specific files untouched and use project-specific files to override any functionality. This is also a good time to stress the importance of using some sort of version control system like git to make sure that you have the ability to revert unintended changes.
 
-For user who would like to review each file change, or if the updater seems to not be working, you can update Divblox using a patch. This is also found in basecamp, and all that is required is for you to enter your current Divblox version. A zipped patch file will be downloaded containing only the files changed between your version and the current version.
+For users who would like to review each file change, or if the updater seems to not be working, you can update Divblox using a patch. This is found in basecamp. All that is required is for you to enter your current Divblox version. A zipped patch file will then be downloaded containing only the files changed between your version and the current version.
 
 ![Update2](_config-media/update2.png)
 

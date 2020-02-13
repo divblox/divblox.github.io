@@ -84,7 +84,7 @@ Creating a new sandbox is easy:
         <li> Start by creating your project at <a href="(https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
         [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login)
     </ul>
-    <img  src="_media/_screenshots/sandbox-step1.png" height='350'>
+    <img  src="_media/_screenshots/sandbox-step1.png" style="max-height: 350px">
 </p>
 
 #### ** Step 2 **
@@ -94,7 +94,7 @@ Creating a new sandbox is easy:
     <ul> 
         <li> Complete the required fields and click "Create"</li>
     </ul>
-    <img  src="_media/_screenshots/sandbox-step2.png" height='350'>
+    <img  src="_media/_screenshots/sandbox-step2.png" style="max-height: 350px">
 </p>
 
 #### ** Step 3 **
@@ -104,7 +104,7 @@ Creating a new sandbox is easy:
     <ul> 
         <li>You are now ready to launch your sandbox by clicking on "Open in Sandbox"</li>
     </ul>
-    <img  src="_media/_screenshots/sandbox-step3.png" height='350'>
+    <img  src="_media/_screenshots/sandbox-step3.png" style="max-height: 350px">
 </p>
 
 
