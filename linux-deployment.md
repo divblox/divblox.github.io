@@ -1,3 +1,5 @@
+This section will take you through how to get a linux (Ubuntu 18.04 LTS) system up and running to build with Divblox. We will configure a LAMP stack, necessary permissions and IonCube to run Divblox.
+
 # Install Ubuntu 18.04 image
 
 At time of writing, the latest stable version is Ubuntu 18.04, found [here](https://ubuntu.com/download/desktop). Download the .iso file (approx. 5 GB).
@@ -8,7 +10,7 @@ You will need a USB stick or portable hard drive with at least 8 GB of memory. N
 
 !> NOTE: All previous data will be erased!
 
-Download Rufus (recommended) [here](https://rufus.ie/)), or another similar application which will enable you to turn your memory stick into a bootable device.
+Download Rufus (recommended) [here](https://rufus.ie/), or another similar application which will enable you to turn your memory stick into a bootable device.
 
 Continuing with Rufus: When you insert your USB stick, the device field should automatically update. You want to select the chosen memory stick, and _FreeDOS_ as your boot selection. Now you can select the image you want to use. The default search folder is Downloads, so if this is your first attempt you should only see the newly downloaded image file. Leave all the other settings as default. You may rename the device as you wish. Below are some snapshots of the process.
 
@@ -16,7 +18,7 @@ Continuing with Rufus: When you insert your USB stick, the device field should a
 
 #### ** Without USB stick **
 
-![RufusBefore](_linux-media/RufusBefore.PNG)
+![RufusBefore](_linux-media/RufusBefore.PNG ":size=400%")
 
 #### ** With USB stick and .iso selected **
 
@@ -32,7 +34,7 @@ Once you are done, you can click _Close_ and eject your newly bootable flash dis
 
 # Restart machine with flashdrive inserted
 
-To boot with Linux Ubuntu, you need to restart your chosen computer with the flash drive inserted. Your computer may automaticlly boot up from the drive, but if not, you need to press `F1`, `F2`, `ESC`, `F8` or `F10` as your PC is starting (depending on system). Below are screenshots of the Ubuntu installation process.
+To boot with Linux Ubuntu, you need to restart your chosen computer with the flash drive inserted. Your computer may automatically boot up from the drive, but if not, you need to press `F1`, `F2`, `ESC`, `F8` or `F10` as your PC is starting (depending on system). Below are screenshots of the Ubuntu installation process.
 
 <!-- tabs:start -->
 
@@ -44,7 +46,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li> Select Install Ubuntu. </li>
         <li>You are also able to try Ubuntu without installing it. </li>
     </ul>
-    <img  src="_linux-media/Ubuntu1.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu1.PNG" style="max-height: 350px">
 </p>
 
 #### ** 2.) Select Language **
@@ -53,9 +55,9 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 <p align="left">
     <ul> 
         <li> Select your prefered language.</li>
-        <li>Note that English UK and ENglish US have a few special characters swapped around.</li>
+        <li>Note that English UK and English US have a few special characters swapped around.</li>
     </ul>
-    <img  src="_linux-media/Ubuntu2.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu2.PNG" style="max-height: 350px">
 </p>
 
 #### ** 3.) Installation options **
@@ -64,10 +66,10 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 <p align="left">
     <ul> 
         <li>Select 'Normal Installation'. This comes with the default bundle of apps and utilities including a music player, games and lauchpad for Linux apps.</li>
-        <li>If you are comfortable with what you want and need however, you can proceed to the custom installation which will be a mocuh more lightweight isntallation.</li>
-        <li>It is adviced to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation proccess</li>
+        <li>If however, you are comfortable with what you want and need, you can proceed to the custom installation which will be a much more lightweight installation.</li>
+        <li>It is advised to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation process</li>
     </ul>
-    <img  src="_linux-media/Ubuntu3.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu3.PNG" style="max-height: 350px">
 </p>
 
 #### ** 4.) Installation Type **
@@ -79,7 +81,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>The other options allow you to install Ubuntu alongside your current OS,</li>
         <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
     </ul>
-    <img  src="_linux-media/Ubuntu4.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu4.PNG" style="max-height: 350px">
 </p>
 
 #### ** 5.) Location **
@@ -88,9 +90,9 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 <p align="left">
     <ul> 
         <li>Select your location</li>
-        <li>If you have internet connection, this should be autopopulated</li>
+        <li>If you have internet connection, this should be auto-populated</li>
     </ul>
-    <img  src="_linux-media/Ubuntu5.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu5.PNG" style="max-height: 350px">
 </p>
 
 #### ** 6.) Personal **
@@ -98,11 +100,11 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
 <p align="center">
 <p align="left">
     <ul> 
-        <li>Fill in you rpersonal details and password</li>
-        <li>Remember that this will be your user password, so make it a good one</li>
-        <li>You can also decide whether to be remembered or be asked to log in every time</li>
+        <li>Fill in your personal details and password</li>
+        <li>Remember that this will be your user password, so make it a secure</li>
+        <li>You can also decide whether to be remembered or not</li>
     </ul>
-    <img  src="_linux-media/Ubuntu6.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu6.PNG" style="max-height: 350px">
 </p>
 
 #### ** 7.) Install Process **
@@ -112,7 +114,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the installation</li>
     </ul>
-    <img  src="_linux-media/Ubuntu7.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu7.PNG" style="max-height: 350px">
 </p>
 
 #### ** 8.) Install Complete **
@@ -122,7 +124,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the completed installation</li>
     </ul>
-    <img  src="_linux-media/Ubuntu8.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu8.PNG" style="max-height: 350px">
 </p>
 
 #### ** 9.) Sign In **
@@ -132,7 +134,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
     </ul>
-    <img  src="_linux-media/Ubuntu9.PNG" height='350'>
+    <img  src="_linux-media/Ubuntu9.PNG" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
@@ -150,7 +152,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Note the changes to UX in newer version of Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in1.PNG" height='350'>
+    <img  src="_linux-media/in1.PNG" style="max-height: 350px">
 </p>
 
 #### ** 2.) LivePatch **
@@ -160,7 +162,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>There is no need to set up LivePatch for now</li>
     </ul>
-    <img  src="_linux-media/in2.PNG" height='350'>
+    <img  src="_linux-media/in2.PNG" style="max-height: 350px">
 </p>
 
 #### ** 3.) Ubuntu feedback **
@@ -170,7 +172,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can decide whether or not to provide information to improve Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in3.PNG" height='350'>
+    <img  src="_linux-media/in3.PNG" style="max-height: 350px">
 </p>
 
 #### ** 4.) App Store **
@@ -180,7 +182,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
     </ul>
-    <img  src="_linux-media/in4.PNG" height='350'>
+    <img  src="_linux-media/in4.PNG" style="max-height: 350px">
 </p>
 
 #### ** 5.) Ubuntu update **
@@ -190,20 +192,22 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Allow Ubuntu to update (not compulsory)</li>
     </ul>
-    <img  src="_linux-media/in5.PNG" height='350'>
+    <img  src="_linux-media/in5.PNG" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
 
-# Installing and configuring the Divblox environment
+# Configuring a deployment environment
 
 To do this, we need a webserver, backend support as well as database system.
 
-# Webserver: Apache2
+### Webserver: Apache2
 
 There are two main web servers you can use, namely Apache and Nginx, and either would work as they are both fast, secure, reliable and most importantly well-supported. We will be using Apache as it is the most popular.
 
-We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Wiindows when it comes to permissions. When running any memory changing commands like install, update or delete you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`. The following commands will:
+We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Windows when it comes to permissions. When running any memory-changing commands like `install`, `update` or `delete` you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`. 
+
+The following commands will:
 
 1. Install Apache
 
@@ -214,7 +218,7 @@ sudo apt install apache2
 You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
 <p align="center">
-    <img  src="_linux-media/Installs1.PNG" height="400">
+    <img  src="_linux-media/Installs1.PNG" style="max-height: 400px">
 </p>
 
 2. Start the Apache Server
@@ -236,14 +240,14 @@ sudo systemctl status apache2
 ```
 
 <p align="center">
-    <img  src="_linux-media/Installs2.PNG" height="400">
+    <img  src="_linux-media/Installs2.PNG" style="max-height: 400px">
 </p>
 
 And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
 
-# Server Language: PHP 7.3
+### Server Language: PHP 7.3
 
-For this step we will use Ondřej Surý’s PPA (Personal Package Archive) as it has everything we will need. To do this we will firstly need to install software-properties-common and python-software-properties packages.
+For this step we will use Ondřej Surý’s PPA (Personal Package Archive) as it has everything we will need. To do this we will firstly need to install software-properties-common and python-software-properties package.
 
 ```
 sudo apt install software-properties-common python-software-properties
@@ -276,7 +280,7 @@ php -v
 This should give us:
 
 <p align="center">
-    <img  src="_linux-media/Installs3.PNG" height="180">
+    <img  src="_linux-media/Installs3.PNG"  style="max-height: 180px">
 </p>
 
 Now, we will install the most commonly used PHP modules with the following command:
@@ -297,13 +301,13 @@ Or if you want to see all PHP modules available in Ubuntu, you can do so with:
 sudo apt-cache search --names-only ^php
 ```
 
-To make PHP 7.3 the default (although it should alreayd be it), run:
+To make PHP 7.3 the default (although it should already be it), run:
 
 ```
 sudo update-alternatives --set php /usr/bin/php7.3
 ```
 
-To reflec any changes, we must always resstart the apache server:
+To reflect any changes, we must always resstart the apache server:
 
 ```
 sudo systemctl restart apache2
@@ -315,21 +319,23 @@ Our PHP should now be working, but we can't yet test it as Linux permissions wil
 sudo apt install nemo
 ```
 
-Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder. You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
+Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder. 
+
+You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
 
 <p align="center">
-    <img  src="_linux-media/Installs4.PNG" height="320">
+    <img  src="_linux-media/Installs4.PNG" style="max-height: 320px">
 </p>
 
-Once the code is saved, you can navigate to any browser, and search the URL `localhost/phpTest.php` and you should be able to see the following:
+Once the code is saved, you can navigate to any browser, and search the URL `http://localhost/phpTest.php` and you should be able to see the following:
 
 <p align="center">
-    <img  src="_linux-media/Installs5.PNG" height="400">
+    <img  src="_linux-media/Installs5.PNG" style="max-height: 400px">
 </p>
 
-If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed an dconfigured, we can move on and setup our database management.
+If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed and configured, we can move on and setup our database management.
 
-# Database Server: MySQL
+### Database Server: MySQL
 
 MySQL is a relational database management system based off of the language SQL. We create databases to structure collections of data. To install MySQL and all the relevant dependacies we run the following commands:
 
@@ -344,14 +350,15 @@ To set up some configurations we run:
 sudo mysql_secure_installation utility
 ```
 
-THe following options can be answered on the preference of the user, but here is what settings we used:
+The following options can be answered on the preference of the user, but here is what settings we used:
 
 1. Validate Password Plugin: NO
 2. Enter own password
-3. Remove Anonymous Users: YES
-4. Disallow root login remotely: YES
-5. Remove Test Database and access to it: YES
-6. Reload Privilege Tables Now: YES
+3. Confirm new password
+4. Remove Anonymous Users: YES
+5. Disallow root login remotely: YES
+6. Remove Test Database and access to it: YES
+7. Reload Privilege Tables Now: YES
 
 To ensure that the database server launches automatically even after a reboot:
 
@@ -365,7 +372,7 @@ Now start the mysql shell (the most basic way of working with the mysql server):
 sudo mysql -u root -p
 ```
 
-You will be prompted for a password, this is the root password you set up on installation. Once you are in the mysql shell, you can execute mysql commands and queries. NOte that using all caps for sql query commands is standard, but is not syntax-enforced. Lets start with how to reset the root password:
+You will be prompted for a password, this is the root password you set up on installation. Once you are in the mysql shell, you can execute mysql commands and queries. Note that using all caps for sql query commands is standard, but is not syntax-enforced. Lets start with how to reset the root password:
 
 ```
 UPDATE mysql.user SET authentication_string = PASSWORD('new_password') WHERE User = 'root';
@@ -386,10 +393,11 @@ SELECT User, Host, authentication_string FROM mysql.user;
 We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
 
 <p align="center">
-    <img  src="_linux-media/mysql1.PNG" height="320">
+    <img  src="_linux-media/mysql1.PNG"  style="max-height: 320px">
 </p>
 
-# Database Manager: phpMyAdmin
+YOu can exit the MySQL shell at any time by entering 'exit' and hitting enter.
+### Database Manager: phpMyAdmin
 
 phpMyAdmin is a web interface for database management. It is by far the most popular MySQL administration tool. To install it we run:
 
@@ -410,7 +418,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
         <li>Select Apache Server.</li>
         <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin1.PNG" height='350'>
+    <img  src="_linux-media/phpmyadmin1.PNG" style="max-height: 350px">
     <!-- ![phpMyAdmin1](_linux-media/phpmyadmin1.PNG) -->
 </p>
 
@@ -421,47 +429,72 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
     <ul> 
         <li>Select Yes</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin2.PNG" height='350'>
+    <img  src="_linux-media/phpmyadmin2.PNG" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
 
+Once the installation is done, we need to explicitly enable the `mbstring` Php extension,
+
+```
+sudo phpencod mbstring
+```
+
+And now restart the Apache2 server to reflect changes.
+
+```
+sudo systemctl restart apache2
+```
+
+Now that phpMyAdmin is installed and configured, the last step is to make sure that your MySQL users have the permissions to interact with the program. Ubuntu systems running newer MySQL versions (5.7 or later) authenticate the root user using an `auth-socket` instead of a password. This methos is more secure and allows for more usability in some cases, but is also troublesome when trying to give external programs like phpMyAdmin access to the user.
+
+To circumvent this and be able to log into phpMyAdmin as your current user, we need to set the authentication method to `mysql_native_password`.
+
+Enter the MySQL shell and enter your password
+
+```
+sudo mysql -u root -p
+```
+
+We can check the authentication type of each of your MySQL users running the following command:
+
+```
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+```
 # Permissions
 
 Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it.
 
-To allow Divblox and ourselves to edit and write to that destination, we will have to edit the linux user and group permissions to that directory.
+To allow Divblox and ourselves to edit and write to that destination, we will have to edit the linux user and group permissions to that directory. This is done by giving the web server access to local storage.
 
-### Apache access
-
-Firstly, we want to give Apache access to the folders and files via it's group, 'www-data'. We want to do this recursively for all subdirectories.
+First we add our current user to the 'www-data' group
 
 ```
-sudo chgrp -R www-data /var/www/html
+sudo usermod -a -G www-data divblox
 ```
 
-We then give read, write and execute permissions to this group. This is shown in two steps, giving the same permissions for files and for directories. We need to give write permission to Apache due to Divblox's code generation.
+Then we give recursive ownership of `\var\www/html` to 'www-data'.
 
 ```
-sudo find /var/www/html -type d -exec chmod g+rwx {} +
-sudo find /var/www/html -type f -exec chmod g+rwx {} +
+sudo chown -R www-data /var/www/html
 ```
 
-### User ownership
-
-We now need to give ownership to current user (divblox), and set up the according folder and file permissions.
+We then set the permissions of the `/var/www/html` folder recursively to give read, write and execute permissions to both the group and owner of `/var/www/html`. This is necessary as we need to have the permission to edit files from a local editor, as well as let Divblox autogenerate files from the web server.
 
 ```
-sudo chown -R divblox /var/www/html
-sudo find /var/www/html -type d -exec chmod u+rwx {} +
-sudo find /var/www/html -type d -exec chmod u+rwx {} +
+sudo chmod -R 2770 /var/www/html
 ```
 
-It is now also important to make sure that all newly created files are created with 'www-data' as the 'access' user. This is done by selecting the "set gid" option for the group. Now, files and folders inside these directories will always have 'www-data' as their group, permitting Apache access.
+# Download and configure Divblox
 
-You can access Divblox's setup page [here](http://localhost/divblox-master/divblox/config/framework/divblox_admin/setup.php), using the password "1" (Please note that if you have not set up your dxAPI key, you will have to do that as discussed earlier to proceed). Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log out as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependacies are installed and configured to run Divblox.
+You should now be ready to install Divblox. Go to Github and download the zip file. Extract it in the `/var/www/html` folder. Ensure that your web server is running and navigate to `http://localhost/` or `http://localhost/[your-project-folder]` (if you placed Divblox within a sub folder). You should create an account with a secure password. Creating a project is explained <a href="https://divblox.github.io/#/getting-started?id=Initializing-a-new-Sandbox" target="_blank">here</a>. Remember to copy the free Divblox license key to authenticate yourself in the setup page.
 
-Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server.
+
+ To open the Divblox setup page, browse to `http://localhost/Divblox` or `http://localhost/[your-project-folder]/Divblox`, depending on your installation. You should be able to log in as the user Divblox using the password "1". 
+
+Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log in as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependencies are installed and configured to run Divblox, providing useful feedback on how to solve installation related problems.
+
+Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server. If everything was installed correctly, you should have green boxes indicating that the Divblox config files are all there, correct versions of PHP, MySQL and Apache2 are installed and configured, as well as the fact that we have the necessary permissions needed for Divblox basecamp to operate.
 
 <!-- tabs:start -->
 
@@ -469,7 +502,7 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <p align="center">
 <p align="left">
-    <img  src="_linux-media/IonCubeInitial.png" height='350'>
+    <img  src="_linux-media/IonCubeInitial.png" style="max-height: 350px">
     <!-- ![IonCubeInitial](_linux-media/IonCubeInitial.png) -->
 </p>
 
@@ -477,7 +510,9 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <p align="center">
 <p align="left">
-    <img  src="_linux-media/IonCubeFinal.png" height='350'>
+    <img  src="_linux-media/IonCubeFinal.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
+
+That's it! Everything is now configured and you are ready to start building apps with Divblox. 

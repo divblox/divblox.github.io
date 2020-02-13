@@ -74,6 +74,42 @@ Below is a visualization of how to spin up a sandbox.
 
 Creating a new sandbox is easy:
 
+<!-- tabs:start -->
+
+#### ** Step 1 **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li> Start by creating your project at <a href="(https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
+        [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login)
+    </ul>
+    <img  src="_media/_screenshots/sandbox-step1.png" height='350'>
+</p>
+
+#### ** Step 2 **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li> Complete the required fields and click "Create"</li>
+    </ul>
+    <img  src="_media/_screenshots/sandbox-step2.png" height='350'>
+</p>
+
+#### ** Step 3 **
+
+<p align="center">
+<p align="left">
+    <ul> 
+        <li>You are now ready to launch your sandbox by clicking on "Open in Sandbox"</li>
+    </ul>
+    <img  src="_media/_screenshots/sandbox-step3.png" height='350'>
+</p>
+
+
+<!-- tabs:end -->
+
 1. Start by creating your project at [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login)
 
 ![Sandbox Step 1](_media/_screenshots/sandbox-step1.png)
@@ -82,7 +118,7 @@ Creating a new sandbox is easy:
 
 ![Sandbox Step 2](_media/_screenshots/sandbox-step2.png)
 
-2. You are now ready to launch your sandbox by clicking on "Open in Sandbox"
+3. You are now ready to launch your sandbox by clicking on "Open in Sandbox"
 
 ![Sandbox Step 3](_media/_screenshots/sandbox-step3.png)
 
@@ -126,7 +162,7 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 
 The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
 
-The VM (.ova file) that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1cnNsjgVvxVCEJxcrext8r5YFtBYsXUs7).
+The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1cnNsjgVvxVCEJxcrext8r5YFtBYsXUs7).
 
 ### Loading the Virtual machine
 

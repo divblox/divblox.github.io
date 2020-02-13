@@ -271,6 +271,19 @@ Once the upload is complete you can view:
 
 <!-- tabs:end -->
 
+
+# Updates
+
+If there are any updates to the Divblox framework, you will be notified in the Divblox basecamp.
+
+![Update](_config-media/update1.png)
+
+It is important to understand what this update actually does to prevent loss of user data. When the auto-updater is run, core Divblox files will be replaced on your local machine by newer versions. This is why it is highly encouraged to leave Divblox specific files untouched and use project-specific files to override any functionality. This is also a good time to stress the importance of using some sort of version control system like git to make sure that all of your work is saved and stored in the cloud.
+
+For user who would like to review each file change, or if the updater seems to not be working, you can update Divblox using a patch. This is also found in basecamp, and all that is required is for you to enter your current Divblox version. A zipped patch file will be downloaded containing only the files changed between your version and the current version.
+
+![Update2](_config-media/update2.png)
+
 <!-- # Summary
 
 To wrap this section up, let's summarize. The parts of this section described how to configure a global Divblox environment. It may also be helpful to discuss the execution chain of a Divblox application. Below is a screenshot of the `index.html` file.
