@@ -1,17 +1,3 @@
-## The idea of Divblox
-
-Every Divblox app follows a certain recipe. The extremely high-level view of this is diagrammed below. 
-<p align="center">
-    <img src="_media/divblox_fundamental.png"style="max-height: 400px">
-</p>
-
-Each one of Divblox's components speaks from client to serve _independently_. 
-
-
-
-
-
-
 ## Ways to get started
 
 To start creating an app with Divblox, you need to configure a development environment (also known as a deployment environment). To do this you have a number of options:
@@ -121,20 +107,7 @@ Creating a new sandbox is easy:
     <img  src="_media/_screenshots/sandbox-step3.png" style="max-height: 350px">
 </p>
 
-
 <!-- tabs:end -->
-
-1. Start by creating your project at [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login)
-
-![Sandbox Step 1](_media/_screenshots/sandbox-step1.png)
-
-2. Complete the required fields and click "Create"
-
-![Sandbox Step 2](_media/_screenshots/sandbox-step2.png)
-
-3. You are now ready to launch your sandbox by clicking on "Open in Sandbox"
-
-![Sandbox Step 3](_media/_screenshots/sandbox-step3.png)
 
 ### Downloading a Sandbox
 
