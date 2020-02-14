@@ -1,6 +1,8 @@
+
 # Divblox Components
 Virtually everything in Divblox is a component. Components are used as the building blocks for your project. 
 You can create any type of component for your specific requirement, from a basic image viewer to a full blown page that is made up of multiple individual components.
+
 
 # Component Types
 >Divblox allows you to create any of the following types of components:

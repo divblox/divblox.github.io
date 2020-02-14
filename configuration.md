@@ -232,13 +232,8 @@ public static function getComponentAccess($AccountId = -1, $ComponentName = '') 
 -   **FileUploader**, which deals with storing files as data objects once they are uploaded to the server
 -   **PublicApi**, which extends PublicApi_Base and provides the outline for how to expose a Divblox api via an endpoint
 
-# Service worker
-
-The file `dx.sw.js` is where all of the progressive application functionality is built. How and what the service worker caches as well as all further functionality is defined here.
-
 # Media Library
 
-[Kind find where that info was about where image is stored and as what name]
 This is a visual tool to help with importing media for those who prefer a 'drag and drop' approach.
 
 <!-- tabs:start -->

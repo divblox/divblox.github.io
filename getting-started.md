@@ -1,3 +1,17 @@
+## The idea of Divblox
+
+Every Divblox app follows a certain recipe. The extremely high-level view of this is diagrammed below. 
+<p align="center">
+    <img src="_media/divblox_fundamental.png"style="max-height: 400px">
+</p>
+
+Each one of Divblox's components speaks from client to serve _independently_. 
+
+
+
+
+
+
 ## Ways to get started
 
 To start creating an app with Divblox, you need to configure a development environment (also known as a deployment environment). To do this you have a number of options:

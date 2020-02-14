@@ -1,0 +1,3 @@
+App used to generate diagrams: Dia
+
+Where to find: http://dia-installer.de/download/index.html.en
