@@ -813,3 +813,66 @@ subComponentLoadedCallBack(component) {
 <p align="left">
   <img  src=_media/_screenshots/example-adding-profilePic4.png>
 </p>
+
+## Sending an email
+
+Divblox uses PHPMailer to send out emails. Some configurations are needed before we even get to using Divblox. Make sure that your chose email address allows less secure apps to access it. For Gmail accounts this is done through your Google account settings. `Security -> Less Secure App Access : True`.
+
+It is also necessary that Divblox is correctly configured and able to syncronize it's databases, as any email sent will first attempt to be stored in a the `EmailMessage` table, before being sent.
+
+1. Fill in the following class with the necessary parameters in the file project_classes.php.
+
+```php
+
+abstract class Email_Settings extends EmailSettings_Framework {
+
+  public static $SMTPSERVER = 'smtp.gmail.com';
+
+  public static $SMTPUsername = 'user.divblox@gmail.com';
+
+  public static $SMTPPassword = 'secret_password';
+
+  public static $SMTPPort = 587;
+
+  public static $SMTPDebugMode = SMTP::DEBUG_SERVER;
+
+  public static $SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+  public static $SMTPForceSecurityProtocol = true;
+
+  public static $SMTPAUtoTLS = false;
+
+}
+```
+
+The chain of inheritance is as follows:
+
+<p align="left">
+  <img  src=_email-media/EmailClassExtensions.png>
+</p>
+
+We are overriding the default parameters set in the `EmailSettings_Base` class. This is part of the Divblox best practices, as your changes to Divblox base files can be deleted as Divblox replaces the files with updated ones.
+
+The above is an example using Gmail. Note that if you aren't using Gmail, your SMTP Server as well as port will be different.
+
+The SMTP username and password is the username and password linked with the sending email address you are using.
+
+The SMTP Debug Mode should be set to `DEBUG_OFF` unless you want output to be displayed to inspect your program, in which case you will use `SMTP::DEBUG_SERVER`.
+
+For some email servers like Gmail, security protocols are expected. For our Gmail example, TLS is mandatory and hence we can either set `$SMTPAutoTLS = true;` which will always set the security protocol to TLS, or we can define which protocol we would want to use, `$SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;` and then force the protocol to match the previously defined one, using `$SMTP ForceSecurityProtocol = true;`.
+
+2. Now we want to write a php script that will actually send the email.
+
+```php
+require("divblox/divblox.php");
+
+EmailManager::prepareEmail("Test Subject", "A test message");
+EmailManager::addRecipientAddress("recipient.address@gmail.com", "Recipient Name");
+
+if (EmailManager::sendEmail($ErrorInfo)) {
+  echo "Email sent! <br> " . json_encode($ErrorInfo);
+} else {
+  echo "Email NOT sent: <br>" . json_encode($ErrorInfo);
+}
+
+```
