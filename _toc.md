@@ -6,6 +6,6 @@
 -   [**Native Support**](native-support.md)
 -   [**Examples**](examples.md)
 -   [**Divblox Best Practices**](best-practices.md)
--   [**Training Exercise**](training-exercise.md)
+-   [**Basic Training Exercise**](basic-training-exercise.md)
 -   [**Troubleshooting**](troubleshooting.md)
 -   [**Linux Deployment**](linux-deployment.md)
