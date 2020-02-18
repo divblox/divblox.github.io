@@ -149,7 +149,7 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 
 The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
 
-The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1cnNsjgVvxVCEJxcrext8r5YFtBYsXUs7).
+The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1JGz33Zp1x-d3LcV22zAbo32AsQDn0Rxs).
 
 ### Loading the Virtual machine
 
