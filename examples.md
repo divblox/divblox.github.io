@@ -816,34 +816,25 @@ subComponentLoadedCallBack(component) {
 
 ## Sending an email
 
-Divblox uses PHPMailer to send out emails. Some configurations are needed before we even get to using Divblox. Make sure that your chose email address allows less secure apps to access it. For Gmail accounts this is done through your Google account settings. `Security -> Less Secure App Access : True`.
+Divblox implements PHPMailer (https://github.com/PHPMailer/PHPMailer) to send emails. Divblox will automatically log all email sending activity in a table called `EmailMessage`. Therefore, it is important to ensure that your database is correctly set up and you have done a synchronization on the data model before continuing.
 
-It is also necessary that Divblox is correctly configured and able to syncronize it's databases, as any email sent will first attempt to be stored in a the `EmailMessage` table, before being sent.
-
-1. Fill in the following class with the necessary parameters in the file project_classes.php.
+Before sending emails you need to configure your email settings within Divblox. Fill in the necessary parameters in the `EmailSettings` class located in the file `/project/assets/php/project_classes.php`.
 
 ```php
-
 abstract class Email_Settings extends EmailSettings_Framework {
-
+  // Example using Gmail
   public static $SMTPSERVER = 'smtp.gmail.com';
-
   public static $SMTPUsername = 'user.divblox@gmail.com';
-
   public static $SMTPPassword = 'secret_password';
-
   public static $SMTPPort = 587;
-
-  public static $SMTPDebugMode = SMTP::DEBUG_SERVER;
-
-  public static $SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-
+  public static $SMTPDebugMode = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER; // To disable verbose debug output, use DEBUG_OFF
+  public static $SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; //Enable TLS Encryption; also accepts 'ENCRYPTION_STARTSMTPS'
   public static $SMTPForceSecurityProtocol = true;
-
   public static $SMTPAUtoTLS = false;
-
 }
 ```
+
+> We are overriding the default parameters set in the `EmailSettings_Base` class. This is part of the Divblox best practices, as your changes to Divblox base files may be deleted as Divblox replaces the files with updated ones.
 
 The chain of inheritance is as follows:
 
@@ -851,28 +842,31 @@ The chain of inheritance is as follows:
   <img  src=_email-media/EmailClassExtensions.png>
 </p>
 
-We are overriding the default parameters set in the `EmailSettings_Base` class. This is part of the Divblox best practices, as your changes to Divblox base files can be deleted as Divblox replaces the files with updated ones.
+For some email servers such as Gmail, security protocols are expected. For the above Gmail example, TLS is mandatory and hence we can either set `$SMTPAutoTLS = true;` which will always set the security protocol to TLS, or we can define which protocol to use,
+`$SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;` and then force the protocol to match the previously defined one, using `$SMTP ForceSecurityProtocol = true;`
 
-The above is an example using Gmail. Note that if you aren't using Gmail, your SMTP Server as well as port will be different.
+We are now ready to use the `EmailManager` class to prepare and send emails.
 
-The SMTP username and password is the username and password linked with the sending email address you are using.
-
-The SMTP Debug Mode should be set to `DEBUG_OFF` unless you want output to be displayed to inspect your program, in which case you will use `SMTP::DEBUG_SERVER`.
-
-For some email servers like Gmail, security protocols are expected. For our Gmail example, TLS is mandatory and hence we can either set `$SMTPAutoTLS = true;` which will always set the security protocol to TLS, or we can define which protocol we would want to use, `$SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;` and then force the protocol to match the previously defined one, using `$SMTP ForceSecurityProtocol = true;`.
-
-2. Now we want to write a php script that will actually send the email.
+1. Prepare your email with `EmailManager::prepareEmail("Test Subject", "A test message");`
+2. Add one or multiple recipient addresses with `EmailManager::addRecipientAddress("recipient.address@gmail.com", "Recipient Name");`
+3. Optionally, add CC addresses with `EmailManager::addCCAddress("recipient.address@gmail.com");`
+4. Optionally, add BCC addresses with `EmailManager::addBCCAddress("recipient.address@gmail.com");`
+5. Optionally, add attachments with `EmailManager::addAttachment("file_path_from_root", "file_name_to_display");`
+6. Send your email with `EmailManager::sendEmail($ErrorInfo);`. `$ErrorInfo` is a variable that is passed by reference and will result in an array that is populated with any additional information regarding the success or failure of the function.
 
 ```php
-require("divblox/divblox.php");
-
+//Step 1: Prepare the email
 EmailManager::prepareEmail("Test Subject", "A test message");
+//Step 2: Add recipient/s
 EmailManager::addRecipientAddress("recipient.address@gmail.com", "Recipient Name");
-
+//Step 3-5: (Optional) Add CC/BCC addresses and/or attachments
+//EmailManager::addCCAddress("recipient.address@gmail.com");
+//EmailManager::addBCCAddress("recipient.address@gmail.com");
+//EmailManager::addAttachment("file_path_from_root", "file_name_to_display");
+//Step 6: Send the email
 if (EmailManager::sendEmail($ErrorInfo)) {
-  echo "Email sent! <br> " . json_encode($ErrorInfo);
+    //This means the email was successfully sent, additional info can be found in the array $ErrorInfo
 } else {
-  echo "Email NOT sent: <br>" . json_encode($ErrorInfo);
+    //This means the email was NOT successfully sent, additional info can be found in the array $ErrorInfo
 }
-
 ```
