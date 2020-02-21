@@ -84,54 +84,57 @@ Notice that in both examples we did not tick the `Constrain To` checkbox. If you
 
 This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be linking a ticket to the current user's ID.
 
-### Step 3 - Preparing for pages
+### Step 3 - Page Components
 
-We need this paragraph added:
-
-In order for us to be able to use our CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser.
+In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser. The only distinction betweeen other components and page components is that pages can be navigated to via the url or a navigation bar, while individual components can not.
 
 The pages we will build for this exercise are:
 
--   An admin page where our CRUD components can live
+-   An admin page where our full CRUD components can live
 -   A "New Ticket" page where users can create new tickets
 
-<video id="TrainingExerciseStep3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-sidebar.mp4" type="video/mp4">
+To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
+
+<video id="TrainingExerciseStep3.1" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise-step3-1.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep3')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep3')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
-### Step 4 - Page Components
+Now we can create the 'Tickets' page where users can create tickets.
 
-Ok, we now have components that allow us to create our data. We have also updated our navigation component to allow us to
-access our page components. Let's create a page component where we can use our CRUD components.
+<video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise-step3-2.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+### Step 4 - Navigation bar
+
+Ok, we now have components that allow us to create our data, as well as pages to view them on. We will now update the side navigation bar to function as we want it to. Notice how in this video we edit the component code in VS Code (or whatever code editor you prefer). The preferred way is to use a code editor, but for quick fixes like changing the HTML layout of our page we can ue Divblox's built-in code editor. The process followed here is as follows:
+
+-   Name your page components
+-   Change the navbar links to what you need them to be
+-   Add JS to link it to the page in question
 
 <video id="TrainingExerciseStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-full_crud_admin_page.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise-step4.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
 <button onclick="fullScreenVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
-
-We can now also reuse our CREATE component for tickets on a new page called "New Ticket" to allow users to create their tickets
-
-<video id="TrainingExerciseStep4a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-reuse_ticket_create.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('TrainingExerciseStep4a')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('TrainingExerciseStep4a')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
