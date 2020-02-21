@@ -205,7 +205,7 @@ To do this, we need a webserver, backend support as well as database system.
 
 There are two main web servers you can use, namely Apache and Nginx, and either would work as they are both fast, secure, reliable and most importantly well-supported. We will be using Apache as it is the most popular.
 
-We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Windows when it comes to permissions. When running any memory-changing commands like `install`, `update` or `delete` you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`. 
+We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Windows when it comes to permissions. When running any memory-changing commands like `install`, `update` or `delete` you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`.
 
 The following commands will:
 
@@ -319,7 +319,7 @@ Our PHP should now be working, but we can't yet test it as Linux permissions wil
 sudo apt install nemo
 ```
 
-Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder. 
+Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder.
 
 You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
 
@@ -397,6 +397,7 @@ We select the columns User, Host and authentication_string from the table user i
 </p>
 
 YOu can exit the MySQL shell at any time by entering 'exit' and hitting enter.
+
 ### Database Manager: phpMyAdmin
 
 phpMyAdmin is a web interface for database management. It is by far the most popular MySQL administration tool. To install it we run:
@@ -461,6 +462,7 @@ We can check the authentication type of each of your MySQL users running the fol
 ```
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 ```
+
 # Permissions
 
 Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it.
@@ -485,12 +487,20 @@ We then set the permissions of the `/var/www/html` folder recursively to give re
 sudo chmod -R 2770 /var/www/html
 ```
 
+[Full commands that work now]
+
+```
+sudo chown -R www-data /var/www/html/divblox-master
+sudo chgrp -R www-data /var/www/html/divblox-master
+sudo chmod -R 2770 /var/www/html/divblox-master
+sudo chmod -R g+rwxs /var/www/html/divblox-master
+```
+
 # Download and configure Divblox
 
 You should now be ready to install Divblox. Go to Github and download the zip file. Extract it in the `/var/www/html` folder. Ensure that your web server is running and navigate to `http://localhost/` or `http://localhost/[your-project-folder]` (if you placed Divblox within a sub folder). You should create an account with a secure password. Creating a project is explained <a href="https://divblox.github.io/#/getting-started?id=Initializing-a-new-Sandbox" target="_blank">here</a>. Remember to copy the free Divblox license key to authenticate yourself in the setup page.
 
-
- To open the Divblox setup page, browse to `http://localhost/Divblox` or `http://localhost/[your-project-folder]/Divblox`, depending on your installation. You should be able to log in as the user Divblox using the password "1". 
+To open the Divblox setup page, browse to `http://localhost/Divblox` or `http://localhost/[your-project-folder]/Divblox`, depending on your installation. You should be able to log in as the user Divblox using the password "1".
 
 Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log in as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependencies are installed and configured to run Divblox, providing useful feedback on how to solve installation related problems.
 
@@ -515,4 +525,4 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <!-- tabs:end -->
 
-That's it! Everything is now configured and you are ready to start building apps with Divblox. 
+That's it! Everything is now configured and you are ready to start building apps with Divblox.
