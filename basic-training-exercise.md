@@ -54,27 +54,27 @@ If you need a refresh on Divblox data modelling, click [here](data-modeler.md). 
 Now that our data model is created and synchronized with our database,
 let's generate some CRUD components (using the component builder) for Ticket and TicketStatus. Below is a walk-through of how to create full CRUD functionality for the ticket status entity.
 
-<video id="TrainingExerciseStep2" muted="" playsinline="" preload="auto" autoplay>
+<video id="TrainingExerciseStep2.1" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/basic-training-exercise2.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep2')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep2.1')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep2')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep2.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
 > And now we will create the CRUD functionality for the ticket entity, which although more complex, is just as easy with Divblox.
 
-<video id="TrainingExerciseStep3" muted="" playsinline="" preload="auto" autoplay>
+<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/basic-training-exercise3.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep3')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep3')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
@@ -86,11 +86,11 @@ This logic also applies when using 'create' and 'update' functionality and using
 
 ### Step 3 - Preparing for pages
 
-In order for us to be able to use our CRUD components, or any other component for that matter, we need to put them inside pages.
-Pages are also just components, but they can be navigated to by the user in the browser.
+We need this paragraph added:
 
-To allow the user to easily navigate to our pages, we need to update our navigation components. For this exercise we will
-be modifying the default side bar component to have links to 2 pages:
+In order for us to be able to use our CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser.
+
+The pages we will build for this exercise are:
 
 -   An admin page where our CRUD components can live
 -   A "New Ticket" page where users can create new tickets
