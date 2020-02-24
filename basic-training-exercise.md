@@ -143,7 +143,7 @@ Ok, we now have components that allow us to create our data, as well as pages to
 For the purposes of this exercise, we want to assign a unique ID to every ticket. This will allow us later on to retrieve
 information about our ticket via an API. To generate this unique ID, we will make use of a global function call.
 
-!>Global functions are very useful for functions that are used in many places to reduce code duplication
+!> Global functions are defined for functionality that will be used multiple times, reducing code duplication
 
 -   Step 1: Let's add a new function to project.js (project/assets/js/project.js) that we can call from anywhere to generate a new unique ticket ID
 -   Step 2: Because we need to ensure uniqueness of this ID, we should generate it on the server-side where we can check uniqueness before
