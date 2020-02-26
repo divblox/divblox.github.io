@@ -39,7 +39,7 @@ This can be represented as follows:
 If you need a refresh on Divblox data modelling, click [here](data-modeler.md). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
 
 <video id="TrainingExerciseStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise1Final.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep1')" type="button" class="video-control-button">
@@ -55,7 +55,7 @@ Now that our data model is created and synchronized with our database,
 let's generate some CRUD components (using the component builder) for Ticket and TicketStatus. Below is a walk-through of how to create full CRUD functionality for the ticket status entity.
 
 <video id="TrainingExerciseStep2.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise2.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise2.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.1')" type="button" class="video-control-button">
@@ -68,7 +68,7 @@ let's generate some CRUD components (using the component builder) for Ticket and
 > And now we will create the CRUD functionality for the ticket entity, which although more complex, is just as easy with Divblox.
 
 <video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise3.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise2.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
@@ -96,7 +96,7 @@ The pages we will build for this exercise are:
 To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
 
 <video id="TrainingExerciseStep3.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise-step3-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise3.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
@@ -109,7 +109,7 @@ To do this we will use a pre-made page template with a side navbar. As you will 
 Now we can create the 'Tickets' page where users can create tickets.
 
 <video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise-step3-2.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise3.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
@@ -145,150 +145,181 @@ information about our ticket via an API. To generate this unique ID, we will mak
 
 !> Global functions are defined for functionality that will be used multiple times, reducing code duplication
 
--   Step 1: Let's add a new function to project.js (project/assets/js/project.js) that we can call from anywhere to generate a new unique ticket ID
--   Step 2: Because we need to ensure uniqueness of this ID, we should generate it on the server-side where we can check uniqueness before
-    returning the ID. This means we need to add a new function to global_request_handler.php (project/assets/php/global_request_handler.php) to deal with this.
+> We will create the unique ID in the backend, as we need to verify whether or not it is indeed unique by checking our database.
 
-<video id="TrainingExerciseStep5" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-global_functions_1.mp4" type="video/mp4">
+![FLowchart of frontend/backend communication](_basic-training-media/basic-training-exercise-step5.png)
+
+Before we even start, lets point out a flaw in our CRUD component design. The unique ticket ID was omitted from the 'create' component, which must change as we are trying to randomly generate it on a button press.
+
+This is a good time to discuss and show how easy it is to change or recreate CRUD functionality with Divblox. If you ever need to change what is displayed or what input is required, you can simply create new CRUD components with desired functionality, or delete and remake the component. If you name the new version the same as the old one, any pages where they were displayed previously will be smoothly updated with the new functionality.
+
+We demonstrate below how this is done via Divblox's web interface. The changes can also be done directly in the source code, which is quicker, and will be covered in more advanced examples.
+
+<video id="TrainingExerciseStep5.1" muted="" playsinline="" preload="auto" autoplay>
+
+  <source src="_basic-training-media/basic-training-exercise5.1.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep5')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep5.1')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep5')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep5.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
-> Below are the functions for both the project.js and global_request_handler.php scripts as shown in the video above
+#### Step 1
 
--   Add the following to project.js:
+Add the button in our `ticket_crud_create` component that will generate a unique ID and populate the input box. We can do this through the Divblox web interface or in the source code.
 
-```javascript
-function getNewTaskUniqueId(success_callback, failed_callback) {
-    if (typeof success_callback !== "function") {
-        success_callback = function(ticket_id) {};
-    }
-    if (typeof failed_callback !== "function") {
-        failed_callback = function(message) {};
-    }
-    dxRequestInternal(
-        getServerRootPath() + "project/assets/php/global_request_handler.php",
-        { f: "getNewTaskUniqueId" },
-        function(data_obj) {
-            // Success function
-            success_callback(data_obj.TicketUniqueId);
-        },
-        function(data_obj) {
-            // Fail function
-            failed_callback("Unknown error");
-        }
-    );
-}
-```
+Below is a video running through step 1:
 
--   Add the following function to global_request_handler.php:
+<video id="TrainingExerciseStep5.2" muted="" playsinline="" preload="auto" autoplay>
+
+  <source src="_basic-training-media/basic-training-exercise5.2.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep5.2')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep5.2')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+#### Step 2
+
+Create the global php function that will generate the unique ID in `project_functions.php`.
+
+#### Step 3
+
+Call the global function from `component.php`, sending information to the front end.
+
+Below is a video running through step 2 and 3:
+
+<video id="TrainingExerciseStep5.3" muted="" playsinline="" preload="auto" autoplay>
+
+  <source src="_basic-training-media/basic-training-exercise5.3.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep5.3')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep5.3')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+Here is the code added into the class ProjectFunctions, in `project/assets/php/project_functions.php`.
 
 ```php
-function getNewTaskUniqueId() {
-    $CandidateStr = ProjectFunctions::generateRandomString(24);
-    $DoneBool = false;
-    while(!$DoneBool) {
-        $ExistingTicketCount = Ticket::LoadByTicketUniqueId($CandidateStr); // Divblox query language to load a ticket from the database, based on the UniqueId field
-        if ($ExistingTicketCount == 0) {
-            $DoneBool = true;
-        } else {
-            $CandidateStr = ProjectFunctions::generateRandomString(24);
+public static function getNewTaskUniqueId() {
+        $CandidateStr = self::generateRandomString(24);
+        $DoneBool = false;
+        while(!$DoneBool) {
+            $ExistingTicketCount = Ticket::LoadByTicketUniqueId($CandidateStr); // Divblox query language to load a ticket from the database, based on the UniqueId field
+            if ($ExistingTicketCount == 0) {
+                $DoneBool = true;
+            } else {
+                $CandidateStr = self::generateRandomString(24);
+            }
         }
+        return $CandidateStr;
     }
-    return $CandidateStr;
-}
 
-// Update the switch statement that deals with which function to call to look like this:
-switch($_POST["f"]) {
-    case 'getUserRole': die(json_encode(array("Result" => "Success","CurrentRole" => ProjectFunctions::getCurrentUserRole())));
-        break;
-    case 'getCurrentAccountId': die(json_encode(array("Result" => "Success","CurrentAccountId" => ProjectFunctions::getCurrentAccountAttribute())));
-        break;
-    case 'getCurrentAccountAttribute': die(json_encode(array("Result" => "Success","Attribute" => getCurrentAccountAttribute())));
-        break;
-    case 'logoutCurrentAccount': die(json_encode(array("Result" => "Success","LogoutResult" => ProjectFunctions::logoutCurrentAccount())));
-        break;
-    case 'updatePushRegistration': updatePushRegistration();
-        break;
-    case 'getNewTaskUniqueId': die(json_encode(array("Result" => "Success","TicketUniqueId" => getNewTaskUniqueId())));
-        break;
-    // TODO: Define custom function handlers here...
-    default:  die(json_encode(array("Result" => "Failed","Message" => "Invalid function")));
-}
 ```
 
-Now we have our global functions ready. Let's add a button to our ticket CREATE component that will populate the ticket unique ID field with
-the value returned from our global function.
+And the code added into the `ticket_crud_create` component.php file:
 
-<video id="TrainingExerciseStep5a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-global_functions_2.mp4" type="video/mp4">
+```php
+public function getNewTaskUniqueId() {
+        $this->setReturnValue("Result","Success");
+        $this->setReturnValue("Message", "New unique ID created");
+        $this->setReturnValue("TaskId", ProjectFunctions::getNewTaskUniqueId());
+        $this->presentOutput();
+    }
+```
+
+#### Step 4
+
+Add the Javascript functionality that autopopulates the input box with the newly generated unique ID in `component.js`.
+
+Below is a video of step 4:
+
+<video id="TrainingExerciseStep5.4" muted="" playsinline="" preload="auto" autoplay>
+
+  <source src="_basic-training-media/basic-training-exercise5.4.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep5a')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep5.4')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep5a')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep5.4')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
+
+The code added into the `initCustomFunctions` function was:
+
+```js
+dxRequestInternal(
+    getComponentControllerPath(this),
+    { f: "getNewTaskUniqueId" },
+    function(data_obj) {
+        // Success function
+        getComponentElementById(this, "TicketUniqueId").val(data_obj.TaskId);
+    }.bind(this),
+    function(data_obj) {
+        // Fail function
+    }.bind(this)
+);
+```
 
 ### Step 6 - Security
 
-For our exercise we created 2 pages (The admin and new ticket pages). Let's assume that we only want administrators to access the admin page.
-We can achieve this by updating the component access in the project_classes.php script (project/assets/php/project_classes.php). To test this, we
-need to register a new user that can log in.
+It is important to understand the way Divblox user roles are assigned access to the application. Divblox has two forms of access. _Component access_ allows the user to view the components, and _Data Model_ access gives the user permissions to perform CRUD operations. By default, there are three user roles.
 
-!>You can access the register page by navigating to [your_project_root]/?view=register. New users are registered with the user role "User" by default
+1. Anonymous - No access, gets redirected to the anonymous landing page
+2. User - This is the user role allocated to anyone who registers on your app. The default access is only to your profile and account.
+3. Administrator - All access.
 
-<video id="TrainingExerciseStep6" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-security_1.mp4" type="video/mp4">
+The Component default settings are as follows:
+
+![Component Access](_basic-training-media/basic-training-exercise-component-access.png)
+
+And the Data Model settings seen below. It is also important to note that by default users are able to `create` and `read` data, even if not explicitly stated in the `$AccessArray`.
+
+![Data Model Access](/_basic-training-media/basic-training-exercise-data-model-access.png)
+
+For our exercise we created 2 pages (The 'admin' and 'new ticket' pages). Let's assume that we only want administrators to access the admin page.
+
+You can access the register page by navigating to `[your_project_root]/?view=register`. New users are registered with the user role "User" by default.
+
+!> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin most of the time in your application and this may cause confusion.
+
+<video id="TrainingExerciseStep6.1" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise6.1.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep6')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep6.1')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep6')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep6.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
-!>By default, Divblox allows access to all components for all users. This can be turned off easily by commenting out the following in project_classes.php
+As you can see, our new user is unable to view any of the pages we built. This is because he does not have component access to the components on those pages. We will change that in the `ComponentRoleBasedAccessArray::$AccessArray`.
 
-```php
-$InitialReturn = parent::getComponentAccess($AccountId,$ComponentName);
-// Find this line and comment it out
-return true; // TODO: This is a temporary measure to allow you to get started quickly without restrictions.
-// Remove this and implement correctly for your solution. NB! THIS GIVES ACCESS TO ALL COMPONENTS TO ANY USER!!!
-```
+In the below video we will firstly give our user full access to any `Ticket` and `TicketStatus` components. This will allow us to see how the _Data Model_ access works (we will observe this on our admin page). Once the _Data Model_ access is configured, we will then give our user access only to the `create` components of both `Ticket` and `TicketStatus`, allowing the user to view the _New Ticket_ page, but not the admin page.
 
-> To apply the security rule, modify the \$UserRoleSpecificComponentArray in project_classes.php to the following:
-
-```php
-$UserRoleSpecificComponentArray = array(
-            "User" => ["account_additional_info_manager","account_additional_info_manager_data_series","account_additional_info_manager_create","account_additional_info_manager_update",
-                "new_ticket","ticket_crud_create"],
-            "Administrator" => ["ticket_crud","ticket_crud_create","ticket_crud_update","ticket_crud_data_series",
-                "ticket_status_crud","ticket_status_crud_create","ticket_status_crud_update","ticket_status_crud_data_series"]
-            //TODO: Add more as required here
-        );
-```
-
-This tells the system explicitly which user roles have access to which components. Once this rule is applied, try to open the admin page with your newly created user.
-
-<video id="TrainingExerciseStep6a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-security_2.mp4" type="video/mp4">
+<video id="TrainingExerciseStep6.2" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise6.2.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep6a')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep6.2')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep6a')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep6.2')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
+
+It is worth noting that this is a basic example to demonstrate how Divblox handles user access. As yo may have seen above, there is no need to change the \_Data Model access of our user to be able to `update` and `delete` as he will never be able to get to the admin page to do this.
 
 ### Step 7 - Exposing an API
 
