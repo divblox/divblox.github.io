@@ -343,33 +343,129 @@ It is worth noting that this is a basic example to demonstrate how Divblox handl
 
 ### Step 7 - Exposing an API
 
-Now that we have all the groundwork completed, let's provide the world with an API endpoint that will allow us to do some custom functionality on our tickets. To do this, we will copy the provided api_example endpoint and modify it for our use case.
+Now that we have all the groundwork completed, let's provide the world with an API endpoint that will allow us to do some custom functionality on our tickets. To do this, we will copy the provided `api_example` endpoint and modify it for our use case. The API functionality we want to achieve is as follows:
 
-For this step, we will allow a user to provide us with an array of unique task IDs as input. We will then take all of these tasks and merge them into the ticket that matches the first unique ID, deleting the other tickets. As a result we will return the modified ticket.
+-   Allow a user to provide us with an array of unique task IDs as input
+-   Select only the ticket descriptions from the tickets
+-   Merge all of the ticket descriptions into the first ticket (initial unique ID)
+-   Delete the remaining tickets
+-   Return the new merged ticket as output
 
-!>Divblox automatically handles the routing for your API endpoint. API endpoints are available at [your_project_root]/api/endpoint
+We will be using a program called 'PostMan' to test our API functionality. It comes pre-installed on the Divblox VM image.
 
-<video id="TrainingExerciseStep7" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-apis_1.mp4" type="video/mp4">
+!>Divblox automatically handles the routing for your API endpoint. API endpoints are available at [your_project_root]/api/[endpoint_name]
+
+Below we will briefly explore the `api_example` functionality, how to navigate the URL and what the expected output looks like.
+
+<video id="TrainingExerciseStep7.1" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise7.1.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep7')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep7.1')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep7')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep7.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
-> Let's see our API in action
+Now we will copy the `api_example.php` file as a template and write our own custom logic. Firstly, we add an API operation with function name `mergeTickets();`.
 
-<video id="TrainingExerciseStep7a" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/divblox_exercise-apis_2.mp4" type="video/mp4">
+In the `mergeTickets();` function we code the following logic:
+
+-   check if the input is valid JSON
+-   check if the master unique ID exists
+-   check if the master unique ID is valid
+-   check if there are more than two IDs
+-   if there is more than two IDs:
+    -   loop through the valid IDs
+    -   perform a merging of the ticket descriptions
+    -   delete each ticket after its description is merged
+-   save the results into the database
+-   present output to front end
+
+<video id="TrainingExerciseStep7.2" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise7.2.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep7a')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep7.2')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep7a')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep7.2')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+The code added into our 'basic_training_exercise.php' endpoint (`/project/api/basic_training_exercise.php`) is the following:
+
+```php
+<?php
+require("../../divblox/divblox.php");
+// Start by declaring your operations and then calling the initApi function.
+// This is important for your API documentation to be automatically generated at run-time
+PublicApi::addApiOperation("mergeTickets",
+    // Specify the various input parameters as an array
+    ["input_ids"],
+    // Specify the various expected output parameters as an associative array
+    ["merged_ticket" => "[JSON object representing new merged ticket]"],
+    // Give your operation a name
+    "Merge Tickets",
+    // Give your operation a description
+    "This operation will merge an array of tickets into a combined ticket with the unique ID of the first ticket. input_ids should be a JSON encoded array of unique ticket IDs");
+
+// Describes the "entire" API endpoint
+PublicApi::initApi("API endpoint to demonstrate our basic training exercise functionality","Basic Training Exercise");
+// Operation
+function mergeTickets() {
+    // More information on functions available in the public API class is provided in the API documentation section
+    $InputIdArrayStr = PublicApi::getInputParameter("input_ids");
+    if (!ProjectFunctions::isJson($InputIdArrayStr)) {
+        PublicApi::setApiResult(false);
+        PublicApi::addApiOutput("Message","Invalid value for input_ids provided.");
+        PublicApi::printApiResult();
+    }
+    $InputIdArray = json_decode($InputIdArrayStr);
+    if (!isset($InputIdArray[0])) {
+        PublicApi::setApiResult(false);
+        PublicApi::addApiOutput("Message","Invalid value for input_ids provided.");
+        PublicApi::printApiResult();
+    }
+    $MasterTicketObj = Ticket::LoadByTicketUniqueId($InputIdArray[0]);
+    if (is_null($MasterTicketObj)) {
+        PublicApi::setApiResult(false);
+        PublicApi::addApiOutput("Message","Invalid input ID for master ticket");
+        PublicApi::printApiResult();
+    }
+    $InputIdArraySizeInt = ProjectFunctions::getDataSetSize($InputIdArray);
+    if ($InputIdArraySizeInt < 2) {
+        PublicApi::setApiResult(true);
+        PublicApi::addApiOutput("merged_ticket", json_decode($MasterTicketObj->getJson()));
+        PublicApi::printApiResult();
+    }
+    for ($i = 1; $i < $InputIdArraySizeInt; $i++) {
+        $TicketObj = Ticket::LoadByTicketUniqueId($InputIdArray[$i]);
+        if (is_null($TicketObj)) {
+            continue;
+        }
+        $MasterTicketObj->TicketDescription .= $TicketObj->TicketDescription;
+        $TicketObj->Delete();
+    }
+    $MasterTicketObj->Save();
+    PublicApi::setApiResult(true);
+    PublicApi::addApiOutput("merged_ticket", json_decode($MasterTicketObj->getJson()));
+    PublicApi::printApiResult();
+}
+?>
+```
+
+Once we have defined our endpoint, we can test to see if everything works. Note that this specific API operation updates and deletes data in our database, we need to update the `Data Model` permissions so that 'any' users can 'update' and 'delete' (Recall that default permissions are only to 'create' and 'read'). Once this is done, our API operation should be set up and permissions for operations granted. We use Postman this time, as it makes it easier to input parameters and has a great user interface.
+
+<video id="TrainingExerciseStep7.3" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/basic-training-exercise7.3.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep7.3')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep7.3')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
