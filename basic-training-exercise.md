@@ -471,7 +471,6 @@ Once we have defined our endpoint, we can test to see if everything works. Note 
 
 ### Summary
 
-In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 7 completely, you should be able to build
-virtually any Divblox project.
+In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 7 completely, you should have a fundamental understanding of the basics of any Divblox application.
 
-If you would like to receive further hands-on training from the Divblox team, please reach out to us at support@Divblox.com and we will arrange a consultation.
+If you would like to receive further hands-on training from the Divblox team, please reach out to us at support@divblox.com and we will arrange a consultation.
