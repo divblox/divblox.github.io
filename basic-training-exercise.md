@@ -82,11 +82,11 @@ let's generate some CRUD components (using the component builder) for Ticket and
 
 Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship.
 
-This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be linking a ticket to the current user's ID.
+This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be to automatically link a ticket to the current user upon creation.
 
 ### Step 3 - Page Components
 
-In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser. The only distinction betweeen other components and page components is that pages can be navigated to via the url or a navigation bar, while individual components can not.
+In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser. The only distinction between other components and page components is that pages can be navigated to via the url or a navigation bar, while individual components can not.
 
 The pages we will build for this exercise are:
 
@@ -121,14 +121,14 @@ Now we can create the 'Tickets' page where users can create tickets.
 
 ### Step 4 - Navigation bar
 
-Ok, we now have components that allow us to create our data, as well as pages to view them on. We will now update the side navigation bar to function as we want it to. Notice how in this video we edit the component code in VS Code (or whatever code editor you prefer). The preferred way is to use a code editor, but for quick fixes like changing the HTML layout of our page we can ue Divblox's built-in code editor. The process followed here is as follows:
+Ok, we now have components that allow us to create our data, as well as pages to view them on. We will now update the side navigation bar to function as we want it to. Notice how, in this video, we edit the component code in our IDE (any IDE/text editor of your choice). The preferred way is to use an IDE, but for quick fixes like changing the HTML layout of our page we can use Divblox's built-in code editor. The process followed here is as follows:
 
--   Name your page components
--   Change the navbar links to what you need them to be
--   Add JS to link it to the page in question
+1.  Name your page components
+2.  Change the navbar links to what you need them to be
+3.  Add JavaScript to link it to the page in question
 
 <video id="TrainingExerciseStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise-step4.mp4" type="video/mp4">
+  <source src="_basic-training-media/basic-training-exercise4.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
@@ -229,17 +229,25 @@ public static function getNewTaskUniqueId() {
 And the code added into the `ticket_crud_create` component.php file:
 
 ```php
+// The function on our component controller that will return a new unique task ID for us
+// This function is executed when we pass "getNewTaskUniqueId" as the value for "f" from our component JavaScript
 public function getNewTaskUniqueId() {
+        // setReturnValue() sets the values in an array that will be returned as JSON when the script completes
+        // We always need to set the value for "Result" to either "Success" or "Failed" in order for the component
+        // JavaScript to know how to treat the response
         $this->setReturnValue("Result","Success");
+        // It is always a good idea to populate a "Message" for the front-end
         $this->setReturnValue("Message", "New unique ID created");
+        // Here we set the value of any additional parameters to return
         $this->setReturnValue("TaskId", ProjectFunctions::getNewTaskUniqueId());
+        //  "presentOutput()" returns our array as JSON and stops any further execution of the current php script
         $this->presentOutput();
     }
 ```
 
 #### Step 4
 
-Add the Javascript functionality that autopopulates the input box with the newly generated unique ID in `component.js`.
+Add the JavaScript functionality that autopopulates the input box with the newly generated unique ID in `component.js`.
 
 Below is a video of step 4:
 
@@ -258,8 +266,12 @@ Below is a video of step 4:
 The code added into the `initCustomFunctions` function was:
 
 ```js
+// dxRequestInternal() is the global function used to communicate from the component's JavaScript to its back-end php component
 dxRequestInternal(
+    // The first parameter tells the function where to send the request
+    // getComponentControllerPath(this) returns the path to the current component's php script
     getComponentControllerPath(this),
+    // Tell component.php which function to execute
     { f: "getNewTaskUniqueId" },
     function(data_obj) {
         // Success function
@@ -273,11 +285,19 @@ dxRequestInternal(
 
 ### Step 6 - Security
 
-It is important to understand the way Divblox user roles are assigned access to the application. Divblox has two forms of access. _Component access_ allows the user to view the components, and _Data Model_ access gives the user permissions to perform CRUD operations. By default, there are three user roles.
+It is important to understand how Divblox user roles are used to control access to the application. Divblox has two forms of access.
 
-1. Anonymous - No access, gets redirected to the anonymous landing page
+-   _Component access_ allows the user to view the components
+-   _Data Model_ access gives the user permissions to perform CRUD operations on specific entities defined in the data model.
+
+By default, there are two user roles.
+
+1. Administrator - Has access to all components and full CRUD functionality.
 2. User - This is the user role allocated to anyone who registers on your app. The default access is only to your profile and account.
-3. Administrator - All access.
+
+Any user that is not authenticated is treated as "Anonymous" - No access, gets redirected to the anonymous landing page.
+
+!> Additional user roles can be defined in the data modeller.
 
 The Component default settings are as follows:
 
@@ -291,7 +311,7 @@ For our exercise we created 2 pages (The 'admin' and 'new ticket' pages). Let's 
 
 You can access the register page by navigating to `[your_project_root]/?view=register`. New users are registered with the user role "User" by default.
 
-!> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin most of the time in your application and this may cause confusion.
+!> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin (dxAdmin) most of the time in your application and this may cause confusion.
 
 <video id="TrainingExerciseStep6.1" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/basic-training-exercise6.1.mp4" type="video/mp4">
@@ -319,12 +339,13 @@ In the below video we will firstly give our user full access to any `Ticket` and
 <i class="fa fa-expand"></i>
 </button>
 
-It is worth noting that this is a basic example to demonstrate how Divblox handles user access. As yo may have seen above, there is no need to change the \_Data Model access of our user to be able to `update` and `delete` as he will never be able to get to the admin page to do this.
+It is worth noting that this is a basic example to demonstrate how Divblox handles user access. As you may have seen above, there is no need to change the _Data Model_ access of our user to be able to `update` and `delete` as he will never be able to get to the admin page to do this.
 
 ### Step 7 - Exposing an API
 
-Now that we have all the groundwork completed, let's provide the world with an API endpoint that will provide information about our ticket if its unique ID is provided.
-To do this, we will copy the provided api_example endpoint and modify it for our use case.
+Now that we have all the groundwork completed, let's provide the world with an API endpoint that will allow us to do some custom functionality on our tickets. To do this, we will copy the provided api_example endpoint and modify it for our use case.
+
+For this step, we will allow a user to provide us with an array of unique task IDs as input. We will then take all of these tasks and merge them into the ticket that matches the first unique ID, deleting the other tickets. As a result we will return the modified ticket.
 
 !>Divblox automatically handles the routing for your API endpoint. API endpoints are available at [your_project_root]/api/endpoint
 
