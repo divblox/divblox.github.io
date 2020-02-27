@@ -1,9 +1,12 @@
 # Divblox API’s
+
 ## Exposing a custom API
+
 To expose any of your app's functionality as an api to the outside world, you simply need to create an endpoint in the following manner:
+
 <!-- - Let's say your api is to be called "api_example", then create a php script in the folder /project/api/api_example.php with the following basic construct: -->
 
-1. Create a new php script that will contain your API operations and save it to the folder "/project/api/". 
+1. Create a new php script that will contain your API operations and save it to the folder "/project/api/".
 
 2. Include "divblox.php" to use Divblox API classes.
 
@@ -11,18 +14,18 @@ To expose any of your app's functionality as an api to the outside world, you si
 require("../../divblox/divblox.php");
 ```
 
-3. Declare a new operation by calling the "addApiOperation()" function from the "PublicApi" class. The "Expected outputs", and "operation description" will be used when Divblox auto-generates the documentation for the newly created API, so do not overlook the importance of these description fields even though they don't directly effect functionality. The  "User readable name" (API operation name) is later used to link operations to other API functionality. 
+3. Declare a new operation by calling the "addApiOperation()" function from the "PublicApi" class. The "Expected outputs", and "operation description" will be used when Divblox auto-generates the documentation for the newly created API, so do not overlook the importance of these description fields even though they don't directly effect functionality. The "User readable name" (API operation name) is later used to link operations to other API functionality.
 
 ```php
 PublicApi::addApiOperation(
     ["Function Name"],
     ["Input Parameters"],
     ["Expected Outputs"] ,
-    ["User readable name"] , 
+    ["User readable name"] ,
     ["API operation description"]);
 ```
 
-4. Initialize the API after your declarations using "initApi()" function from the "PublicApi" class. 
+4. Initialize the API after your declarations using "initApi()" function from the "PublicApi" class.
 
 ```php
 PublicApi::initApi(
@@ -30,14 +33,14 @@ PublicApi::initApi(
     ["API Title"]);
 
 ```
-5. Functionality is added to the API by adding functions with titles that correspond with the API Operation's "Function  Name" parameter from step 3. 
 
+5. Functionality is added to the API by adding functions with titles that correspond with the API Operation's "Function Name" parameter from step 3.
 
-* Input parameters are retrieved using "getInputParameter()" along with the name of a parameter chosen in step 3.
-* The API operation output is created using "addApiOutput()" for which there is no restriction to the amount of outputs you can have but should be inline with the operation deceleration's expected output.
-* The API operation must be concluded by setting a return result to true or false, using "setApiResult(["Boolean"])", to say if the request was successful and by printing the response with "printApiResult()".
+-   Input parameters are retrieved using "getInputParameter()" along with the name of a parameter chosen in step 3.
+-   The API operation output is created using "addApiOutput()" for which there is no restriction to the amount of outputs you can have but should be inline with the operation deceleration's expected output.
+-   The API operation must be concluded by setting a return result to true or false, using "setApiResult(["Boolean"])", to say if the request was successful and by printing the response with "printApiResult()".
 
-``` php 
+```php
 
 function ["Function Name"]() {
 
@@ -55,14 +58,16 @@ function ["Function Name"]() {
 
 ```php
 
-<?php 
+<?php
 require("../../divblox/divblox.php");
 // Start by declaring your operations and then calling the initApi function
 
 PublicApi::addApiOperation(
     "dummyOperation",
-    ["first_name","last_name"],
-    ["Message" => "You called the example operation","FullName" => "[The resulting full name]"],
+    ["first_name",
+        "last_name"],
+    ["Message" => "You called the example operation",
+        "FullName" => "[The resulting full name]"],
     "Example Operation",
     "This is simply an example api operation that takes a first name and a last name and concatenates them");
 
@@ -86,7 +91,8 @@ function dummyOperation() {
     PublicApi::printApiResult();
 }
 function dummyOperation2() {
-    PublicApi::addApiOutput("Message","Current system time is ".dxDateTime::Now()->format(DATE_TIME_FORMAT_PHP_STR.' H:i:s'));
+    PublicApi::addApiOutput("Message",
+                            "Current system time is ".dxDateTime::Now()->format(DATE_TIME_FORMAT_PHP_STR.' H:i:s'));
     PublicApi::setApiResult(true); // You need to set this to true to indicate that the API executed successfully
     PublicApi::printApiResult();
 }
@@ -94,15 +100,13 @@ function dummyOperation2() {
 ?>
 ```
 
-7. Divblox provides comprehensive documentation for your API's that can be viewed at "/api/[your API name]/doc". In the case of this example, where our API is called "api_example", the documentation is generated and can be viewed at  "/api/api_example/doc".
-
-
+7. Divblox provides comprehensive documentation for your API's that can be viewed at "/api/[your API name]/doc". In the case of this example, where our API is called "api_example", the documentation is generated and can be viewed at "/api/api_example/doc".
 
 <p align="left">
   <img  src=_media/_screenshots/API-exposing-an-api1.png>
 </p>
 
-8. By following this documentation the newly exposed API's operation can be accessed by making a request to the given URL endpoint. 
+8. By following this documentation the newly exposed API's operation can be accessed by making a request to the given URL endpoint.
 
 <p align="center">
   <img  src=_media/_screenshots/API-exposing-an-api2.png>
@@ -110,12 +114,11 @@ function dummyOperation2() {
 
 9. The documentation will indicate to the reader whether or not the request requires an API key to access the operation, and in our case this API requires no authentication but does require other parameters such as a header, "content-type", and input parameters, "first_name" and "last_name", which are placed in the POST request body.
 
-
 <p align="center">
   <img  src=_media/_screenshots/API-exposing-an-api3.png>
 </p>
 
-10. After the request has been made the expected output should be inline with the expected output. Using an application, such as [Postman](https://www.getpostman.com/) as a test platform to see whether or not the API was successfully created, or alternatively by using the URL "/api/api_example/dummyOperation/first_name=ACoolName/last_name=ACoolSurname" we can compare the collected output to the expected response. 
+10. After the request has been made the expected output should be inline with the expected output. Using an application, such as [Postman](https://www.getpostman.com/) as a test platform to see whether or not the API was successfully created, or alternatively by using the URL "/api/api_example/dummyOperation/first_name=ACoolName/last_name=ACoolSurname" we can compare the collected output to the expected response.
 
 <p align="center">
   <img  src=_media/_screenshots/API-exposing-an-api4.png>
@@ -129,9 +132,9 @@ function dummyOperation2() {
 
 ## Securing API operations with an API key
 
-When creating your own API it will be completely exposed and wont require and API key to be accessed. To secure your API operations we can add them to the list of API operations that are under "api_operation_administration" and create a key to control its accessibility. 
+When creating your own API it will be completely exposed and wont require and API key to be accessed. To secure your API operations we can add them to the list of API operations that are under "api_operation_administration" and create a key to control its accessibility.
 
-1. Using the "api_example" (see [Exposing an API](#Exposing-a-custom-API)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change. 
+1. Using the "api_example" (see [Exposing an API](#Exposing-a-custom-API)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change.
 
 <p align="center">
   <img  src=_media/_screenshots/API-securing-an-api1.png>
@@ -143,8 +146,7 @@ When creating your own API it will be completely exposed and wont require and AP
   <img  src=_media/_screenshots/API-securing-an-api2.png>
 </p>
 
-3. This component allows you to add or remove API operations from the list of access controlled API operations. Add your operation by clicking the "+ Api Operation" 
-
+3. This component allows you to add or remove API operations from the list of access controlled API operations. Add your operation by clicking the "+ Api Operation"
 
 <p align="left">
   <img  src=_media/_screenshots/API-securing-an-api3.png>
@@ -162,7 +164,7 @@ When creating your own API it will be completely exposed and wont require and AP
   <img  src=_media/_screenshots/API-securing-an-api5.png>
 </p>
 
-6. To get a key that will link to your operation and allow you to access it, open the "api_key_administration" component from the "Component Builder" page and add a new API key by clicking the "+ API key". 
+6. To get a key that will link to your operation and allow you to access it, open the "api_key_administration" component from the "Component Builder" page and add a new API key by clicking the "+ API key".
 
 <p align="left">
   <img  src=_media/_screenshots/API-securing-an-api6.png>
@@ -192,7 +194,7 @@ When creating your own API it will be completely exposed and wont require and AP
   <img  src=_media/_screenshots/API-securing-an-api10.png>
 </p>
 
-11. To verify that the operation has been added, it should be visible when viewing the API key. It will show the activity status of the operation which can be toggled to manage access. 
+11. To verify that the operation has been added, it should be visible when viewing the API key. It will show the activity status of the operation which can be toggled to manage access.
 
 <p align="center">
   <img  src=_media/_screenshots/API-securing-an-api11.png>
@@ -206,7 +208,7 @@ When creating your own API it will be completely exposed and wont require and AP
 
 ## Creating default CRUD API's
 
-Making and exposing access controlled CRUD API operations for new data model entities. 
+Making and exposing access controlled CRUD API operations for new data model entities.
 
 1. Open the "Data Modeler" from the Divblox setup page.
 
@@ -214,7 +216,7 @@ Making and exposing access controlled CRUD API operations for new data model ent
   <img  src=_media/_screenshots/API-default-CRUD1.png>
 </p>
 
-2. This is the Default data model for Divblox. New Entities are added by "Double-clicking" in empty space. 
+2. This is the Default data model for Divblox. New Entities are added by "Double-clicking" in empty space.
 
 <p align="center">
   <img  src=_media/_screenshots/API-default-CRUD2.png>
@@ -226,7 +228,7 @@ Making and exposing access controlled CRUD API operations for new data model ent
   <img  src=_media/_screenshots/API-default-CRUD3.png>
 </p>
 
-4. Start by selecting the module where you want your new entity to be placed. Add new entity attributes by filling in the attribute "name" and "data type" and then add it with the green " + " at the end of the row. Add relationships in the same way, by selecting the entity you need a relationship with and add it using the green " + "  at the end of the row. Finish by saving the changes made to the entity 
+4. Start by selecting the module where you want your new entity to be placed. Add new entity attributes by filling in the attribute "name" and "data type" and then add it with the green " + " at the end of the row. Add relationships in the same way, by selecting the entity you need a relationship with and add it using the green " + " at the end of the row. Finish by saving the changes made to the entity
 
 <p align="canter">
   <img  src=_media/_screenshots/API-default-CRUD4.png>
@@ -238,7 +240,7 @@ Making and exposing access controlled CRUD API operations for new data model ent
   <img  src=_media/_screenshots/API-default-CRUD5.png>
 </p>
 
-6. View the auto-generated documentation for the newly created entity using the entity name from before and the path "/api/[your API name]/doc". These are the default CRUD operations that get created with new data model entities. 
+6. View the auto-generated documentation for the newly created entity using the entity name from before and the path "/api/[your API name]/doc". These are the default CRUD operations that get created with new data model entities.
 
 <p align="left">
   <img  src=_media/_screenshots/API-default-CRUD6.png>

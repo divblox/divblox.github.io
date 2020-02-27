@@ -116,8 +116,7 @@ The component's CSS file provides any special styling that is required by the co
 
 ## Component Javascript
 
-The component's Javascript file controls the component's behaviour.
-The basic structure of any component's Javascript follows the following pattern:
+The component's Javascript file controls the component's behaviour. The basic structure of any component's Javascript follows the following pattern:
 
 ```javascript
 if (typeof component_classes["ungrouped_demo_component"] === "undefined") {
@@ -131,254 +130,14 @@ if (typeof component_classes["ungrouped_demo_component"] === "undefined") {
     }
     component_classes["ungrouped_demo_component"] = ungrouped_demo_component;
 }
-
-/* Below is the DivbloxDomBaseComponent class from which every Divblox component inherits
-This class manages the following behaviour for each component:
-- Loading workflow, which includes checking of prerequisites and dependencies
-- Error handling
-- Component & Subcomponent resets
-- Event handling and propagation
-*/
-class DivbloxDomBaseComponent {
-    constructor(inputs, supports_native, requires_native) {
-        this.arguments = inputs;
-        if (typeof supports_native === "undefined") {
-            supports_native = true;
-        }
-        if (typeof requires_native === "undefined") {
-            requires_native = false;
-        }
-        this.supports_native = supports_native;
-        this.requires_native = requires_native;
-        if (typeof this.arguments["uid"] !== "undefined") {
-            this.uid = this.arguments["uid"];
-        } else {
-            this.uid =
-                this.arguments["component_name"] +
-                "_" +
-                this.arguments["dom_index"];
-        }
-        this.component_success = false;
-        this.sub_component_definitions = {};
-        this.sub_component_objects = [];
-        this.sub_component_loaded_count = 0;
-        this.allowed_access_array = [];
-        this.is_loading = false;
-    }
-    loadPrerequisites(success_callback, fail_callback) {
-        if (typeof success_callback !== "function") {
-            success_callback = function() {};
-        }
-        if (typeof fail_callback !== "function") {
-            fail_callback = function() {};
-        }
-        success_callback();
-    }
-    on_component_loaded(confirm_success, callback) {
-        if (isNative()) {
-            if (!this.supports_native) {
-                this.handleComponentError(
-                    "Component " + this.uid + " does not support native."
-                );
-                return;
-            }
-        } else {
-            if (this.requires_native) {
-                this.handleComponentError(
-                    "Component " +
-                        this.uid +
-                        " requires a native implementation."
-                );
-                return;
-            }
-        }
-        if (typeof confirm_success === "undefined") {
-            confirm_success = true;
-        }
-        if (typeof callback !== "function") {
-            callback = function() {};
-        }
-        this.loadPrerequisites(
-            function() {
-                callback();
-                dxCheckCurrentUserRole(
-                    this.allowed_access_array,
-                    function() {
-                        this.handleComponentAccessError("Access denied");
-                    }.bind(this),
-                    function() {
-                        if (confirm_success) {
-                            this.handleComponentSuccess();
-                        }
-                        this.registerDomEvents();
-                        this.initCustomFunctions();
-                        // Load additional components here
-                        this.loadSubComponent();
-                        if (checkComponentBuilderActive()) {
-                            setTimeout(
-                                function() {
-                                    //JGL: Some components might not remove their loading state if they do not receive
-                                    // initialization inputs. When we are in the component builder, we want to override this
-                                    if (this.is_loading) {
-                                        dxLog(
-                                            "Removing loading state if " +
-                                                this.getComponentName() +
-                                                " for component builder"
-                                        );
-                                        this.removeLoadingState();
-                                    }
-                                }.bind(this),
-                                1000
-                            );
-                        }
-                    }.bind(this)
-                );
-            }.bind(this),
-            function() {
-                this.handleComponentError(
-                    "Error loading component dependencies"
-                );
-            }.bind(this)
-        );
-    }
-    reset(inputs) {
-        this.resetSubComponents(inputs);
-    }
-    setLoadingState() {
-        this.is_loading = true;
-        $("#" + this.uid + "_ComponentContent").hide();
-        $("#" + this.uid + "_ComponentPlaceholder").show();
-        $("#" + this.uid + "_ComponentFeedback").html("");
-    }
-    removeLoadingState() {
-        this.is_loading = false;
-        $("#" + this.uid + "_ComponentContent").show();
-        $("#" + this.uid + "_ComponentPlaceholder").hide();
-    }
-    resetSubComponents(inputs) {
-        this.sub_component_objects.forEach(
-            function(component) {
-                component.reset(inputs);
-            }.bind(this)
-        );
-    }
-    getReadyState() {
-        return this.component_success;
-    }
-    handleComponentSuccess(additional_input) {
-        if (this.component_success === true) {
-            return;
-        }
-        this.component_success = true;
-        $("#" + this.uid + "_ComponentContent").show();
-        $("#" + this.uid + "_ComponentPlaceholder").hide();
-        if (typeof cb_active !== "undefined") {
-            if (cb_active) {
-                on_Divblox_component_success(this);
-            }
-        }
-    }
-    handleComponentError(ErrorMessage) {
-        this.component_success = false;
-        $("#" + this.uid + "_ComponentContent").hide();
-        $("#" + this.uid + "_ComponentPlaceholder").show();
-        $("#" + this.uid + "_ComponentFeedback").html(
-            '<div class="alert alert-danger alert-danger-component"><strong><i' +
-                ' class="fa fa-exclamation-triangle ComponentErrorExclamation" aria-hidden="true"></i>' +
-                " </strong><br>" +
-                ErrorMessage +
-                "</div>"
-        );
-        if (typeof cb_active !== "undefined") {
-            if (cb_active) {
-                on_Divblox_component_error(this);
-            }
-        }
-    }
-    handleComponentAccessError(ErrorMessage) {
-        this.handleComponentError(ErrorMessage);
-    }
-    registerDomEvents() {
-        /*To be overridden in sub class as needed*/
-    }
-    initCustomFunctions() {
-        /*To be overridden in sub class as needed*/
-    }
-    subComponentLoadedCallBack(component) {
-        this.sub_component_objects.push(component);
-        this.sub_component_loaded_count++;
-        this.loadSubComponent();
-        // JGL: Override as needed
-    }
-    loadSubComponent() {
-        if (
-            typeof this.sub_component_definitions[
-                this.sub_component_loaded_count
-            ] !== "undefined"
-        ) {
-            let sub_component_definition = this.sub_component_definitions[
-                this.sub_component_loaded_count
-            ];
-            loadComponent(
-                sub_component_definition.component_load_path,
-                this.uid,
-                sub_component_definition.parent_element,
-                sub_component_definition.arguments,
-                false,
-                false,
-                this.subComponentLoadedCallBack.bind(this)
-            );
-        } else {
-            this.reset();
-        }
-    }
-    getSubComponents() {
-        return this.sub_component_objects;
-    }
-    getSubComponentDefinitions() {
-        return this.sub_component_definitions;
-    }
-    getUid() {
-        return this.uid;
-    }
-    getComponentName() {
-        return this.arguments["component_name"];
-    }
-    getLoadArgument(argument) {
-        if (typeof this.arguments[argument] !== "undefined") {
-            return this.arguments[argument];
-        }
-        if (typeof this.arguments["url_parameters"] !== "undefined") {
-            if (
-                typeof this.arguments["url_parameters"][argument] !==
-                "undefined"
-            ) {
-                return this.arguments["url_parameters"][argument];
-            }
-        }
-        return null;
-    }
-    eventTriggered(event_name, parameters_obj) {
-        switch (event_name) {
-            case "[event_name]":
-            default:
-                dxLog(
-                    "Event triggered: " +
-                        event_name +
-                        ": " +
-                        JSON.stringify(parameters_obj)
-                );
-        }
-        // Let's pass the event to all sub components
-        this.propagateEventTriggered(event_name, parameters_obj);
-    }
-    propagateEventTriggered(event_name, parameters_obj) {
-        this.sub_component_objects.forEach(function(component) {
-            component.eventTriggered(event_name, parameters_obj);
-        });
-    }
-}
 ```
+
+As seen above, this class `ungrouped_demo_component` extends the `DivbloxDomBaseComponent` class from which every Divblox component inherits. This class manages the following behaviour for each component:
+
+-   Loading workflow, which includes checking of prerequisites and dependencies
+-   Error handling
+-   Component & Subcomponent resets
+-   Event handling and propagation
 
 ## Component Php
 
@@ -386,7 +145,8 @@ The component's Php file handles server-side requests for the component.
 The basic structure of any component's Php follows the following pattern:
 
 ```php
-// We need to require the Divblox initialization in order to have access to Divblox's classes and functions
+// We need to require the Divblox initialization in order to
+// have access to Divblox's classes and functions
 require("../../../../Divblox/Divblox.php");
 /* Every component controller class will inherit from the ProjectComponentController class.
   The ProjectComponentController handles things like
@@ -416,7 +176,7 @@ class DemoComponentController extends ProjectComponentController {
     }
 }
 // Let's initialize the class to invoke the constructor.
-  This will do the initial request processing for us
+// This will do the initial request processing for us
 $ComponentObj = new DemoComponentController("demo_component");
 ```
 

@@ -80,7 +80,9 @@ let's generate some CRUD components (using the component builder) for Ticket and
 
 > When checking the `Validate` checkbox, Divblox automatically notifies the user that input is required. Further validations can be added at a later stage.
 
-Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship.
+Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to only one instance of another entity. E.g. Each ticket can oonly be made by one account holder.
+
+![Singular relationship](/_basic-training-media/basic_training_exercise3.1.png)
 
 This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be to automatically link a ticket to the current user upon creation.
 
@@ -106,7 +108,7 @@ To do this we will use a pre-made page template with a side navbar. As you will 
 <i class="fa fa-expand"></i>
 </button>
 
-Now we can create the 'Tickets' page where users can create tickets.
+Now we can create the 'Tickets' page where users can create tickets. Note that we are not creating any new functionality, just reusing the 'create' component previously generated and placing it on its own page.
 
 <video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/basic-training-exercise3.2.mp4" type="video/mp4">
@@ -214,7 +216,9 @@ public static function getNewTaskUniqueId() {
         $CandidateStr = self::generateRandomString(24);
         $DoneBool = false;
         while(!$DoneBool) {
-            $ExistingTicketCount = Ticket::LoadByTicketUniqueId($CandidateStr); // Divblox query language to load a ticket from the database, based on the UniqueId field
+            // Divblox query language to load a ticket from the database,
+            // based on the UniqueId field
+            $ExistingTicketCount = Ticket::LoadByTicketUniqueId($CandidateStr);
             if ($ExistingTicketCount == 0) {
                 $DoneBool = true;
             } else {
@@ -229,18 +233,21 @@ public static function getNewTaskUniqueId() {
 And the code added into the `ticket_crud_create` component.php file:
 
 ```php
-// The function on our component controller that will return a new unique task ID for us
-// This function is executed when we pass "getNewTaskUniqueId" as the value for "f" from our component JavaScript
+// The function on our component controller that will return a new unique task ID for us.
+// This function is executed when we pass "getNewTaskUniqueId" as
+// the value for "f" from our component JavaScript
 public function getNewTaskUniqueId() {
-        // setReturnValue() sets the values in an array that will be returned as JSON when the script completes
-        // We always need to set the value for "Result" to either "Success" or "Failed" in order for the component
-        // JavaScript to know how to treat the response
+        // setReturnValue() sets the values in an array that will be returned as JSON
+        //when the script completes. We always need to set the value for "Result" to either
+        // "Success" or "Failed" in order for the component JavaScript to know
+        // how to treat the response
         $this->setReturnValue("Result","Success");
         // It is always a good idea to populate a "Message" for the front-end
         $this->setReturnValue("Message", "New unique ID created");
         // Here we set the value of any additional parameters to return
         $this->setReturnValue("TaskId", ProjectFunctions::getNewTaskUniqueId());
-        //  "presentOutput()" returns our array as JSON and stops any further execution of the current php script
+        // "presentOutput()" returns our array as JSON and stops any
+        // further execution of the current php script
         $this->presentOutput();
     }
 ```
@@ -266,10 +273,11 @@ Below is a video of step 4:
 The code added into the `initCustomFunctions` function was:
 
 ```js
-// dxRequestInternal() is the global function used to communicate from the component's JavaScript to its back-end php component
+// dxRequestInternal() is the global function used to communicate
+// from the component's JavaScript to its back-end php component
 dxRequestInternal(
     // The first parameter tells the function where to send the request
-    // getComponentControllerPath(this) returns the path to the current component's php script
+    // getComponentControllerPath(this) returns the path to current component's php script
     getComponentControllerPath(this),
     // Tell component.php which function to execute
     { f: "getNewTaskUniqueId" },
@@ -409,13 +417,16 @@ PublicApi::addApiOperation("mergeTickets",
     // Give your operation a name
     "Merge Tickets",
     // Give your operation a description
-    "This operation will merge an array of tickets into a combined ticket with the unique ID of the first ticket. input_ids should be a JSON encoded array of unique ticket IDs");
+    "This operation will merge an array of tickets into a combined ticket with the unique
+    ID of the first ticket. input_ids should be a JSON encoded array of unique ticket IDs");
 
 // Describes the "entire" API endpoint
-PublicApi::initApi("API endpoint to demonstrate our basic training exercise functionality","Basic Training Exercise");
+PublicApi::initApi("API endpoint to demonstrate our basic training exercise functionality",
+                  "Basic Training Exercise");
 // Operation
 function mergeTickets() {
-    // More information on functions available in the public API class is provided in the API documentation section
+    // More information on functions available in the public API class
+    // is provided in the API documentation section
     $InputIdArrayStr = PublicApi::getInputParameter("input_ids");
     if (!ProjectFunctions::isJson($InputIdArrayStr)) {
         PublicApi::setApiResult(false);

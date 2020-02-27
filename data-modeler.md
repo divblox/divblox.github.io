@@ -155,19 +155,25 @@ $TaskArray = Task::QueryArray(
     )
 );
 
-//Select all Tasks where the person's FirstName is alphabetically "greater than" their LastName, or who's name contains "Website"
+//Select all Tasks where the person's FirstName is alphabetically
+// "greater than" their LastName, or who's name contains "Website"
 $TaskArray = Task::QueryArray(
     dxQ::OrCondition(
-        dxQ::GreaterThan(dxQN::Task()->PersonObject->FirstName, dxQN::Task()->PersonObject->LastName),
+        dxQ::GreaterThan(
+            dxQN::Task()->PersonObject->FirstName,
+            dxQN::Task()->PersonObject->LastName),
         dxQ::Like(dxQN::Task()->Name, '%Website%')
     )
 );
 
-//Select all Tasks where the Task ID <= 2 AND (the person's FirstName is alphabetically "greater than" the Description, or who's name contains "Website")
+//Select all Tasks where the Task ID <= 2 AND (the person's FirstName
+// is alphabetically "greater than" the Description, or who's name contains "Website")
 $TaskArray = Task::QueryArray(
     dxQ::AndCondition(
         dxQ::OrCondition(
-            dxQ::GreaterThan(dxQN::Task()->PersonObject->FirstName, dxQN::Task()->PersonObject->LastName),
+            dxQ::GreaterThan(
+                dxQN::Task()->PersonObject->FirstName,
+                dxQN::Task()->PersonObject->LastName),
             dxQ::Like(dxQN::Task()->Name, '%Website%')
         ),
         dxQ::LessOrEqual(dxQN::Task()->Id, 2)

@@ -84,24 +84,26 @@ if (typeof component_classes["pages_hello_world"] === "undefined") {
         }
         initCustomFunctions() {
             // n3CEV_button Related functionality
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////
             getComponentElementById(this, "n3CEV_btn").on(
                 "click",
                 function() {
-                    // Add the trigger element to the loading element array. This shows a loading animation on the trigger
+                    // Add the trigger element to the loading element array.
+                    // This shows a loading animation on the trigger
                     // element while it waits for a response or function return
                     let element_id = addTriggerElementToLoadingElementArray(
                         $(this).attr("id"),
                         "Nice Loading text"
                     );
-                    // Example: once your function has executed, call removeTriggerElementFromLoadingElementArray to remove
+                    // Example: once your function has executed,
+                    //  call removeTriggerElementFromLoadingElementArray to remove
                     // loading animation
                     setTimeout(function() {
                         removeTriggerElementFromLoadingElementArray(element_id);
                     }, 3000);
                 }.bind(this)
             );
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////
         }
         subComponentLoadedCallBack(component) {
             super.subComponentLoadedCallBack(component);
@@ -138,39 +140,42 @@ Let's now send the input to the server and get a response
 
 ```javascript
 // n3CEV_button Related functionality
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 getComponentElementById(this, "n3CEV_btn").on(
     "click",
     function() {
-        // Add the trigger element to the loading element array. This shows a loading animation on the trigger
+        // Add the trigger element to the loading element array.
+        // This shows a loading animation on the trigger
         // element while it waits for a response or function return
         let element_id = addTriggerElementToLoadingElementArray(
             $(this).attr("id"),
             "Nice Loading text"
         );
-        // Example: once your function has executed, call removeTriggerElementFromLoadingElementArray to remove
+        // Example: once your function has executed, call
+        // removeTriggerElementFromLoadingElementArray to remove
         // loading animation
         setTimeout(function() {
             removeTriggerElementFromLoadingElementArray(element_id);
         }, 3000);
     }.bind(this)
 );
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 ```
 
 -   Let's change the click handler function to achieve our goal:
 
 ```javascript
 // n3CEV_button Related functionality
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 getComponentElementById(this, "n3CEV_btn").on(
     "click",
     function() {
         dxRequestInternal(
             // Divblox's wrapper function for doing a POST request to the server
-            getComponentControllerPath(this), // Get's the path on the server where this component's .php file resides
+            // Get's the path on the server where this component's .php file resides
+            getComponentControllerPath(this),
             {
-                f: "checkEmailAddress", // Indicates the function that the .php file should execute
+                f: "checkEmailAddress", // Indicates the function that .php file should execute
                 email_address: getComponentElementById(
                     this,
                     "baNsD_FormControlInput"
@@ -189,7 +194,8 @@ getComponentElementById(this, "n3CEV_btn").on(
                 );
             }.bind(this),
             function(data_obj) {
-                // The function that is called when the server does NOT provide a "Success" response
+                // The function that is called when the server
+                // does NOT provide a "Success" response
                 showAlert(
                     "Oh no! The server responded with: " + data_obj.Message,
                     "error",
@@ -200,7 +206,7 @@ getComponentElementById(this, "n3CEV_btn").on(
         );
     }.bind(this)
 );
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 ```
 
 <video id="HelloWorldStep4" muted="" playsinline="" preload="auto" autoplay>
@@ -827,8 +833,10 @@ abstract class Email_Settings extends EmailSettings_Framework {
   public static $SMTPUsername = 'user.divblox@gmail.com';
   public static $SMTPPassword = 'secret_password';
   public static $SMTPPort = 587;
-  public static $SMTPDebugMode = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER; // To disable verbose debug output, use DEBUG_OFF
-  public static $SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS; //Enable TLS Encryption; also accepts 'ENCRYPTION_STARTSMTPS'
+  // To disable verbose debug output, use DEBUG_OFF
+  public static $SMTPDebugMode = \PHPMailer\PHPMailer\SMTP::DEBUG_SERVER;
+  // Enable TLS Encryption; also accepts 'ENCRYPTION_STARTSMTPS'
+  public static $SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
   public static $SMTPForceSecurityProtocol = true;
   public static $SMTPAUtoTLS = false;
 }
@@ -855,18 +863,20 @@ We are now ready to use the `EmailManager` class to prepare and send emails.
 6. Send your email with `EmailManager::sendEmail($ErrorInfo);`. `$ErrorInfo` is a variable that is passed by reference and will result in an array that is populated with any additional information regarding the success or failure of the function.
 
 ```php
-//Step 1: Prepare the email
+// Step 1: Prepare the email
 EmailManager::prepareEmail("Test Subject", "A test message");
-//Step 2: Add recipient/s
+// Step 2: Add recipient/s
 EmailManager::addRecipientAddress("recipient.address@gmail.com", "Recipient Name");
-//Step 3-5: (Optional) Add CC/BCC addresses and/or attachments
-//EmailManager::addCCAddress("recipient.address@gmail.com");
-//EmailManager::addBCCAddress("recipient.address@gmail.com");
-//EmailManager::addAttachment("file_path_from_root", "file_name_to_display");
-//Step 6: Send the email
+// Step 3-5: (Optional) Add CC/BCC addresses and/or attachments
+// EmailManager::addCCAddress("recipient.address@gmail.com");
+// EmailManager::addBCCAddress("recipient.address@gmail.com");
+// EmailManager::addAttachment("file_path_from_root", "file_name_to_display");
+// Step 6: Send the email
 if (EmailManager::sendEmail($ErrorInfo)) {
-    //This means the email was successfully sent, additional info can be found in the array $ErrorInfo
+    // This means the email was successfully sent,
+    // additional info can be found in the array $ErrorInfo
 } else {
-    //This means the email was NOT successfully sent, additional info can be found in the array $ErrorInfo
+    //This means the email was NOT successfully sent,
+    // additional info can be found in the array $ErrorInfo
 }
 ```

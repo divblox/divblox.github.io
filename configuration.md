@@ -223,8 +223,10 @@ public static function getComponentAccess($AccountId = -1, $ComponentName = '') 
             return true;
         }
         // THIS LINE SHOULD BE REMOVED
-        return true; // TODO: This is a temporary measure to allow you to get started quickly without restrictions.
-        // Remove this and implement correctly for your solution. NB! THIS GIVES ACCESS TO ALL COMPONENTS TO ANY USER!!!
+        return true;
+        // TODO: This is a temporary measure to allow you to get
+        // started quickly without restrictions. Remove this and implement correctly
+        // for your solution. NB! THIS GIVES ACCESS TO ALL COMPONENTS TO ANY USER!!!
 ...
 ```
 
@@ -265,7 +267,6 @@ Once the upload is complete you can view:
 </p>
 
 <!-- tabs:end -->
-
 
 # Updates
 
