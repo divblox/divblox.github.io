@@ -1,7 +1,7 @@
 # Basic Training Exercise
 
 This exercise assumes that you have managed to configure your Divblox project and that you understand the basic concepts.
-If you are not sure that you do understand the basics, first try the [Hello World](hello-world.md) exercise.
+If you are not sure that you do understand the basics, you can look at the [common examples](common-examples.md) and perhaps first try the 'Hello World' exercise.
 
 > In this exercise we will go into a bit more detail about the main Divblox concepts that are used in every project.
 > These concepts include:

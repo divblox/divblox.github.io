@@ -6,7 +6,10 @@
     <!-- -   [**Native Support**](native-support.md) -->
 -   [**The Basics**](the-basics.md)
 -   [**Divblox Best Practices**](divblox-best-practices.md)
--   [**Examples**](examples.md)
 -   [**Basic Training Exercise**](basic-training-exercise.md)
+-   [**Basic Training Evaluation**](basic-training-evaluation.md)
+-   [**Advanced Training Exercise**](advanced-training-exercise.md)
+-   [**Advanced Training Evaluation**](advanced-training-evaluation.md)
+-   [**Common Examples**](common-examples.md)
+-   [**Deployment**](deployment.md)
 -   [**Troubleshooting**](troubleshooting.md)
--   [**Linux Deployment**](linux-deployment.md)
