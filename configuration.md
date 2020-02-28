@@ -94,13 +94,13 @@ This will allow you to collect feature requests and bug reports for your pages. 
 
 ---
 
-# Global Functions
+## Global Functions
 
 This set of files represents all the functions (set up into classes) that need to be available globally in your project. It is split up into 5 main files, as seen in the screenshot below. This includes both front-end javascript files as well as back-end php files. As mentioned before, whatever is edited in the project folder will override default Divblox functionality. The bulk of your project code will be either in these files, or in component-specific files.
 
 ![GlobalFunctions](_config-media/globalfunctions1.png)
 
-## Divblox.js
+### Divblox.js
 
 !>Divblox.js is located at /Divblox/assets/js/Divblox.js
 
@@ -158,14 +158,14 @@ showToast(
 
 !>Divblox.js should not be modified since the framework relies on its integrity. The developer should rather use [project.js](project-js.md) to override specific functions as required
 
-## Project.js
+### Project.js
 
 !>project.js is located at /project/assets/js/project.js
 
 project.js is where the developer can add variables and functions that should always be globally available. It is a core dependency for Divblox and is always loaded directly after Divblox.js.
 This means that it can also be used to override specific Divblox.js functions as required.
 
-## Divblox global request handler
+### Divblox global request handler
 
 !>The global request handler is located at /project/assets/php/global_request_handler.php
 
@@ -191,7 +191,7 @@ dxRequestInternal(
 );
 ```
 
-## Project Functions
+### Project Functions
 
 !>ProjectFunctions is an abstract class that is located at /project/assets/php/project_functions.php
 
@@ -203,7 +203,7 @@ This means that you can call the following from any php script the requires Divb
     ProjectFunctions::myFunction();
 ```
 
-## Project Classes
+### Project Classes
 
 !>project_classes.php is a collection of globally available php classes and is located at /project/assets/php/project_classes.php.
 You can add any custom classes to the project_classes.php script to make them globally available.
@@ -234,7 +234,7 @@ public static function getComponentAccess($AccountId = -1, $ComponentName = '') 
 -   **FileUploader**, which deals with storing files as data objects once they are uploaded to the server
 -   **PublicApi**, which extends PublicApi_Base and provides the outline for how to expose a Divblox api via an endpoint
 
-# Media Library
+## Media Library
 
 This is a visual tool to help with importing media for those who prefer a 'drag and drop' approach.
 
@@ -268,7 +268,7 @@ Once the upload is complete you can view:
 
 <!-- tabs:end -->
 
-# Updates
+## Updates
 
 When Divblox updates become available, you will be notified in the bottom right corner of the setup page.
 

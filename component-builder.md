@@ -2,7 +2,7 @@
 
 Virtually everything in Divblox is a component. Components are used as the building blocks for your project. You can create any type of component for your specific requirement, from a basic image viewer to a full blown page that is made up of multiple individual components. There are templates for navigation bars, page setups, CRUD functionality and more. Each component can be modified and reused as required, dynamically across your whole project.
 
-# Component Types
+## Component Types
 
 > Divblox allows you to create any of the following types of components:
 
@@ -10,7 +10,7 @@ Virtually everything in Divblox is a component. Components are used as the build
 -   Custom components
 -   Basic components
 
-## Data model components
+### Data model components
 
 Data model components allow for the CRUD behaviour of any of your data model entities. Divblox can generate the following CRUD components from your data model:
 
@@ -38,7 +38,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
 
 ![Data List Component](_media/_screenshots/component-example-data-list.png)
 
-## Custom components
+### Custom components
 
 Custom components allow you to create any specific type of functionality for your app.
 Create anything from an image viewer or an html editor, to file uploaders and charting tools. Divblox ships standard with the following custom components:
@@ -53,14 +53,14 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
     -   Native versions of file and image upload, including native camera access
     -   A basic image viewer
 
-## Basic components
+### Basic components
 
 Basic components are typically components that do not necessarily have a server-side requirement.
 These can range from simple alerts and buttons, to modals and progress bars.
 
 > Divblox ships standard with the majority of [bootstrap's](https://getbootstrap.com/docs/4.3/components/alerts/) UI components
 
-# Component DNA
+## Component DNA
 
 Components are typically made up of the following parts:
 
@@ -72,7 +72,7 @@ Components are typically made up of the following parts:
 
 !> The exception here is **basic components**. These types of components usually reside within existing components to provide additional specialized functionality.
 
-## Component HTML
+### Component HTML
 
 The component's HTML file describes the component's layout.
 The basic structure of any component's HTML follows the following pattern:
@@ -100,11 +100,11 @@ The basic structure of any component's HTML follows the following pattern:
 </div>
 ```
 
-## Component CSS
+### Component CSS
 
 The component's CSS file provides any special styling that is required by the component. By default this is empty
 
-## Component Javascript
+### Component Javascript
 
 The component's Javascript file controls the component's behaviour. The basic structure of any component's Javascript follows the following pattern:
 
@@ -129,7 +129,7 @@ As seen above, this class `ungrouped_demo_component` extends the `DivbloxDomBase
 -   Component & Subcomponent resets
 -   Event handling and propagation
 
-## Component Php
+### Component Php
 
 The component's Php file handles server-side requests for the component.
 The basic structure of any component's Php follows the following pattern:
@@ -170,11 +170,11 @@ class DemoComponentController extends ProjectComponentController {
 $ComponentObj = new DemoComponentController("demo_component");
 ```
 
-## Component JSON
+### Component JSON
 
 The component's JSON file is used for component configuration. By default this is empty.
 
-# How components work
+## How components work
 
 Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
 
@@ -184,7 +184,7 @@ Every Divblox component follows a certain recipe. The extremely high-level view 
 
 Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality (as discussed in [Component DNA](#Component-DNA)).
 
-# How a Divblox application loads up
+## How a Divblox application loads up
 
 It is also quite important to be acquainted with how the Divblox app actually runs. Below is a screenshot of `index.html`, the first script to be run. Walking through the loaded dependencies:
 
@@ -200,9 +200,9 @@ It is also quite important to be acquainted with how the Divblox app actually ru
 
 ![index.html](_media/components-index-html.png)
 
-Once all of the dependencies are loaded, the `on_divblox_ready` function is called, preparing and processing page inputs. Then the `initDx()` function is called.
+Once all of the dependencies are loaded, the `on_divblox_ready` function is called, preparing and processing page inputs. Then the `initDx()` function is called. This function checks if the app is native or not, and then calls `loadDependencies();`.
 
-# Component Builder
+## Component Builder
 
 The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
 ![Main Component Builder Page](_media/_screenshots/component-builder-overview.png)
@@ -213,13 +213,13 @@ The Divblox component builder allows you to create and manage your project’s c
 -   Open an existing component in order to work on it
 -   Create a new component, either from an existing one or from scratch
 
-## Creating a new component
+### Creating a new component
 
 Clicking the + Component button brings up the following modal:
 ![Component Builder - New Component](_media/_screenshots/component-builder-new-component.png)
 Here you can give your new component a name and select the type of component you want to create.
 
-### Creating a data model component
+#### Creating a data model component
 
 Selecting a [Data Model Component](#data-model-components) will provide you with the options to select the entity for which you want to generate, as well as the type of data model component to create:
 ![Component Builder - New Data Model Component Select Entity](_media/_screenshots/component-builder-new-datamodel-component-entity-select.png)
@@ -232,21 +232,21 @@ The example below shows a typical configuration modal for a "CREATE" type of com
 The example below shows a typical configuration modal for a "DATA TABLE" type of component, which allows you to configure which attributes to display in the table:
 ![Component Builder - New Data Model Component Data Table Config](_media/_screenshots/component-builder-new-datamodel-component-data-table-config.png)
 
-### Creating from an existing component
+#### Creating from an existing component
 
 You can easily copy the functionality from an existing component be selecting the "**From Existing Component**" option. This will allow you to specialize the functionality of that component for your needs.
 ![Component Builder - From Existing](_media/_screenshots/component-builder-from-existing.png)
 
 !>Notice the "Grouping" field above. This field allows you to group certain components together in folders for a better organized project.
 
-### Creating a custom component
+#### Creating a custom component
 
 You can also create a custom component by selecting the "**Custom Component**" option. This simply allows you to provide a name and grouping for your component.
 ![Component Builder - Custom Component](_media/_screenshots/component-builder-custom.png)
 
 !>Custom components **ALWAYS** start out as blank components
 
-## Visual Builder Interface
+### Visual Builder Interface
 
 The component builder visual interface allows you to create any type of layout that you might require.
 Using Bootstrap's grid system, it allows you to place the following containing elements on the screen to begin with:
@@ -261,7 +261,7 @@ Using Bootstrap's grid system, it allows you to place the following containing e
 
 ![Component Builder - Containing Elements](_media/_screenshots/component-builder-containing-elements.png)
 
-### Adding a sub component
+#### Adding a sub component
 
 You can add a component as a sub component to the current page (which in itself is a component). See below:
 
@@ -278,7 +278,7 @@ You can add a component as a sub component to the current page (which in itself 
 <i class="fa fa-expand"></i>
 </button>
 
-### Adding a basic component
+#### Adding a basic component
 
 You can add a basic component to the current component. See below:
 
@@ -295,7 +295,7 @@ You can add a basic component to the current component. See below:
 <i class="fa fa-expand"></i>
 </button>
 
-### Adding custom html
+#### Adding custom html
 
 You can add custom html to the current component. See below:
 
@@ -312,7 +312,7 @@ You can add custom html to the current component. See below:
 <i class="fa fa-expand"></i>
 </button>
 
-### Modify a component
+#### Modify a component
 
 The builder interface allows you to modify your component in the browser at any time. See below:
 

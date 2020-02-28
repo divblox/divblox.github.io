@@ -1,11 +1,12 @@
 -   [**Getting Started**](getting-started.md)
--   [**Configuration**](configuration.md)
--   [**Data Modeler**](data-modeler.md)
--   [**Divblox Components**](component-builder.md)
--   [**Extending with API's**](divblox-apis.md)
--   [**Native Support**](native-support.md)
+    <!-- -   [**Configuration**](configuration.md) -->
+    <!-- -   [**Data Modeler**](data-modeler.md) -->
+    <!-- -   [**Divblox Components**](component-builder.md) -->
+    <!-- -   [**Extending with API's**](divblox-apis.md) -->
+    <!-- -   [**Native Support**](native-support.md) -->
+-   [**The Basics**](the-basics.md)
+-   [**Divblox Best Practices**](divblox-best-practices.md)
 -   [**Examples**](examples.md)
--   [**Divblox Best Practices**](best-practices.md)
 -   [**Basic Training Exercise**](basic-training-exercise.md)
 -   [**Troubleshooting**](troubleshooting.md)
 -   [**Linux Deployment**](linux-deployment.md)
