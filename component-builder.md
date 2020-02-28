@@ -2,16 +2,6 @@
 
 Virtually everything in Divblox is a component. Components are used as the building blocks for your project. You can create any type of component for your specific requirement, from a basic image viewer to a full blown page that is made up of multiple individual components. There are templates for navigation bars, page setups, CRUD functionality and more. Each component can be modified and reused as required, dynamically across your whole project.
 
-# How components work
-
-Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
-
-<p align="center">
-    <img src="_media/divblox_fundamental.png"style="max-height: 400px">
-</p>
-
-Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality. More on this later in the [component DNA section](#component-dna).
-
 # Component Types
 
 > Divblox allows you to create any of the following types of components:
@@ -182,7 +172,35 @@ $ComponentObj = new DemoComponentController("demo_component");
 
 ## Component JSON
 
-The component's JSON file is used for component configuration. By default this is empty
+The component's JSON file is used for component configuration. By default this is empty.
+
+# How components work
+
+Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
+
+<p align="center">
+    <img src="_media/divblox_fundamental.png"style="max-height: 400px">
+</p>
+
+Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality (as discussed in [Component DNA](#Component-DNA)).
+
+# How a Divblox application loads up
+
+It is also quite important to be acquainted with how the Divblox app actually runs. Below is a screenshot of `index.html`, the first script to be run. Walking through the loaded dependencies:
+
+1. CSS
+    - Bootstrap 4
+    - Font-Awesome
+    - project.css
+    - themes.css
+    - variety of icons and splash images
+2. JavaScript
+    - JQuery
+    - divblox.js
+
+![index.html](_media/components-index-html.png)
+
+Once all of the dependencies are loaded, the `on_divblox_ready` function is called, preparing and processing page inputs. Then the `initDx()` function is called.
 
 # Component Builder
 
