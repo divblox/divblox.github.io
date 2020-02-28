@@ -81,8 +81,7 @@ Creating a new sandbox is easy:
 <p align="center">
 <p align="left">
     <ul> 
-        <li> Start by creating your project at <a href="(https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
-        [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login)
+        <li> Start by creating your project at <a href="https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
     </ul>
     <img  src="_media/_screenshots/sandbox-step1.png" style="max-height: 350px">
 </p>
@@ -114,7 +113,7 @@ Creating a new sandbox is easy:
 Sandboxes are great for prototyping and even to deploy small projects, but if you are serious about your project,
 at some point you will need to download your sandbox progress and continue on a local development environment.
 
-To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](configuration?id=divblox-api-key) configured.
+To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](the-basics?id=divblox-api-key) configured.
 From here you can click on the "Sandboxes" setup block to download your sandbox or deploy your local changes to your sandbox.
 
 ![Sandbox Step 4](_media/_screenshots/sandbox-step4.png)
@@ -185,7 +184,7 @@ It contains information such as:
 
 After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's _Free_ Divblox API key.
 
-1. To generate your new API see [Divblox API key](configuration?id=divblox-api-key).
+1. To generate your new API see [Divblox API key](the-basics?id=divblox-api-key).
 
 2. Open the "local starter project" from the link located under "Quick Start links" on the welcome Page.
 
@@ -216,7 +215,7 @@ After you have familiarised yourself with the introduction page, the first thing
     - Download here: https://www.ioncube.com/loaders.php
     - Don't worry if you have some trouble installing this. The [Installation checker](#installation-checker) will guide you through this process a bit later on as well.
 
-3. For an example of how to do this with Ubuntu 18.04, click [here](linux-deployment?id=Install-Ubuntu-18.04-image)
+3. For an example of how to do this with Ubuntu 18.04, click [here](deployment?id=Install-Ubuntu-18.04-image)
 
 ### Download Divblox
 
@@ -236,4 +235,4 @@ The main checks performed are listed below:
 -   Checks for mariadb >= 10.3 or mysql >= 5.7
 -   Checks your IonCube loader is installed. [Learn why IonCube is required](#prerequisites) in the prerequisites section
 
-!> The installation checker might fail if your [environments](#environments) have not yet been configured properly
+!> The installation checker might fail if your [environments](the-basics.md?id=environments) have not yet been configured properly

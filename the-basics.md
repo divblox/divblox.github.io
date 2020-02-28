@@ -156,7 +156,7 @@ showToast(
 // Allows for presenting a Bootstrap toast type message on the screen
 ```
 
-!>Divblox.js should not be modified since the framework relies on its integrity. The developer should rather use [project.js](project-js.md) to override specific functions as required
+!>Divblox.js should not be modified since the framework relies on its integrity. The developer should rather use `project.js` to override specific functions as required
 
 #### Project.js
 
@@ -374,7 +374,7 @@ At its core, any dxQ query will return a collection of objects of the same type 
 
 > The next few examples will examine all three major constructs (dxQ Node, dxQ Condition and dxQ Clause) in greater detail.
 
-#### Basic Example:
+#### Basic Example
 
 ```php
 // Retrieve a single Task from the database
@@ -717,11 +717,67 @@ Every Divblox component follows a certain recipe. The extremely high-level view 
     <img src="_media/divblox_fundamental.png"style="max-height: 400px">
 </p>
 
-Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality (as discussed in [Component DNA](#Component-DNA)).
+!> Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality (as discussed in [Component DNA](#Component-DNA)).
 
-## How a Divblox application loads up
+To make a call from the component JavaScript (front-end) to the component php (back-end) we will make use of the global function `dxRequestInternal();`. This is the default function to send a request to the server from the Divblox front-end and automatically takes care of some additional heavy lifting:
 
-It is also quite important to be acquainted with how the Divblox app actually runs. Below is a screenshot of `index.html`, the first script to be run. Walking through the loaded dependencies:
+-   It determines the current state of the connection to the server in order to either queue, deny or process the request
+-   Automatically disables the DOM node that triggered the request while the request is being processed
+-   Manages sending and receiving the authentication token that identifies the current session
+-   Ensures that the result that is returned will always be a valid JSON object
+-   Executes a success or failure callback function based on the result received from the server
+
+```js
+// dxRequestInternal() is the global function used to communicate
+// from the component's JavaScript to its back-end php component
+dxRequestInternal(
+    // The first parameter tells the function where to send the request
+    // getComponentControllerPath(this) returns the path to current component's php script
+    getComponentControllerPath(this),
+    // Tell component.php which function to execute
+    { f: "ourFunctionName" },
+    function(data_obj) {
+        // Success function. data_obj is a JSON object
+    }.bind(this),
+    function(data_obj) {
+        // Fail function. data_obj is a JSON object
+    }.bind(this)
+);
+```
+
+Our component.php script extends the class `ProjectComponentController` which takes care of the heavy-lifting with regards to processing the request on the server side:
+
+-   Processes all the input received from the request
+-   Receives, evaluates and renews the authentication token that identifies the current session
+-   Checks whether the current request is allowed to be performed
+-   Executes the function specified by the input variable `f` ("ourFunctionName")
+-   Deals with, and formats the returned data
+
+```php
+// The function on our component controller that will be executed.
+// This function is executed when we pass "ourFunctionName" as
+// the value for "f" from our component JavaScript
+public function ourFunctionName() {
+    // setReturnValue() sets the values in an array that will be returned as JSON
+    // when the script completes. We always need to set the value for "Result" to either
+    // "Success" or "Failed" in order for the component JavaScript to know
+    // how to treat the response
+    $this->setReturnValue("Result","Success");
+    // It is always a good idea to populate a "Message" for the front-end
+    $this->setReturnValue("Message", "Some message about your result");
+    // Here we set the value of any additional parameters to return
+    $this->setReturnValue("SomeKey", "SomeValue");
+    // "presentOutput()" returns our array as JSON and stops any
+    // further execution of the current php script
+    $this->presentOutput();
+}
+```
+
+## How Divblox loads a page
+
+Remember, a page in Divblox is also a component and can be loaded into view just like any other component using the `loadComponent();` function. However, the loading of the current page component forms part of the way that Divblox is initialized in our `index.html` file. Below, we will have a look at what this initialization flow looks like.
+
+When you navigate to your project root folder, the default `index.html` file ([project_root]/index.html) is loaded by the webserver. This file loads the initial CSS and JavaScript for Divblox:
 
 1. CSS
     - Bootstrap 4
@@ -733,13 +789,23 @@ It is also quite important to be acquainted with how the Divblox app actually ru
     - JQuery
     - divblox.js
 
-![index.html](_media/components-index-html.png)
+To kick off Divblox's initialization workflow, the function `initDx();` from divblox.js is called. This function starts the following chain of events:
 
-Once all of the dependencies are loaded, the `on_divblox_ready` function is called, preparing and processing page inputs. Then the `initDx()` function is called. This function checks if the app is native or not, and then calls `loadDependencies();`.
+-   Checks whether we are in native mode or not
+-   It then loads all necessary dependencies via the function `loadDependencies();`
+-   Then the function `checkFrameworkReady();` is called:
+    -   Check config parameters such as debug mode and SPA mode and act on them
+    -   If not in native, register eventhandlers for the progressive web app to be installed
+    -   Also register eventhandlers for online and offline states of our app
+-   The function `on_divblox_ready();` is called:
+    -   Check if it needs to prepare page inputs - based on input parameters in the URL
+    -   If we are not in native mode, SPA mode and all pages are prepared, then the page will be processed.
+    -   The minimum needed for this is a `?view=[page_name]` parameter in the URL
+-   Divblox will then load up the page in the body of `index.html` with the relevant page component
 
 ## Component Builder
 
-The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs
+The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs.
 ![Main Component Builder Page](_media/_screenshots/component-builder-overview.png)
 
 > From the default component builder page you can do the following:

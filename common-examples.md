@@ -13,7 +13,7 @@ Now that we have Divblox configured and we understand the basic concepts, let's 
 Let's create a new component that will serve as our app's page.
 
 -   Login to the Divblox setup page at /Divblox in your project's folder on localhost.
-    For example: http://localhost/my-app/Divblox or http://localhost/Divblox (if you project is in the webserver's root path)
+    For example: http://localhost/my-app/divblox or http://localhost/divblox (if you project is in the webserver's root path)
 -   Open the Component Builder and create a new custom component called "hello world". This component should be placed in the grouping "pages" in order to be used as a page.
 
 <video id="HelloWorldStep1" muted="" playsinline="" preload="auto" autoplay>
@@ -532,7 +532,7 @@ Demonstration:
 
 The sidebar is a more recent variation of the Navigation bar, and is considered by some to be the primary navigation bar to use for building Divblox applications. The Sidebar is an excellent component for designing both desktop and mobile applications, as the "page width" is no longer a required consideration. The general purpose is to place page shortcuts inside of it as a way of moving to a desired page without getting in the way of any other navigation bars. Alternatively it can be utilized as a tool bar with different buttons to interact with components or initiate operations on the page.
 
-The sidebar is more often than not placed on the left of the page, as to not interfere with the scroll bar, and filled with a list of items (See [Adding items to the navigation bar](#Adding-items-to-the-navigation-bar)). For desktop applications the side bar can permanently sit adjacent to the main page while for mobile applications it can be retracted, and then expanded, to maximize the screen real estate available.
+The sidebar is more often than not placed on the left of the page, as to not interfere with the scroll bar, and filled with a list of items (See [Adding items to the navigation bar](#Adding-items-to-the-navigation-bar). For desktop applications the side bar can permanently sit adjacent to the main page while for mobile applications it can be retracted, and then expanded, to maximize the screen real estate available.
 
 ### Bottom navigation bar
 
@@ -800,17 +800,15 @@ This example will focus on placing the user profile image on any page.
   <img  src=_media/_screenshots/example-adding-profilePic3.png>
 </p>
 
-```JavaScript
-
+```js
 subComponentLoadedCallBack(component) {
-
-			super.subComponentLoadedCallBack(component);
-			if (component.getUid() === "[Place_Your_Uid_Here]"){
-                getCurrentUserAttribute("ProfilePicturePath", function(logo_path){
-                    component.updateImage(logo_path);
-                })
-			}
-		}
+  super.subComponentLoadedCallBack(component);
+  if (component.getUid() === "[Place_Your_Uid_Here]") {
+    getCurrentUserAttribute("ProfilePicturePath", function(logo_path) {
+      component.updateImage(logo_path);
+    })
+  }
+}
 
 ```
 
