@@ -847,7 +847,7 @@ abstract class Email_Settings extends EmailSettings_Framework {
 The chain of inheritance is as follows:
 
 <p align="left">
-  <img  src=_email-media/EmailClassExtensions.png>
+  <img  src=_email-media/email_class_extensions.png>
 </p>
 
 For some email servers such as Gmail, security protocols are expected. For the above Gmail example, TLS is mandatory and hence we can either set `$SMTPAutoTLS = true;` which will always set the security protocol to TLS, or we can define which protocol to use,
