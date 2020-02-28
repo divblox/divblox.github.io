@@ -1,3 +1,4 @@
+# Best Practices
 
 Divblox is a unique tool for web development as opposed to more traditional software development tools. As a result a few "good practices" have emerged. These came about to ensure consistency across your application, increase development productivity and maximize the functionality that Divblox provides.
 

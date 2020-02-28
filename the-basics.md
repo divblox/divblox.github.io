@@ -1,3 +1,5 @@
+# The Basics
+
 ## Configuration
 
 We need to talk about installation cleaner, export to native, UI config, global functions , media library.

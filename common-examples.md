@@ -1,3 +1,5 @@
+# Common Examples
+
 ## Hello World
 
 Now that we have Divblox configured and we understand the basic concepts, let's create a single-page "Hello World" app.
