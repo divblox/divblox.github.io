@@ -40,7 +40,7 @@ When you start up Divblox for the first time, it will automatically generate the
     2. Then log in and, on the dashboard, click "+ Project" to create a new project. This will automatically generate your Api key.
     3. Save your project and copy your Api key into your project configuration.
 
--   If you have any trouble creating your project and getting a key, please [contact us](https://Divblox.com/#contact) (support@Divblox.com) to request your _FREE_ Api key
+-   If you have any trouble creating your project and getting a key, please [contact us](https://Divblox.com/#contact) (support@divblox.com) to request your _FREE_ Api key
 
 ![Divblox Api Key](_media/_screenshots/setup-configure-api-key.png)
 
