@@ -33,7 +33,7 @@ Below is a visualization of how to spin up a sandbox.
 
 <div class="dev-approach-step" style="background:#f7f7f7;">
 
-![Sign in](_media/1_basecamp.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">1.</span> Sign in to [basecamp.Divblox.com](https://basecamp.Divblox.com/?view=login) <br>
+![Sign in](_media/1_basecamp.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">1.</span> Sign in to [basecamp.divblox.com](https://basecamp.Divblox.com/?view=login) <br>
 
 </div>
 <i class="fa fa-arrow-down"></i>
