@@ -1,6 +1,6 @@
 ## Configuration
 
-We need to talk about installation cleaner, export to native, UI config, global functions , media library.
+We need to talk about installation checker, export to native, UI config, global functions, media library.
 
 Next we will take you through interface of Divblox's setup and what each part entails. Below is a screenshot of what you should expect upon loading into the Divblox environment. We will first discuss the sections which have more to do with configuration of your Divblox application.
 

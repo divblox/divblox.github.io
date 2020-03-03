@@ -483,20 +483,19 @@ Then we give recursive ownership of `/var/www/html` to 'www-data'.
 sudo chown -R www-data /var/www/html
 ```
 
-We then set the permissions of the `/var/www/html` folder recursively to give read, write and execute permissions to both the group and owner of `/var/www/html`. This is necessary as we need to have the permission to edit files from a local editor, as well as let Divblox autogenerate files from the web server.
+We then set the permissions of the `/var/www/html` folder recursively to give read, write and execute permissions to the group of `/var/www/html`. This is necessary as we need to have the permission to edit files from a local editor, as well as let Divblox auto-generate files from the web server.
 
 ```
 sudo chmod -R 2770 /var/www/html
+sudo chmod -R g+rwxs /var/www/html
 ```
 
-[Full commands that work now]
-
-```
+<!-- ```
 sudo chown -R www-data /var/www/html/divblox-master
 sudo chgrp -R www-data /var/www/html/divblox-master
 sudo chmod -R 2770 /var/www/html/divblox-master
-sudo chmod -R g+rwxs /var/www/html/divblox-master
-```
+sudo chmod -R g+rwxs /var/www/html
+``` -->
 
 ### Download and configure Divblox
 
