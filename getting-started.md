@@ -219,11 +219,11 @@ After you have familiarised yourself with the introduction page, the first thing
 
 ### Download Divblox
 
--   You can download or fork the Divblox public repo on github here: https://github.com/Divblox/Divblox
+-   You can download or fork the Divblox public repo on github here: https://github.com/divblox/divblox
 -   Add the downloaded content to your apache "public_html" or "www" folder
 -   Ensure that your web server is running and navigate to http://localhost/ or http://localhost/[your-project-folder] (if you placed Divblox within a sub folder)
 -   Divblox will check your installation and, if needed, provide further guidelines on how to finish the installation
--   To open the Divblox setup page, browse to http://localhost/Divblox or http://localhost/[your-project-folder]/Divblox, depending on your installation
+-   To open the Divblox setup page, browse to http://localhost/divblox or http://localhost/[your-project-folder]/divblox, depending on your installation
 -   Open the installation checker to ensure that all systems indicate an OK status. Once the installation checker indicates all is OK, you are ready to build with Divblox
 
 ### Installation checker
