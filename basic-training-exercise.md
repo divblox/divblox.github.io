@@ -18,7 +18,7 @@ In this training exercise, we will be creating a basic ticketing system that wil
 
 Additionally, we will create the following components:
 
--   A page where full CRUD of tickets and statuses is done
+-   A page where full CRUD of tickets and categories is done
 -   A page where we reuse the CREATE component for a ticket to allow the user to create tickets in a simple way
 
 We will also be building some custom functionality to demonstrate how to communicate between the front-end and back-end of a Divblox application.
@@ -29,8 +29,8 @@ Finally, we will also learn how to secure our components and data model entities
 
 We will be creating a data model with the following entities and attributes:
 
--   **Ticket**: TicketName, TicketDescription, DueDate, TicketUniqueId
--   **TicketStatus**: StatusLabel
+-   **Ticket**: TicketName, TicketDescription, TicketDueDate, TicketUniqueId, TicketStatus
+-   **Category**: CategoryLabel
 
 This can be represented as follows:
 
@@ -39,7 +39,7 @@ This can be represented as follows:
 If you need a refresh on Divblox data modelling, click [here](data-modeler.md). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
 
 <video id="TrainingExerciseStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-1-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep1')" type="button" class="video-control-button">
@@ -52,10 +52,10 @@ If you need a refresh on Divblox data modelling, click [here](data-modeler.md). 
 ### Step 2 - CRUD Components
 
 Now that our data model is created and synchronized with our database,
-let's generate some CRUD components (using the component builder) for Ticket and TicketStatus. Below is a walk-through of how to create full CRUD functionality for the ticket status entity.
+let's generate some CRUD components (using the component builder) for `Ticket` and `Category`. Below is a walk-through of how to create full CRUD functionality for the `Category` entity.
 
 <video id="TrainingExerciseStep2.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise2.1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-2-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.1')" type="button" class="video-control-button">
@@ -65,10 +65,10 @@ let's generate some CRUD components (using the component builder) for Ticket and
 <i class="fa fa-expand"></i>
 </button>
 
-> And now we will create the CRUD functionality for the ticket entity, which although more complex, is just as easy with Divblox.
+> And now we will create the CRUD functionality for the `Ticket` entity, which although more complex, is just as easy with Divblox.
 
 <video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise2.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-2-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
@@ -80,7 +80,7 @@ let's generate some CRUD components (using the component builder) for Ticket and
 
 > When checking the `Validate` checkbox, Divblox automatically notifies the user that input is required. Further validations can be added at a later stage.
 
-Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to only one instance of another entity. E.g. Each ticket can oonly be made by one account holder.
+Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to one and only one instance of another entity. E.g. Each ticket can only be made by one account holder.
 
 ![Singular relationship](/_basic-training-media/basic_training_exercise3.1.png)
 
@@ -98,7 +98,7 @@ The pages we will build for this exercise are:
 To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
 
 <video id="TrainingExerciseStep3.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise3.1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-3-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
@@ -111,7 +111,7 @@ To do this we will use a pre-made page template with a side navbar. As you will 
 Now we can create the 'Tickets' page where users can create tickets. Note that we are not creating any new functionality, just reusing the 'create' component previously generated and placing it on its own page.
 
 <video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise3.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-3-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
@@ -130,7 +130,7 @@ Ok, we now have components that allow us to create our data, as well as pages to
 3.  Add JavaScript to link it to the page in question
 
 <video id="TrainingExerciseStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise4.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-4-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
@@ -151,25 +151,7 @@ information about our ticket via an API. To generate this unique ID, we will mak
 
 ![FLowchart of frontend/backend communication](_basic-training-media/basic-training-exercise-step5.png)
 
-Before we even start, lets point out a flaw in our CRUD component design. The unique ticket ID was omitted from the 'create' component, which must change as we are trying to randomly generate it on a button press.
-
-This is a good time to discuss and show how easy it is to change or recreate CRUD functionality with Divblox. If you ever need to change what is displayed or what input is required, you can simply create new CRUD components with desired functionality, or delete and remake the component. If you name the new version the same as the old one, any pages where they were displayed previously will be smoothly updated with the new functionality.
-
-We demonstrate below how this is done via Divblox's web interface. The changes can also be done directly in the source code, which is quicker, and will be covered in more advanced examples.
-
-<video id="TrainingExerciseStep5.1" muted="" playsinline="" preload="auto" autoplay>
-
-  <source src="_basic-training-media/basic-training-exercise5.1.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('TrainingExerciseStep5.1')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('TrainingExerciseStep5.1')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
-
-#### Step 1
+#### Step 5.1 - Adding button
 
 Add the button in our `ticket_crud_create` component that will generate a unique ID and populate the input box. We can do this through the Divblox web interface or in the source code.
 
@@ -177,7 +159,7 @@ Below is a video running through step 1:
 
 <video id="TrainingExerciseStep5.2" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/basic-training-exercise5.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-5-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.2')" type="button" class="video-control-button">
@@ -187,11 +169,11 @@ Below is a video running through step 1:
 <i class="fa fa-expand"></i>
 </button>
 
-#### Step 2
+#### Step 5.2 - Create global function
 
 Create the global php function that will generate the unique ID in `project_functions.php`.
 
-#### Step 3
+#### Step 5.3 - Call global function
 
 Call the global function from `component.php`, sending information to the front end.
 
@@ -199,7 +181,7 @@ Below is a video running through step 2 and 3:
 
 <video id="TrainingExerciseStep5.3" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/basic-training-exercise5.3.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-5-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.3')" type="button" class="video-control-button">
@@ -212,7 +194,7 @@ Below is a video running through step 2 and 3:
 Here is the code added into the class ProjectFunctions, in `project/assets/php/project_functions.php`.
 
 ```php
-public static function getNewTaskUniqueId() {
+public static function getNewTicketUniqueId() {
         $CandidateStr = self::generateRandomString(24);
         $DoneBool = false;
         while(!$DoneBool) {
@@ -227,16 +209,15 @@ public static function getNewTaskUniqueId() {
         }
         return $CandidateStr;
     }
-
 ```
 
 And the code added into the `ticket_crud_create` component.php file:
 
 ```php
-// The function on our component controller that will return a new unique task ID for us.
+// The function on our component controller that will return a new unique ticket ID for us.
 // This function is executed when we pass "getNewTaskUniqueId" as
 // the value for "f" from our component JavaScript
-public function getNewTaskUniqueId() {
+public function getNewTicketUniqueId() {
         // setReturnValue() sets the values in an array that will be returned as JSON
         //when the script completes. We always need to set the value for "Result" to either
         // "Success" or "Failed" in order for the component JavaScript to know
@@ -245,14 +226,14 @@ public function getNewTaskUniqueId() {
         // It is always a good idea to populate a "Message" for the front-end
         $this->setReturnValue("Message", "New unique ID created");
         // Here we set the value of any additional parameters to return
-        $this->setReturnValue("TaskId", ProjectFunctions::getNewTaskUniqueId());
+        $this->setReturnValue("TicketId", ProjectFunctions::getNewTicketUniqueId());
         // "presentOutput()" returns our array as JSON and stops any
         // further execution of the current php script
         $this->presentOutput();
     }
 ```
 
-#### Step 4
+#### Step 5.4 - Add JavaScript
 
 Add the JavaScript functionality that autopopulates the input box with the newly generated unique ID in `component.js`.
 
@@ -260,7 +241,7 @@ Below is a video of step 4:
 
 <video id="TrainingExerciseStep5.4" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/basic-training-exercise5.4.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-5-3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.4')" type="button" class="video-control-button">
@@ -322,7 +303,7 @@ You can access the register page by navigating to `[your_project_root]/?view=reg
 !> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin (dxAdmin) most of the time in your application and this may cause confusion.
 
 <video id="TrainingExerciseStep6.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise6.1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-6-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6.1')" type="button" class="video-control-button">
@@ -334,10 +315,10 @@ You can access the register page by navigating to `[your_project_root]/?view=reg
 
 As you can see, our new user is unable to view any of the pages we built. This is because he does not have component access to the components on those pages. We will change that in the `ComponentRoleBasedAccessArray::$AccessArray`.
 
-In the below video we will firstly give our user full access to any `Ticket` and `TicketStatus` components. This will allow us to see how the _Data Model_ access works (we will observe this on our admin page). Once the _Data Model_ access is configured, we will then give our user access only to the `create` components of both `Ticket` and `TicketStatus`, allowing the user to view the _New Ticket_ page, but not the admin page.
+In the below video we will firstly give our user full access to any `Ticket` and `Category` components. This will allow us to see how the _Data Model_ access works (we will observe this on our admin page). Once the _Data Model_ access is configured, we will then give our user access only to the `create` components of both `Ticket` and `Category`, allowing the user to view the _New Ticket_ page, but not the admin page.
 
 <video id="TrainingExerciseStep6.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise6.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-6-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6.2')" type="button" class="video-control-button">
@@ -353,7 +334,7 @@ It is worth noting that this is a basic example to demonstrate how Divblox handl
 
 Now that we have all the groundwork completed, let's provide the world with an API endpoint that will allow us to do some custom functionality on our tickets. To do this, we will copy the provided `api_example` endpoint and modify it for our use case. The API functionality we want to achieve is as follows:
 
--   Allow a user to provide us with an array of unique task IDs as input
+-   Allow a user to provide us with an array of unique ticket IDs as input
 -   Select only the ticket descriptions from the tickets
 -   Merge all of the ticket descriptions into the first ticket (initial unique ID)
 -   Delete the remaining tickets
