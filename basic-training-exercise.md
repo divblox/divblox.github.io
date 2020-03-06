@@ -67,14 +67,14 @@ let's generate some CRUD components (using the component builder) for `Ticket` a
 
 > And now we will create the CRUD functionality for the `Ticket` entity, which although more complex, is just as easy with Divblox.
 
-<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
+<video id="TrainingExerciseStep2.2" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/bte-2-2.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
+<button onclick="replayVideo('TrainingExerciseStep2.2')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('TrainingExerciseStep2.2')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
@@ -373,7 +373,7 @@ Below we will briefly explore the `api_example` functionality, how to navigate t
 <i class="fa fa-expand"></i>
 </button>
 
-Now we will copy the `api_example.php` file as a template and write our own custom logic. Firstly, we add an API operation with function name `mergeTickets();`.
+To proceed, we will create a file `basic_training_exercise.php` in `project/api` and mimic the basic structure of an API endpoint like in `api_example.php`. Firstly, we add an API operation with function name`mergeTickets();`.
 
 In the `mergeTickets();` function we code the following logic:
 
@@ -387,17 +387,6 @@ In the `mergeTickets();` function we code the following logic:
     -   delete each ticket after its description is merged
 -   save the results into the database
 -   present output to front end
-
-<video id="TrainingExerciseStep7.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-7-2.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('TrainingExerciseStep7.2')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('TrainingExerciseStep7.2')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
 
 The code added into our 'basic_training_exercise.php' endpoint (`/project/api/basic_training_exercise.php`) is the following:
 
