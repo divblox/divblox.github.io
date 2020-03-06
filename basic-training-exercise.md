@@ -80,7 +80,7 @@ let's generate some CRUD components (using the component builder) for `Ticket` a
 
 > When checking the `Validate` checkbox, Divblox automatically notifies the user that input is required. Further validations can be added at a later stage.
 
-Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to one and only one instance of another entity. E.g. Each ticket can only be made by one account holder.
+Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to one, and only one, instance of another entity. E.g. Each ticket can only be linked to one account at any given time.
 
 ![Singular relationship](/_basic-training-media/basic_training_exercise3.1.png)
 
@@ -88,7 +88,10 @@ This logic also applies when using 'create' and 'update' functionality and using
 
 ### Step 3 - Page Components
 
-In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. Pages are also just components, but they can be navigated to by the user in the browser. The only distinction between other components and page components is that pages can be navigated to via the url or a navigation bar, while individual components can not.
+In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. 
+Pages are also just components, but they can be navigated to by the user in the browser, while individual components can not. 
+
+!>A component is considered a page component when it is located in the "pages" grouping  (the folder /project/components/pages/[component_name])
 
 The pages we will build for this exercise are:
 
@@ -235,7 +238,7 @@ public function getNewTicketUniqueId() {
 
 #### Step 5.4 - Add JavaScript
 
-Add the JavaScript functionality that autopopulates the input box with the newly generated unique ID in `component.js`.
+Add the JavaScript functionality that auto-populates the input box with the newly generated unique ID in `component.js`.
 
 Below is a video of step 4:
 
