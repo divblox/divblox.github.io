@@ -86,12 +86,25 @@ Notice that in both examples we did not tick the `Constrain To` checkbox. If you
 
 This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be to automatically link a ticket to the current user upon creation.
 
+You may want to change the display of certain attributes, in all of the components they feature. In our example, let's say we have a set predetermined list of ticket statuses the user should be able to chose from. This can be manually done in the `data_lists.json` and `entity_definitions.json` files. A walk-through of this is shown in the below video.
+
+<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/bte-2-3.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
 ### Step 3 - Page Components
 
-In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages. 
-Pages are also just components, but they can be navigated to by the user in the browser, while individual components can not. 
+In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages.
+Pages are also just components, but they can be navigated to by the user in the browser, while individual components can not.
 
-!>A component is considered a page component when it is located in the "pages" grouping  (the folder /project/components/pages/[component_name])
+!>A component is considered a page component when it is located in the "pages" grouping (the folder /project/components/pages/[component_name])
 
 The pages we will build for this exercise are:
 
