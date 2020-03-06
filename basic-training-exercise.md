@@ -373,7 +373,7 @@ In the `mergeTickets();` function we code the following logic:
 -   present output to front end
 
 <video id="TrainingExerciseStep7.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise7.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-7-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7.2')" type="button" class="video-control-button">
@@ -451,7 +451,7 @@ function mergeTickets() {
 Once we have defined our endpoint, we can test to see if everything works. Note that this specific API operation updates and deletes data in our database, we need to update the `Data Model` permissions so that 'any' users can 'update' and 'delete' (Recall that default permissions are only to 'create' and 'read'). Once this is done, our API operation should be set up and permissions for operations granted. We use Postman this time, as it makes it easier to input parameters and has a great user interface.
 
 <video id="TrainingExerciseStep7.3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise7.3.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-7-3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7.3')" type="button" class="video-control-button">
