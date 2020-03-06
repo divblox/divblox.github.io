@@ -5,7 +5,9 @@ You should only attempt this evaluation once you have worked through the followi
 -   [The Basics](the-basics.md)
 -   [Basic Training Exercise](basic-training-exercise.md)
 
-The exercise below is intended to evaluate whether you have an understanding of the basic concepts of Divblox. If you are able to build this exercise successfully, your skill-level will be considered "basic" and you will be ready to attempt the advanced training exercise. If you would like to have your exercise graded for certification, feel free to contact us [here](https://Divblox.com/#contact) to submit your work.
+The exercise below is intended to evaluate whether you have an understanding of the basic concepts of Divblox. If you are able to build this exercise successfully, your skill-level will be considered "basic" and you will be ready to attempt the advanced training exercise. 
+
+!> If you would like to have your exercise graded for certification, you can submit it to us at support@divblox.com. Please note, certification may carry a cost.
 
 **Exercise Brief - Build a simple personal expense tracker. You must be able to do the following:**
 

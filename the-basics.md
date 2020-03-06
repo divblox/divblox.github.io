@@ -1,3 +1,5 @@
+# The Basics
+
 ## Configuration
 
 We need to talk about installation checker, export to native, UI config, global functions, media library.
