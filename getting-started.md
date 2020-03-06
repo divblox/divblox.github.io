@@ -1,3 +1,5 @@
+# Getting Started
+
 ## Ways to get started
 
 To start creating an app with Divblox, you need to configure a development environment (also known as a deployment environment). To do this you have a number of options:
@@ -148,7 +150,7 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 
 The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
 
-The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1JGz33Zp1x-d3LcV22zAbo32AsQDn0Rxs).
+The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1MSZa78rd95WCP59P17jkFklwbOGiDzvV).
 
 ### Loading the Virtual machine
 

@@ -1,33 +1,33 @@
-# Basic Troubleshooting tips
+# Troubleshooting
 
 Because of the nature of web development, Divblox supports multiple operating systems.
 The recommended OS for Divblox development is MacOS, since it will allow for all functionality, including export
 to iOS, to function correctly. However, both Windows and Linux are also supported.
 
-# Most common issues
+## Most common issues
 
-## Browser console
+### Browser console
 
 Divblox makes use of the browser console to inform the developer of errors. Ensure that the browser console is open during
 installation and/or development to quickly diagnose the most common problems.
 
-## Installation checker
+### Installation checker
 
 The [installation checker](getting-started.md?id=installation-checker) might fail if you do not already have a database
 connection configured. If your minimum database requirements are not met according to the installation checker, please first
 [configure your database settings](getting-started.md?id=environments) before checking again.
 
-## Linux
+### Linux
 
 Divblox makes use of code generation to create its components and ORM class files. This means that full write access is
 required in order for everything to work correctly. To avoid most of the common issues in this regard, ensure that the user
 that is used to run your web server has ownership and write permission for the Divblox folder.
 
-## Windows
+### Windows
 
 Divblox was created on a UNIX based operating system and it is recommended that you use MacOS for the best experience when developing with the framework. However, we do try to support Windows as far as possible. The following are common issues users experience when setting up Divblox on Windows environments:
 
-### Basecamp communication error (SSL)
+#### Basecamp communication error (SSL)
 
 The installation wizard complains that the connection to basecamp cannot be established because of an SSL Certificate problem. Specifically: unable to get local issuer certificate. To solve this problem, follow these steps:
 
