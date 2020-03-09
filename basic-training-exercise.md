@@ -472,7 +472,7 @@ This is the longest step in this exercise, but is vitally important in understan
 
 #### Step 1 - Custom Component Setup
 
-Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. Below is a video walk through of the process:
+Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. In the right column we will just create and empty div with ID = "ResultWrapper" so we can instruct `dxRequestInternal()` where to display any output. Below is a video walk through of the process:
 
 <video id="TrainingExerciseStep8.1" muted="" playsinline="" preload="auto" autoplay>
   <source src="_basic-training-media/bte-8-1.mp4" type="video/mp4">
@@ -484,6 +484,8 @@ Create a custom component with two equally sized columns. In the left column we 
 <button onclick="fullScreenVideo('TrainingExerciseStep8.1')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
+
+It is important to create a div in the right column so you can tell `dxInternalRequest()` where to return any output.
 
 Next, we will set up our component JavaScript to send the selected function (and include the additional output if required) to the backend, and return whatever output the function provided to the front end.
 
@@ -523,6 +525,8 @@ dxRequestInternal(
 );
 ```
 
+We should now be set! Our custom component is ready, our input selection is set up and we have a div to display our output. The JavaScript is also defined. What remains now is to define our 7 functions.
+
 #### Step 2 - Function 1
 
 <strong>Generate data: This function will generate a bunch of categories & accounts, then it will generate a bunch of tickets, linked to a random category with a random status, account & due date </strong>
@@ -539,12 +543,12 @@ public function Function1() {
 
     // Note that you need an initial account and category for this to work
     for ($i = 0; $i < $TicketDataSize; $i++) {
-        // Fill the Ticket object with necessary values and Save in to database
+        // Fill the Ticket object with necessary values and save into database
         $TicketObj = new Ticket();
         $TicketObj->TicketName = ProjectFunctions::generateRandomString(8);
         $TicketObj->TicketDescription = ProjectFunctions::generateRandomString(100);
         $TicketObj->TicketStatus = $TicketStatusArray[rand(0,4)];
-        // dxDateTime has prebuilt functionality for wokring with dates,
+        // dxDateTime has prebuilt functionality for working with dates,
         // all we are doing is making the DueDate a random date between
         // tomorrow and 20 days from now.
         $TicketObj->TicketDueDate = dxDateTime::Now()->AddDays(rand(1,20));
@@ -555,7 +559,7 @@ public function Function1() {
         if ($i >= $AccountDataSize) {
             continue;
         }
-        // Fill the Account object with necessary values and Save in to database
+        // Fill the Account object with necessary values and save into database
         $AccountObj = new Account();
         $AccountObj->FirstName = ProjectFunctions::generateRandomString(8);
         $AccountObj->LastName = ProjectFunctions::generateRandomString(8);
@@ -566,7 +570,7 @@ public function Function1() {
         if ($i >= $CategoryDataSize) {
             continue;
         }
-        //Fil the Category object with necessary values and Save in to database
+        //Fill the Category object with necessary values and save into database
         $CategoryObj = new Category();
         $CategoryObj->CategoryLabel = ProjectFunctions::generateTimeBasedRandomString();
         $CategoryObj->Save();
@@ -578,38 +582,433 @@ public function Function1() {
 }
 ```
 
-We should now be set! Our custom component is ready, our input selection is set up and we have a div to display our output. The JavaScript is also defined. What remains now is to define our 7 functions.
+Every time we run this function, we are generating 500 new tickets, 8 new categories and 50 new accounts. Note that the way we executed our loop, the tickets will not be generated with uniform distribution of categories or accounts, as the oldest generated accounts and categories will be sampled more often. But since we are just doing this to get some data, we are not worried about that.
 
 #### Step 3 - Function 2
 
-<strong>Return All Tickets In the category 'Personal' </strong>
+<strong>Return all tickets in the category defined by the user in the additional input box. The default category should be 'Personal' if no input provided. </strong>
+
+```php
+// Return all tickets in the category specified in the input box
+public function Function2() {
+    // User input for which category to sort by.
+    $CategoryInputStr = $this->getInputValue("additional_input");
+    // Set default to "Personal"
+    if (is_null($CategoryInputStr) || !strlen($CategoryInputStr)) {
+        $CategoryInputStr = "Personal";
+    }
+    // dxQuery to return all tickets whose category matches the input category.
+    // Note: $TicketArray is an array of individual ticket objects.
+    $TicketArray = Ticket::QueryArray(
+        dxQ::Equal(
+            dxQN::Ticket()->CategoryObject->CategoryLabel,
+            $CategoryInputStr
+        )
+    );
+    // Create an array of the ticket objects with wanted category.
+    // Note: we convert each ticket object into a JSON object
+    // getJSON() returns the values in question in JSON (removing all methods).
+    // We then decode the JSON object and append it to our $ResultArray. This is
+    // because dxRequestInternal() already handles the JSON type conversions.
+    $ReturnArray = [];
+    foreach($TicketArray as $TicketObj) {
+        $ReturnArray[] = json_decode($TicketObj->getJson());
+    }
+    // Set what we are returning to the front end
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", $ReturnArray);
+    $this->presentOutput();
+}
+```
 
 #### Step 4 - Function 3
 
-<strong>Return all tickets where the Account's first name is John and the ticket status is "In Progress" </strong>
+<strong>Return all tickets where the Account's first name is specified in the additional input box (Default value is 'John') and the ticket status is "In Progress" </strong>
+
+```php
+// Return all tickets where the account's first name is specified in the input box and
+// the ticket's status is <em>In Progress</em>
+public function Function3() {
+  // User input for which Name to sort by.
+    $FirstNameStr = $this->getInputValue("additional_input");
+    // Set default name to 'John'
+    if (is_null($FirstNameStr) || !strlen($FirstNameStr)) {
+        $FirstNameStr = "John";
+    }
+    // dxQuery to return all tickets whose name matches the input name AND
+    // whose ticket status is 'In Progress'
+    $TicketArray = Ticket::QueryArray(
+        dxQ::AndCondition(
+            dxq::Equal(
+                dxqN::Ticket()->AccountObject->FirstName,
+                $FirstNameStr
+            ),
+            dxq::Equal(
+                dxqN::Ticket()->TicketStatus,
+                "In Progress"
+            )
+        )
+    );
+    $ReturnArray = [];
+    foreach($TicketArray as $TicketObj) {
+        $ReturnArray[] = json_decode($TicketObj->getJson());
+    }
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", $ReturnArray);
+    $this->presentOutput();
+}
+```
 
 #### Step 5 - Function 4
 
 <strong>Return all tickets that have a status of "Completed" for the current month </strong>
 
+This function is slightly trickier as we are now tryin gto sort by date. There are many wasy to try do this, but we will use what built in Divblox functions we can to make this easier. The 'trick' here would be to be familiar and comfortable with what dxDateTime can offer you. All we do below is:
+
+1. Set the StartDate to today's year and month but manually change the day to 1 and time to 00:00:00.
+2. Set the EndDate to StartDate (only that the time would be 23:59:59, not 00:00:00) + 1 month - 1 day (which is then just the last day of the current month)
+
+```php
+// Return all tickets that have a status Completed where the due
+// date is in the current month, ordered by TicketDueDate ascending
+public function Function4() {
+
+    // Define start and end of current month
+    $StartDateObj = dxDateTime::Now()->setDate(dxDateTime::Now()->format("Y"), dxDateTime::Now()->format("m"), 1)->setTime(0,0,0);
+    $EndDateObj = dxDateTime::Now()->setDate(dxDateTime::Now()->format("Y"), dxDateTime::Now()->format("m"), 1)->setTime(23.59.59);
+    $EndDateObj->addMonths(1);
+    $EndDateObj->addDays(-1);
+    // Slightly more complex dxQuery with 3 parts to the AND clause, as well as
+    // and OrderBy Clause to sort by TicketDueDate ascending
+    $TicketArray = Ticket::QueryArray(
+        dxQ::AndCondition(
+            dxq::Equal(
+                dxqN::Ticket()->TicketStatus,
+                "Completed"
+            ),
+            dxQ::GreaterOrEqual(
+                dxqN::Ticket()->TicketDueDate,
+                $StartDateObj
+            ),
+            dxQ::LessOrEqual(
+                dxqN::Ticket()->TicketDueDate,
+                $EndDateObj
+            )
+        ),
+        dxQ::Clause(
+            dxQ::OrderBy(
+                dxqN::Ticket()->TicketDueDate,
+                true
+            )
+        )
+    );
+    $ReturnArray = [];
+    foreach($TicketArray as $TicketObj) {
+        $ReturnArray[] = json_decode($TicketObj->getJson());
+    }
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", $ReturnArray);
+    $this->presentOutput();
+}
+```
+
 #### Step 6 - Function 5
 
 <strong>Return a list of "Account" full names with a count of tickets that they each currently have "In Progress" </strong>
 
+In this function we first request an array of all Account objects. We then loop through each of those objects, and fill a key-value pair array as [FullName => NrTicketsInProgress] which is our expected result.
+
+```php
+// Return a list of account full names with a count of tickets that
+// they each currently have <em>In Progress</em>.
+public function Function5() {
+    // Returns an array of all Account objects
+    $AccountArray = Account::QueryArray(
+        dxQ::All()
+    );
+    //Same results as: $AccountArray = Account::LoadAll();
+    $ReturnArray = [];
+    foreach ($AccountArray as $AccountObj) {
+        $ReturnArray[$AccountObj->FullName] = Ticket::QueryCount(
+            dxQ::Equal(
+                dxQN::Ticket()->AccountObject->Id,
+                $AccountObj->Id
+            )
+        );
+    }
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", $ReturnArray);
+    $this->presentOutput();
+}
+```
+
 #### Step 7 - Function 6
 
-<strong>The beast: Return a list of "Account" email addresses. For each account, show an array of categories. For each "Category" in the array, show the total count of all tickets for that category as well as the count for the specific account </strong>
+<strong>Return a list of "Account" email addresses. For each account, show an array of categories. For each "Category" in the array, show the total count of all tickets for that category as well as the count for the specific account </strong>
 
 You will end up with a nested array of objects, structured something like this:
 
-![Function 6 diagram ](_basic_training-medil/../_basic-training-media/bte-step8-1.png)
+![Function 6 diagram ](_basic-training-media/bte-8-7.png)
+
+For each account (defined by it's email address) we want to see an array of all the categories used in their tickets. For each of those account-used categories, we want to see both the category's total tickets, as well as the account's category total ticket count.
+
+```php
+public function Function6() {
+    // Get Array of Account objects and array of Category objects
+    $AccountArray = Account::QueryArray(
+        dxQ::All()
+    );
+    $CategoryArray = Category::QueryArray(
+        dxQ::All()
+    );
+    $ReturnArray = [];
+    //Note Array indexing, refer to above diagram for visual aid of data structure
+    foreach ($AccountArray as $AccountObj) {
+        $ReturnArray[$AccountObj->EmailAddress] = [];
+        foreach ($CategoryArray as $CategoryObj) {
+            // For each account and each category, we find the two totals
+            $TotalCountInt = Ticket::QueryCount(
+                dxQ::Equal(
+                    dxQN::Ticket()->CategoryObject->CategoryLabel,
+                    $CategoryObj->CategoryLabel
+                )
+            );
+            $AccountCountInt = Ticket::QueryCount(
+                dxQ::AndCondition(
+                    dxQ::Equal(
+                        dxQN::Ticket()->CategoryObject->CategoryLabel,
+                        $CategoryObj->CategoryLabel
+                    ),
+                    dxQ::Equal(
+                        dxQN::Ticket()->AccountObject->Id,
+                        $AccountObj->Id
+                    )
+                )
+            );
+            // For each account->category pair, we add the two total values
+            $ReturnArray[$AccountObj->EmailAddress][$CategoryObj->CategoryLabel] =
+              ["GrandTotal"=> $TotalCountInt, "AccountTotal"=> $AccountCountInt];
+        }
+    }
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", $ReturnArray);
+    $this->presentOutput();
+}
+```
 
 #### Step 8 - Function 7
 
-<strong>Generate data: This function will generate a bunch of categories & accounts, then it will generate a bunch of tickets, linked to a random category with a random status, account & due date </strong>
+<strong>Optimize the query in Function 6 using the Select Clause (and any other way you can think of too). You can use your browser's dev tools to monitor the time taken to execute the query. </strong>
+
+1. Select only the necessary attribute from Account entity, i.e. EmailAddress. This means that later when we are looping over each account, we are only doing it for a single column. NOTE: Even though you only select one column, the Account primary key is still included for indexed searching.
+2. Only add the category GrandTotal if it is undefined. i.e. Only create the GrandTotal once for every Category, instead of re-checking and re-saving it every time we loop over an account which has a ticket with said category.
+
+The new code can be seen below:
+
+```php
+// Optimizes function 6 to return its query result quicker
+    public function Function7() {
+        // Optimization 1 : Select only the necessary attribute from
+        // Account entity, i.e. EmailAddress.
+        $AccountArray = Account::QueryArray(
+            dxQ::All(),
+            dxQ::Clause(
+                dxQ::Select(
+                    dxQN::Account()->EmailAddress
+                )
+            )
+        );
+        $CategoryArray = Category::QueryArray(
+            dxQ::All()
+        );
+        $ReturnArray = [];
+        $TotalCountArray = [];
+        foreach ($AccountArray as $AccountObj) {
+            $ReturnArray[$AccountObj->EmailAddress] = [];
+            foreach ($CategoryArray as $CategoryObj) {
+                // Optimization 2: Only check TotalCount once for each category
+                if (!isset($TotalCountArray[$CategoryObj->Id])) {
+                    $TotalCountArray[$CategoryObj->Id] = Ticket::QueryCount(
+                        dxQ::Equal(
+                            dxQN::Ticket()->CategoryObject->Id,
+                            $CategoryObj->Id
+                        )
+                    );
+                }
+                $AccountCountInt = Ticket::QueryCount(
+                    dxQ::AndCondition(
+                        dxQ::Equal(
+                            dxQN::Ticket()->CategoryObject->Id,
+                            $CategoryObj->Id
+                        ),
+                        dxQ::Equal(
+                            dxQN::Ticket()->AccountObject->Id,
+                            $AccountObj->Id
+                        )
+                    ),
+                    dxQ::Clause(
+                        dxQ::Select(
+                            dxqN::Ticket()->Id
+                        )
+                    )
+                );
+                $ReturnArray[$AccountObj->EmailAddress][$CategoryObj->CategoryLabel] =
+                 ["GrandTotal"=> $TotalCountArray[$CategoryObj->Id], "AccountTotal"=> $AccountCountInt];
+            }
+        }
+        $this->setReturnValue("Result", "Success");
+        $this->setReturnValue("ReturnData", $ReturnArray);
+        $this->presentOutput();
+    }
+```
+
+The difference with just these minor changes can already be seen. Below is a screenshot of the times taken with the two methods. 5 observations were taken for a better average. There are much better and more in-depth ways to test your code efficiency, but for this example a rough visual difference is all we need. The time taken is dependant on the hardware and mood of your machine, as well as how big your database is. So if your times are different, don't worry, as long as you can see a visible decrease in time taken.
+
+![bte-8-8TimeComparison](_basic-training-media/bte-8-8-TimeComparison.png)
+
+On that note.. There is something else we still haven't done that will help us decrease the time taken for this query. Remember that we created a new attribute in the Category entity called TicketCount? Well, we still haven't created the logic to populate that attribute. When we do that, we will no longer need to search through and calculate one for each account and category, but merely look up the value.
+
+We will need to write this functionality into the `Save()` and `Delete()` functions, meaning that any time a ticket is created or deleted, the TicketCount will be updated. We can do this by overriding their default behaviour defined in `TicketGen.class.php` (`divblox/config/database/data_model_orm/generated/TicketGen.class.php`) in `Ticket.class.php` (`divblox/config/database/data_model_orm/Ticket.class.php`). The reason for this is core through Divblox: Never touch auto-generated files, but rather add functionality in classes that extend base Divblox functionality to prevent loss of work.
+
+The code added to the class `Ticket` which extends the class `TicketGen` was:
+
+```php
+public function Save($blnForceInsert = false, $blnForceUpdate = false) {
+    // This step ensures that all of the original Save functionality is still carried out.
+    $mixToReturn = parent::Save($blnForceInsert,$blnForceUpdate);
+
+    $CategoryObj = Category::Load($this->intCategory);
+    //If the category exists, calculate the total
+    if (!is_null($CategoryObj)) {
+        $TicketCount = Ticket::QueryCount(
+            dxQ::Equal(
+                dxQN::Ticket()->CategoryObject->Id,
+                $CategoryObj->Id
+            )
+        );
+        // Write it into local storage, and save into database
+        $CategoryObj->TicketCount = $TicketCount;
+        $CategoryObj->Save();
+    }
+    // Return
+    return $mixToReturn;
+}
+```
+
+```php
+public function Delete() {
+    // For delete, we first load the category since after it is deleted
+    // we won't be able to know which category the ticket was in.
+    $CategoryObj = Category::Load($this->intCategory);
+    parent::Delete();
+    // If category exists, calculate the total
+    if (!is_null($CategoryObj)) {
+        $TicketCount = Ticket::QueryCount(
+            dxQ::Equal(
+                dxQN::Ticket()->CategoryObject->Id,
+                $CategoryObj->Id
+            )
+        );
+        // Write it into local storage, and save into database
+        $CategoryObj->TicketCount = $TicketCount;
+        $CategoryObj->Save();
+    }
+}
+```
+
+This is great. Now every time we create or delete a ticket, our counter will automatically update. But what do we do about the tickets that already exist in our database? We will have to create a throwaway script to run once to account for all the already existing tickets in our database.
+
+```php
+<?php
+require("divblox/divblox.php");
+// Select All Categories
+$CategoryArray = Category::QueryArray(
+    dxQ::All()
+);
+// For each unique category, calculate the total number of tickets
+// which have that category
+foreach ($CategoryArray as $CategoryObj) {
+    $TicketCount = Ticket::QueryCount(
+        dxQ::Equal(
+            dxQN::Ticket()->CategoryObject->Id,
+            $CategoryObj->Id
+        )
+    );
+    // save $TicketCount into localstorage and into database.
+    $CategoryObj->TicketCount = $TicketCount;
+    $CategoryObj->Save();
+}
+?>
+```
+
+This script can be saved anywhere and run by going to `localhost/[your_project]/[path_to_script]/throwaway.php` in your browser. You can confirm that it performed what it was supposed to by checking the category table in phpMyAdmin.
+
+Now, the final step is to go back to our code and just reference the TicketCount attribute instead of calculating the TicketCount total every time. This shouldn't really affect our speed significantly until we have a _very_ large data set, but was included for good practice.
+
+```php
+public function Function7() {
+        $AccountArray = Account::QueryArray(
+            dxQ::All(),
+            dxQ::Clause(
+                dxQ::Select(
+                    dxQN::Account()->EmailAddress
+                )
+            )
+        );
+        $CategoryArray = Category::QueryArray(
+            dxQ::All()
+        );
+        $ReturnArray = [];
+        foreach ($AccountArray as $AccountObj) {
+            $ReturnArray[$AccountObj->EmailAddress] = [];
+            foreach ($CategoryArray as $CategoryObj) {
+                $AccountCountInt = Ticket::QueryCount(
+                    dxQ::AndCondition(
+                        dxQ::Equal(
+                            dxQN::Ticket()->CategoryObject->Id,
+                            $CategoryObj->Id
+                        ),
+                        dxQ::Equal(
+                            dxQN::Ticket()->AccountObject->Id,
+                            $AccountObj->Id
+                        )
+                    ),
+                    dxQ::Clause(
+                        dxQ::Select(
+                            dxqN::Ticket()->Id
+                        )
+                    )
+                );
+                $ReturnArray[$AccountObj->EmailAddress][$CategoryObj->CategoryLabel] =
+                    ["GrandTotal"=> $CategoryObj->TicketCount, "AccountTotal"=> $AccountCountInt];
+                    ////////////////^^^^^^^^^^^^^^^^^^^^^^^^^///////////////////////////////////
+                    ///////////////////////The change//////////////////////////////////////////
+                    /////////// (Along with not calculating an array of totals)///////////////
+            }
+        }
+        $this->setReturnValue("Result", "Success");
+        $this->setReturnValue("ReturnData", $ReturnArray);
+        $this->presentOutput();
+    }
+```
 
 ### Summary
 
-In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 7 completely, you should have a fundamental understanding of the basics of any Divblox application.
+In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 8 completely, you should have a fundamental understanding of the basics of any Divblox application.
 
 If you would like to receive further hands-on training from the Divblox team, please reach out to us at support@divblox.com and we will arrange a consultation.
+
+````
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+````
