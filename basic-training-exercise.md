@@ -466,6 +466,148 @@ Once we have defined our endpoint, we can test to see if everything works. Note 
 <i class="fa fa-expand"></i>
 </button>
 
+### Step 8 - Sorcery
+
+This is the longest step in this exercise, but is vitally important in understanding how to manipulate and extract information from your database using Divblox's built-in query language, `dxQuery`. You will create a custom component, which will be responsible for 6 diverse query functions that will hopefully give you a strong foundation in how to use `dxQuery` efficiently. The section is broken down into 8 subsections, the first dedicated to setting up your custom component, and the remaining 7 dedicated to the 7 functions we will be making. In this last step, we will have to change our data model slightly. Let us include the `TicketCount` attribute into the `Category` entity, which will represent the total number of tickets in the category in question. Using Divblox's data modeller, this process is optimized and all the user needs to do is add the attribute and sync to the database, which update the database and regenerates all the classes and necessary functionality code. We set the attribute type to `INT` as the number of tickets in a category can only be a positive whole number.
+
+#### Step 1 - Custom Component Setup
+
+Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. Below is a video walk through of the process:
+
+<video id="TrainingExerciseStep8.1" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_basic-training-media/bte-8-1.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('TrainingExerciseStep8.1')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('TrainingExerciseStep8.1')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+Next, we will set up our component JavaScript to send the selected function (and include the additional output if required) to the backend, and return whatever output the function provided to the front end.
+
+we will again be using the `dxRequestInternal` function for backend/frontend communication.
+
+The code that was replaced the default 3 second loading function for our button is:
+
+```javascript
+dxRequestInternal(
+    getComponentControllerPath(this),
+    {
+        // We specifically named the values of the drop down the same as
+        // the functions to execute, so we can just use the value of input box
+        f: getComponentElementById(this, "8LSBQ_FormControlSelect").val(),
+        additional_input: getComponentElementById(
+            this,
+            "H7u7b_FormControlInput"
+        ).val()
+    },
+    function(data_obj) {
+        // Success Function
+        // Returns (in JSON format) backend function output
+        // in div with id="ResultWrapper"
+        getComponentElementById(this, "ResultWrapper").html(
+            JSON.stringify(data_obj.ReturnData)
+        );
+    }.bind(this),
+    function(data_obj) {
+        // Failure Function
+        // Nothing set here right now
+    }.bind(this),
+    false,
+    // Set loading text of button while function executes
+    getComponentElementById(this, "dfVzo_btn"),
+    "Executing " +
+        getComponentElementById(this, "8LSBQ_FormControlSelect").val()
+);
+```
+
+#### Step 2 - Function 1
+
+<strong>Generate data: This function will generate a bunch of categories & accounts, then it will generate a bunch of tickets, linked to a random category with a random status, account & due date </strong>
+
+Here we use the built in PHP function `rand()`, as well as a bit of Divblox functionality, including the `dxDateTime()` class as well as the `generateRandomString()` and `generateTimeBasedString()` functions. If you are not comfortable with these, you can refer to the class/function definitions.
+
+```php
+public function Function1() {
+    // Set how many of each we want to generate
+    $AccountDataSize = 50;
+    $CategoryDataSize = 8;
+    $TicketDataSize = 500;
+    $TicketStatusArray = ["New", "In Progress", "Backlog", "Urgent", "Completed"];
+
+    // Note that you need an initial account and category for this to work
+    for ($i = 0; $i < $TicketDataSize; $i++) {
+        // Fill the Ticket object with necessary values and Save in to database
+        $TicketObj = new Ticket();
+        $TicketObj->TicketName = ProjectFunctions::generateRandomString(8);
+        $TicketObj->TicketDescription = ProjectFunctions::generateRandomString(100);
+        $TicketObj->TicketStatus = $TicketStatusArray[rand(0,4)];
+        // dxDateTime has prebuilt functionality for wokring with dates,
+        // all we are doing is making the DueDate a random date between
+        // tomorrow and 20 days from now.
+        $TicketObj->TicketDueDate = dxDateTime::Now()->AddDays(rand(1,20));
+        // Load a random value from existing Account and Category Entities
+        $TicketObj->AccountObject = Account::Load(rand(0,Account::CountAll()-1));
+        $TicketObj->CategoryObject = Category::Load(rand(0,Category::CountAll()-1));
+        $TicketObj->Save();
+        if ($i >= $AccountDataSize) {
+            continue;
+        }
+        // Fill the Account object with necessary values and Save in to database
+        $AccountObj = new Account();
+        $AccountObj->FirstName = ProjectFunctions::generateRandomString(8);
+        $AccountObj->LastName = ProjectFunctions::generateRandomString(8);
+        $AccountObj->FullName = $AccountObj->FirstName." ".$AccountObj->LastName;
+        $AccountObj->EmailAddress = ProjectFunctions::generateTimeBasedRandomString();
+        $AccountObj->Username = $AccountObj->EmailAddress;
+        $AccountObj->Save();
+        if ($i >= $CategoryDataSize) {
+            continue;
+        }
+        //Fil the Category object with necessary values and Save in to database
+        $CategoryObj = new Category();
+        $CategoryObj->CategoryLabel = ProjectFunctions::generateTimeBasedRandomString();
+        $CategoryObj->Save();
+    }
+    // Prepare the result we will send to the front end
+    $this->setReturnValue("Result", "Success");
+    $this->setReturnValue("ReturnData", "$TicketDataSize Tickets created");
+    $this->presentOutput();
+}
+```
+
+We should now be set! Our custom component is ready, our input selection is set up and we have a div to display our output. The JavaScript is also defined. What remains now is to define our 7 functions.
+
+#### Step 3 - Function 2
+
+<strong>Return All Tickets In the category 'Personal' </strong>
+
+#### Step 4 - Function 3
+
+<strong>Return all tickets where the Account's first name is John and the ticket status is "In Progress" </strong>
+
+#### Step 5 - Function 4
+
+<strong>Return all tickets that have a status of "Completed" for the current month </strong>
+
+#### Step 6 - Function 5
+
+<strong>Return a list of "Account" full names with a count of tickets that they each currently have "In Progress" </strong>
+
+#### Step 7 - Function 6
+
+<strong>The beast: Return a list of "Account" email addresses. For each account, show an array of categories. For each "Category" in the array, show the total count of all tickets for that category as well as the count for the specific account </strong>
+
+You will end up with a nested array of objects, structured something like this:
+
+![Function 6 diagram ](_basic_training-medil/../_basic-training-media/bte-step8-1.png)
+
+#### Step 8 - Function 7
+
+<strong>Generate data: This function will generate a bunch of categories & accounts, then it will generate a bunch of tickets, linked to a random category with a random status, account & due date </strong>
+
 ### Summary
 
 In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 7 completely, you should have a fundamental understanding of the basics of any Divblox application.
