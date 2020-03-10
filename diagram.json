@@ -1,0 +1,236 @@
+{
+    "Account": [{
+            "EmailAddress": "John.Doe@gmail.com",
+            "Category": [{
+                    "CategoryName": "Work",
+                    "CategoryName": "Tennis",
+                    "CategoryName": "Leisure"
+                },
+                {
+                    "firstName": "Anna",
+                    "lastName": "Smith"
+                },
+                {
+                    "firstName": "Peter",
+                    "lastName": "Jones"
+                }
+            ]
+        },
+        {
+            "EmailAddress": "John.Doe@gmail.com",
+            "Category": [{
+                    "CategoryName": "Work",
+                    "CategoryName": "Doe"
+                },
+                {
+                    "firstName": "Anna",
+                    "lastName": "Smith"
+                },
+                {
+                    "firstName": "Peter",
+                    "lastName": "Jones"
+                }
+            ]
+        },
+        {
+            "EmailAddress": "John.Doe@gmail.com",
+            "Category": [{
+                    "CategoryName": "Work",
+                    "CategoryName": "Doe"
+                },
+                {
+                    "firstName": "Anna",
+                    "lastName": "Smith"
+                },
+                {
+                    "firstName": "Peter",
+                    "lastName": "Jones"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    "name": "John",
+    "age": 30,
+    "cars": {
+        "car1": "Ford",
+        "car2": "BMW",
+        "car3": "Fiat"
+    }
+}
+
+[{
+        "id": "0001",
+        "type": "donut",
+        "name": "Cake",
+        "ppu": 0.55,
+        "batters": {
+            "batter": [{
+                    "id": "1001",
+                    "type": "Regular"
+                },
+                {
+                    "id": "1002",
+                    "type": "Chocolate"
+                },
+                {
+                    "id": "1003",
+                    "type": "Blueberry"
+                },
+                {
+                    "id": "1004",
+                    "type": "Devil's Food"
+                }
+            ]
+        },
+        "topping": [{
+                "id": "5001",
+                "type": "None"
+            },
+            {
+                "id": "5002",
+                "type": "Glazed"
+            },
+            {
+                "id": "5005",
+                "type": "Sugar"
+            },
+            {
+                "id": "5007",
+                "type": "Powdered Sugar"
+            },
+            {
+                "id": "5006",
+                "type": "Chocolate with Sprinkles"
+            },
+            {
+                "id": "5003",
+                "type": "Chocolate"
+            },
+            {
+                "id": "5004",
+                "type": "Maple"
+            }
+        ]
+    },
+    {
+        "id": "0002",
+        "type": "donut",
+        "name": "Raised",
+        "ppu": 0.55,
+        "batters": {
+            "batter": [{
+                "id": "1001",
+                "type": "Regular"
+            }]
+        },
+        "topping": [{
+                "id": "5001",
+                "type": "None"
+            },
+            {
+                "id": "5002",
+                "type": "Glazed"
+            },
+            {
+                "id": "5005",
+                "type": "Sugar"
+            },
+            {
+                "id": "5003",
+                "type": "Chocolate"
+            },
+            {
+                "id": "5004",
+                "type": "Maple"
+            }
+        ]
+    },
+    {
+        "id": "0003",
+        "type": "donut",
+        "name": "Old Fashioned",
+        "ppu": 0.55,
+        "batters": {
+            "batter": [{
+                    "id": "1001",
+                    "type": "Regular"
+                },
+                {
+                    "id": "1002",
+                    "type": "Chocolate"
+                }
+            ]
+        },
+        "topping": [{
+                "id": "5001",
+                "type": "None"
+            },
+            {
+                "id": "5002",
+                "type": "Glazed"
+            },
+            {
+                "id": "5003",
+                "type": "Chocolate"
+            },
+            {
+                "id": "5004",
+                "type": "Maple"
+            }
+        ]
+    }
+]
+
+[{
+    "tester.tester@gmail.com": [{
+        "Work": [{
+            "GrandTotal": 109,
+            "AccountTotal": 7
+        }],
+        "Leisure": [{
+            "GrandTotal": 130,
+            "AccountTotal": 13
+        }]
+    }],
+    "ace.ace@gmail.com": [{
+        "Tennis": [{
+            "GrandTotal": 109,
+            "AccountTotal": 7
+        }]
+    }],
+    "new.new@gmail.com": [{
+        "Work": [{
+            "GrandTotal": 109,
+            "AccountTotal": 7
+        }],
+        "Leisure": [{
+            "GrandTotal": 130,
+            "AccountTotal": 13
+        }],
+        "Tennis": [{
+            "GrandTotal": 67,
+            "AccountTotal": 3
+        }]
+    }]
+}]
+
+
+
+"Category": [{
+        "CategoryName": "Work",
+        "CategoryName": "Tennis",
+        "CategoryName": "Leisure"
+    },
+    {
+        "firstName": "Anna",
+        "lastName": "Smith"
+    },
+    {
+        "firstName": "Peter",
+        "lastName": "Jones"
+    }
+]
+},
