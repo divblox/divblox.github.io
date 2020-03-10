@@ -466,11 +466,25 @@ Once we have defined our endpoint, we can test to see if everything works. Note 
 <i class="fa fa-expand"></i>
 </button>
 
-### Step 8 - Sorcery
+### Step 8 - Further Examples
 
-This is the longest step in this exercise, but is vitally important in understanding how to manipulate and extract information from your database using Divblox's built-in query language, `dxQuery`. You will create a custom component, which will be responsible for 6 diverse query functions that will hopefully give you a strong foundation in how to use `dxQuery` efficiently. The section is broken down into 8 subsections, the first dedicated to setting up your custom component, and the remaining 7 dedicated to the 7 functions we will be making. In this last step, we will have to change our data model slightly. Let us include the `TicketCount` attribute into the `Category` entity, which will represent the total number of tickets in the category in question. Using Divblox's data modeller, this process is optimized and all the user needs to do is add the attribute and sync to the database, which update the database and regenerates all the classes and necessary functionality code. We set the attribute type to `INT` as the number of tickets in a category can only be a positive whole number.
+In the following examples, you will gain a deeper understanding of the Divblox PHP query language that is used to communicate with the database. We will also be building on your existing knowledge on how to communicate between the frontend and backend of your Divblox application.
 
-#### Step 1 - Custom Component Setup
+!> In this section we will focus on the dxQuery language explained [here](the-basics.md?id=divbox-ORM-Queries).
+
+You will build the following:
+
+-   A custom component that will serve as a container for some example functions. This component will manage the communication between frontend and backend
+-   Function 1: An example of how to generate dummy data
+-   Function 2: Basic dxQuery example using `QueryArray()`
+-   Function 3: A slightly more advanced dxQuery example using query conditions like `dxQ::AndCondition()` and `dxQ::Equal()`
+-   Function 4: Even more advanced example that makes use of Divblox's wrappers for PHP's DateTime class
+-   Function 5: Example of building up a query result in a loop
+-   Function 6: More advanced example of building a query result in a loop
+-   Function 7: Optimization of function 6
+-   Lastly, we will optimize our code for extremely large datasets
+
+#### Custom Component Setup
 
 Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. In the right column we will just create and empty div with ID = "ResultWrapper" so we can instruct `dxRequestInternal()` where to display any output. Below is a video walk through of the process:
 
@@ -489,9 +503,9 @@ It is important to create a div in the right column so you can tell `dxInternalR
 
 Next, we will set up our component JavaScript to send the selected function (and include the additional output if required) to the backend, and return whatever output the function provided to the front end.
 
-we will again be using the `dxRequestInternal` function for backend/frontend communication.
+We will again be using the `dxRequestInternal` function for backend/frontend communication.
 
-The code that was replaced the default 3 second loading function for our button is:
+The code that replaces the default 3 second loading function for our button is:
 
 ```javascript
 dxRequestInternal(
@@ -525,9 +539,9 @@ dxRequestInternal(
 );
 ```
 
-We should now be set! Our custom component is ready, our input selection is set up and we have a div to display our output. The JavaScript is also defined. What remains now is to define our 7 functions.
+We should now be set! Our custom component is ready, our input selection is set up and we have a div to display our output. What remains now is to define our 7 functions.
 
-#### Step 2 - Function 1
+#### Function 1
 
 <strong>Generate data: This function will generate a bunch of categories & accounts, then it will generate a bunch of tickets, linked to a random category with a random status, account & due date </strong>
 
@@ -584,7 +598,7 @@ public function Function1() {
 
 Every time we run this function, we are generating 500 new tickets, 8 new categories and 50 new accounts. Note that the way we executed our loop, the tickets will not be generated with uniform distribution of categories or accounts, as the oldest generated accounts and categories will be sampled more often. But since we are just doing this to get some data, we are not worried about that.
 
-#### Step 3 - Function 2
+#### Function 2
 
 <strong>Return all tickets in the category defined by the user in the additional input box. The default category should be 'Personal' if no input provided. </strong>
 
@@ -621,7 +635,7 @@ public function Function2() {
 }
 ```
 
-#### Step 4 - Function 3
+#### Function 3
 
 <strong>Return all tickets where the Account's first name is specified in the additional input box (Default value is 'John') and the ticket status is "In Progress" </strong>
 
@@ -659,25 +673,24 @@ public function Function3() {
 }
 ```
 
-#### Step 5 - Function 4
+#### Function 4
 
 <strong>Return all tickets that have a status of "Completed" for the current month </strong>
 
-This function is slightly trickier as we are now tryin gto sort by date. There are many wasy to try do this, but we will use what built in Divblox functions we can to make this easier. The 'trick' here would be to be familiar and comfortable with what dxDateTime can offer you. All we do below is:
+This function is slightly trickier as we are now trying to sort by date. There are many ways to try do this, but we will use built-in Divblox functions to make this easier. The 'trick' here would be to be familiar and comfortable with what `dxDateTime` can offer you. All we do below is:
 
 1. Set the StartDate to today's year and month but manually change the day to 1 and time to `00:00:00`.
-2. Set the EndDate to StartDate (only that the time would be `23:59:59`, not `00:00:00`) + 1 month - 1 day (which is then just the last day of the current month)
+2. Set the EndDate to StartDate, + 1 month, - 1 second (which is then just the last day of the current month)
 
 ```php
 // Return all tickets that have a status Completed where the due
 // date is in the current month, ordered by TicketDueDate ascending
 public function Function4() {
-
     // Define start and end of current month
     $StartDateObj = dxDateTime::Now()->setDate(dxDateTime::Now()->format("Y"), dxDateTime::Now()->format("m"), 1)->setTime(0,0,0);
-    $EndDateObj = dxDateTime::Now()->setDate(dxDateTime::Now()->format("Y"), dxDateTime::Now()->format("m"), 1)->setTime(23.59.59);
+    $EndDateObj = dxDateTime::Now()->setDate(dxDateTime::Now()->format("Y"), dxDateTime::Now()->format("m"), 1)->setTime(0,0,0);
     $EndDateObj->addMonths(1);
-    $EndDateObj->addDays(-1);
+    $EndDateObj->addSeconds(-1);
     // Slightly more complex dxQuery with 3 parts to the AND clause, as well as
     // and OrderBy Clause to sort by TicketDueDate ascending
     $TicketArray = Ticket::QueryArray(
@@ -712,7 +725,7 @@ public function Function4() {
 }
 ```
 
-#### Step 6 - Function 5
+#### Function 5
 
 <strong>Return a list of "Account" full names with a count of tickets that they each currently have "In Progress" </strong>
 
@@ -742,7 +755,7 @@ public function Function5() {
 }
 ```
 
-#### Step 7 - Function 6
+#### Function 6
 
 <strong>Return a list of "Account" email addresses. For each account, show an array of categories. For each "Category" in the array, show the total count of all tickets for that category as well as the count for the specific account </strong>
 
@@ -796,12 +809,12 @@ public function Function6() {
 }
 ```
 
-#### Step 8 - Function 7
+#### Function 7
 
-<strong>Optimize the query in Function 6 using the Select Clause (and any other way you can think of too). You can use your browser's dev tools to monitor the time taken to execute the query. </strong>
+<strong>Optimize the query in Function 6 using the Select Clause and by reducing the number of iterations in the loop. You can use your browser's dev tools to monitor the time taken to execute the query. </strong>
 
-1. Select only the necessary attribute from Account entity, i.e. EmailAddress. This means that later when we are looping over each account, we are only doing it for a single column. NOTE: Even though you only select one column, the Account primary key is still included for indexed searching.
-2. Only add the category GrandTotal if it is undefined. i.e. Only create the GrandTotal once for every Category, instead of re-checking and re-saving it every time we loop over an account which has a ticket with said category.
+1. Select only the necessary attribute from Account entity, i.e. EmailAddress. This means that we are only returning a single column from the database. NOTE: Even though you only select one column, the Account primary key is still included for indexed searching.
+2. We only calculate the GrandTotal once for every Category, instead of re-checking and re-saving it every time we loop over an account, which has a ticket with said category.
 
 The new code can be seen below:
 
@@ -862,13 +875,17 @@ The new code can be seen below:
     }
 ```
 
-The difference with just these minor changes can already be seen. Below is a screenshot of the times taken with the two methods. 5 observations were taken for a better average. There are much better and more in-depth ways to test your code efficiency, but for this example a rough visual difference is all we need. The time taken is dependant on the hardware and mood of your machine, as well as how big your database is. So if your times are different, don't worry, as long as you can see a visible decrease in time taken.
+Using the browser's network monitoring tool, the difference with just these minor changes can already be seen. Below is a screenshot of the times taken with the two methods. 5 observations were taken for a better average. There are much better and more in-depth ways to test your code efficiency, but for this example a rough visual difference is all we need. The time taken is dependent on the hardware of your machine, as well as how big your database is. So if your times are different, don't worry, as long as you can see a visible decrease in time taken.
 
 ![bte-8-8TimeComparison](_basic-training-media/bte-8-8-TimeComparison.png)
 
-On that note.. There is something else we still haven't done that will help us decrease the time taken for this query. Remember that we created a new attribute in the Category entity called TicketCount? Well, we still haven't created the logic to populate that attribute. When we do that, we will no longer need to search through and calculate one for each account and category, but merely look up the value.
+#### Final Optimizations
 
-We will need to write this functionality into the `Save()` and `Delete()` functions, meaning that any time a ticket is created or deleted, the TicketCount will be updated. We can do this by overriding their default behaviour defined in `TicketGen.class.php` (`divblox/config/database/data_model_orm/generated/TicketGen.class.php`) in `Ticket.class.php` (`divblox/config/database/data_model_orm/Ticket.class.php`). The reason for this is core through Divblox: Never touch auto-generated files, but rather add functionality in classes that extend base Divblox functionality to prevent loss of work.
+In this last step, we will have to change our data model slightly. Let us include the `TicketCount` attribute into the `Category` entity, which will represent the total number of tickets in the category in question, and will be updated as tickets are saved and deleted. Using Divblox's data modeller, this process is simple and all the user needs to do is add the attribute and sync to the database, which updates the database and regenerates all the classes and necessary functionality code.
+
+This optimization is intended for when our dataset becomes extremely large, and the cost of making even an optimized query in a loop becomes too high. In this optimization we are focusing on preparing our data for reporting purposes rather than aggregating after the fact.
+
+We will need to write the functionality that calculates the `TicketCount` into the `Save()` and `Delete()` functions of the Ticket ORM class, meaning that any time a ticket is saved or deleted, the `TicketCount` will be updated. We can do this by overriding their default behaviour defined in `TicketGen.class.php` (`divblox/config/database/data_model_orm/generated/TicketGen.class.php`) in `Ticket.class.php` (`divblox/config/database/data_model_orm/Ticket.class.php`). We do this in accordance with the Divblox code-generation philosophy: never touch auto-generated files, but rather add functionality in classes that extend base Divblox functionality to prevent loss of work.
 
 The code added to the class `Ticket` which extends the class `TicketGen` was:
 
@@ -981,9 +998,6 @@ public function Function7() {
                 );
                 $ReturnArray[$AccountObj->EmailAddress][$CategoryObj->CategoryLabel] =
                     ["GrandTotal"=> $CategoryObj->TicketCount, "AccountTotal"=> $AccountCountInt];
-                    ////////////////^^^^^^^^^^^^^^^^^^^^^^^^^///////////////////////////////////
-                    ///////////////////////The change//////////////////////////////////////////
-                    /////////// (Along with not calculating an array of totals)///////////////
             }
         }
         $this->setReturnValue("Result", "Success");
