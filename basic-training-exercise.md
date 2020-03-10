@@ -877,7 +877,7 @@ The new code can be seen below:
 
 Using the browser's network monitoring tool, the difference with just these minor changes can already be seen. Below is a screenshot of the times taken with the two methods. 5 observations were taken for a better average. There are much better and more in-depth ways to test your code efficiency, but for this example a rough visual difference is all we need. The time taken is dependent on the hardware of your machine, as well as how big your database is. So if your times are different, don't worry, as long as you can see a visible decrease in time taken.
 
-![bte-8-8TimeComparison](_basic-training-media/bte-8-8-TimeComparison.png)
+![bte-8-8TimeComparison](_basic-training-media/bte-8-8-time_comparison.png)
 
 #### Final Optimizations
 
