@@ -82,7 +82,7 @@ let's generate some CRUD components (using the component builder) for `Ticket` a
 
 Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to one, and only one, instance of another entity. E.g. Each ticket can only be linked to one account at any given time.
 
-![Singular relationship](/_basic-training-media/basic_training_exercise3.1.png)
+![Singular relationship](/_basic-training-media/bte-3-1.png)
 
 This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be to automatically link a ticket to the current user upon creation.
 
@@ -665,8 +665,8 @@ public function Function3() {
 
 This function is slightly trickier as we are now tryin gto sort by date. There are many wasy to try do this, but we will use what built in Divblox functions we can to make this easier. The 'trick' here would be to be familiar and comfortable with what dxDateTime can offer you. All we do below is:
 
-1. Set the StartDate to today's year and month but manually change the day to 1 and time to 00:00:00.
-2. Set the EndDate to StartDate (only that the time would be 23:59:59, not 00:00:00) + 1 month - 1 day (which is then just the last day of the current month)
+1. Set the StartDate to today's year and month but manually change the day to 1 and time to `00:00:00`.
+2. Set the EndDate to StartDate (only that the time would be `23:59:59`, not `00:00:00`) + 1 month - 1 day (which is then just the last day of the current month)
 
 ```php
 // Return all tickets that have a status Completed where the due
@@ -997,18 +997,3 @@ public function Function7() {
 In this exercise you learned about all the basic elements of a Divblox project. If you understand step 1 - 8 completely, you should have a fundamental understanding of the basics of any Divblox application.
 
 If you would like to receive further hands-on training from the Divblox team, please reach out to us at support@divblox.com and we will arrange a consultation.
-
-````
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-````
