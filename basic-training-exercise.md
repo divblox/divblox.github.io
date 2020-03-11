@@ -761,7 +761,7 @@ public function Function5() {
 
 You will end up with a nested array of objects, structured something like this:
 
-![Function 6 diagram ](_basic-training-media/bte-8-7.png)
+![Function 6 diagram](_basic-training-media/bte-8-8-beastObject.png)
 
 For each account (defined by it's email address) we want to see an array of all the categories used in their tickets. For each of those account-used categories, we want to see both the category's total tickets, as well as the account's category total ticket count.
 
