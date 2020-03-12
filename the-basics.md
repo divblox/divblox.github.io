@@ -862,39 +862,22 @@ Using Bootstrap's grid system, it allows you to place the following containing e
     A column is the final containing element within which you can place your components
 -   Learn more about Bootstrap's grid system [here](https://getbootstrap.com/docs/4.3/layout/grid/#how-it-works)
 
-![Component Builder - Containing Elements](_media/_screenshots/component-builder-containing-elements.png)
+![Component Builder - Containing Elements](_the-basics-media/vbi_01.png)
 
 #### Adding a sub component
 
-You can add a component as a sub component to the current page (which in itself is a component). See below:
+You can add a component as a sub component to the current page (which in itself is a component). You can also add basic components. See below:
 
 <!--![Component Builder - Adding Sub Components](_media/_gifs/Adding-Components.gif)-->
 
 <video id="AddingComponentsVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Adding-Components.mp4" type="video/mp4">
+  <source src="_the-basics-media/the-basics-vbi-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('AddingComponentsVideo')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
 <button onclick="fullScreenVideo('AddingComponentsVideo')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
-
-#### Adding a basic component
-
-You can add a basic component to the current component. See below:
-
-<!--![Component Builder - Adding Basic Components](_media/_gifs/Adding-Basic-Components.gif)-->
-
-<video id="AddingBasicComponentsVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Adding-Basic-Components.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('AddingBasicComponentsVideo')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('AddingBasicComponentsVideo')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
@@ -905,7 +888,7 @@ You can add custom html to the current component. See below:
 <!--![Component Builder - Adding Custom HTML](_media/_gifs/Adding-Custom-Html.gif)-->
 
 <video id="AddingCustomHtmlVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Adding-Custom-Html.mp4" type="video/mp4">
+  <source src="_the-basics-media/the-basics-vbi-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('AddingCustomHtmlVideo')" type="button" class="video-control-button">
@@ -922,7 +905,7 @@ The builder interface allows you to modify your component in the browser at any 
 <!--![Component Builder - Modify Component](_media/_gifs/Modify-Component.gif)-->
 
 <video id="ModifyComponentVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_videos/Modify-Component.mp4" type="video/mp4">
+  <source src="_the-basics-media/the-basics-vbi-3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('ModifyComponentVideo')" type="button" class="video-control-button">
