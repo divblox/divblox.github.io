@@ -915,6 +915,125 @@ The builder interface allows you to modify your component in the browser at any 
 <i class="fa fa-expand"></i>
 </button>
 
+## System Components
+
+Now that we have gone through what components actually are, and how they work, let us look at the system components that come standard with any Divblox application. They are separated into 6 distinct groups, each of which will be discussed below.
+
+### Page Components
+
+![pages](_system-components/pages.png)
+
+Page components are components like any other, except that they can be navigated via the URL of navigation bar.
+
+#### Anonymous Landing Page
+
+This is the page that any anonymous user will be sent to if they attempt to view pages of your application that they do not have the rights to.
+
+![Anonymous Landing Page](_system-components/anon_landing_page.png)
+
+#### Blank Page
+
+This is the simplest of page components. It only has a container and row.
+
+![Blank Page](_system-components/blank_page.png)
+
+#### Blank Page with Top navigation bar
+
+![Page with Top Navbar](_system-components/page_with_top_nav.png)
+
+#### Blank Page with Bottom Navigation Bar
+
+![Page with BOttom Navbar](_system-components/page_with_bottom_nav.png)
+
+#### Blank Page with Side Navigation Bar
+
+![Page with Side Navbar](_system-components/page_with_side_nav.png)
+
+#### Blank Page with Top Instance Navigation Bar
+
+This navigation bar consists only of a back and continue/confirm button.
+
+![Page with Top Instance Navbar](_system-components/page_with_instance_top_nav.png)
+
+#### Login Page
+
+This page houses the `authentication` component, and verifies login credentials.
+
+![Page with Top Instance Navbar](_system-components/login.png)
+
+#### Register Page
+
+This page houses the account_registration component, allowing an anonymous user to sign up.
+
+![Page with Top Instance Navbar](_system-components/register.png)
+
+#### My Profile Page
+
+This is the landing page for users logging in. This page houses the `current_user_profile_manager` component, which saves all necessary informationabout each of our users.
+
+![Page with Top Instance Navbar](_system-components/my_profile.png)
+
+### Data Model
+
+![pages](_system-components/data_model.png)
+
+The data model components include all of the CRUD functionality for entities that will be common through almost all projects. They are grouped in 4's, where each entity-specific idea comes with 4 components:
+
+-   Full CRUD functionality component
+-   Create functionality component
+-   Data Series component
+-   Update component
+
+### Data Visualization
+
+![pages](_system-components/data_visualisation.png)
+
+This page is a template for any work you will need to do with Chart.js, and comes with a HTML template as well as some mock data. The frontend/backend connection is already established and all the user has to do is customize the graph and configure their own data.
+
+![charts.js](_system-components/charts.js.png)
+
+### Navigation
+
+![pages](_system-components/navigation.png)
+
+These pages are designed to ease the process of setting up a functional navigation bar. If you create all your application pages with the same template navigation bar, all you need to do is name your pages and configure the linked navigation bar once to have a fully functional navigation bar. The exception here is the top instance navigation bar, which only provides 'go back' and 'continue' functionality.
+
+### System
+
+![pages](_system-components/system.png)
+
+These components do most of the heavy lifting for you application when it comes to setting up certain things. We have the 'account_registration' and 'authentication' components which are used in the 'register' and 'login' pages respectively, which handle input validations, set up session variables, hash your user passwords and prevent SQL injections.
+
+<!-- tabs:start -->
+
+#### **Account Registration**
+
+![Account Registration](_system-components/account_registration.png)
+
+#### **Authentication**
+
+![Authentication](_system-components/authentication.png)
+
+<!-- tabs:end -->
+
+There are also the 'default_image_upload' and 'default_file_upload' components, which do exactly that. They handle
+
+<!-- tabs:start -->
+
+#### **File Upload**
+
+![File Upload](_system-components/default_file_upload.png)
+
+#### **Image Upload**
+
+![Image Upload](_system-components/default_image_upload.png)
+
+<!-- tabs:end -->
+
+### Ungrouped
+
+![pages](_system-components/ungrouped.png)
+
 # Divblox API’s
 
 ## Exposing a custom API
