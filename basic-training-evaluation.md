@@ -11,7 +11,7 @@ The exercise below is intended to evaluate whether you have an understanding of 
 
 **Exercise Brief - Build a simple personal expense tracker. You must be able to do the following:**
 
-Because this is a personal expense tracker, you do not need to concern yourself with building your application for multiple users. We will however, cater for two different user roles a part of this exercise.
+Because this is a personal expense tracker, you do not need to concern yourself with building your application for multiple users. We will however, cater for two different user roles as part of this exercise.
 
 Make sure to add your personal touch to the final application as some points will be allocated for creative freedom. It is also important to apply good basic programming principles.
 
