@@ -9,11 +9,12 @@ The new data model we will be making is as follows:
 As you can see, the data model is starting to look more complicated. Let's break this down:
 
 -   Adding the `Note` entity:
-    -   A note needs to be attached to a `Ticket`, and may have an attachment (linked ot the `FileDocument` entity)
+    -   A note needs to be attached to a `Ticket`, and may have an attachment (linked to the `FileDocument` entity)
     -   The attributes in the `Note` entity are NoteDescription and NoteCreatedDate
 -   Adding the `SubTask` entity:
-    -   Each ticket can have many subtask
+    -   Each ticket can have many subtasks
     -   The attributes in the `SubTask` entity are Description, SubTaskStatus and SubTaskDueDate.
+    -   SubTaskStatus will have the same drop down as TicketStatus
 -   Updating the `Category` entity:
     -   Add the attributes CategoryParentId and HierarchyPath.
     -   This is done in order to allow for self referencing, where each category can have many subcategories.
@@ -21,7 +22,7 @@ As you can see, the data model is starting to look more complicated. Let's break
 
 ### Category Entity changes
 
-Let us begin with the changes to the `Category` entity. As seen in the new data model, we have added new attributes. Our old CRUD components will not reflect the changes unless we add them manually (or create new CRUD components). In our case, this will not even be necassary as the attributes added need to be defined by the programmer. We want the CategoryParentId to be defined automatically depending on what category we were in when we clicked '+ Category'. Similarly with the HierarchyPath, we want this to be autmatically generated for each category based on the trail of parent IDs.
+Let us begin with the changes to the `Category` entity. As seen in the new data model, we have added new attributes. Our old CRUD components will not reflect the changes unless we add them manually (or create new CRUD components). In our case, this will not even be necassary as the attributes added need to be defined by the programmer. We want the CategoryParentId to be defined automatically depending on what category we were in when we clicked '+ Category'. Similarly with the HierarchyPath, we want this to be automatically generated for each category based on the trail of parent IDs.
 
 ![Category_Entity](_advanced-training-exercise-media/newCategory.png)
 
@@ -65,7 +66,7 @@ saveEntity() {
 }
 ```
 
-On the PHP side, we override the empty-by-default function `doAfterSaveActions()` to save both the CategoryParentId as well as the HierarchyPath. The constraining (i.e. parent) category object is loaded from the database, and if this is not null, it's ID is saved into the CategoryParentId attribute of the current category object. We then use the `getBreadCrumbsRecursive()` function to return an array of the parental hierarchy of categories. Adding slashes and spaces for readability while looping over the array yields the needed hierarchy path which we save into the database.
+On the PHP side, we override the empty-by-default function `doAfterSaveActions()` to save both the CategoryParentId as well as the HierarchyPath. The constraining (i.e. parent) category object is loaded from the database, and if this is not null, it's ID is saved into the CategoryParentId attribute of the current category object. We then use the `getBreadCrumbsRecursive()` function (defined shortly) to return an array of the parental hierarchy of categories. Adding slashes and spaces for readability while looping over the array yields the needed hierarchy path which we save into the database.
 
 ```php
 public function doAfterSaveActions($EntityToUpdateObj = null) {
@@ -124,7 +125,7 @@ Now that our create component correctly saves all necessary information to the d
 
 The breadcrumb basic component can be easily added via Divblox's web interface. The following code will be added to the 'category_update' page component's javascript and PHP.
 
-The below added code to the 'initFunctions()' function adds two event handlers. The first is to navigate back to the admin page when 'All Categories' is clicked, and the second is to reset the global constraing ID to the current category and refresh the page to load it up accordingly.
+The below added code to the 'initFunctions()' function adds two event handlers. The first is to navigate back to the admin page when 'All Categories' is clicked, and the second is to reset the global constraing ID to the clicked on category and refresh the page to load it up accordingly. Note how we attach the event to a click on the document, after which we specify where on the document the click should be. This is because if we set the event handler to listen directly for a click on '.category-breadcrumb', we will get unexpected output, because on page loadup, this subcomponent is not defined yet.
 
 ```js
 initCustomFunctions() {
@@ -202,7 +203,24 @@ This is the update CRUD component that we created from the Divblox web interface
 
 #### SubCategory List
 
-For this, we just create a new CRUD component, similar to the category data series, except that it is constrained by the current category ID, only displaying the child categories.
+For this, we just create a new CRUD component, similar to the category data series, except that it is constrained by the current category ID, only displaying the child categories. We do this by overriding the `getPage()` function to only query the constrained array of categories from the database.
+
+```php
+// Change logic in the getPage function
+public function getPage() {
+    // Code that remains the same
+
+    //This is all we changed, only return categories with parent ID = currently constrained categoryId
+    $QueryCondition = dxQ::Equal(
+        dxQN::Category()->CategoryParentId,
+        $this->getInputValue("ConstrainingCategoryId", true)
+    );
+
+    // Code that remains the same
+}
+```
+
+On the javascript side, we change the behaviour of the `on_item_clicked()` function to reload the current page with the new category constraint ID.
 
 With this, we have updated all the functionality needed for the `Category` entity as well as created a page to edit the categories as well as have visual aid with regard to the hierarchical structure of the categories.
 
@@ -224,4 +242,200 @@ The subtask are already constrained by the parent Ticket ID, so all we can do is
 
 #### Customising the Note CRUD
 
-The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket.
+The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component. This is done via the component builder. Below is a outline of the `initFileUploader()` function. We overrride it's default functionality, leaving everything as is, except that we add one more parameter to the data in the upload, namely the 'note_id'.
+
+```js
+initFileUploader() {
+   let uid = this.uid;
+   let this_component = this;
+   $('#'+uid+'_file_uploader').fileuploader({
+      changeInput: // Default input
+
+      onSelect: function(item) {
+         // Default functionality
+
+      },
+      upload: {
+         url: getComponentControllerPath(this_component),
+         data: {f:"handleFilePost",
+                AuthenticationToken:getValueFromAppState('dxAuthenticationToken'),
+                note_id: this_component.getLoadArgument("note_id")},
+         type: 'POST',
+         enctype: 'multipart/form-data',
+         start: false,
+         synchron: true,
+         beforeSend: function(item) {
+            // Default functionality
+
+         },
+         onSuccess: function(result, item) {
+            // Default functionality
+
+         },
+         onError: function(item) {
+            // Default functionality
+
+         },
+         onProgress: function(data, item) {
+            // Default functionality
+
+         },
+         onComplete: function() {
+            // Default functionality
+
+         },
+      },
+      onRemove: function(item) {
+        // Default functionality
+      },
+      captions: {
+         // Default captions
+      },
+      enableApi: true
+   });
+}
+```
+
+On the PHP side, we again ovveride the default functionality of the `handleFilePost()` function, adding the following code:
+
+```php
+public function handleFilePost() {
+    // initialize FileUploader
+    $FileUploader = new FileUploader('files', array(
+        'uploadDir' => $this->UploadPath,
+        'title' => 'auto'
+    ));
+    $this->setReturnValue("Result","Success");
+    // call to upload the files
+    $data = $FileUploader->upload();
+    $this->setReturnValue("Message",$data);
+    foreach($data["files"] as $file) {
+        $FileDocumentObj = new FileDocument();
+        $FileDocumentObj->FileName = $file["name"];
+        $FileDocumentObj->Path = $file["file"];
+        $FileDocumentObj->UploadedFileName = $file["old_name"];
+        $FileDocumentObj->FileType = $file["type"];
+        $FileDocumentObj->SizeInKilobytes = round(doubleval(preg_replace('/[^0-9.]+/', '', $file["size2"])),2);
+        $FileDocumentObj->Save();
+
+        // START NEW CODE
+        $NoteObj = Note::Load($this->getInputValue("note_id", true));
+        if (is_null($NoteObj)) {
+            $FileDocumentObj->Delete();
+        } else {
+            if (!is_null($NoteObj->FileDocumentObject)) {
+                $NoteObj->FileDocumentObject->Delete();
+            }
+            $NoteObj->FileDocumentObject = $FileDocumentObj;
+            $NoteObj->Save();
+        }
+        // END NEW CODE
+    }
+    foreach($data as $key=>$value) {
+        $this->setReturnValue($key,$value);
+    }
+    $this->presentOutput();
+}
+```
+
+This just ties the filed uploaded to the note it is attached to and makes sure that when deleting a note you do not orphan any file uploads. We also remove the return output from the `handleRemoveFile()` function, leaving it as:
+
+```php
+public function handleRemoveFile() {
+    $FileDocumentObj = FileDocument::QuerySingle(dxQ::Equal(dxQueryN::FileDocument()->FileName, $this->getInputValue("file")));
+    if (!is_null($FileDocumentObj)) {
+        $FileDocumentObj->Delete();
+    }
+}
+```
+
+Now that we have prepared our file uploader, let us dig into the actual `Note` CRUD. FIrstly, we want to follow a similar approach as with the `Ticket` and `Category` create CRUD components, whereby the initial create only requires limited fields, after which you are navigated to the update component to complete the process. We do this by shifting the 'note_created' case of the `eventTriggered()` function in the 'note_crud' component to above the 'note_clicked' case, as before.
+
+We can then add the two buttons we want via the component builder. These are:
+
+-   A modal popup housing the custom file uploader
+-   A download link, appearing only when there is actually an attachment.
+
+First, we add a row with two columns in the update component. We then add the modal using the component builder, and change relevant text and button text as well as make the modal button have classes 'fullwidth' and 'btn-link'.
+
+NOw, in the javascript, we firstly make sure that the modal will alwasy be closed until clicked by adding a line of code to hide the modal in the component's reset function.
+
+```js
+reset(inputs,propagate) {
+   if (typeof inputs !== "undefined") {
+      this.setEntityId(inputs);
+   }
+   super.reset(inputs,propagate);
+   getComponentElementById(this,"HPxt9_modal").modal("hide");
+}
+```
+
+We will then also add some functionality to the modal skeleton provided by Divblox.
+
+In the `initFunctions()` function, we add the following to the "show.bs.modal" case, noting the additional 'note_id' parameter we specified earlier.
+
+```js
+loadComponent(
+    "system/note_attachment_uploader",
+    this.getUid(),
+    "XLGKu",
+    { note_id: this.getEntityId() },
+    true
+);
+```
+
+This just makes sure that we load our file uploader and it is already constrained to the note we want to attach the file/image to. We also want to overrride the `onAfterLoadEntity()` function to populate our right column with a download link if and only if the attachment exists.
+
+```js
+onAfterLoadEntity(data_obj) {
+   // TODO: Override this as needed;
+   getComponentElementById(this, "DownloadWrapper").html("");
+   if (typeof data_obj.AttachmentPath !== "undefined") {
+      if (data_obj.AttachmentPath.length > 0) {
+         getComponentElementById(this, "DownloadWrapper").html('<a href="'+data_obj.AttachmentPath+'" target="_blank" class="btn btn-link fullwidth">Download Attachment</a>');
+      }
+   }
+}
+```
+
+Now for the backend side. Firstly, we override the default `getObjectData()` function. What we added here is backend validation for the existance and validity of the attachment by checking the relational entity `FileDocument`. The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
+
+```php
+public function getObjectData() {
+    $EntityObj = $this->EntityNameStr::Load(
+        $this->getInputValue("Id",true)
+    );
+    $EntityJsonDecoded = array();
+    $AttachmentPathStr = "";
+    if (!is_null($EntityObj)) {
+        $EntityJsonDecoded = json_decode($EntityObj->getJson());
+        if (!is_null($EntityObj->FileDocumentObject)) {
+            if (file_exists(DOCUMENT_ROOT_STR.SUBDIRECTORY_STR.$EntityObj->FileDocumentObject->Path)) {
+                $AttachmentPathStr = ProjectFunctions::getBaseUrl().$EntityObj->FileDocumentObject->Path;
+            }
+        }
+    }
+    $this->setReturnValue("Object",$EntityJsonDecoded);
+    foreach ($this->IncludedRelationshipArray as $Relationship => $DisplayValue) {
+        $RelationshipList = $this->getRelationshipList($EntityObj,$Relationship);
+        $this->setReturnValue($Relationship."List",$RelationshipList);
+    }
+    $this->setReturnValue("Result","Success");
+    $this->setReturnValue("Message","");
+    $this->setReturnValue("AttachmentPath", $AttachmentPathStr);
+    $this->presentOutput();
+}
+```
+
+Secondly, we need to make sure that if we delete any notes, we do not accidently leave behind any orphaned files/images. This is done using Divblox's `doBeforeDeleteActions()` function.
+
+```php
+public function doBeforeDeleteActions($EntityToUpdateObj = null) {
+    if (is_null($EntityToUpdateObj)) {
+        return;
+    }
+    if (!is_null($EntityToUpdateObj->FileDocumentObject)) {
+        $EntityToUpdateObj->FileDocumentObject->Delete();
+    }
+}
+```

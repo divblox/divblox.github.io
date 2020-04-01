@@ -28,3 +28,10 @@ public function FunctionName() {
     $this->presentOutput();
 }
 ```
+
+```php
+getCOmponentElementById(this, "ElementId").on("event", function () {
+    //Function to be implemented
+
+})
+```
