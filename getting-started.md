@@ -144,9 +144,15 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 2. Import the image into VirtualBox and boot the VM
 3. Start a new project and configure the API
 
+!> Note: Minimal system requirements:
+
+-   At least 30 GB of free storage on your main storage device
+-   8 GB RAM (allocating at least 4 GB to the VM)
+-   Dual core CPU
+
 ### VirtualBox Download
 
-!> Note: the virtual machine image is a 6 GB download.
+!> Note: the virtual machine image is a 6.5 GB download.
 
 The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
 
