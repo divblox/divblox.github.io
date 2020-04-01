@@ -290,7 +290,7 @@ dxRequestInternal(
 
 ### Step 6 - Security
 
-It is important to understand how Divblox user roles are used to control access to the application. Divblox has two forms of access.
+It is important to understand how Divblox user roles are used to control access to the application. Divblox has two forms of access:
 
 -   _Component access_ allows the user to view the components
 -   _Data Model_ access gives the user permissions to perform CRUD operations on specific entities defined in the data model.
@@ -303,6 +303,10 @@ By default, there are two user roles.
 Any user that is not authenticated is treated as "Anonymous" - No access, gets redirected to the anonymous landing page.
 
 !> Additional user roles can be defined in the data modeller.
+
+It is important to define a user role hierarchy in the abstract class 'UserRoleHierarchy' (project/assets/php/user_role_hierarchy.class.php), so as to prevent duplicate writing of components and data model access for different user types. This allows for user roles to inherit access from lower user roles, so you only need to specify what access the user role has above and beyond previously defined access.
+
+![UserRoleHierarchy](_basic-training-media/userrole-hierarchy.jpg)
 
 The Component default settings are as follows:
 
