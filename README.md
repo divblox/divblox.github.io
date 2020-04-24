@@ -1,11 +1,11 @@
-![logo](_media/divblox-logo-1.png ":size=200")
+<img  src="_media/divblox-logo-1.png" style="max-height: 150px">
 
 > Create experiences. Not just apps.
 
 # What is Divblox?
 
 <p>Divblox is a full stack web and mobile app development framework that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time.</p>
-<p>With Divblox you can build progressive web apps that can also seemlessly be converted to native mobile apps, all with ONE code base.</p>
+<p>With Divblox you can build progressive web apps that can also seamlessly be converted to native mobile apps, all with ONE code base.</p>
 
 # Core Ingredients
 
