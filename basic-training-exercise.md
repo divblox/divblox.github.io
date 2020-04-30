@@ -141,20 +141,24 @@ Now we can create the 'Tickets' page where users can create tickets. Note that w
 
 Ok, we now have components that allow us to create our data, as well as pages to view them on. We will now update the side navigation bar to function as we want it to. Notice how, in this video, we edit the component code in our IDE (any IDE/text editor of your choice). The preferred way is to use an IDE, but for quick fixes like changing the HTML layout of our page we can use Divblox's built-in code editor. The process followed here is as follows:
 
-1.  Name your page components
-2.  Change the navbar links to what you need them to be
-3.  Add JavaScript to link it to the page in question
+Divblox incorporates an easy to use seperation between the actual navigation bars and the menu items in them. The idea of this is to allow for reusabililty of the same menus and styiling throughout a project. You can access the list of menus available in your project from the `Navigation` bar in the setup page.
 
-<video id="TrainingExerciseStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-4-1.mp4" type="video/mp4">
-  Video is not supported
-</video>
-<button onclick="replayVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
-<i class="fa fa-repeat"></i>
-</button>
-<button onclick="fullScreenVideo('TrainingExerciseStep4')" type="button" class="video-control-button">
-<i class="fa fa-expand"></i>
-</button>
+You will see the following:
+![](_basic-training-media/navigation-menu.png)
+
+There are a few default menus, and we will create a basic-training-exercise-menu with the necessary items.
+![](_basic-training-media/navigation-menu-modal.png)
+
+Here we add the HTML that we want to be displayed as our item, in our case we want an icon and page name. We give our two pages the following:
+
+```html
+<-- Admin --> <i class="fa fa-home" aria-hidden="true"></i><br />Admin <-- New
+Ticket --> <i class="fa fa-link" aria-hidden="true"></i><br />New Ticket
+```
+
+We also set the action we want to occur when clicking on the menu item to load up the corresponding page. The navigation bar component HTML looks like this:
+
+![](_basic-training-media/navigation-menu-html.png)
 
 ### Step 5 - Global Functions
 
@@ -278,11 +282,11 @@ dxRequestInternal(
     getComponentControllerPath(this),
     // Tell component.php which function to execute
     { f: "getNewTaskUniqueId" },
-    function(data_obj) {
+    function (data_obj) {
         // Success function
         getComponentElementById(this, "TicketUniqueId").val(data_obj.TaskId);
     }.bind(this),
-    function(data_obj) {
+    function (data_obj) {
         // Fail function
     }.bind(this)
 );
@@ -521,9 +525,9 @@ dxRequestInternal(
         additional_input: getComponentElementById(
             this,
             "H7u7b_FormControlInput"
-        ).val()
+        ).val(),
     },
-    function(data_obj) {
+    function (data_obj) {
         // Success Function
         // Returns (in JSON format) backend function output
         // in div with id="ResultWrapper"
@@ -531,7 +535,7 @@ dxRequestInternal(
             JSON.stringify(data_obj.ReturnData)
         );
     }.bind(this),
-    function(data_obj) {
+    function (data_obj) {
         // Failure Function
         // Nothing set here right now
     }.bind(this),
