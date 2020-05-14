@@ -55,7 +55,7 @@ Now that our data model is created and synchronized with our database,
 let's generate some CRUD components (using the component builder) for `Ticket` and `Category`. Below is a walk-through of how to create full CRUD functionality for the `Category` entity.
 
 <video id="TrainingExerciseStep2.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-2-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-2.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.1')" type="button" class="video-control-button">
@@ -68,7 +68,7 @@ let's generate some CRUD components (using the component builder) for `Ticket` a
 > And now we will create the CRUD functionality for the `Ticket` entity, which although more complex, is just as easy with Divblox.
 
 <video id="TrainingExerciseStep2.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-2-2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-2.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.2')" type="button" class="video-control-button">
@@ -114,7 +114,7 @@ The pages we will build for this exercise are:
 To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
 
 <video id="TrainingExerciseStep3.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-3-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/step3.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
@@ -127,7 +127,7 @@ To do this we will use a pre-made page template with a side navbar. As you will 
 Now we can create the 'Tickets' page where users can create tickets. Note that we are not creating any new functionality, just reusing the 'create' component previously generated and placing it on its own page.
 
 <video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-3-2.mp4" type="video/mp4">
+  <source src="_basic-training-media/step-3.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
@@ -179,7 +179,7 @@ Below is a video running through step 1:
 
 <video id="TrainingExerciseStep5.2" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/bte-5-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-5-1_edit.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.2')" type="button" class="video-control-button">
@@ -497,7 +497,7 @@ You will build the following:
 Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. In the right column we will just create and empty div with ID = "ResultWrapper" so we can instruct `dxRequestInternal()` where to display any output. Below is a video walk through of the process:
 
 <video id="TrainingExerciseStep8.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-8-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-8-1_edit.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep8.1')" type="button" class="video-control-button">
