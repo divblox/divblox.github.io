@@ -173,7 +173,7 @@ information about our ticket via an API. To generate this unique ID, we will mak
 
 #### Step 5.1 - Adding button
 
-Add the button in our `ticket_crud_create` component that will generate a unique ID and populate the input box. We can do this through the Divblox web interface or in the source code.
+Add the button in our `ticket_crud_create` component that will generate a unique ID and populate the input box. We can do this through the Divblox Component Builder or in the source code.
 
 Below is a video running through step 1:
 

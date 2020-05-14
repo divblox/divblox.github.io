@@ -1,6 +1,13 @@
 # Advanced Training Exercise
 
-In this exercise we will be continuing with the example established in the basic training exercise. We will be adding onto the data model, adding functionality and deepening into the workings of Divblox.
+### Introduction
+In this exercise we will be continuing with the example established in the basic training exercise. 
+Specifically, we will be extending the basic exercise functionality with the following:
+
+- Categories will now have the ability to have sub-categories using a self reference
+- We will add the ability to add notes and file attachments to tickets to understand how the default file uploader works and how it can be customized
+- We will allow for tickets to have sub tasks. These sub tasks will enable the ability to track a ticket's progress.
+- We will build a dashboard that will give us a nice overview of our tickets and their progress.
 
 The new data model we will be making is as follows:
 
@@ -20,13 +27,21 @@ As you can see, the data model is starting to look more complicated. Let's break
     -   This is done in order to allow for self referencing, where each category can have many subcategories.
     -   The added attributes allow for relative and absolute identification of the category relationships.
 
-### Category Entity changes
+### Category Functionality
 
-Let us begin with the changes to the `Category` entity. As seen in the new data model, we have added new attributes. Our old CRUD components will not reflect the changes unless we add them manually (or create new CRUD components). In our case, this will not even be necassary as the attributes added need to be defined by the programmer. We want the CategoryParentId to be defined automatically depending on what category we were in when we clicked '+ Category'. Similarly with the HierarchyPath, we want this to be automatically generated for each category based on the trail of parent IDs.
+Let us begin with the changes to the `Category` entity. As seen in the new data model, we have added new attributes. 
+Our old CRUD components will not reflect the changes unless we add them manually (or create new CRUD components). 
+
+In our case, this will not even be necassary as the attributes added need to be defined by the programmer. 
+We want the CategoryParentId to be assigned automatically, depending on what category we were in when we clicked '+ Category'. 
+Similarly with the HierarchyPath, we want this to be automatically generated for each category based on the trail of parent IDs. 
+This HierarchyPath value will be used in the frontend to indicate the actual category, including its entire hierarchy, for the ticket.
 
 ![Category_Entity](_advanced-training-exercise-media/newCategory.png)
 
-In the 'category_crud_create' component we can immediately add the code to autopopulate the two new attributes accordingly. In the javascript, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. This is removed from both the success and failure functions. The rest of the code is default Divblox functionality.
+In the 'category_crud_create' component we can immediately add the code to autopopulate the two new attributes accordingly. 
+In the javascript, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. 
+This is removed from both the success and failure functions. The rest of the code is default Divblox functionality.
 
 ```js
 saveEntity() {
@@ -66,7 +81,12 @@ saveEntity() {
 }
 ```
 
-On the PHP side, we override the empty-by-default function `doAfterSaveActions()` to save both the CategoryParentId as well as the HierarchyPath. The constraining (i.e. parent) category object is loaded from the database, and if this is not null, it's ID is saved into the CategoryParentId attribute of the current category object. We then use the `getBreadCrumbsRecursive()` function (defined shortly) to return an array of the parental hierarchy of categories. Adding slashes and spaces for readability while looping over the array yields the needed hierarchy path which we save into the database.
+On the PHP side, we override the empty-by-default function `doAfterSaveActions()` to save both the CategoryParentId as well as the HierarchyPath. 
+The constraining (i.e. parent) category object is loaded from the database, and if this is not null, it's ID is saved into the CategoryParentId 
+attribute of the current category object. 
+
+We then use the `getBreadCrumbsRecursive()` function (defined shortly) to return an array of the parental hierarchy of categories. 
+Adding slashes and spaces for readability while looping over the array yields the needed hierarchy path which we save into the database.
 
 ```php
 public function doAfterSaveActions($EntityToUpdateObj = null) {
@@ -123,9 +143,17 @@ Now that our create component correctly saves all necessary information to the d
 
 #### Breadcrumbs
 
-The breadcrumb basic component can be easily added via Divblox's web interface. The following code will be added to the 'category_update' page component's javascript and PHP.
+The breadcrumb basic component can be easily added via Divblox's web interface. We will do this in the 'category_update' page component.
+The following code will be added to the 'category_update' page component's javascript and PHP.
 
-The below added code to the 'initFunctions()' function adds two event handlers. The first is to navigate back to the admin page when 'All Categories' is clicked, and the second is to reset the global constraing ID to the clicked on category and refresh the page to load it up accordingly. Note how we attach the event to a click on the document, after which we specify where on the document the click should be. This is because if we set the event handler to listen directly for a click on '.category-breadcrumb', we will get unexpected output, because on page loadup, this subcomponent is not defined yet.
+The code, which we will add to the 'initFunctions()' function, adds two event handlers:
+
+1. The first event handler is to navigate back to the admin page when 'All Categories' is clicked
+2. The second is to reset the global constraining ID for the entity 'Category' to the clicked on category and then refresh the page to load it up accordingly 
+
+!> Note how we attach the event to a click on the document, after which we specify where on the document the click should be. 
+This is because if we set the event handler to listen directly for a click on '.category-breadcrumb', we will get unexpected 
+output because during page load-up, this sub component is not defined yet.
 
 ```js
 initCustomFunctions() {
@@ -172,7 +200,7 @@ updateBreadCrumbs() {
 }
 ```
 
-The `updateBreadCrumbs()` function is the called in the `reset()` function:
+The `updateBreadCrumbs()` function is the called in the page component's `reset()` function:
 
 ```js
 reset(inputs) {
@@ -197,13 +225,12 @@ Now in the component.php file, we define the `getBreadCrumbs()` function referen
     }
 ```
 
-#### Update Component
+#### Sub Category List
 
-This is the update CRUD component that we created from the Divblox web interface.
-
-#### SubCategory List
-
-For this, we just create a new CRUD component, similar to the category data series, except that it is constrained by the current category ID, only displaying the child categories. We do this by overriding the `getPage()` function to only query the constrained array of categories from the database.
+On the 'category_update' page we want to be able to display and manage the sub categories for the current category. 
+For this, we just create a new CRUD component for the 'Category' entity, except that it must be constrained by the current constraining category ID, 
+only displaying the child categories. We do this by overriding the `getPage()` function in the component.php to only query the constrained array of categories 
+from the database.
 
 ```php
 // Change logic in the getPage function
@@ -224,25 +251,43 @@ On the javascript side, we change the behaviour of the `on_item_clicked()` funct
 
 With this, we have updated all the functionality needed for the `Category` entity as well as created a page to edit the categories as well as have visual aid with regard to the hierarchical structure of the categories.
 
-### Ticket Changes
+### Ticket Functionality
 
-Now we will focus on the changes to the `Ticket` entity, which will be split into 3 parts:
+Now we will focus on the changes to the `Ticket` entity and its pages, which will be split into 3 parts:
 
--   Updating the 'ticket_crud_update' component with default `SubTask` and `Note` CRUD
--   Customising the subtasks
+-   Updating the 'ticket_crud_update' component with `SubTask` and `Note` CRUD
+-   Customising the sub tasks
 -   Customising the notes and attachments
 
 #### Update Component Changes
 
-We have already set up our 'create' and 'update' components to work in a streamline way, i.e. When creating a ticket, only having to input the ticket name and description, after which you are navigated to the ticket_update page where you can complete all other relevant fields. We now want to have a subtasks and notes data list in this component. We first create the data series CRUD components for each using the Divblox web interface, after which we just insert them into our ticket_crud_update' component (in their own row, taking up equal 6 columns each in bootsrap terms).
+We have already set up our 'create' and 'update' components to work in a streamline way:
+
+- When creating a ticket, only having to input the ticket name and description, 
+- after which you are navigated to the ticket_update page where you can complete all other relevant fields. 
+
+We now want to have a sub tasks list and a notes list in this component. 
+We first create the CRUD components for each using the Divblox Component Builder, 
+after which we just insert them into our ticket_crud_update' component (in their own row, taking up equal 6 columns each in bootstrap terms).
+
+{VIDEO HERE PLEASE}
 
 #### Customising the SubTask CRUD
 
-The subtask are already constrained by the parent Ticket ID, so all we can do is make the HTML formatting a little bit more to our liking. You can make the input boxes fullwidth and arrange them in a bootstrap layout to your liking.
+The sub tasks are already constrained by the parent Ticket ID, so all we need to do is make the HTML formatting a little bit more to our liking. 
+You can make the input boxes fullwidth and arrange them in a bootstrap layout to your liking.
 
 #### Customising the Note CRUD
 
-The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component. This is done via the component builder. Below is a outline of the `initFileUploader()` function. We overrride it's default functionality, leaving everything as is, except that we add one more parameter to the data in the upload, namely the 'note_id'.
+The `Note` section is a bit more complicated, for a few reasons. 
+Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. 
+Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component. 
+This is done via the component builder. 
+
+{VIDEO HERE PLEASE}
+
+Below is a outline of the `initFileUploader()` function. 
+We override it's default functionality, leaving everything as is, except that we add one more parameter to the data in the upload, namely the 'note_id'.
 
 ```js
 initFileUploader() {
@@ -296,7 +341,7 @@ initFileUploader() {
 }
 ```
 
-On the PHP side, we again ovveride the default functionality of the `handleFilePost()` function, adding the following code:
+On the PHP side, we again override the default functionality of the `handleFilePost()` function, adding the following code:
 
 ```php
 public function handleFilePost() {
@@ -338,7 +383,8 @@ public function handleFilePost() {
 }
 ```
 
-This just ties the filed uploaded to the note it is attached to and makes sure that when deleting a note you do not orphan any file uploads. We also remove the return output from the `handleRemoveFile()` function, leaving it as:
+This just ties the filed uploaded to the note it is attached to and makes sure that when deleting a note you do not orphan any file uploads. 
+We also remove the return output from the `handleRemoveFile()` function, leaving it as:
 
 ```php
 public function handleRemoveFile() {
@@ -349,16 +395,24 @@ public function handleRemoveFile() {
 }
 ```
 
-Now that we have prepared our file uploader, let us dig into the actual `Note` CRUD. FIrstly, we want to follow a similar approach as with the `Ticket` and `Category` create CRUD components, whereby the initial create only requires limited fields, after which you are navigated to the update component to complete the process. We do this by shifting the 'note_created' case of the `eventTriggered()` function in the 'note_crud' component to above the 'note_clicked' case, as before.
+Now that we have prepared our file uploader, let's dig into the actual `Note` CRUD. 
+Firstly, we want to follow a similar approach as with the `Ticket` and `Category` create CRUD components, 
+whereby the initial create only requires limited fields, after which you are navigated to the update component to complete the process. 
+We do this by shifting the 'note_created' case of the `eventTriggered()` function in the 'note_crud' component to above the 'note_clicked' case, as before.
 
 We can then add the two buttons we want via the component builder. These are:
 
 -   A modal popup housing the custom file uploader
 -   A download link, appearing only when there is actually an attachment.
 
-First, we add a row with two columns in the update component. We then add the modal using the component builder, and change relevant text and button text as well as make the modal button have classes 'fullwidth' and 'btn-link'.
+First, we add a row with two columns in the update component. 
+We then add the modal using the component builder, and change relevant text and button text as well as make the modal button have classes 
+'fullwidth' and 'btn-link'.
 
-NOw, in the javascript, we firstly make sure that the modal will alwasy be closed until clicked by adding a line of code to hide the modal in the component's reset function.
+Now, in the javascript, we firstly make sure that the modal will alwasy be closed until clicked by adding a line of code 
+to hide the modal in the component's reset function.
+
+{VIDEO HERE PLEASE}
 
 ```js
 reset(inputs,propagate) {
@@ -384,7 +438,8 @@ loadComponent(
 );
 ```
 
-This just makes sure that we load our file uploader and it is already constrained to the note we want to attach the file/image to. We also want to overrride the `onAfterLoadEntity()` function to populate our right column with a download link if and only if the attachment exists.
+This just makes sure that we load our file uploader and it is already constrained to the note we want to attach the file/image to. 
+We also want to override the `onAfterLoadEntity()` function to populate our right column with a download link if and only if the attachment exists.
 
 ```js
 onAfterLoadEntity(data_obj) {
@@ -398,7 +453,9 @@ onAfterLoadEntity(data_obj) {
 }
 ```
 
-Now for the backend side. Firstly, we override the default `getObjectData()` function. What we added here is backend validation for the existance and validity of the attachment by checking the relational entity `FileDocument`. The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
+Now for the backend side. Firstly, we override the default `getObjectData()` function. 
+What we added here is backend validation for the existance and validity of the attachment by checking the relational entity `FileDocument`. 
+The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
 
 ```php
 public function getObjectData() {
@@ -427,7 +484,8 @@ public function getObjectData() {
 }
 ```
 
-Secondly, we need to make sure that if we delete any notes, we do not accidently leave behind any orphaned files/images. This is done using Divblox's `doBeforeDeleteActions()` function.
+Secondly, we need to make sure that if we delete any notes, we do not accidentally leave behind any orphaned files/images. 
+This is done using Divblox's `doBeforeDeleteActions()` function.
 
 ```php
 public function doBeforeDeleteActions($EntityToUpdateObj = null) {
