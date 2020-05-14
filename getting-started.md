@@ -152,11 +152,11 @@ Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki
 
 ### VirtualBox Download
 
-!> Note: the virtual machine image is a 6.5 GB download.
+!> Note: the virtual machine image is a 7 GB download.
 
 The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
 
-The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/open?id=1MSZa78rd95WCP59P17jkFklwbOGiDzvV).
+The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/drive/folders/1JaZH9vFj7-ub0QmlrOlKdwtiBVPDiVdF?usp=sharing).
 
 ### Loading the Virtual machine
 
