@@ -6,9 +6,9 @@
 
 1. From the Divblox setup page open the "Component Builder".
 
-     <p align="left">
-      <img  src=_media/_screenshots/example-page-create3.png>
-    </p>
+  <p align="left">
+   <img  src=_media/_screenshots/example-page-create3.png>
+ </p>
 
 2. Add a new component via the "+ Component" button.
 
@@ -20,7 +20,7 @@
 4. Select "From existing component" as we would want like to inherit the properties and functionality from the already existing pages.
 5. Ensure the grouping for your page as "page" so that Divblox knows that this component can be used as an app page and not just a component.
 
- <p align="left">
+<p align="left">
   <img  src=_media/_screenshots/example-page-create5.png>
 </p>
 
@@ -209,7 +209,7 @@ Now that a navigation bar is on your page, we can add items to it. Once these it
 ```javascript
 getComponentElementById(this, "[ADD_YOUR_ITEM_NAME_HERE]").on(
     "click",
-    function() {
+    function () {
         loadPageComponent("[page_component_name]");
         return false;
     }

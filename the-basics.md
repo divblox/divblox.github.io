@@ -182,12 +182,12 @@ dxRequestInternal(
     // The function to execute, along with additional inputs
     {
         f: "aFunctionToExecute",
-        additional_input_variable: "example"
+        additional_input_variable: "example",
     },
-    function(data_obj) {
+    function (data_obj) {
         // If the request was successful
     },
-    function(data) {
+    function (data) {
         // If the request was not successful
     }
 );
@@ -544,6 +544,7 @@ Virtually everything in Divblox is a component. Components are used as the build
 > Divblox allows you to create any of the following types of components:
 
 -   [Data model](data-modeler.md) related components
+-   Page components
 -   Custom components
 -   Basic components
 
@@ -589,6 +590,12 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
     -   Rich text editor: A wysiwyg editor that processes your html input and sends it to the server
     -   Native versions of file and image upload, including native camera access
     -   A basic image viewer
+
+### Page Components
+
+Page components are the parent components to any functionality in your application. You have default template options to choose from, each with a different navigation bar type, or even without one.
+
+![Page Types](_the-basics-media/page-types.jpg)
 
 ### Basic components
 
@@ -738,10 +745,10 @@ dxRequestInternal(
     getComponentControllerPath(this),
     // Tell component.php which function to execute
     { f: "ourFunctionName" },
-    function(data_obj) {
+    function (data_obj) {
         // Success function. data_obj is a JSON object
     }.bind(this),
-    function(data_obj) {
+    function (data_obj) {
         // Fail function. data_obj is a JSON object
     }.bind(this)
 );

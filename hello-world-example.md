@@ -17,7 +17,7 @@ Let's create a new component that will serve as our app's page.
 -   Open the Component Builder and create a new custom component called "hello world". This component should be placed in the grouping "pages" in order to be used as a page.
 
 <video id="HelloWorldStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/hello-world1.mp4" type="video/mp4">
+  <source src="_hello-world-videos/step-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep1')" type="button" class="video-control-button">
@@ -39,7 +39,7 @@ Let's open the newly created component to work on it using the Component Builder
 -   Add a basic button component by clicking "+ Component" and selecting "Basic Component -> Buttons -> Simple Primary Button"
 
 <video id="HelloWorldStep2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/helloworld2.mp4" type="video/mp4">
+  <source src="_hello-world-videos/step-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep2')" type="button" class="video-control-button">
@@ -77,8 +77,8 @@ if (typeof component_classes["pages_hello_world"] === "undefined") {
                 {
                     component_load_path: "ungrouped/imageviewer",
                     parent_element: "qJTep",
-                    arguments: {}
-                }
+                    arguments: {},
+                },
             ];
             // Sub component config end
         }
@@ -87,7 +87,7 @@ if (typeof component_classes["pages_hello_world"] === "undefined") {
             ///////////////////////////////////////////////////////////////////////
             getComponentElementById(this, "n3CEV_btn").on(
                 "click",
-                function() {
+                function () {
                     // Add the trigger element to the loading element array.
                     // This shows a loading animation on the trigger
                     // element while it waits for a response or function return
@@ -98,7 +98,7 @@ if (typeof component_classes["pages_hello_world"] === "undefined") {
                     // Example: once your function has executed,
                     //  call removeTriggerElementFromLoadingElementArray to remove
                     // loading animation
-                    setTimeout(function() {
+                    setTimeout(function () {
                         removeTriggerElementFromLoadingElementArray(element_id);
                     }, 3000);
                 }.bind(this)
@@ -143,7 +143,7 @@ Let's now send the input to the server and get a response
 ///////////////////////////////////////////////////////////////////////////
 getComponentElementById(this, "n3CEV_btn").on(
     "click",
-    function() {
+    function () {
         // Add the trigger element to the loading element array.
         // This shows a loading animation on the trigger
         // element while it waits for a response or function return
@@ -154,7 +154,7 @@ getComponentElementById(this, "n3CEV_btn").on(
         // Example: once your function has executed, call
         // removeTriggerElementFromLoadingElementArray to remove
         // loading animation
-        setTimeout(function() {
+        setTimeout(function () {
             removeTriggerElementFromLoadingElementArray(element_id);
         }, 3000);
     }.bind(this)
@@ -169,7 +169,7 @@ getComponentElementById(this, "n3CEV_btn").on(
 ///////////////////////////////////////////////////////////////////////////
 getComponentElementById(this, "n3CEV_btn").on(
     "click",
-    function() {
+    function () {
         dxRequestInternal(
             // Divblox's wrapper function for doing a POST request to the server
             // Get's the path on the server where this component's .php file resides
@@ -179,12 +179,12 @@ getComponentElementById(this, "n3CEV_btn").on(
                 email_address: getComponentElementById(
                     this,
                     "baNsD_FormControlInput"
-                ).val() // We are also
+                ).val(), // We are also
                 // sending the email address as input to the .php file.
                 // NB! CHECK YOUR ELEMENT ID. Divblox AUTO-GENERATES
                 // THIS ID, MEANING YOURS MIGHT NOT BE "baNsD_FormControlInput"
             },
-            function(data_obj) {
+            function (data_obj) {
                 // The function that is called when the server provides a "Success" response
                 showAlert(
                     "Success! The server responded with: " + data_obj.Message,
@@ -193,7 +193,7 @@ getComponentElementById(this, "n3CEV_btn").on(
                     false
                 );
             }.bind(this),
-            function(data_obj) {
+            function (data_obj) {
                 // The function that is called when the server
                 // does NOT provide a "Success" response
                 showAlert(
@@ -257,7 +257,7 @@ the default we need to tell Divblox this by updating our project.js file:
 // Update the user_role_landing_pages array to force the anonymous user to load our new page:
 let user_role_landing_pages = {
     anonymous: "hello_world",
-    Administator: "system_account_management"
+    Administator: "system_account_management",
     //"User":"the_desired_landing_page"
 };
 ```
