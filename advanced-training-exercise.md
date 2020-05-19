@@ -41,7 +41,7 @@ This HierarchyPath value will be used in the frontend to indicate the actual cat
 ![Category_Entity](_advanced-training-exercise-media/newCategory.png)
 
 In the 'category_crud_create' component we can immediately add the code to auto-populate the two new attributes accordingly.
-In the javascript, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. THis is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default Divblox functionality.
+In the javascript component.js file, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. This is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default Divblox functionality.
 
 ```js
 saveEntity() {
@@ -93,23 +93,32 @@ saveEntity() {
 
 On the PHP side, we override the empty-by-default function `doAfterSaveActions()` to save both the CategoryParentId as well as the HierarchyPath.
 The constraining (i.e. parent) category object is loaded from the database, and if this is not null, it's ID is saved into the CategoryParentId
-attribute of the current category object.
+attribute of the current category object. The `doAfterSaveActions()` is meant for exactly this type of functionality, which needs to query dadtabase values after the input is saved.
 
-We then use the `getBreadCrumbsRecursive()` function (defined shortly) to return an array of the parental hierarchy of categories.
-Adding slashes and spaces for readability while looping over the array yields the needed hierarchy path which we save into the database.
+We then use the `getBreadCrumbsRecursive()` function (defined shortly) to return an array of the parental hierarchy of categories. Here is the function we add to the component.php file:
 
 ```php
 public function doAfterSaveActions($EntityToUpdateObj = null) {
     if (is_null($EntityToUpdateObj)) {
         return;
     }
+
+    // Query the parent category object based on constraining ID
     $ParentCategoryObj = Category::Load(
         $this->getInputValue("ConstrainingCategoryId", true)
     );
+
+    // If the category does have a parent, save it's ID in the CategoryParentId attribute
+
+
     if (!is_null($ParentCategoryObj)) {
         $EntityToUpdateObj->CategoryParentId = $ParentCategoryObj->Id;
         $EntityToUpdateObj->Save();
+        // Then call the getBreadCrumbsRecursive() function on the current category object.
+        // This function will return an array of the hierarchical parent categories
         $ReturnArr = ProjectFunctions::getBreadCrumbsRecursive($EntityToUpdateObj);
+        // We inverse the array as it is not in the order we need, and create a HierarchyPath
+        // string from the array
         $ReturnArr = array_reverse($ReturnArr);
         $HierarchyPathStr = "";
         foreach($ReturnArr as $CategoryLabel => $CategoryId) {
@@ -126,7 +135,7 @@ public function doAfterSaveActions($EntityToUpdateObj = null) {
 }
 ```
 
-The function `getBreadCrumbsRecursive()` was defined in the `ProjectFunctions` class to reduce code duplication, as we will be using it again when displaying thre breadcrumb trail on our 'category_update' page. This is just a recursive function that returns the parental hierarchy of the input category in a key-value pair array.
+The function `getBreadCrumbsRecursive()` was defined in the `ProjectFunctions` class to reduce code duplication, as we will be using it again when displaying the breadcrumb trail on our 'category_update' page. The `ProjectFunctions` class (`project/assets/php/project_functions.php`) is created for this very reason, and is where you should house all your functions that will have multiple calls in your project. The function `getBreadCrumbsRecursive()` is just a recursive function that returns the parental hierarchy of the input category in a key-value pair array.
 
 ```php
 public static function getBreadCrumbsRecursive(Category $CategoryObj = null, $BreadCrumbsArray = []) {
@@ -145,11 +154,13 @@ public static function getBreadCrumbsRecursive(Category $CategoryObj = null, $Br
 }
 ```
 
-Now that our create component correctly saves all necessary information to the database, let us set up a 'category_update' page where we will host 3 things:
+Now that our create component correctly saves all necessary information to the database, let us set up a 'category_update' page, a screenshot of which is presented below. IT will house 3 components:
 
--   Breadcrumb trail for subcategories
--   The update component
--   SubCategory list, based on the currently clicked category
+-   Breadcrumb trail for subcategories (yellow)
+-   The update component (blue)
+-   SubCategory list, based on the currently clicked category (green)
+
+![category update page](/_advanced-training-exercise-media/category_update_page.png)
 
 #### Breadcrumbs
 
