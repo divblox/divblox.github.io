@@ -88,7 +88,8 @@ This logic also applies when using 'create' and 'update' functionality and using
 
 You may want to change the display of certain attributes, in all of the components they feature. In our example, let's say we have a set predetermined list of ticket statuses the user should be able to chose from. This can be manually done in the `data_lists.json` and `entity_definitions.json` files. A walk-through of this is shown in the below video.
 
-<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
+`<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
+
   <source src="_basic-training-media/bte-2-3.mp4" type="video/mp4">
   Video is not supported
 </video>
@@ -97,7 +98,7 @@ You may want to change the display of certain attributes, in all of the componen
 </button>
 <button onclick="fullScreenVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
-</button>
+</button>`
 
 ### Step 3 - Page Components
 

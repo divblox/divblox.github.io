@@ -154,7 +154,7 @@ public static function getBreadCrumbsRecursive(Category $CategoryObj = null, $Br
 }
 ```
 
-Now that our create component correctly saves all necessary information to the database, let us set up a 'category_update' page, a screenshot of which is presented below. IT will house 3 components:
+Now that our create component correctly saves all necessary information to the database, let us set up a 'category_update' page, a screenshot of which is presented below. It will house 3 components:
 
 -   Breadcrumb trail for subcategories (yellow)
 -   The update component (blue)
@@ -162,12 +162,38 @@ Now that our create component correctly saves all necessary information to the d
 
 ![category update page](/_advanced-training-exercise-media/category_update_page.png)
 
+This is the page a user will be redirected to only by clicking on a category to edit on the main page, and will not be accessible via navigation bar. The reason we would want a seperate page to display and update our categories is because of their hierarchical nature, and it may be a lot easier for the user to visualize parent child relationships of categories in this way.
+
+![admin category click](_advanced-training-exercise-media/admin_category_select.png)
+
 #### Breadcrumbs
 
-The breadcrumb basic component can be easily added via Divblox's web interface. We will do this in the 'category_update' page component.
-The following code will be added to the 'category_update' page component's javascript and PHP.
+The breadcrumb basic component can be easily added via Divblox's component builder. We will do this in the 'category_update' page component. The following default HTML code:
 
-The code, which we will add to the 'initFunctions()' function, adds two event handlers:
+```html
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+```
+
+will be replaced with our custom HTML frame, ID'ed accordingly so we can populate it dynamically from our database based on which category is selected.
+
+```html
+<nav aria-label="breadcrumb">
+    <ol id="CategoryBreadcrumbs" class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a id="AllCategories" href="#">All Categories</a>
+        </li>
+        <!-- BREADCRUMBS TO FOLLOW-->
+    </ol>
+</nav>
+```
+
+The following code will be added to the 'category_update' page component's javascript component.js file. We add two event handlers, which are defined in the `initCustomFunctions()` function. This function is run only once upon initialization of the component.
 
 1. The first event handler is to navigate back to the admin page when 'All Categories' is clicked
 2. The second is to reset the global constraining ID for the entity 'Category' to the clicked on category and then refresh the page to load it up accordingly
@@ -179,13 +205,17 @@ output because during page load-up, this sub component is not defined yet.
 ```js
 initCustomFunctions() {
     super.initCustomFunctions();
+    // Event handler navigating back to admin page
     getComponentElementById(this, "AllCategories").on("click", function () {
         loadPageComponent("admin");
     });
+    // Event handler refreshing the page with a new category constraint
     $(document).on("click", ".category-breadcrumb", function () {
+        // Fetches the stored category ID of form "CategoryId_categoryname"
+        // and stored only the name in a variable
         let category_id = $(this).attr("id").replace("CategoryId_", "");
+        // Sets new constraint ID and reloads page
         setGlobalConstrainById("Category", category_id);
-        dxLog("Cat id: " + category_id);
         loadPageComponent("category_update");
     });
 }
@@ -195,11 +225,14 @@ The `updateBreadCrumbs()` function handles the request to the server using Divbl
 
 ```js
 updateBreadCrumbs() {
+    // Communication to the backend
     dxRequestInternal(getComponentControllerPath(this), {
+            // Parameter object received by backend
             f: "getBreadCrumbs",
             category_id: getGlobalConstrainById("Category")
         },
         function (data_obj) {
+            // Success function: adding relevant breadcrumbs
             let html = "";
             let category_keys = Object.keys(data_obj.ReturnData);
             let count = 1;
@@ -210,23 +243,23 @@ updateBreadCrumbs() {
                 } else {
                     html = "<li class=\"breadcrumb-item\"><a id=\"CategoryId_" + data_obj.ReturnData[key] + "\" class=\"category-breadcrumb\" href=\"#\">" + key + "</a></li>";
                 }
-                dxLog("Key: " + key + "; Value: " + data_obj.ReturnData[key]);
                 getComponentElementById(this, "CategoryBreadcrumbs").append(html);
                 count++;
             }.bind(this));
         }.bind(this),
         function (data_obj) {
             // Failure function
+            dxLog("dxRequestInternal() failure.");
         });
 }
 ```
 
-The `updateBreadCrumbs()` function is the called in the page component's `reset()` function:
+The `updateBreadCrumbs()` function is the called in the page component's `reset()` function, meaning that every time the page or component refreshes, it will execute. We make use of this functionality in conjunction with the `setGlobalConstrainById()` and `getGlobalConstrainById()` functions to very easily and dynamically update components based on constraints.
 
 ```js
-reset(inputs) {
+reset(inputs, propagate) {
     setActivePage("category_update", "Category Update");
-    super.reset(inputs);
+    super.reset(inputs, propagate);
     this.updateBreadCrumbs();
 }
 ```
@@ -248,17 +281,30 @@ Now in the component.php file, we define the `getBreadCrumbs()` function referen
 
 #### Sub Category List
 
-On the 'category_update' page we want to be able to display and manage the sub categories for the current category.
-For this, we just create a new CRUD component for the 'Category' entity, except that it must be constrained by the current constraining category ID,
-only displaying the child categories. We do this by overriding the `getPage()` function in the component.php to only query the constrained array of categories
-from the database.
+On the 'category_update' page we want to also be able to display and manage the sub categories for the current category. In this section we will build the subcategory_list component displayed below.
+
+![subcategory highlighted](_advanced-training-exercise-media/subcategory_highlight.png)
+
+We will also to create a modal pop up that will allow us to create more subcategories. (Note that this will have to reference the constraining category to make sure the hierarchy is correct).
+
+![subcategory modal](_advanced-training-exercise-media/subcategory_modal.png)
+
+For this, we will create a new list-only CRUD component for the 'Category' entity using the component builder, displaying only the category name and subsequent ticket count.
+
+![subcategory comp builder](_advanced-training-exercise-media/subcategory_list_compbuilder.png)
+
+The component created is not constrained in any way. We need to constrain it to only display child categories of the category currently defined on the page. (That we defined using the `setGlobalConstrainById()` function). We do this by overriding the `getPage()` function in the component.php file to only query the constrained array of categories from the database. The getPage() function is quite long, and you can go through it on your own time. Below is the adaptation we made to the query.
 
 ```php
 // Change logic in the getPage function
 public function getPage() {
     // Code that remains the same
 
-    //This is all we changed, only return categories with parent ID = currently constrained categoryId
+    // -------- Removed Code ---------- //
+    // -- $QueryCondition = dxQ::All(); //
+    // ---------------------------------//
+
+    // Redefined constraining query
     $QueryCondition = dxQ::Equal(
         dxQN::Category()->CategoryParentId,
         $this->getInputValue("ConstrainingCategoryId", true)
@@ -268,9 +314,95 @@ public function getPage() {
 }
 ```
 
-On the javascript side, we change the behaviour of the `on_item_clicked()` function to reload the current page with the new category constraint ID.
+On the javascript side, we do a few things. Below you will see the whole javascript.js file. We will break the changes into 3 things:
 
-With this, we have updated all the functionality needed for the `Category` entity as well as created a page to edit the categories as well as have visual aid with regard to the hierarchical structure of the categories.
+1. We change the behaviour of the `on_item_clicked()` function to reload the current page with the new category constraint ID.
+2. There is a lot of auto-generated boilerplate code relating to the modal, which we will not use. However, we do want to put a 'category_create' component in the modal. This is again as easy as a few clicks in the the component builder.
+3. Change the outcome of the event 'category_created'. Divblox has built in boilerplate code for such events, which we fill in to both hide the modal and refresh the page.
+
+```js
+if (typeof component_classes['data_model_subcategory_list'] === "undefined") {
+    class data_model_subcategory_list extends DivbloxDomEntityDataListComponent {
+        constructor(inputs,supports_native,requires_native) {
+            super(inputs,supports_native,requires_native);
+            // Sub component config start
+            this.sub_component_definitions =
+                [{"component_load_path":"data_model/category_crud_create","parent_element":"4XscR","arguments":{}}];
+            // Sub component config end
+            this.included_attributes_object =
+            {"CategoryLabel":"Normal","TicketCount":"Normal"};
+            this.included_relationships_object =
+            [];
+            this.constrain_by_array = ["Category"];
+            this.initDataListVariables("Category");
+        }
+
+      // Overrride on_clicked function to reload the current page (with new ConstrainById)
+      on_item_clicked(id) {
+         super.on_item_clicked(id);
+         loadPageComponent("category_update");
+      }
+
+    initCustomFunctions() {
+        // IfZRa_modal Related functionality
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        getComponentElementById(this,"IfZRa_btn-close").on("click", function() {
+            // Your custom code here
+        }.bind(this));
+
+        // Modal functions
+        // Show the modal using javascript
+        //getComponentElementById(this,"IfZRa_modal").modal("show");
+        // Hide the modal using javascript
+        //getComponentElementById(this,"IfZRa_modal").modal("hide");
+        // Toggle the modal using javascript
+        //getComponentElementById(this,"IfZRa_modal").modal("toggle");
+        // Modal events
+        getComponentElementById(this,"IfZRa_modal").on("show.bs.modal", function(e) {
+            // Your custom code here
+        }.bind(this));
+        getComponentElementById(this,"IfZRa_modal").on("shown.bs.modal", function(e) {
+            // Your custom code here
+        }.bind(this));
+        getComponentElementById(this,"IfZRa_modal").on("hide.bs.modal", function(e) {
+            // Your custom code here
+        }.bind(this));
+        getComponentElementById(this,"IfZRa_modal").on("hidden.bs.modal", function(e) {
+            // Your custom code here
+        }.bind(this));
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    // Change the event triggered by the case outcome of creating a category to hide the modal and refresh the page
+    eventTriggered(event_name,parameters_obj) {
+        switch(event_name) {
+        case 'category_created':
+            getComponentElementById(this,"IfZRa_modal").modal("hide");
+            this.reset();
+            break;
+        default:
+            dxLog("Event triggered: "+event_name+": "+JSON.stringify(parameters_obj));
+        }
+        // Let's pass the event to all sub components
+        this.propagateEventTriggered(event_name,parameters_obj);
+    }
+}
+
+component_classes['data_model_subcategory_list'] = data_model_subcategory_list;
+```
+
+With this, we have updated all the functionality needed for the `Category` entity, created a page to edit the categories as well as have visual aid with regard to the hierarchical structure of the categories. Here is a quick replay of waht we built:
+
+<video id="category_full_walkthrough" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/category_full_walkthrough.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('category_full_walkthrough')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('category_full_walkthrough')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
 
 ### Ticket Functionality
 
@@ -291,7 +423,16 @@ We now want to have a sub tasks list and a notes list in this component.
 We first create the CRUD components for each using the Divblox Component Builder,
 after which we just insert them into our ticket_crud_update' component (in their own row, taking up equal 6 columns each in bootstrap terms).
 
-{VIDEO HERE PLEASE}
+<video id="component-builder-makingnote+subtask_puttingInTicketUpdate" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/component-builder-makingnote+subtask_puttingInTicketUpdate.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
 
 #### Customising the SubTask CRUD
 
