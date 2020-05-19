@@ -40,9 +40,8 @@ This HierarchyPath value will be used in the frontend to indicate the actual cat
 
 ![Category_Entity](_advanced-training-exercise-media/newCategory.png)
 
-In the 'category_crud_create' component we can immediately add the code to autopopulate the two new attributes accordingly.
-In the javascript, we override the `saveEntity()` function to NOT set the global constrain ID to the current one.
-This is removed from both the success and failure functions. The rest of the code is default Divblox functionality.
+In the 'category_crud_create' component we can immediately add the code to auto-populate the two new attributes accordingly.
+In the javascript, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. THis is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default Divblox functionality.
 
 ```js
 saveEntity() {
@@ -59,18 +58,25 @@ saveEntity() {
         Id: this.getLoadArgument("entity_id")
     };
 
+    // Checks if the component is constrained by an entity and subsequently honours the constraint
     if (this.constrain_by_array.length > 0) {
         this.constrain_by_array.forEach(function (relationship) {
             parameters_obj['Constraining' + relationship + 'Id'] = getGlobalConstrainById(relationship);
         })
     }
+
+    // Communication to the backend
     dxRequestInternal(
         getComponentControllerPath(this),
         parameters_obj,
         function (data_obj) {
             if (this.getLoadArgument("entity_id") != null) {
+                // THIS LINE IS REMOVED
+                // setGlobalConstrainById(this.entity_name, data_obj.Id);
                 pageEventTriggered(this.lowercase_entity_name + "_updated", {"id": data_obj.Id});
             } else {
+                // THIS LINE IS REMOVED
+                // setGlobalConstrainById(this.entity_name, data_obj.Id);
                 pageEventTriggered(this.lowercase_entity_name + "_created", {"id": data_obj.Id});
             }
             this.loadEntity();
@@ -829,7 +835,8 @@ if (
             current_item_keys.forEach(
                 function (key) {
                     if (
-                        this.current_page_array[key]["Id"] == row_data_obj["Id"]) {
+                        this.current_page_array[key]["Id"] == row_data_obj["Id"]
+                    ) {
                         must_add_row = false;
                     }
                 }.bind(this)
@@ -1046,7 +1053,7 @@ class AccountController extends EntityDataSeriesComponentController
             }
 
             // All we want to do is add additional information to the return array
-            // Fill up an array of number of tickets in each status 
+            // Fill up an array of number of tickets in each status
             $StatusCountArray = [];
             $StatusKeys = ["New", "In Progress", "Due Soon", "Urgent", "Complete",  "Overdue"];
             foreach ($StatusKeys as $Key) {
@@ -1081,5 +1088,3 @@ class AccountController extends EntityDataSeriesComponentController
 $ComponentObj = new AccountController("account_summary_list");
 ?>
 ```
-
-
