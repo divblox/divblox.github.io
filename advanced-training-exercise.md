@@ -409,8 +409,8 @@ With this, we have updated all the functionality needed for the `Category` entit
 Now we will focus on the changes to the `Ticket` entity and its pages, which will be split into 3 parts:
 
 -   Updating the 'ticket_crud_update' component with `SubTask` and `Note` CRUD
--   Customising the sub tasks
--   Customising the notes and attachments
+-   Customizing the sub tasks
+-   Customizing the notes and attachments
 
 #### Update Component Changes
 
@@ -434,21 +434,30 @@ after which we just insert them into our ticket_crud_update' component (in their
 <i class="fa fa-expand"></i>
 </button>
 
-#### Customising the SubTask CRUD
+#### Customizing the SubTask CRUD
 
 The sub tasks are already constrained by the parent Ticket ID, so all we need to do is make the HTML formatting a little bit more to our liking.
-You can make the input boxes fullwidth and arrange them in a bootstrap layout to your liking.
+You can make the input boxes full-width and arrange them in a bootstrap layout to your liking. We change the create layout to maximize the space we have:
 
-#### Customising the Note CRUD
+![subtask update layout](_advanced-training-exercise-media/subtask_update_arrangement.png)
 
-The `Note` section is a bit more complicated, for a few reasons.
-Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket.
-Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component.
-This is done via the component builder.
+#### Customizing the Note CRUD
 
-{VIDEO HERE PLEASE}
+The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component.
+This is done via the component builder. Below is a video walk through, followed by a breakdown of the code changes made.
 
-Below is a outline of the `initFileUploader()` function.
+<video id="component-builder-makingnote+subtask_puttingInTicketUpdate" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/component-builder-makingnote+subtask_puttingInTicketUpdate.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+As before, there is a lot of background code functionality we will not discuss here, but encourage you to sift through to understand. We will outline the changes made and why we made them. In the component.js file, we just had to add an additional input parameter (note_id) as we need this ID so as to contrain the attachment to the current note.
 We override it's default functionality, leaving everything as is, except that we add one more parameter to the data in the upload, namely the 'note_id'.
 
 ```js
