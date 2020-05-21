@@ -457,8 +457,7 @@ This is done via the component builder. Below is a video walk through, followed 
 <i class="fa fa-expand"></i>
 </button>
 
-As before, there is a lot of background code functionality we will not discuss here, but encourage you to sift through to understand. We will outline the changes made and why we made them. In the component.js file, we just had to add an additional input parameter (note_id) as we need this ID so as to contrain the attachment to the current note.
-We override it's default functionality, leaving everything as is, except that we add one more parameter to the data in the upload, namely the 'note_id'.
+As before, there is a lot of background code functionality we will not discuss here, but encourage you to sift through to understand. We will outline the changes made and why we made them. In the component.js file, we just had to add an additional input parameter (note_id) into the Jquery upload in the `initFileUploader()` function, as we need this ID so as to constrain the attachment to the current note.
 
 ```js
 initFileUploader() {
@@ -466,15 +465,14 @@ initFileUploader() {
    let this_component = this;
    $('#'+uid+'_file_uploader').fileuploader({
       changeInput: // Default input
-
       onSelect: function(item) {
          // Default functionality
-
       },
       upload: {
          url: getComponentControllerPath(this_component),
          data: {f:"handleFilePost",
                 AuthenticationToken:getValueFromAppState('dxAuthenticationToken'),
+                // NEW INPUT PARAMETER DEFINED
                 note_id: this_component.getLoadArgument("note_id")},
          type: 'POST',
          enctype: 'multipart/form-data',
@@ -486,19 +484,15 @@ initFileUploader() {
          },
          onSuccess: function(result, item) {
             // Default functionality
-
          },
          onError: function(item) {
             // Default functionality
-
          },
          onProgress: function(data, item) {
             // Default functionality
-
          },
          onComplete: function() {
             // Default functionality
-
          },
       },
       onRemove: function(item) {
@@ -512,7 +506,7 @@ initFileUploader() {
 }
 ```
 
-On the PHP side, we again override the default functionality of the `handleFilePost()` function, adding the following code:
+On the PHP side, we override the default functionality of the `handleFilePost()` function, adding the code snippet indicated below. We query the Note table by the note_id passed, and proceed with a few checks. If the Note object is null, we delete the corresponding file upload (this is to prevent having orphaned data). If the Note object exists, we delete whatever file (if any) was uploaded before and save the new file. With this simple set up each note will only be able to have none or one attachment.
 
 ```php
 public function handleFilePost() {
@@ -554,19 +548,7 @@ public function handleFilePost() {
 }
 ```
 
-This just ties the filed uploaded to the note it is attached to and makes sure that when deleting a note you do not orphan any file uploads.
-We also remove the return output from the `handleRemoveFile()` function, leaving it as:
-
-```php
-public function handleRemoveFile() {
-    $FileDocumentObj = FileDocument::QuerySingle(dxQ::Equal(dxQueryN::FileDocument()->FileName, $this->getInputValue("file")));
-    if (!is_null($FileDocumentObj)) {
-        $FileDocumentObj->Delete();
-    }
-}
-```
-
-Now that we have prepared our file uploader, let's dig into the actual `Note` CRUD.
+Now that we have prepared our file uploader to link to the current note, let's dig into the actual `Note` CRUD.
 Firstly, we want to follow a similar approach as with the `Ticket` and `Category` create CRUD components,
 whereby the initial create only requires limited fields, after which you are navigated to the update component to complete the process.
 We do this by shifting the 'note_created' case of the `eventTriggered()` function in the 'note_crud' component to above the 'note_clicked' case, as before.
@@ -578,96 +560,207 @@ We can then add the two buttons we want via the component builder. These are:
 
 First, we add a row with two columns in the update component.
 We then add the modal using the component builder, and change relevant text and button text as well as make the modal button have classes
-'fullwidth' and 'btn-link'.
+'full-width' and 'btn-link'. Below is a walk through of the step we take in the component builder:
 
-Now, in the javascript, we firstly make sure that the modal will alwasy be closed until clicked by adding a line of code
-to hide the modal in the component's reset function.
+<video id="update-note-crud" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/update-note-crud.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('update-note-crud')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('update-note-crud')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
 
-{VIDEO HERE PLEASE}
+We can also go ahead and remove the modal footer as those buttons are not needed.
 
-```js
-reset(inputs,propagate) {
-   if (typeof inputs !== "undefined") {
-      this.setEntityId(inputs);
-   }
-   super.reset(inputs,propagate);
-   getComponentElementById(this,"HPxt9_modal").modal("hide");
-}
-```
+![modal footer removal](_advanced-training-exercise-media/modal-footer-removal.png)
 
-We will then also add some functionality to the modal skeleton provided by Divblox.
+Now we will proceed to inspect the necessary code changes applied to create the functionality we need. Starting with the update component javascript:
 
-In the `initFunctions()` function, we add the following to the "show.bs.modal" case, noting the additional 'note_id' parameter we specified earlier.
-
-```js
-loadComponent(
-    "system/note_attachment_uploader",
-    this.getUid(),
-    "XLGKu",
-    { note_id: this.getEntityId() },
-    true
-);
-```
-
-This just makes sure that we load our file uploader and it is already constrained to the note we want to attach the file/image to.
-We also want to override the `onAfterLoadEntity()` function to populate our right column with a download link if and only if the attachment exists.
+1. Firstly we want to make sure that the modal will always be closed until clicked, we do this in the component's `reset()` function
+2. We then add functionality to our modal boilerplate code. We wish to pass the current note's note_id to the note_attachment_uploader inside the modal. This is done in the `initFunctions()` function. This note_id is how we are able to constrain attachments to the current note.
+3. We also decide to override the `eventTriggered()` 'FileUploaded' case to reset the component, from a UX point of view. If i have described my note and added an attachment, I am most likely done with that note.
+4. Finally, we also want to override the `onAfterLoadEntity()` function to populate our right column with a download link if and only if the attachment exists.
 
 ```js
-onAfterLoadEntity(data_obj) {
-   // TODO: Override this as needed;
-   getComponentElementById(this, "DownloadWrapper").html("");
-   if (typeof data_obj.AttachmentPath !== "undefined") {
-      if (data_obj.AttachmentPath.length > 0) {
-         getComponentElementById(this, "DownloadWrapper").html('<a href="'+data_obj.AttachmentPath+'" target="_blank" class="btn btn-link fullwidth">Download Attachment</a>');
-      }
-   }
-}
-```
+if (typeof component_classes["data_model_note_crud_update"] === "undefined") {
+    class data_model_note_crud_update extends DivbloxDomEntityInstanceComponent {
+        constructor(inputs, supports_native, requires_native) {
+            super(inputs, supports_native, requires_native);
+            // Sub component config start
+            this.sub_component_definitions = [];
+            // Sub component config end
+            this.included_attribute_array = ["NoteDescription"];
+            this.included_relationship_array = [];
+            this.constrain_by_array = ["Ticket"];
+            this.data_validation_array = [];
+            this.custom_validation_array = [];
+            this.required_validation_array = ["NoteDescription"];
+            this.initCrudVariables("Note");
+        }
+        reset(inputs, propagate) {
+            if (typeof inputs !== "undefined") {
+                this.setEntityId(inputs);
+            }
+            super.reset(inputs, propagate);
+            // Make sure modal is always initially hidden
+            getComponentElementById(this, "HPxt9_modal").modal("hide");
+        }
+        initCustomFunctions() {
+            // HPxt9_modal Related functionality
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            getComponentElementById(this, "HPxt9_btn-close").on(
+                "click",
+                function () {
+                    // Your custom code here
+                }.bind(this)
+            );
 
-Now for the backend side. Firstly, we override the default `getObjectData()` function.
-What we added here is backend validation for the existance and validity of the attachment by checking the relational entity `FileDocument`.
-The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
+            // Modal functions
+            // Show the modal using javascript
+            //getComponentElementById(this,"HPxt9_modal").modal("show");
+            // Hide the modal using javascript
+            //getComponentElementById(this,"HPxt9_modal").modal("hide");
+            // Toggle the modal using javascript
+            //getComponentElementById(this,"HPxt9_modal").modal("toggle");
+            // Modal events
 
-```php
-public function getObjectData() {
-    $EntityObj = $this->EntityNameStr::Load(
-        $this->getInputValue("Id",true)
-    );
-    $EntityJsonDecoded = array();
-    $AttachmentPathStr = "";
-    if (!is_null($EntityObj)) {
-        $EntityJsonDecoded = json_decode($EntityObj->getJson());
-        if (!is_null($EntityObj->FileDocumentObject)) {
-            if (file_exists(DOCUMENT_ROOT_STR.SUBDIRECTORY_STR.$EntityObj->FileDocumentObject->Path)) {
-                $AttachmentPathStr = ProjectFunctions::getBaseUrl().$EntityObj->FileDocumentObject->Path;
+            getComponentElementById(this, "HPxt9_modal").on(
+                "show.bs.modal",
+                function (e) {
+                    // The loadComponent() function was added in the component builder,
+                    // We just want to add the note_id parameter
+                    loadComponent(
+                        "system/note_attachment_uploader",
+                        this.getUid(),
+                        "XLGKu",
+                        { note_id: this.getEntityId() },
+                        true
+                    );
+                }.bind(this)
+            );
+            getComponentElementById(this, "HPxt9_modal").on(
+                "shown.bs.modal",
+                function (e) {
+                    // Your custom code here
+                }.bind(this)
+            );
+            getComponentElementById(this, "HPxt9_modal").on(
+                "hide.bs.modal",
+                function (e) {
+                    // Your custom code here
+                }.bind(this)
+            );
+            getComponentElementById(this, "HPxt9_modal").on(
+                "hidden.bs.modal",
+                function (e) {
+                    // Your custom code here
+                }.bind(this)
+            );
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        }
+
+        eventTriggered(event_name, parameters_obj) {
+            switch (event_name) {
+                case "FileUploaded":
+                    this.reset();
+                    break;
+                default:
+                    dxLog(
+                        "Event triggered: " +
+                            event_name +
+                            ": " +
+                            JSON.stringify(parameters_obj)
+                    );
+            }
+            // Let's pass the event to all sub components
+            this.propagateEventTriggered(event_name, parameters_obj);
+        }
+
+        onAfterLoadEntity(data_obj) {
+            // Check to see if there is an attachment. Only display download button if it does exist
+            getComponentElementById(this, "DownloadWrapper").html("");
+            if (typeof data_obj.AttachmentPath !== "undefined") {
+                if (data_obj.AttachmentPath.length > 0) {
+                    getComponentElementById(this, "DownloadWrapper").html(
+                        '<a href="' +
+                            data_obj.AttachmentPath +
+                            '" target="_blank" class="btn btn-link fullwidth">Download Attachment</a>'
+                    );
+                }
             }
         }
     }
-    $this->setReturnValue("Object",$EntityJsonDecoded);
-    foreach ($this->IncludedRelationshipArray as $Relationship => $DisplayValue) {
-        $RelationshipList = $this->getRelationshipList($EntityObj,$Relationship);
-        $this->setReturnValue($Relationship."List",$RelationshipList);
-    }
-    $this->setReturnValue("Result","Success");
-    $this->setReturnValue("Message","");
-    $this->setReturnValue("AttachmentPath", $AttachmentPathStr);
-    $this->presentOutput();
+    component_classes[
+        "data_model_note_crud_update"
+    ] = data_model_note_crud_update;
 }
 ```
+
+Now for the backend side. Below is the note update component.php file.
+
+Firstly, we override the default `getObjectData()` function. What we added here is backend validation for the existence and validity of the attachment by checking the relational entity `FileDocument`. The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
 
 Secondly, we need to make sure that if we delete any notes, we do not accidentally leave behind any orphaned files/images.
 This is done using Divblox's `doBeforeDeleteActions()` function.
 
 ```php
-public function doBeforeDeleteActions($EntityToUpdateObj = null) {
-    if (is_null($EntityToUpdateObj)) {
-        return;
+<?php
+require("../../../../divblox/divblox.php");
+class NoteController extends EntityInstanceComponentController {
+    protected $EntityNameStr = "Note";
+    protected $IncludedAttributeArray = ["NoteDescription",];
+    protected $IncludedRelationshipArray = [];
+    protected $ConstrainByArray = ["Ticket",];
+    protected $RequiredAttributeArray = [];
+    protected $NumberValidationAttributeArray = [];
+    public function __construct($ComponentNameStr = 'Component') {
+        parent::__construct($ComponentNameStr);
     }
-    if (!is_null($EntityToUpdateObj->FileDocumentObject)) {
-        $EntityToUpdateObj->FileDocumentObject->Delete();
+    public function getObjectData() {
+        $EntityObj = $this->EntityNameStr::Load(
+            $this->getInputValue("Id",true)
+        );
+        $EntityJsonDecoded = array();
+        // Set the attachment string to "" as default
+        $AttachmentPathStr = "";
+        if (!is_null($EntityObj)) {
+            $EntityJsonDecoded = json_decode($EntityObj->getJson());
+            // Check if the FIleDocumentObject actually exists and is valid,
+         // only then set $AttachmentPathStr to the string
+            if (!is_null($EntityObj->FileDocumentObject)) {
+                if (file_exists(DOCUMENT_ROOT_STR.SUBDIRECTORY_STR.$EntityObj->FileDocumentObject->Path)) {
+                    $AttachmentPathStr = ProjectFunctions::getBaseUrl().$EntityObj->FileDocumentObject->Path;
+                }
+            }
+        }
+        $this->setReturnValue("Object",$EntityJsonDecoded);
+        foreach ($this->IncludedRelationshipArray as $Relationship => $DisplayValue) {
+            $RelationshipList = $this->getRelationshipList($EntityObj,$Relationship);
+            $this->setReturnValue($Relationship."List",$RelationshipList);
+        }
+        $this->setReturnValue("Result","Success");
+        $this->setReturnValue("Message","");
+        $this->setReturnValue("AttachmentPath", $AttachmentPathStr);
+        $this->presentOutput();
+    }
+    public function doBeforeDeleteActions($EntityToUpdateObj = null) {
+        if (is_null($EntityToUpdateObj)) {
+            return;
+        }
+        // Delete FileDocumentObject before Note is deleted
+        if (!is_null($EntityToUpdateObj->FileDocumentObject)) {
+            $EntityToUpdateObj->FileDocumentObject->Delete();
+        }
     }
 }
+$ComponentObj = new NoteController("note_crud_update");
+?>
 ```
+
+And that is it! We have now finished the Ticket functionality we require.
 
 # Dashboard
 
@@ -686,23 +779,47 @@ To create the dashboard we will create a few individual components, that can be 
 
 ## Status Tile
 
-Let's create the tiles that display a summary of the breakdown of statuses of all tickets. To do this, we will create a single component, and reuse it on our Dashboard page with different input parameters. These input parameters are specified in the javascript of the parent element, i.e. our dashboard page itself. This is done in the subcomponent definitions of the page by adding a secondary load argument as seen below:
+Let's create the tiles that display a summary of the breakdown of statuses of all tickets.
+
+<video id="dashboard-frame-and-status-tile" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/dashboard-frame-and-status-tile.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('dashboard-frame-and-status-tile')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('dashboard-frame-and-status-tile')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+As you can see, we will create a single component, and reuse it on our Dashboard page with different input parameters. These input parameters are specified in the javascript of the parent element, i.e. our dashboard page itself. This is done in the subcomponent definitions of the page by adding a secondary load argument as seen below:
 
 ![](_advanced-training-exercise-media/subcomponent-par-input.png)
 
-Now, to build our component. This will be a custom component that we can build in the component builder. Once created, we add a fullwidth container and two rows, the first split into a 9-width bootstrap column and a 3-width bootstrap column, and the second a full 12-width column. These 3 sections will be the sections for the:
+Now, to build our component. Once created, we add a fullwidth container and two rows, the first split into a 9-width bootstrap column and a 3-width bootstrap column, and the second a full 12-width column. These 3 sections will be the sections for the:
 
 1. Status name
 2. Number of tickets
 3. Percentage of total tickets that status represents
+
+<video id="status-tile-frame" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/status-tile-frame.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('status-tile-frame')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('status-tile-frame')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
 
 We will look at the relevant component files individually. These are:
 
 -   component.html
 -   component.js
 -   component.php
--   component.json
--   component.css
+-   component.json (unedited)
+-   component.css (unedited)
 
 The full HTML file looks like this:
 
@@ -849,7 +966,7 @@ if (
 }
 ```
 
-Moving onto the backend side, looking at the component.php file:
+Moving onto the backend side, looking at the ticket_status_indicator component.php file:
 
 ```php
 <?php
@@ -889,8 +1006,6 @@ $ComponentObj = new TicketStatusIndicatorController("ticket_status_indicator");
 ?>
 ```
 
-The component.json file is used to store component specific parameters or lists which we do not need for this component. We will discuss all the the styling once the whole dashboard functionality is built.
-
 ## Account Summary
 
 For any custom data list, there are quite a few things to consider, but when you understand those, using a default entity data list to construct anything you need becomes very quick and easy. Firstly, we create a data list from the component builder for the Account entity, including the attributes:
@@ -899,7 +1014,7 @@ For any custom data list, there are quite a few things to consider, but when you
 -   LastName
 -   ProfilePicturePath
 
-Again, we will look at each of the 5 components individually. Similarly to the previous section, we will not discuss the component.css and component.json files, as we will not change them for now.
+Again, we will look at each of the 5 components individually (omitting the unchanged .css and .json files).
 
 Looking at the HTML that is generated by the component builder, we see that there isn't really anything we want to change. The HTML file gives us a template for the structure or the component, including pagination and search functionality. The only thing we do add is a heading describing the component purpose.
 
