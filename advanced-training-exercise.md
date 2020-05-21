@@ -1008,11 +1008,26 @@ $ComponentObj = new TicketStatusIndicatorController("ticket_status_indicator");
 
 ## Account Summary
 
-For any custom data list, there are quite a few things to consider, but when you understand those, using a default entity data list to construct anything you need becomes very quick and easy. Firstly, we create a data list from the component builder for the Account entity, including the attributes:
+For any custom data list, there are quite a few things to consider, but when you understand those, using a default entity data list to construct anything you need becomes very quick and easy.
+
+Firstly, we create a data list from the component builder for the Account entity, including the attributes:
 
 -   FirstName
 -   LastName
 -   ProfilePicturePath
+
+Then we will edit the default `addRow()` function in the component.js file (to change the generated HTML rows) as well as the `getPage()` function in the component.php (to add the 'In Progress' and 'Overdue' ticket counts to the information passed to the front end)
+
+<video id="account-summary-adding" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/account-summary-adding.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('account-summary-adding')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('account-summary-adding')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
 
 Again, we will look at each of the 5 components individually (omitting the unchanged .css and .json files).
 
@@ -1193,7 +1208,11 @@ if (
 }
 ```
 
-Now looking at the component.php file. This is a long one. Feel free to browse through the entire code to familiarise yourself with the background process, but the changes we have made will be defined with prepended comments.
+Adding this component to our dashboard is shown below. Note that all of the CSS will be shown at the end, but is not the purpose of this exercise, so we encourange you to style it as you see fit.
+
+![adding account summary](_advanced-training-exercise-media/added-account-summary.png)
+
+Now looking at the component.php file. This is a long one. Feel free to browse through the entire code to familiarize yourself with the background process, but the changes we have made will be defined with prepended comments.
 
 ```php
 
@@ -1364,3 +1383,13 @@ class AccountController extends EntityDataSeriesComponentController
 $ComponentObj = new AccountController("account_summary_list");
 ?>
 ```
+
+Done! It is normal for your components to look very bad until you add the CSS necessary to scale the profile pictures, center the text, etc. You can spend some time to make it look as you please. You can do this in the one of three places:
+
+1. In the current component's component.css file
+2. In the parent (dashboard page) component.css file (These classes will be accessible to all child components in the page)
+3. In the file themes.css (Accessible across your project)
+
+Where you define your classes is obviously dependant on the scope in which you will be using them.
+
+## Overdue Tickets
