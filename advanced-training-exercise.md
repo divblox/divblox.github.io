@@ -1393,3 +1393,376 @@ Done! It is normal for your components to look very bad until you add the CSS ne
 Where you define your classes is obviously dependant on the scope in which you will be using them.
 
 ## Overdue Tickets
+
+This component is constructed exactly the same way we constructed the account summary list. We create a list component using the component builder (including all the attributes we need).
+
+Below is the component.js file, in which we again altered the `addRow()` function to display the information we want neatly. Since all the information we want to display is already directly stored in the database, we do not need to edit the component.php file.
+
+```js
+if (
+    typeof component_classes["data_model_ticket_summary_list"] === "undefined"
+) {
+    class data_model_ticket_summary_list extends DivbloxDomEntityDataListComponent {
+        constructor(inputs, supports_native, requires_native) {
+            super(inputs, supports_native, requires_native);
+            // Sub component config start
+            this.sub_component_definitions = [];
+            // Sub component config end
+            this.included_attributes_object = {
+                TicketName: "Normal",
+                TicketDueDate: "Normal",
+                TicketStatus: "Normal",
+                TicketProgress: "Normal",
+            };
+            this.included_relationships_object = {
+                Account: "Normal",
+                Category: "Normal",
+            };
+            this.constrain_by_array = [];
+            this.initDataListVariables("Ticket");
+        }
+
+        addRow(row_data_obj) {
+            let current_item_keys = Object.keys(this.current_page_array);
+            let must_add_row = true;
+            current_item_keys.forEach(
+                function (key) {
+                    if (
+                        this.current_page_array[key]["Id"] == row_data_obj["Id"]
+                    ) {
+                        must_add_row = false;
+                    }
+                }.bind(this)
+            );
+
+            if (!must_add_row) {
+                return;
+            }
+
+            this.current_page_array.push(row_data_obj);
+
+            let row_id = row_data_obj["Id"];
+            let included_keys = Object.keys(this.included_all_object);
+            let wrapping_html =
+                '<a href="#" id="' +
+                this.getUid() +
+                "_row_item_" +
+                row_id +
+                '" class="list-group-item' +
+                " list-group-item-action flex-column align-items-start data_list_item data_list_item_" +
+                this.getUid() +
+                ' dx-data-list-row">';
+            let header_wrapping_html =
+                '<div class="d-flex w-100 justify-content-between">';
+
+            let ticket_name_html = '<div class="col-3">';
+            let account_name_html = '<div class="col-4">';
+            let ticket_date_html = '<div class="col-4">';
+            let ticket_progress_html =
+                '<div class="col-1 float-right" style="color: red;">';
+
+            let account_names = row_data_obj["Account"].split(" ");
+            let return_account_name =
+                account_names[0].slice(0, 1) + ". " + account_names[1];
+
+            ticket_name_html += row_data_obj["TicketName"] + "</div>";
+            account_name_html += return_account_name + "</div>";
+            ticket_date_html += row_data_obj["TicketDueDate"] + "</div>";
+            ticket_progress_html += row_data_obj["TicketProgress"] + "%</div>";
+            wrapping_html +=
+                '<div class="row">' +
+                ticket_name_html +
+                account_name_html +
+                ticket_date_html +
+                ticket_progress_html +
+                "</div>" +
+                "</div>";
+            wrapping_html += "</a>";
+            getComponentElementById(this, "DataList").append(wrapping_html);
+        }
+    }
+
+    component_classes[
+        "data_model_ticket_summary_list"
+    ] = data_model_ticket_summary_list;
+}
+```
+
+![overdue tickets](_advanced-training-exercise-media/overdue_tickets.png)
+
+## Graph components
+
+We will now look at the two graph components we want to create for our dashboard. Divblox uses the chatJS library, and further documentation can be found [here](https://www.chartjs.org/). Divblox has a default chart component which is designed to be used as boilerplate code to be tweaked to create the necessary graph instead of having to create new ones. Below is a video of how to create new graph components via the component builder.
+
+<video id="graphs_by_default" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/graphs_by_default.mp4" type="video/mp4">
+  Video is not supported
+</video>
+<button onclick="replayVideo('graphs_by_default')" type="button" class="video-control-button">
+<i class="fa fa-repeat"></i>
+</button>
+<button onclick="fullScreenVideo('graphs_by_default')" type="button" class="video-control-button">
+<i class="fa fa-expand"></i>
+</button>
+
+Now that we have created (identical to the default) graph components, let's go through the changes we make to display the correct data and graph types.
+
+#### Ticket Status Graph
+
+This component is a bar chart showing the number of tickets in each of the status's.
+
+![ticket status graph](_advanced-training-exercise-media/ticket_status_graph.png)
+
+Below we show the ticket_status_graph component's component.js and component.php files:
+
+```js
+if (
+    typeof component_classes["data_visualization_status_bar_chart"] ===
+    "undefined"
+) {
+    class data_visualization_status_bar_chart extends DivbloxDomBaseComponent {
+        constructor(inputs, supports_native, requires_native) {
+            super(inputs, supports_native, requires_native);
+            // Sub component config start
+            this.sub_component_definitions = {};
+            // Sub component config end
+            this.chart_obj = null;
+            this.prerequisite_array = [
+                "project/assets/js/chartjs/Chart.min.js",
+            ];
+        }
+
+        reset(inputs, propagate) {
+            super.reset(inputs, propagate);
+            this.initChart();
+        }
+
+        updateChart() {
+            dxRequestInternal(
+                getComponentControllerPath(this),
+                { f: "getData" },
+                function (data_obj) {
+                    this.chart_obj.data = data_obj.Data;
+                    this.chart_obj.update();
+                }.bind(this),
+                function (data_obj) {
+                    throw new Error(data_obj.Message);
+                }
+            );
+        }
+
+        initChart() {
+            let ctx = this.uid + "_ComponentChart";
+            this.chart_obj = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    /* server data */
+                },
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        ],
+                    },
+                    legend: {
+                        display: false,
+                    },
+                },
+            });
+            this.updateChart();
+        }
+    }
+    component_classes[
+        "data_visualization_status_bar_chart"
+    ] = data_visualization_status_bar_chart;
+}
+```
+
+```php
+<?php
+require("../../../../divblox/divblox.php");
+class StatusBarChartController extends ProjectComponentController {
+    public function __construct($ComponentNameStr = 'Component') {
+        parent::__construct($ComponentNameStr);
+    }
+
+    // Query relevant data
+    public function getData() {
+        $TicketStatusArray = ["New", "In Progress", "Due Soon", "Urgent", "Complete", "Overdue"];
+        foreach($TicketStatusArray as $TicketStatus) {
+            $TicketStatusCountArray[] = Ticket::QueryCount(
+              dxQ::Equal(
+                  dxQN::Ticket()->TicketStatus,
+                  $TicketStatus
+              )
+            );
+        }
+        // ReturnData is the array of data + other parameters sent to the front-end
+        $ReturnData = array(
+            "labels" => $TicketStatusArray,
+            "datasets" =>
+                array(["label" => "Dataset 1 label",
+                        "data" => $TicketStatusCountArray,
+                        "backgroundColor" => [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)'],
+                        "borderColor" => [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'],
+                        "borderWidth" => 1],));
+        $this->setReturnValue("Result","Success");
+        $this->setReturnValue("Data",$ReturnData);
+        $this->presentOutput();
+    }
+}
+$ComponentObj = new StatusBarChartController("status_bar_chart");
+?>
+```
+
+#### Main Category Graph
+
+This pie chart is supposed to show us the proportion of tickets in each of the main categories, i.e. Work, Sport and Leisure.
+
+![category pie chart](_advanced-training-exercise-media/category_pie_chart.png)
+
+Below we show the category_pie_chart's component's component.js and component.php files:
+
+```js
+if (
+    typeof component_classes["data_visualization_category_pie_chart"] ===
+    "undefined"
+) {
+    class data_visualization_category_pie_chart extends DivbloxDomBaseComponent {
+        constructor(inputs, supports_native, requires_native) {
+            super(inputs, supports_native, requires_native);
+            // Sub component config start
+            this.sub_component_definitions = {};
+            // Sub component config end
+            this.chart_obj = null;
+            this.prerequisite_array = [
+                "project/assets/js/chartjs/Chart.min.js",
+            ];
+        }
+
+        reset(inputs, propagate) {
+            super.reset(inputs, propagate);
+            this.initChart();
+        }
+
+        updateChart() {
+            dxRequestInternal(
+                getComponentControllerPath(this),
+                { f: "getData" },
+                function (data_obj) {
+                    this.chart_obj.data = data_obj.Data;
+                    this.chart_obj.update();
+                    dxLog("AA: " + data_obj.DataArray);
+                }.bind(this),
+                function (data_obj) {
+                    throw new Error(data_obj.Message);
+                }
+            );
+        }
+
+        // Changed the graph type to ""pie"
+        initChart() {
+            let ctx = this.uid + "_ComponentChart";
+            this.chart_obj = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    /* Server Data */
+                },
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                },
+                                gridLines: {
+                                    display: false,
+                                },
+                            },
+                        ],
+                        xAxes: [
+                            {
+                                gridLines: {
+                                    display: false,
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+            this.updateChart();
+        }
+    }
+    component_classes[
+        "data_visualization_category_pie_chart"
+    ] = data_visualization_category_pie_chart;
+}
+```
+
+```php
+<?php
+require("../../../../divblox/divblox.php");
+class CategoryPieChartController extends ProjectComponentController {
+    public function __construct($ComponentNameStr = 'Component') {
+        parent::__construct($ComponentNameStr);
+    }
+
+    // Query the relevant data
+    public function getData() {
+        $CategoryLabelCountArray = [];
+        $CategoryLabelArray = ["Sport", "Leisure", "Work"];
+        foreach($CategoryLabelArray as $Category) {
+            $CategoryLabelCountArray[] = Ticket::QueryCount(
+                dxQ::Equal(
+                    dxQN::Ticket()->CategoryObject->CategoryLabel,
+                    $Category
+                )
+            );
+        }
+
+        // Removed the default 2 datasets and replaced it with our actual data
+        $ReturnData = array(
+            "labels" => $CategoryLabelArray,
+            "datasets" =>
+                array(["label" => "Categories",
+                        "data" => $CategoryLabelCountArray,
+                        "backgroundColor" => [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)'],
+                        "borderColor" => [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'],
+                        "borderWidth" => 1],));
+        $this->setReturnValue("Result","Success");
+        $this->setReturnValue("Data",$ReturnData);
+        $this->setReturnValue("DataArray",$CategoryLabelCountArray);
+        $this->presentOutput();
+    }
+}
+$ComponentObj = new CategoryPieChartController("category_pie_chart");
+?>
+```
