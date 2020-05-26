@@ -22,15 +22,15 @@ Continuing with Rufus: When you insert your USB stick, the device field should a
 
 ###### ** Without USB stick **
 
-![RufusBefore](_linux-media/rufus_before.png ":size=400%")
+![RufusBefore](_deployment-media/rufus_before.png ":size=400%")
 
 ###### ** With USB stick and .iso selected **
 
-![](_linux-media/rufus_after.png ":size=400%")
+![](_deployment-media/rufus_after.png ":size=400%")
 
 ###### ** Complete installation **
 
-<img align="center" width="55%" src="_linux-media/rufus_complete.png">
+<img align="center" width="55%" src="_deployment-media/rufus_complete.png">
 
 <!-- tabs:end -->
 
@@ -50,7 +50,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li> Select Install Ubuntu. </li>
         <li>You are also able to try Ubuntu without installing it. </li>
     </ul>
-    <img  src="_linux-media/ubuntu1.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu1.png" style="max-height: 350px">
 </p>
 
 ###### ** 2.) Select Language **
@@ -61,7 +61,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li> Select your prefered language.</li>
         <li>Note that English UK and English US have a few special characters swapped around.</li>
     </ul>
-    <img  src="_linux-media/ubuntu2.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu2.png" style="max-height: 350px">
 </p>
 
 ###### ** 3.) Installation options **
@@ -73,7 +73,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>If however, you are comfortable with what you want and need, you can proceed to the custom installation which will be a much more lightweight installation.</li>
         <li>It is advised to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation process</li>
     </ul>
-    <img  src="_linux-media/ubuntu3.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu3.png" style="max-height: 350px">
 </p>
 
 ###### ** 4.) Installation Type **
@@ -85,7 +85,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>The other options allow you to install Ubuntu alongside your current OS,</li>
         <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
     </ul>
-    <img  src="_linux-media/ubuntu4.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu4.png" style="max-height: 350px">
 </p>
 
 ###### ** 5.) Location **
@@ -96,7 +96,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>Select your location</li>
         <li>If you have internet connection, this should be auto-populated</li>
     </ul>
-    <img  src="_linux-media/ubuntu5.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu5.png" style="max-height: 350px">
 </p>
 
 ###### ** 6.) Personal **
@@ -108,7 +108,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
         <li>Remember that this will be your user password, so make it a secure</li>
         <li>You can also decide whether to be remembered or not</li>
     </ul>
-    <img  src="_linux-media/ubuntu6.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu6.png" style="max-height: 350px">
 </p>
 
 ###### ** 7.) Install Process **
@@ -118,7 +118,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the installation</li>
     </ul>
-    <img  src="_linux-media/ubuntu7.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu7.png" style="max-height: 350px">
 </p>
 
 ###### ** 8.) Install Complete **
@@ -128,7 +128,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the completed installation</li>
     </ul>
-    <img  src="_linux-media/ubuntu8.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu8.png" style="max-height: 350px">
 </p>
 
 ###### ** 9.) Sign In **
@@ -138,7 +138,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     <ul> 
         <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
     </ul>
-    <img  src="_linux-media/ubuntu9.png" style="max-height: 350px">
+    <img  src="_deployment-media/ubuntu9.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
@@ -156,7 +156,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Note the changes to UX in newer version of Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in1.png" style="max-height: 350px">
+    <img  src="_deployment-media/in1.png" style="max-height: 350px">
 </p>
 
 ###### ** 2.) LivePatch **
@@ -166,7 +166,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>There is no need to set up LivePatch for now</li>
     </ul>
-    <img  src="_linux-media/in2.png" style="max-height: 350px">
+    <img  src="_deployment-media/in2.png" style="max-height: 350px">
 </p>
 
 ###### ** 3.) Ubuntu feedback **
@@ -176,7 +176,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can decide whether or not to provide information to improve Ubuntu</li>
     </ul>
-    <img  src="_linux-media/in3.png" style="max-height: 350px">
+    <img  src="_deployment-media/in3.png" style="max-height: 350px">
 </p>
 
 ###### ** 4.) App Store **
@@ -186,7 +186,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
     </ul>
-    <img  src="_linux-media/in4.png" style="max-height: 350px">
+    <img  src="_deployment-media/in4.png" style="max-height: 350px">
 </p>
 
 ###### ** 5.) Ubuntu update **
@@ -196,7 +196,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
     <ul> 
         <li>Allow Ubuntu to update (not compulsory)</li>
     </ul>
-    <img  src="_linux-media/in5.png" style="max-height: 350px">
+    <img  src="_deployment-media/in5.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
@@ -222,7 +222,7 @@ sudo apt install apache2
 You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
 <p align="center">
-    <img  src="_linux-media/installs1.png" style="max-height: 400px">
+    <img  src="_deployment-media/installs1.png" style="max-height: 400px">
 </p>
 
 1. Start the Apache Server
@@ -244,7 +244,7 @@ sudo systemctl status apache2
 ```
 
 <p align="center">
-    <img  src="_linux-media/installs2.png" style="max-height: 400px">
+    <img  src="_deployment-media/installs2.png" style="max-height: 400px">
 </p>
 
 And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
@@ -284,7 +284,7 @@ php -v
 This should give us:
 
 <p align="center">
-    <img  src="_linux-media/installs3.png"  style="max-height: 180px">
+    <img  src="_deployment-media/installs3.png"  style="max-height: 180px">
 </p>
 
 Now, we will install the most commonly used PHP modules with the following command:
@@ -328,13 +328,13 @@ Once it is installed you can find it with your other applications. Both Nautilus
 You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
 
 <p align="center">
-    <img  src="_linux-media/installs4.png" style="max-height: 320px">
+    <img  src="_deployment-media/installs4.png" style="max-height: 320px">
 </p>
 
 Once the code is saved, you can navigate to any browser, and search the URL `http://localhost/phpTest.php` and you should be able to see the following:
 
 <p align="center">
-    <img  src="_linux-media/installs5.png" style="max-height: 400px">
+    <img  src="_deployment-media/installs5.png" style="max-height: 400px">
 </p>
 
 If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed and configured, we can move on and setup our database management.
@@ -397,7 +397,7 @@ SELECT User, Host, authentication_string FROM mysql.user;
 We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
 
 <p align="center">
-    <img  src="_linux-media/mysql1.png"  style="max-height: 320px">
+    <img  src="_deployment-media/mysql1.png"  style="max-height: 320px">
 </p>
 
 YOu can exit the MySQL shell at any time by entering 'exit' and hitting enter.
@@ -423,8 +423,8 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
         <li>Select Apache Server.</li>
         <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin1.png" style="max-height: 350px">
-    <!-- ![phpMyAdmin1](_linux-media/phpmyadmin1.PNG) -->
+    <img  src="_deployment-media/phpmyadmin1.png" style="max-height: 350px">
+    <!-- ![phpMyAdmin1](_deployment-media/phpmyadmin1.PNG) -->
 </p>
 
 ##### ** 2.) DB-Common **
@@ -434,7 +434,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
     <ul> 
         <li>Select Yes</li>
     </ul>
-    <img  src="_linux-media/phpmyadmin2.png" style="max-height: 350px">
+    <img  src="_deployment-media/phpmyadmin2.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
@@ -515,15 +515,15 @@ Start with the right side of the page, downloading the IonCube zip and file requ
 
 <p align="center">
 <p align="left">
-    <img  src="_linux-media/ion_cube_initial.png" style="max-height: 350px">
-    <!-- ![IonCubeInitial](_linux-media/IonCubeInitial.png) -->
+    <img  src="_deployment-media/ion_cube_initial.png" style="max-height: 350px">
+    <!-- ![IonCubeInitial](_deployment-media/IonCubeInitial.png) -->
 </p>
 
 ##### ** 2.) After **
 
 <p align="center">
 <p align="left">
-    <img  src="_linux-media/ion_cube_final.png" style="max-height: 350px">
+    <img  src="_deployment-media/ion_cube_final.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
