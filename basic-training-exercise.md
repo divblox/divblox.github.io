@@ -153,8 +153,16 @@ There are a few default menus, and we will create a basic-training-exercise-menu
 Here we add the HTML that we want to be displayed as our item, in our case we want an icon and page name. We give our two pages the following:
 
 ```html
-<-- Admin --> <i class="fa fa-home" aria-hidden="true"></i><br />Admin <-- New
-Ticket --> <i class="fa fa-link" aria-hidden="true"></i><br />New Ticket
+<-- Admin --> 
+<i class="fa fa-home" aria-hidden="true"></i>
+<br/>
+Admin 
+
+
+<-- New Ticket -->
+ <i class="fa fa-link" aria-hidden="true"></i>
+<br />
+New Ticket
 ```
 
 We also set the action we want to occur when clicking on the menu item to load up the corresponding page. The navigation bar component HTML looks like this:
