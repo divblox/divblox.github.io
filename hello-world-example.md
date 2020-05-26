@@ -17,7 +17,7 @@ Let's create a new component that will serve as our app's page.
 -   Open the Component Builder and create a new custom component called "hello world". This component should be placed in the grouping "pages" in order to be used as a page.
 
 <video id="HelloWorldStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/step-1.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep1')" type="button" class="video-control-button">
@@ -39,7 +39,7 @@ Let's open the newly created component to work on it using the Component Builder
 -   Add a basic button component by clicking "+ Component" and selecting "Basic Component -> Buttons -> Simple Primary Button"
 
 <video id="HelloWorldStep2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/step-2.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep2')" type="button" class="video-control-button">
@@ -119,7 +119,7 @@ if (typeof component_classes["pages_hello_world"] === "undefined") {
 ```
 
 <video id="HelloWorldStep3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/helloworld3.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep3')" type="button" class="video-control-button">
@@ -210,7 +210,7 @@ getComponentElementById(this, "n3CEV_btn").on(
 ```
 
 <video id="HelloWorldStep4" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/helloworld4.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world4.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep4')" type="button" class="video-control-button">
@@ -238,7 +238,7 @@ public function checkEmailAddress() {
 ```
 
 <video id="HelloWorldStep5" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/helloworld5.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world5.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep5')" type="button" class="video-control-button">
@@ -266,7 +266,7 @@ And that's it! We just created a basic app that touches on the core Divblox conc
 http://localhost/my-app/ or http://localhost/ (if you project is in the webserver's root path)
 
 <video id="HelloWorldStep6" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_hello-world-videos/helloworld6.mp4" type="video/mp4">
+  <source src="_hello-world-videos/hello-world6.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('HelloWorldStep6')" type="button" class="video-control-button">

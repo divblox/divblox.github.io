@@ -12,7 +12,7 @@ Specifically, we will be extending the basic exercise functionality with the fol
 
 The new data model we will be making is as follows:
 
-![ATE-data-model](_advanced-training-exercise-media/ATE-data-model.png)
+![ATE-data-model](_advanced-training-exercise-media/ate-data-model.png)
 
 As you can see, the data model is starting to look more complicated. Let's break this down:
 
@@ -38,7 +38,7 @@ We want the CategoryParentId to be assigned automatically, depending on what cat
 Similarly with the HierarchyPath, we want this to be automatically generated for each category based on the trail of parent IDs.
 This HierarchyPath value will be used in the frontend to indicate the actual category, including its entire hierarchy, for the ticket.
 
-![Category_Entity](_advanced-training-exercise-media/newCategory.png)
+![Category_Entity](_advanced-training-exercise-media/new-category.png)
 
 In the 'category_crud_create' component we can immediately add the code to auto-populate the two new attributes accordingly.
 In the javascript component.js file, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. This is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default Divblox functionality.
@@ -135,11 +135,11 @@ public function doAfterSaveActions($EntityToUpdateObj = null) {
 }
 ```
 
-The function `getBreadCrumbsRecursive()` is created in the `ProjectFunctions` class to reduce code duplication, 
-as we will be using it again when displaying the breadcrumb trail on our 'category_update' page. 
-The `ProjectFunctions` class (`project/assets/php/project_functions.php`) is created for this very reason, 
-and is where you should house all your functions that will have multiple calls in your project. 
-The function `getBreadCrumbsRecursive()` is just a recursive function that returns the parental hierarchy of the input 
+The function `getBreadCrumbsRecursive()` is created in the `ProjectFunctions` class to reduce code duplication,
+as we will be using it again when displaying the breadcrumb trail on our 'category_update' page.
+The `ProjectFunctions` class (`project/assets/php/project_functions.php`) is created for this very reason,
+and is where you should house all your functions that will have multiple calls in your project.
+The function `getBreadCrumbsRecursive()` is just a recursive function that returns the parental hierarchy of the input
 category in a key-value pair array.
 
 ```php
@@ -428,25 +428,25 @@ We now want to have a sub tasks list and a notes list in this component.
 We first create the CRUD components for each using the Divblox Component Builder,
 after which we just insert them into our ticket_crud_update' component (in their own row, taking up equal 6 columns each in bootstrap terms).
 
-<video id="component-builder-makingnote+subtask_puttingInTicketUpdate" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_advanced-training-exercise-media/component-builder-makingnote+subtask_puttingInTicketUpdate.mp4" type="video/mp4">
+<video id="compbuilder-note-subtask" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/compbuilder-note-subtask.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<button onclick="replayVideo('compbuilder-note-subtask.mp4')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('compbuilder-note-subtask.mp4')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
 #### Ticket progression functionality
 
-The ticket progression idea is somewhat loosely defined as a concept, so we need to define what we actually mean by it. 
+The ticket progression idea is somewhat loosely defined as a concept, so we need to define what we actually mean by it.
 The definition we will implement is as follows:
 
 1. If a ticket has no subtasks, then if it's status is completed its TicketProgression will be 100% and if it is anything else it will be 0%.
-2. If a ticket has subtasks, then the ticket's status is ignored and the number of subtasks with status Complete divided 
-by the number of subtasks that are not complete, will give us the percentage TicketProgression.
+2. If a ticket has subtasks, then the ticket's status is ignored and the number of subtasks with status Complete divided
+   by the number of subtasks that are not complete, will give us the percentage TicketProgression.
 
 This logic will be defined directly in the Ticket entity `Save()` function, which can be overridden in the Ticket.class.php file (`divblox/config/database/data_model_orm/Ticket.class.php`). Below are the `Save()` and `Delete()` functions with the changes made. You will also see the changes made to store the categoryCount value as explained in the basic training exercise.
 
@@ -540,14 +540,14 @@ You can make the input boxes full-width and arrange them in a bootstrap layout t
 The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component.
 This is done via the component builder. Below is a video walk through, followed by a breakdown of the code changes made.
 
-<video id="component-builder-makingnote+subtask_puttingInTicketUpdate" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_advanced-training-exercise-media/component-builder-makingnote+subtask_puttingInTicketUpdate.mp4" type="video/mp4">
+<video id="update-note-crud" muted="" playsinline="" preload="auto" autoplay>
+  <source src="_advanced-training-exercise-media/update-note-crud.mp4" type="video/mp4">
   Video is not supported
 </video>
-<button onclick="replayVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<button onclick="replayVideo('update-note-crud.mp4')" type="button" class="video-control-button">
 <i class="fa fa-repeat"></i>
 </button>
-<button onclick="fullScreenVideo('component-builder-makingnote+subtask_puttingInTicketUpdate.mp4')" type="button" class="video-control-button">
+<button onclick="fullScreenVideo('update-note-crud.mp4')" type="button" class="video-control-button">
 <i class="fa fa-expand"></i>
 </button>
 
@@ -858,11 +858,11 @@ And that is it! We have now finished the Ticket functionality we require.
 
 # Dashboard
 
-We will now build a dashboard which should give us a summary overview of the tickets we have and their distribution into 
-categories and statuses. The first step is to create a page with a sidebar navigation component, and then proceed to add 
+We will now build a dashboard which should give us a summary overview of the tickets we have and their distribution into
+categories and statuses. The first step is to create a page with a sidebar navigation component, and then proceed to add
 the necessary link into the menu we created.
 
-Once we have our page set up and navigation configured, we can proceed with our dashboard. 
+Once we have our page set up and navigation configured, we can proceed with our dashboard.
 The final product will look something like this:
 
 ![](_advanced-training-exercise-media/dashboard-screenshot.png)
@@ -924,9 +924,12 @@ The full HTML file looks like this:
 <div
     xmlns="http://www.w3.org/1999/xhtml"
     id="ComponentWrapper"
-    class="component-wrapper">
-
-    <div id="ComponentPlaceholder" class="component_placeholder component_placeholder_general">
+    class="component-wrapper"
+>
+    <div
+        id="ComponentPlaceholder"
+        class="component_placeholder component_placeholder_general"
+    >
         <div id="ComponentFeedback"></div>
     </div>
 
@@ -935,12 +938,18 @@ The full HTML file looks like this:
             <div id="StatusWrapper" class="dashboard-tile">
                 <div class="row">
                     <div class="col-9">
-                        <div id="StatusLabel" class="StatusLabel float-left ml-1">
+                        <div
+                            id="StatusLabel"
+                            class="StatusLabel float-left ml-1"
+                        >
                             {Status}
                         </div>
                     </div>
                     <div class="col-3">
-                        <div id="StatusCount" class="StatusCount float-right mr-4">
+                        <div
+                            id="StatusCount"
+                            class="StatusCount float-right mr-4"
+                        >
                             {X}
                         </div>
                     </div>
@@ -963,7 +972,10 @@ Note the IDs and class names which will be used to input information from the ba
 Now taking a look at the javascript file:
 
 ```js
-if (typeof component_classes["dashboard_ticket_status_indicator"] === "undefined") {
+if (
+    typeof component_classes["dashboard_ticket_status_indicator"] ===
+    "undefined"
+) {
     class dashboard_ticket_status_indicator extends DivbloxDomBaseComponent {
         constructor(inputs, supports_native, requires_native) {
             super(inputs, supports_native, requires_native);
@@ -1133,7 +1145,10 @@ Looking at the HTML that is generated by the component builder, we see that ther
 
 ```html
 <div id="ComponentWrapper" class="component-wrapper">
-    <div id="ComponentPlaceholder" class="component_placeholder component_placeholder_data_list">
+    <div
+        id="ComponentPlaceholder"
+        class="component_placeholder component_placeholder_data_list"
+    >
         <div id="ComponentFeedback"></div>
     </div>
     <div id="ComponentContent" class="component-content" style="display:none">
@@ -1151,9 +1166,14 @@ Looking at the HTML that is generated by the component builder, we see that ther
                             class="form-control data_table_search_icon"
                             placeholder="Search..."
                             aria-label="Search"
-                            aria-describedby="btnResetSearch"/>
+                            aria-describedby="btnResetSearch"
+                        />
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="btnResetSearch">
+                            <button
+                                class="btn btn-outline-secondary"
+                                type="button"
+                                id="btnResetSearch"
+                            >
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -1169,8 +1189,13 @@ Looking at the HTML that is generated by the component builder, we see that ther
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <button type="button" id="DataListMoreButton" class="btn btn-link fullwidth">
-                        <i class="fa fa-repeat" aria-hidden="true"></i> Load More
+                    <button
+                        type="button"
+                        id="DataListMoreButton"
+                        class="btn btn-link fullwidth"
+                    >
+                        <i class="fa fa-repeat" aria-hidden="true"></i> Load
+                        More
                     </button>
                 </div>
                 <div class="col-md-4"></div>
@@ -1183,7 +1208,9 @@ Looking at the HTML that is generated by the component builder, we see that ther
 You might think that you need to restructure how your list will be displayed here, but that is done in the javascript and just written into the necessary DOM node. So looking at our javascript file, we note that the only changes we make to the default functionality lies in the `addRow()` function, where we will create each row to display the information we need in the format we want it.
 
 ```js
-if (typeof component_classes["data_model_account_summary_list"] === "undefined") {
+if (
+    typeof component_classes["data_model_account_summary_list"] === "undefined"
+) {
     class data_model_account_summary_list extends DivbloxDomEntityDataListComponent {
         constructor(inputs, supports_native, requires_native) {
             super(inputs, supports_native, requires_native);
@@ -1482,7 +1509,9 @@ This component is constructed exactly the same way we constructed the account su
 Below is the component.js file, in which we again altered the `addRow()` function to display the information we want neatly. Since all the information we want to display is already directly stored in the database, we do not need to edit the component.php file.
 
 ```js
-if (typeof component_classes["data_model_ticket_summary_list"] === "undefined") {
+if (
+    typeof component_classes["data_model_ticket_summary_list"] === "undefined"
+) {
     class data_model_ticket_summary_list extends DivbloxDomEntityDataListComponent {
         constructor(inputs, supports_native, requires_native) {
             super(inputs, supports_native, requires_native);
@@ -1573,9 +1602,9 @@ if (typeof component_classes["data_model_ticket_summary_list"] === "undefined") 
 
 ## Graph components
 
-We will now look at the two graph components we want to create for our dashboard. 
-Divblox uses the ChartJS library, and further documentation can be found [here](https://www.chartjs.org/). 
-Divblox has a default chart component which is designed to be used as boilerplate code to be tweaked to create the necessary 
+We will now look at the two graph components we want to create for our dashboard.
+Divblox uses the ChartJS library, and further documentation can be found [here](https://www.chartjs.org/).
+Divblox has a default chart component which is designed to be used as boilerplate code to be tweaked to create the necessary
 graph instead of having to create new ones. Below is a video of how to create new graph components via the component builder.
 
 <video id="graphs_by_default" muted="" playsinline="" preload="auto" autoplay>
@@ -1600,7 +1629,10 @@ This component is a bar chart showing the number of tickets in each of the statu
 We will not discuss the chartJS-specific code, as their documentation is thorough and well-defined. Below we show the ticket_status_graph component's component.js and component.php files.
 
 ```js
-if (typeof component_classes["data_visualization_status_bar_chart"] === "undefined") {
+if (
+    typeof component_classes["data_visualization_status_bar_chart"] ===
+    "undefined"
+) {
     class data_visualization_status_bar_chart extends DivbloxDomBaseComponent {
         constructor(inputs, supports_native, requires_native) {
             super(inputs, supports_native, requires_native);
@@ -1722,7 +1754,10 @@ This pie chart is supposed to show us the proportion of tickets in each of the m
 Below we show the category_pie_chart's component's component.js and component.php files:
 
 ```js
-if (typeof component_classes["data_visualization_category_pie_chart"] === "undefined") {
+if (
+    typeof component_classes["data_visualization_category_pie_chart"] ===
+    "undefined"
+) {
     class data_visualization_category_pie_chart extends DivbloxDomBaseComponent {
         constructor(inputs, supports_native, requires_native) {
             super(inputs, supports_native, requires_native);
@@ -1850,8 +1885,8 @@ $ComponentObj = new CategoryPieChartController("category_pie_chart");
 
 # Summary
 
-In this exercise you learned about some of the more advanced concepts of a Divblox project. 
-If you understand all the functionality completely, you should now be able to build complex web applications, 
- from start to finish using Divblox.
+In this exercise you learned about some of the more advanced concepts of a Divblox project.
+If you understand all the functionality completely, you should now be able to build complex web applications,
+from start to finish using Divblox.
 
 If you would like to receive further hands-on training from the Divblox team, please reach out to us at support@divblox.com and we will arrange a consultation.
