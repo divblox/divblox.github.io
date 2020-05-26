@@ -595,7 +595,7 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
 
 Page components are the parent components to any functionality in your application. You have default template options to choose from, each with a different navigation bar type, or even without one.
 
-![Page Types](_the-basics-media/page-types.jpg)
+![Page Types](_the-basics-media/page-types.png)
 
 ### Basic components
 
@@ -622,25 +622,19 @@ The component's HTML file describes the component's layout.
 The basic structure of any component's HTML follows the following pattern:
 
 ```html
-<!-- The component wrapper is used to contain the content of the entire component-->
+<!-- The component wrapper is used to contain the content of the entire component -->
 <div id="ComponentWrapper" class="component-wrapper">
     <!-- The component placeholder is shown first while the component is loading-->
-    <div
-        id="ComponentPlaceholder"
-        class="component_placeholder component_placeholder_general"
-    >
+    <div id="ComponentPlaceholder" class="component_placeholder component_placeholder_general">
         <!-- Should an error occur, from which the component cannot recover, 
         the component feedback is used to display the error to the user-->
         <div id="ComponentFeedback"></div>
     </div>
+
     <!-- Once the component has successfully loaded, 
     the component content replaces the component placeholder. 
     Therefor it is hidden to start with-->
-    <div
-        id="ComponentContent"
-        class="component-content"
-        style="display:none"
-    ></div>
+    <div id="ComponentContent class="component-content" style="display:none"></div>
 </div>
 ```
 
@@ -1259,27 +1253,27 @@ You can export a native app project for any of your configured environments. The
 -   The project has a boot screen pre-installed (You can edit this for your app)
 -   The project has Divblox icons pre-installed (You can edit these for your app)
 -   The project checks for internet connectivity before trying to load your web environment and shows a helpful error message when it cannot connect
--   The project automatically registers a device with a permanent authentication token as a native device to ensure ease of use in terms of user authentication 
-(Meaning, once a user logs in they will stay logged in by default)
+-   The project automatically registers a device with a permanent authentication token as a native device to ensure ease of use in terms of user authentication
+    (Meaning, once a user logs in they will stay logged in by default)
 -   A workflow skeleton for initialization of push notifications and other native specific requirements is already in place
 
 ## Push Notifications
 
 !> Divblox push notifications implement Firebase Cloud Messaging. API integration to register and send push notifications is already present in every Divblox project
 
-Support for push notifications on the native device is provided for by an API that allows for the registration of devices and their push registration tokens. 
+Support for push notifications on the native device is provided for by an API that allows for the registration of devices and their push registration tokens.
 The developer needs to implement the native library of their choice to handle push notifications on the device.
 
 ### Server-side
 
-In order to be able to send push notifications we need to have devices registered with push registration tokens. 
-This data is stored in the entity "PushRegistration". A PushRegistration is device-specific, but Divblox will link the PushRegistration to the relevant 
+In order to be able to send push notifications we need to have devices registered with push registration tokens.
+This data is stored in the entity "PushRegistration". A PushRegistration is device-specific, but Divblox will link the PushRegistration to the relevant
 Account if an authentication takes place.
 
--   To register a device's push registration token we will use this api operation: `/api/global_functions/updatePushRegistration`. 
+-   To register a device's push registration token we will use this api operation: `/api/global_functions/updatePushRegistration`.
 -   You can read more about how this operation works by visiting its docs page: `/api/global_functions/updatePushRegistration/docs`
 
-Push notifications can be sent from the server using the built-in Divblox Project Functions. 
+Push notifications can be sent from the server using the built-in Divblox Project Functions.
 In this example we want to send a push notification to all users with the role "Administrator":
 
 ```php
@@ -1302,42 +1296,44 @@ ProjectFunctions::deliverBatchedPushPayload(
 
 Divblox does not implement the device-side functionality to deal with push notifications by default, because:
 
--   There are many different flavours for frontend implementation (search npm registry for "react native push notifications"). 
-The developer can choose the implementation of their choice
--   Setting up push notifications with Firebase Cloud Messaging (FCM) involves quite a few configuration steps for both Android and iOS. 
-If the resulting configuration files are present in the React Native project, but not properly set up, the build process will fail
+-   There are many different flavours for frontend implementation (search npm registry for "react native push notifications").
+    The developer can choose the implementation of their choice
+-   Setting up push notifications with Firebase Cloud Messaging (FCM) involves quite a few configuration steps for both Android and iOS.
+    If the resulting configuration files are present in the React Native project, but not properly set up, the build process will fail
 
 However, please see below a working example of how to implement this functionality in a freshly exported Divblox project:
 
 #### Setting up the prerequisites
+
 1. Open your browser and go to [Google Firebase Console](https://console.firebase.google.com/). Then log in using your Google account
 2. From that page, click the "+" add project button to create a Google Firebase project
-3. Follow the steps to create your project and then add both an Android and an iOS app. 
-When creating your Android and iOS apps, ensure that the "Android package name" and "iOS bundle ID" matches the "Widget Id" as configured in your environment
+3. Follow the steps to create your project and then add both an Android and an iOS app.
+   When creating your Android and iOS apps, ensure that the "Android package name" and "iOS bundle ID" matches the "Widget Id" as configured in your environment
 4. You do not need to do the steps involving adding Firebase SDK & verification of installation for now
 5. After all the setup is complete, you need to have downloaded the following 2 files for Android and iOS:
 
     - google-services.json (Android)
     - GoogleService-info.plist (iOS)
 
-6. On the Firebase Project Overview page, ensure that your newly created project is selected and click on either the 
-iOS or Android app to go to the project settings page
+6. On the Firebase Project Overview page, ensure that your newly created project is selected and click on either the
+   iOS or Android app to go to the project settings page
 7. Click on Cloud Messaging. You want to now copy the Server Key into your Divblox project:
 
     - In `/divblox/config/framework/config.php` update the value for "FIREBASE_SERVER_KEY_STR" to match your Server Key
 
-8. For iOS you will need to get an APNs Authentication Key. You can do this by following the steps provided by Apple at: 
-[https://developer.apple.com/account/resources/authkeys/list](https://developer.apple.com/account/resources/authkeys/list). 
-Once you have the APNs key, upload it to your iOS app in Firebase
+8. For iOS you will need to get an APNs Authentication Key. You can do this by following the steps provided by Apple at:
+   [https://developer.apple.com/account/resources/authkeys/list](https://developer.apple.com/account/resources/authkeys/list).
+   Once you have the APNs key, upload it to your iOS app in Firebase
 
 #### Configuring React Native
+
 1. Open `/native/[Your Environment Name]/ios/[Your Environment Name].xcworkspace` using Xcode. Ensure that the Bundle Identifier matches the "Widget Id" as configured in your environment.
-2. Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainActivity.java`, 
-ensure the first line `package [xxx]` is `package [Your Widget Id]`
-3. Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainApplication.java`, 
-ensure the first line `package [xxx]` is `package [Your Widget Id]`
-4. Edit the value for "package" to match your Widget Id in `/native/[Your Environment Name]/android/app/src/main/AndroidManifest.xml` 
-and add the following after INTERNET permissions:
+2. Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainActivity.java`,
+   ensure the first line `package [xxx]` is `package [Your Widget Id]`
+3. Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainApplication.java`,
+   ensure the first line `package [xxx]` is `package [Your Widget Id]`
+4. Edit the value for "package" to match your Widget Id in `/native/[Your Environment Name]/android/app/src/main/AndroidManifest.xml`
+   and add the following after INTERNET permissions:
 
 ```
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -1374,7 +1370,7 @@ android {
 }
 ```
 
-7. Edit the value for "package" to match your Widget Id in `/native/[Your Environment Name]/android/app/BUCK` 
+7. Edit the value for "package" to match your Widget Id in `/native/[Your Environment Name]/android/app/BUCK`
 
 ```
 android_build_config(
@@ -1401,8 +1397,8 @@ android_resource(
 npm install --save react-native-firebase
 ```
 
-- Copy the previously downloaded google-services.json to the `/native/android/app/` folder
-- Edit `/native/android/build.gradle` and add this classpath dependency for Google Services:
+-   Copy the previously downloaded google-services.json to the `/native/android/app/` folder
+-   Edit `/native/android/build.gradle` and add this classpath dependency for Google Services:
 
 ```
 dependencies {
@@ -1411,13 +1407,13 @@ dependencies {
 }
 ```
 
-- Edit `/native/android/app/build.gradle` and add this line to the bottom of the file:
+-   Edit `/native/android/app/build.gradle` and add this line to the bottom of the file:
 
 ```
 apply plugin: "com.google.gms.google-services"
 ```
 
-- Also add these lines for the Firebase implementation to the dependencies in the same file:
+-   Also add these lines for the Firebase implementation to the dependencies in the same file:
 
 ```
 dependencies {
@@ -1430,15 +1426,15 @@ dependencies {
 }
 ```
 
-- Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainApplication.java` and
-add these imports for RNFirebaseMessagingPackage and RNFirebaseNotificationsPackage
+-   Edit `/native/[Your Environment Name]/android/app/src/main/java/com/[Your Environment Name]/MainApplication.java` and
+    add these imports for RNFirebaseMessagingPackage and RNFirebaseNotificationsPackage
 
 ```
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 ```
 
-- In the same file, add those packages to the list of packages:
+-   In the same file, add those packages to the list of packages:
 
 ```
 @Override
@@ -1453,8 +1449,8 @@ protected List<ReactPackage> getPackages() {
 }
 ```
 
-- At this point, the build for our Android app might fail. We solve this by Enabling Multidex. 
-Open the `/native//android/app/build.gradle` file. Under dependencies we need to add the module, and then enable it within our defaultConfig:
+-   At this point, the build for our Android app might fail. We solve this by Enabling Multidex.
+    Open the `/native//android/app/build.gradle` file. Under dependencies we need to add the module, and then enable it within our defaultConfig:
 
 ```
 android {
@@ -1470,30 +1466,30 @@ dependencies {
 }
 ```
 
-- Open `/native/[Your Environment Name]/ios/[Your Environment Name].xcworkspace` 
-using Xcode and add the previously downloaded GoogleService-Info.plist to the XCode project name by 
-right clicking and selecting "Add Files to [Your Environment Name]"
-- In Xcode, enable the remote notifications by clicking on the project name in the left pane then clicking the Capabilities tab. Add Push Notifications.
-- In Xcode, edit the `Pods/podfile` and add these lines:
+-   Open `/native/[Your Environment Name]/ios/[Your Environment Name].xcworkspace`
+    using Xcode and add the previously downloaded GoogleService-Info.plist to the XCode project name by
+    right clicking and selecting "Add Files to [Your Environment Name]"
+-   In Xcode, enable the remote notifications by clicking on the project name in the left pane then clicking the Capabilities tab. Add Push Notifications.
+-   In Xcode, edit the `Pods/podfile` and add these lines:
 
 ```
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 ```
 
-- Also add the Pod path for RNFirebase to the app under "# Pods for [Your Environment Name]":
+-   Also add the Pod path for RNFirebase to the app under "# Pods for [Your Environment Name]":
 
 ```
 pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 ```
 
-- Run this command from the terminal inside the `ios` folder:
+-   Run this command from the terminal inside the `ios` folder:
 
 ```
 pod update
 ```
 
-- Edit `/native/[Your Environment Name]/ios/[Your Environment Name]/AppDelegate.m` and add the imports for Firebase, React Native Firebase Notifications, and Messaging:
+-   Edit `/native/[Your Environment Name]/ios/[Your Environment Name]/AppDelegate.m` and add the imports for Firebase, React Native Firebase Notifications, and Messaging:
 
 ```
 #import <Firebase.h>
@@ -1501,14 +1497,14 @@ pod update
 #import "RNFirebaseMessaging.h"
 ```
 
-- At the beginning of the `didFinishLaunchingWithOptions:(NSDictionary *)launchOptions` method add these lines to initialize Firebase and RNFirebaseNotifications:
+-   At the beginning of the `didFinishLaunchingWithOptions:(NSDictionary *)launchOptions` method add these lines to initialize Firebase and RNFirebaseNotifications:
 
 ```
 [FIRApp configure];
 [RNFirebaseNotifications configure];
 ```
 
-- Add a new method to receive local RNFirebaseNotifications:
+-   Add a new method to receive local RNFirebaseNotifications:
 
 ```
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
@@ -1516,7 +1512,7 @@ pod update
 }
 ```
 
-- Add a new method to receive remote RNFirebaseNotifications:
+-   Add a new method to receive remote RNFirebaseNotifications:
 
 ```
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo
@@ -1525,7 +1521,7 @@ fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHand
 }
 ```
 
-- Add a new method to register with Firebase and receive the FCM token:
+-   Add a new method to register with Firebase and receive the FCM token:
 
 ```
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
@@ -1534,6 +1530,7 @@ fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHand
 ```
 
 #### Handling Push Notifications in App
+
 You can add the following code to the file `divblox_react_native.js` in the root of your native project:
 
 ```
@@ -1541,7 +1538,7 @@ import firebase from 'react-native-firebase';
 import {Alert} from "react-native";
 ```
 
-- Edit the function `registerPushNotifications()` to handle the registration correctly:
+-   Edit the function `registerPushNotifications()` to handle the registration correctly:
 
 ```javascript
 async registerPushNotifications(success_callback,failed_callback) {
@@ -1555,7 +1552,7 @@ async registerPushNotifications(success_callback,failed_callback) {
 }
 ```
 
-- Then simply add the following functions to the same file inside the `Divblox` class:
+-   Then simply add the following functions to the same file inside the `Divblox` class:
 
 ```javascript
 checkPermission = async () => {
@@ -1570,12 +1567,15 @@ checkPermission = async () => {
 getFcmToken = async () => {
     const fcmToken = await firebase.messaging().getToken();
     if (fcmToken) {
-        this.createPushRegistration(fcmToken,function(data) {
-            //console.log("Registered with app: "+data);
-        },
-        function(data) {
-            //console.log("NOT Registered with app: "+data);
-        });
+        this.createPushRegistration(
+            fcmToken,
+            function (data) {
+                //console.log("Registered with app: "+data);
+            },
+            function (data) {
+                //console.log("NOT Registered with app: "+data);
+            }
+        );
     } else {
         //this.showAlert('Failed', 'No token received');
     }
@@ -1592,22 +1592,28 @@ requestPermission = async () => {
 };
 
 messageListener = async () => {
-    this.notificationListener = firebase.notifications().onNotification((notification) => {
-        const { title, body } = notification;
-        this.showAlert(title, body);
-    });
-    
-    this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
-        const { title, body } = notificationOpen.notification;
-        //this.showAlert(title, body);
-    });
-    
-    const notificationOpen = await firebase.notifications().getInitialNotification();
+    this.notificationListener = firebase
+        .notifications()
+        .onNotification((notification) => {
+            const { title, body } = notification;
+            this.showAlert(title, body);
+        });
+
+    this.notificationOpenedListener = firebase
+        .notifications()
+        .onNotificationOpened((notificationOpen) => {
+            const { title, body } = notificationOpen.notification;
+            //this.showAlert(title, body);
+        });
+
+    const notificationOpen = await firebase
+        .notifications()
+        .getInitialNotification();
     if (notificationOpen) {
         const { title, body } = notificationOpen.notification;
         //this.showAlert(title, body);
     }
-    
+
     this.messageListener = firebase.messaging().onMessage((message) => {
         //console.log(JSON.stringify(message));
     });
@@ -1617,11 +1623,8 @@ showAlert = (title, message) => {
     Alert.alert(
         title,
         message,
-        [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ],
-        {cancelable: false},
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
     );
 };
 ```
-
