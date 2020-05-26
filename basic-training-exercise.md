@@ -39,7 +39,7 @@ This can be represented as follows:
 If you need a refresh on Divblox data modelling, click [here](data-modeler.md). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
 
 <video id="TrainingExerciseStep1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-1-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-1.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep1')" type="button" class="video-control-button">
@@ -90,7 +90,7 @@ You may want to change the display of certain attributes, in all of the componen
 
 `<video id="TrainingExerciseStep2.3" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/bte-2-3.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-2.3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep2.3')" type="button" class="video-control-button">
@@ -115,7 +115,7 @@ The pages we will build for this exercise are:
 To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
 
 <video id="TrainingExerciseStep3.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/step3.1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-3.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.1')" type="button" class="video-control-button">
@@ -128,7 +128,7 @@ To do this we will use a pre-made page template with a side navbar. As you will 
 Now we can create the 'Tickets' page where users can create tickets. Note that we are not creating any new functionality, just reusing the 'create' component previously generated and placing it on its own page.
 
 <video id="TrainingExerciseStep3.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/step-3.2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-3.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep3.2')" type="button" class="video-control-button">
@@ -153,14 +153,11 @@ There are a few default menus, and we will create a basic-training-exercise-menu
 Here we add the HTML that we want to be displayed as our item, in our case we want an icon and page name. We give our two pages the following:
 
 ```html
-<-- Admin --> 
+<-- Admin -->
 <i class="fa fa-home" aria-hidden="true"></i>
-<br/>
-Admin 
-
-
-<-- New Ticket -->
- <i class="fa fa-link" aria-hidden="true"></i>
+<br />
+Admin <-- New Ticket -->
+<i class="fa fa-link" aria-hidden="true"></i>
 <br />
 New Ticket
 ```
@@ -188,7 +185,7 @@ Below is a video running through step 1:
 
 <video id="TrainingExerciseStep5.2" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/bte-5-1_edit.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-5.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.2')" type="button" class="video-control-button">
@@ -210,7 +207,7 @@ Below is a video running through step 2 and 3:
 
 <video id="TrainingExerciseStep5.3" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/bte-5-2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-5.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.3')" type="button" class="video-control-button">
@@ -270,7 +267,7 @@ Below is a video of step 4:
 
 <video id="TrainingExerciseStep5.4" muted="" playsinline="" preload="auto" autoplay>
 
-  <source src="_basic-training-media/bte-5-3.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step5.3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep5.4')" type="button" class="video-control-button">
@@ -336,7 +333,7 @@ You can access the register page by navigating to `[your_project_root]/?view=reg
 !> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin (dxAdmin) most of the time in your application and this may cause confusion.
 
 <video id="TrainingExerciseStep6.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-6-1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-6.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6.1')" type="button" class="video-control-button">
@@ -351,7 +348,7 @@ As you can see, our new user is unable to view any of the pages we built. This i
 In the below video we will firstly give our user full access to any `Ticket` and `Category` components. This will allow us to see how the _Data Model_ access works (we will observe this on our admin page). Once the _Data Model_ access is configured, we will then give our user access only to the `create` components of both `Ticket` and `Category`, allowing the user to view the _New Ticket_ page, but not the admin page.
 
 <video id="TrainingExerciseStep6.2" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-6-2.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-6.2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep6.2')" type="button" class="video-control-button">
@@ -380,7 +377,7 @@ We will be using a program called 'PostMan' to test our API functionality. It co
 Below we will briefly explore the `api_example` functionality, how to navigate the URL and what the expected output looks like.
 
 <video id="TrainingExerciseStep7.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/basic-training-exercise7.1.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-7.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7.1')" type="button" class="video-control-button">
@@ -473,7 +470,7 @@ function mergeTickets() {
 Once we have defined our endpoint, we can test to see if everything works. Note that this specific API operation updates and deletes data in our database, we need to update the `Data Model` permissions so that 'any' users can 'update' and 'delete' (Recall that default permissions are only to 'create' and 'read'). Once this is done, our API operation should be set up and permissions for operations granted. We use Postman this time, as it makes it easier to input parameters and has a great user interface.
 
 <video id="TrainingExerciseStep7.3" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-7-3.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-7.3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep7.3')" type="button" class="video-control-button">
@@ -506,7 +503,7 @@ You will build the following:
 Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. In the right column we will just create and empty div with ID = "ResultWrapper" so we can instruct `dxRequestInternal()` where to display any output. Below is a video walk through of the process:
 
 <video id="TrainingExerciseStep8.1" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_basic-training-media/bte-8-1_edit.mp4" type="video/mp4">
+  <source src="_basic-training-media/bte-step-8.1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('TrainingExerciseStep8.1')" type="button" class="video-control-button">

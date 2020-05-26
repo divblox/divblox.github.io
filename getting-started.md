@@ -35,38 +35,65 @@ Below is a visualization of how to spin up a sandbox.
 
 <div class="dev-approach-step" style="background:#f7f7f7;">
 
-![Sign in](_media/1_basecamp.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">1.</span> Sign in to [basecamp.divblox.com](https://basecamp.Divblox.com/?view=login) <br>
+![Sign in](_getting-started-media/1_basecamp.png ":size=180")
+<br>
+<span style="color:#2c5e7c;font-weight:900;font-size:18px;">1.</span>
+
+Sign in to [basecamp.divblox.com](https://basecamp.Divblox.com/?view=login)
+<br>
+
+</div>
+
+<i class="fa fa-arrow-down"></i>
+
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_getting-started-media/2_sandbox.png ":size=180")
+<br>
+<span style="color:#2c5e7c;font-weight:900;font-size:18px;">2.</span>
+Create a new project and click "Open in Sandbox"
+<br>
+
+</div>
+
+<i class="fa fa-arrow-down"></i>
+
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_getting-started-media/3_data_modeler.png ":size=180")
+<br>
+<span style="color:#2c5e7c;font-weight:900;font-size:18px;">3.</span>
+Start by modeling your data structure using the Divblox data modeler
+<br>
+
+</div>
+
+<i class="fa fa-arrow-down"></i>
+
+<div class="dev-approach-step" style="background:#f7f7f7;">
+
+![Sign in](_getting-started-media/4_component_builder.png ":size=180")
+<br>
+<span style="color:#2c5e7c;font-weight:900;font-size:18px;">4.</span>
+Use the Divblox component builder to create various components that will provide your app's functionality
+<br>
 
 </div>
 <i class="fa fa-arrow-down"></i>
 <div class="dev-approach-step" style="background:#f7f7f7;">
 
-![Sign in](_media/2_sandbox.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">2.</span> Create a new project and click "Open in Sandbox" <br>
+![Sign in](_getting-started-media/5_local_environment.png ":size=180")
+<br>
+<span style="color:#2c5e7c;font-weight:900;font-size:18px;">5.</span>
+
+[Initialize a local deployment environment](#option-2-starting-with-virtualbox) to pull down your sandbox changes and get your project ready to be published
+<br>
 
 </div>
 <i class="fa fa-arrow-down"></i>
 <div class="dev-approach-step" style="background:#f7f7f7;">
 
-![Sign in](_media/3_data_modeler.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">3.</span> Start by modeling your data structure using the Divblox data modeler <br>
-
-</div>
-<i class="fa fa-arrow-down"></i>
-<div class="dev-approach-step" style="background:#f7f7f7;">
-
-![Sign in](_media/4_component_builder.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">4.</span> Use the Divblox component builder to create various components that will provide your app's functionality <br>
-
-</div>
-<i class="fa fa-arrow-down"></i>
-<div class="dev-approach-step" style="background:#f7f7f7;">
-
-![Sign in](_media/5_local_environment.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">5.</span>
-[Initialize a local deployment environment](#option-2-starting-with-virtualbox) to pull down your sandbox changes and get your project ready to be published <br>
-
-</div>
-<i class="fa fa-arrow-down"></i>
-<div class="dev-approach-step" style="background:#f7f7f7;">
-
-![Sign in](_media/6_server.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">6.</span> Deploy your app to another deployment environment (any server of your choice) <br>
+![Sign in](_getting-started-media/6_server.png ":size=180") <br><span style="color:#2c5e7c;font-weight:900;font-size:18px;">6.</span> Deploy your app to another deployment environment (any server of your choice) <br>
 
 </div>
 
@@ -85,7 +112,7 @@ Creating a new sandbox is easy:
     <ul> 
         <li> Start by creating your project at <a href="https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
     </ul>
-    <img  src="_media/_screenshots/sandbox-step1.png" style="max-height: 350px">
+    <img  src="_getting-started-media/sandbox-step1.png" style="max-height: 350px">
 </p>
 
 #### ** Step 2 **
@@ -95,7 +122,7 @@ Creating a new sandbox is easy:
     <ul> 
         <li> Complete the required fields and click "Create"</li>
     </ul>
-    <img  src="_media/_screenshots/sandbox-step2.png" style="max-height: 350px">
+    <img  src="_getting-started-media/sandbox-step2.png" style="max-height: 350px">
 </p>
 
 #### ** Step 3 **
@@ -105,7 +132,7 @@ Creating a new sandbox is easy:
     <ul> 
         <li>You are now ready to launch your sandbox by clicking on "Open in Sandbox"</li>
     </ul>
-    <img  src="_media/_screenshots/sandbox-step3.png" style="max-height: 350px">
+    <img  src="_getting-started-media/sandbox-step3.png" style="max-height: 350px">
 </p>
 
 <!-- tabs:end -->
@@ -118,7 +145,7 @@ at some point you will need to download your sandbox progress and continue on a 
 To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](the-basics?id=divblox-api-key) configured.
 From here you can click on the "Sandboxes" setup block to download your sandbox or deploy your local changes to your sandbox.
 
-![Sandbox Step 4](_media/_screenshots/sandbox-step4.png)
+![Sandbox Step 4](_getting-started-media/sandbox-step4.png)
 
 > Sandboxes are controlled by your local deployment environments.
 > This means that you can deploy to your sandboxes from any local deployment environment as well as download any changes that were made in your sandboxes to your local environments
@@ -163,13 +190,13 @@ The VM (.ova) file that contains Divblox and all the accompanying software can b
 After installing VirtualBox on your device and running the application, add the image by opening "File" -> "Import Appliance".
 
 <p align="center">
-  <img  src=_media/_screenshots/virtual-machine-setup1.png>
+  <img  src=_getting-started-media/virtual-machine-setup1.png>
 </p>
 
 From here, find and add the Divblox VM image file (.ova). On the following window you will be prompted to "Import". Adding the image may take several minutes to install and configure.
 
 <p align="center">
-  <img  src=_media/_screenshots/virtual-machine-setup2.png>
+  <img  src=_getting-started-media/virtual-machine-setup2.png>
 </p>
 
 Once your VM has been loaded, it can be started by "double-clicking" on the newly added machine in the VirtualBox application. This will open a separate window and begin booting up the Divblox image.
@@ -179,7 +206,7 @@ Once your VM has been loaded, it can be started by "double-clicking" on the newl
 ### Initialize Divblox
 
 <p align="center">
-  <img  src=_media/_screenshots/virtual-machine-setup3.png>
+  <img  src=_getting-started-media/virtual-machine-setup3.png>
 </p>
 
 The Welcome page is necessary to read through in order to operate the virtual machine.
@@ -199,7 +226,7 @@ After you have familiarised yourself with the introduction page, the first thing
 3. Click "dx API key" to open the dialog that allows you to copy in and update your API key.
 
 <p align="center">
-  <img  src=_media/_screenshots/setup-configure-api-key.png>
+  <img  src=_getting-started-media/setup-configure-api-key.png>
 </p>
 
 ## Option 3. Starting from scratch

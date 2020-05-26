@@ -6,7 +6,7 @@ We need to talk about installation checker, export to native, UI config, global 
 
 Next we will take you through interface of Divblox's setup and what each part entails. Below is a screenshot of what you should expect upon loading into the Divblox environment. We will first discuss the sections which have more to do with configuration of your Divblox application.
 
-![Divblox Setup](_config-media/divbloxsetup1.png)
+![Divblox Setup](_the-basics-media/_1-config-media/divbloxsetup1.png)
 
 ### Modules
 
@@ -18,7 +18,7 @@ Modules are essentially separate databases that ring-fence certain data objects.
 Divblox allows you to define multiple environments for your project (local, staging, testing, production, etc).
 When you start up Divblox for the first time, it will automatically generate the default (local) environment for your current project.
 
-![Environments Screenshot](_media/_screenshots/setup-environments.png)
+![Environments Screenshot](_the-basics-media/_1-config-media/setup-environments.png)
 
 > For an environment to function correctly, the following needs to be configured:
 
@@ -30,8 +30,8 @@ When you start up Divblox for the first time, it will automatically generate the
 -   **Subdirectory** - The sub directory in which your Divblox project resides (can be empty)
 -   **The Database configuration for each module** - The connection information for every module's database
 
-![Environments Screenshot](_media/_screenshots/setup-configure-environments.png)
-![Environments Screenshot](_media/_screenshots/setup-configure-database.png)
+![Environments Screenshot](_the-basics-media/_1-config-media/setup-configure-environments.png)
+![Environments Screenshot](_the-basics-media/_1-config-media/setup-configure-database.png)
 
 ### Divblox Api key
 
@@ -44,7 +44,7 @@ When you start up Divblox for the first time, it will automatically generate the
 
 -   If you have any trouble creating your project and getting a key, please [contact us](https://Divblox.com/#contact) (support@divblox.com) to request your _FREE_ Api key
 
-![Divblox Api Key](_media/_screenshots/setup-configure-api-key.png)
+![Divblox Api Key](_the-basics-media/_1-config-media/setup-configure-api-key.png)
 
 ### dx Admin Password
 
@@ -52,18 +52,18 @@ This password is used to manage your Divblox project and allows access to the se
 
 !>It is important to select a secure password as your admin password for public and/or production solutions
 
-![Admin password](_media/_screenshots/setup-configure-admin-password.png)
+![Admin password](_the-basics-media/_1-config-media/setup-configure-admin-password.png)
 
 ### UI Config
 
 The UI configuration panel gives quick access to your project logo, project icon and theme.css file. Note that Divblox stores your project logo and icon as app_logo.png and favicon.ico. Submitting either in the UI config tab will rename your file and save it accordingly. You are also able to edit the `theme.css` file in-browser. This is great due to the order of dependencies executed in Divblox's start up. Divblox first loads Bootstrap 4, then Font-Awesome, followed by `project.css` and finally `theme.css` meaning that any changes you make in `theme.css` will over-ride any default project settings.
 
-![UI Config](_config-media/divbloxsetupUIConfig.png)
+![UI Config](_the-basics-media/_1-config-media/divbloxsetup-ui-config.png)
 
 ### JS Config
 
 The main configurable items for the Divblox javascript engine can be configured from the JS Config setup block.
-![JS Config](_media/_screenshots/setup-js-config.png)
+![JS Config](_the-basics-media/_1-config-media/setup-js-config.png)
 
 #### SPA Mode
 
@@ -100,7 +100,7 @@ This will allow you to collect feature requests and bug reports for your pages. 
 
 This set of files represents all the functions (set up into classes) that need to be available globally in your project. It is split up into 5 main files, as seen in the screenshot below. This includes both front-end javascript files as well as back-end php files. As mentioned before, whatever is edited in the project folder will override default Divblox functionality. The bulk of your project code will be either in these files, or in component-specific files.
 
-![GlobalFunctions](_config-media/globalfunctions1.png)
+![GlobalFunctions](_the-basics-media/_1-config-media/global-functions.png)
 
 #### Divblox.js
 
@@ -118,7 +118,7 @@ Divblox.js is the main javascript function library that provides all of the core
 
 Some commonly used Divblox.js functions are:
 
-```javascript
+```js
 dxLog(Message, show_stack_trace);
 // A wrapper for console.log that provides more advanced logging capability
 // and can be turned off when in production mode
@@ -175,7 +175,7 @@ The main purpose of the global functions is to handle any system-wide server req
 
 You can send a request to this script by using the following snippet:
 
-```javascript
+```js
 dxRequestInternal(
     // The path to the global request handler on the server
     getServerRootPath() + "project/assets/php/global_request_handler.php",
@@ -195,7 +195,7 @@ dxRequestInternal(
 
 #### Project Functions
 
-!>ProjectFunctions is an abstract class that is located at /project/assets/php/project_functions.php
+!> ProjectFunctions is an abstract class that is located at /project/assets/php/project_functions.php
 
 ProjectFunctions is intended to be used as a space where php functions that should be globally available can be housed.
 It extends the core Divblox class "FrameworkFunctions" that provides many of the core Divblox server side features.
@@ -244,7 +244,7 @@ This is a visual tool to help with importing media for those who prefer a 'drag 
 
 #### ** Uploading a file **
 
-<img align="center" src="_config-media/medialibrary1.png">
+<img align="center" src="_the-basics-media/_1-config-media/medialibrary1.png">
 
 #### ** Editing an upload **
 
@@ -253,7 +253,7 @@ This is a visual tool to help with importing media for those who prefer a 'drag 
     <ul> 
         <li> You can do basic editing on the upload such as cropping and resizing</li>
     </ul>
-    <img  src="_config-media/medialibrary2.png" height='250'>
+    <img  src="_the-basics-media/_1-config-media/medialibrary2.png" height='250'>
 </p>
 
 #### ** Upload info **
@@ -265,7 +265,7 @@ Once the upload is complete you can view:
         <li>The autogenerated file name of the image</li>
         <li>The absolute and relative path to the image</li>
     </ul>
-    <img  src="_config-media/medialibrary3.png" height='350'>
+    <img  src="_the-basics-media/_1-config-media/medialibrary3.png" height='350'>
 </p>
 
 <!-- tabs:end -->
@@ -274,22 +274,13 @@ Once the upload is complete you can view:
 
 When Divblox updates become available, you will be notified in the bottom right corner of the setup page.
 
-![Update](_config-media/update1.png)
+![Update](_the-basics-media/_1-config-media/update1.png)
 
 To prevent unexpected data loss, it is important to understand how the Divblox auto-updater works. When the auto-updater is run, core Divblox files will be replaced on your local machine with newer versions. This is why it is highly encouraged to leave Divblox-specific files untouched and use project-specific files to override any functionality. This is also a good time to stress the importance of using some sort of version control system like git to make sure that you have the ability to revert unintended changes.
 
 For users who would like to review each file change, or if the updater seems to not be working, you can update Divblox using a patch. This is found in basecamp. All that is required is for you to enter your current Divblox version. A zipped patch file will then be downloaded containing only the files changed between your version and the current version.
 
-![Update2](_config-media/update2.png)
-
-<!-- # Summary
-
-To wrap this section up, let's summarize. The parts of this section described how to configure a global Divblox environment. It may also be helpful to discuss the execution chain of a Divblox application. Below is a screenshot of the `index.html` file.
-
-![indexHtmlScreenshot](_config-media/indexHtmlScreenshot.png)
-
-As discussed before, the order of the css dependencies can be seen here. JQuery is also only loaded in the body of the document.
-The following sections will dive into more detail about the background data modelling process as well as other Divblox functionality. -->
+![Update2](_the-basics-media/_1-config-media/update2.png)
 
 # Data modeler
 
@@ -312,7 +303,7 @@ This makes communication with your databases seemless and easy to manage in an o
 -   All of your entities, their attributes, attribute types and their relationships to other entities
 -   The user roles that your app will allow for
 
-![Basic Concepts](_media/_screenshots/data-modeler-basic-concepts.png)
+![Basic Concepts](_the-basics-media/_2-data-modeler-media/data-modeler-basic-concepts.png)
 
 > The data model in the above example describes the following:
 
@@ -331,13 +322,13 @@ This makes communication with your databases seemless and easy to manage in an o
 
 Below is a visual representation of the Divblox System Entities. These entities should not be edited, but rather reused where needed, since they might be affected by future Divblox updates. The developer is free to create relationships to these entities to leverage their existing functionality.
 
-![System Entities](_media/_screenshots/data-modeler-system-entities.png)
+![System Entities](_the-basics-media/_2-data-modeler-media/data-modeler-system-entities.png)
 
 The final data model for your app will be the combination of the system entities and the project entities. Once this is defined, Divblox can generate the app's object relational model and CRUD (Create, Read, Update, Delete) components. <br>
 <br>In essence, simply by defining a data model, you already have CRUD ability for every entity in your data model. More on this in later topics.<br>
 Below is a visual representation of a complete Divblox data model for the example provided [above](#basic-data-modeling-concepts)
 
-![Data model example](_media/_screenshots/data-modeler-example.png)
+![Data model example](_the-basics-media/_2-data-modeler-media/data-modeler-example.png)
 
 ## The Divblox ORM (Server side)
 
@@ -556,25 +547,25 @@ Data model components allow for the CRUD behaviour of any of your data model ent
     -   Displays input boxes for the relevant attributes of your entity along with a save button.
     -   Processes the request to the server to create a new instance of your entity and store it in the database
 
-![Create Component](_media/_screenshots/component-example-create.png)
+![Create Component](_the-basics-media/_3-divblox-components-media/component-example-create.png)
 
 -   **Update component:**
     -   Displays pre-populated input boxes for the relevant attributes of your entity along with a save & a delete button.
     -   Processes the request to the server to update or delete the existing instance of your entity in the database
 
-![Update Component](_media/_screenshots/component-example-update.png)
+![Update Component](_the-basics-media/_3-divblox-components-media/component-example-update.png)
 
 -   **Data Table component:**
     -   Displays a tabular view with data from the database for the selected entity. The data can be searched and/or constrained as required.
     -   Allows multiple functions to be executed on the data set, including Excel,csv or text export and bulk deletion.
 
-![Data Table Component](_media/_screenshots/component-example-data-table.png)
+![Data Table Component](_the-basics-media/_3-divblox-components-media/component-example-data-table.png)
 
 -   **Data List component:**
     -   Displays a list view with data from the database for the selected entity.
     -   The data can be searched and/or constrained as required. This is intended to be a more mobile friendly way of viewing data for a specific entity.
 
-![Data List Component](_media/_screenshots/component-example-data-list.png)
+![Data List Component](_the-basics-media/_3-divblox-components-media/component-example-data-list.png)
 
 ### Custom components
 
@@ -595,7 +586,7 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
 
 Page components are the parent components to any functionality in your application. You have default template options to choose from, each with a different navigation bar type, or even without one.
 
-![Page Types](_the-basics-media/page-types.png)
+![Page Types](_the-basics-media/_3-divblox-components-media/page-types.png)
 
 ### Basic components
 
@@ -626,13 +617,13 @@ The basic structure of any component's HTML follows the following pattern:
 <div id="ComponentWrapper" class="component-wrapper">
     <!-- The component placeholder is shown first while the component is loading-->
     <div id="ComponentPlaceholder" class="component_placeholder component_placeholder_general">
-        <!-- Should an error occur, from which the component cannot recover, 
+        <!-- Should an error occur, from which the component cannot recover,
         the component feedback is used to display the error to the user-->
         <div id="ComponentFeedback"></div>
     </div>
 
-    <!-- Once the component has successfully loaded, 
-    the component content replaces the component placeholder. 
+    <!-- Once the component has successfully loaded,
+    the component content replaces the component placeholder.
     Therefor it is hidden to start with-->
     <div id="ComponentContent class="component-content" style="display:none"></div>
 </div>
@@ -717,7 +708,7 @@ The component's JSON file is used for component configuration. By default this i
 Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
 
 <p align="center">
-    <img src="_media/divblox_fundamental.png"style="max-height: 400px">
+    <img src="_the-basics-media/_3-divblox-components-media/divblox_fundamental.png"style="max-height: 400px">
 </p>
 
 !> Each of Divblox's components communicates between client and server _independently_. A component is made up of 5 independent files, each responsible for their own unique functionality (as discussed in [Component DNA](#Component-DNA)).
@@ -809,7 +800,7 @@ To kick off Divblox's initialization workflow, the function `initDx();` from div
 ## Component Builder
 
 The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs.
-![Main Component Builder Page](_media/_screenshots/component-builder-overview.png)
+![Main Component Builder Page](_the-basics-media/_3-divblox-components-media/component-builder-overview.png)
 
 > From the default component builder page you can do the following:
 
@@ -820,33 +811,33 @@ The Divblox component builder allows you to create and manage your project’s c
 ### Creating a new component
 
 Clicking the + Component button brings up the following modal:
-![Component Builder - New Component](_media/_screenshots/component-builder-new-component.png)
+![Component Builder - New Component](_the-basics-media/_3-divblox-components-media/component-builder-new-component.png)
 Here you can give your new component a name and select the type of component you want to create.
 
 #### Creating a data model component
 
 Selecting a [Data Model Component](#data-model-components) will provide you with the options to select the entity for which you want to generate, as well as the type of data model component to create:
-![Component Builder - New Data Model Component Select Entity](_media/_screenshots/component-builder-new-datamodel-component-entity-select.png)
-![Component Builder - New Data Model Component Select Type](_media/_screenshots/component-builder-new-datamodel-component-type-select.png)
+![Component Builder - New Data Model Component Select Entity](_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-entity-select.png)
+![Component Builder - New Data Model Component Select Type](_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-type-select.png)
 
 Once you selected your entity and component type, you can configure the attributes and/or validations that you would like Divblox to generate for the component.<br><br>
 The example below shows a typical configuration modal for a "CREATE" type of component, which allows you to configure which attributes to display and to select the specific validations you require for them:
-![Component Builder - New Data Model Component Create Config](_media/_screenshots/component-builder-new-datamodel-component-create-config.png)
+![Component Builder - New Data Model Component Create Config](_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-create-config.png)
 
 The example below shows a typical configuration modal for a "DATA TABLE" type of component, which allows you to configure which attributes to display in the table:
-![Component Builder - New Data Model Component Data Table Config](_media/_screenshots/component-builder-new-datamodel-component-data-table-config.png)
+![Component Builder - New Data Model Component Data Table Config](_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-data-table-config.png)
 
 #### Creating from an existing component
 
 You can easily copy the functionality from an existing component be selecting the "**From Existing Component**" option. This will allow you to specialize the functionality of that component for your needs.
-![Component Builder - From Existing](_media/_screenshots/component-builder-from-existing.png)
+![Component Builder - From Existing](_the-basics-media/_3-divblox-components-media/component-builder-from-existing.png)
 
 !>Notice the "Grouping" field above. This field allows you to group certain components together in folders for a better organized project.
 
 #### Creating a custom component
 
 You can also create a custom component by selecting the "**Custom Component**" option. This simply allows you to provide a name and grouping for your component.
-![Component Builder - Custom Component](_media/_screenshots/component-builder-custom.png)
+![Component Builder - Custom Component](_the-basics-media/_3-divblox-components-media/component-builder-custom.png)
 
 !>Custom components **ALWAYS** start out as blank components
 
@@ -863,7 +854,7 @@ Using Bootstrap's grid system, it allows you to place the following containing e
     A column is the final containing element within which you can place your components
 -   Learn more about Bootstrap's grid system [here](https://getbootstrap.com/docs/4.3/layout/grid/#how-it-works)
 
-![Component Builder - Containing Elements](_the-basics-media/vbi_01.png)
+![Component Builder - Containing Elements](_the-basics-media/_3-divblox-components-media/vbi-01.png)
 
 #### Adding a sub component
 
@@ -872,7 +863,7 @@ You can add a component as a sub component to the current page (which in itself 
 <!--![Component Builder - Adding Sub Components](_media/_gifs/Adding-Components.gif)-->
 
 <video id="AddingComponentsVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_the-basics-media/the-basics-vbi-1.mp4" type="video/mp4">
+  <source src="_the-basics-media/_3-divblox-components-media/the-basics-vbi-1.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('AddingComponentsVideo')" type="button" class="video-control-button">
@@ -889,7 +880,7 @@ You can add custom html to the current component. See below:
 <!--![Component Builder - Adding Custom HTML](_media/_gifs/Adding-Custom-Html.gif)-->
 
 <video id="AddingCustomHtmlVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_the-basics-media/the-basics-vbi-2.mp4" type="video/mp4">
+  <source src="_the-basics-media/_3-divblox-components-media/the-basics-vbi-2.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('AddingCustomHtmlVideo')" type="button" class="video-control-button">
@@ -906,7 +897,7 @@ The builder interface allows you to modify your component in the browser at any 
 <!--![Component Builder - Modify Component](_media/_gifs/Modify-Component.gif)-->
 
 <video id="ModifyComponentVideo" muted="" playsinline="" preload="auto" autoplay>
-  <source src="_the-basics-media/the-basics-vbi-3.mp4" type="video/mp4">
+  <source src="_the-basics-media/_3-divblox-components-media/the-basics-vbi-3.mp4" type="video/mp4">
   Video is not supported
 </video>
 <button onclick="replayVideo('ModifyComponentVideo')" type="button" class="video-control-button">
@@ -920,7 +911,7 @@ The builder interface allows you to modify your component in the browser at any 
 
 Now that we have gone through what components actually are and how they work, let us look at the system components that come standard with any Divblox application. Below is a screenshot of the system components that ship with Divblox.
 
-![pages](_system-components/system.png)
+![pages](_the-basics-media/_4-system-components-media/system-components.png)
 
 #### Account Registration and Authentication
 
@@ -930,7 +921,7 @@ The account registration and authentication components take care of user registr
 
 #### **Account Registration**
 
-![Account Registration](_system-components/account_registration.png)
+![Account Registration](_the-basics-media/_4-system-components-media/account-registration.png)
 
 -   Performs basic validation (not empty) on input fields
 -   Takes care of backend validation checking uniqueness of username/email
@@ -941,7 +932,7 @@ The account registration and authentication components take care of user registr
 
 #### **Authentication**
 
-![Authentication](_system-components/authentication.png)
+![Authentication](_the-basics-media/_4-system-components-media/authentication.png)
 
 -   Backend validation of username and password:
     -   existence of username
@@ -1081,31 +1072,31 @@ function dummyOperation2() {
 7. Divblox provides comprehensive documentation for your API's that can be viewed at "/api/[your API name]/doc". In the case of this example, where our API is called "api_example", the documentation is generated and can be viewed at "/api/api_example/doc".
 
 <p align="left">
-  <img  src=_media/_screenshots/API-exposing-an-api1.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/exposing-an-api1.png>
 </p>
 
 8. By following this documentation the newly exposed API's operation can be accessed by making a request to the given URL endpoint.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-exposing-an-api2.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/exposing-an-api2.png>
 </p>
 
 9. The documentation will indicate to the reader whether or not the request requires an API key to access the operation, and in our case this API requires no authentication but does require other parameters such as a header, "content-type", and input parameters, "first_name" and "last_name", which are placed in the POST request body.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-exposing-an-api3.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/exposing-an-api3.png>
 </p>
 
 10. After the request has been made the expected output should be inline with the expected output. Using an application, such as [Postman](https://www.getpostman.com/) as a test platform to see whether or not the API was successfully created, or alternatively by using the URL "/api/api_example/dummyOperation/first_name=ACoolName/last_name=ACoolSurname" we can compare the collected output to the expected response.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-exposing-an-api4.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/exposing-an-api4.png>
 </p>
 
 11. Lastly , in the documentation, a dropdown menu is provided containing snippets of code that can be copied and placed into your project and language of choice to ease the integration. These snippets come in the most common languages that handle API requests.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-exposing-an-api5.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/exposing-an-api5.png>
 </p>
 
 ## Securing API operations with an API key
@@ -1115,73 +1106,73 @@ When creating your own API it will be completely exposed and wont require and AP
 1. Using the "api_example" (see [Exposing an API](#Exposing-a-custom-API)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api1.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api1.png>
 </p>
 
 2. Add the API operation to the list of controlled operations by opening "api_operation_administration" component in the "Component Builder".
 
 <p align="left">
-  <img  src=_media/_screenshots/API-securing-an-api2.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api2.png>
 </p>
 
 3. This component allows you to add or remove API operations from the list of access controlled API operations. Add your operation by clicking the "+ Api Operation"
 
 <p align="left">
-  <img  src=_media/_screenshots/API-securing-an-api3.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api3.png>
 </p>
 
 4. Add the "User Readable Name" (API operation name)to the box and click "Create". This name is from your "addApiOperation()" (in your API's .php file) and is case and white space sensitive.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api4.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api4.png>
 </p>
 
 5. By checking the API documentation we can compare the changes. Note that now the API does require a key to access the operation, and a API key can now be placed in the request body when the request is made to access the operation.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api5.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api5.png>
 </p>
 
 6. To get a key that will link to your operation and allow you to access it, open the "api_key_administration" component from the "Component Builder" page and add a new API key by clicking the "+ API key".
 
 <p align="left">
-  <img  src=_media/_screenshots/API-securing-an-api6.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api6.png>
 </p>
 
 7. The key itself is auto-generated to avoid any internal clashes, as well as providing a strong key string. A start date is required. The end date can be left open which results in the key remaining active indefinitely. Fill in any additional information you may require and click "Create" to finish making the key.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api7.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api7.png>
 </p>
 
 8. Your newly generated key should be visible in the "api_key_administration" component. Open up the new key to start adding operations to this key.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api8.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api8.png>
 </p>
 
 9. Start adding operations to this key by clicking "+ API Operation"
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api9.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api9.png>
 </p>
 
 10. Select the operation you want to link with the API key. Operations that have been newly added are place at the bottom of the list.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api10.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api10.png>
 </p>
 
 11. To verify that the operation has been added, it should be visible when viewing the API key. It will show the activity status of the operation which can be toggled to manage access.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api11.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api11.png>
 </p>
 
 12. Testing the API operation with the API key gives back a "Success" status message and completed the API operation.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-securing-an-api12.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/securing-an-api12.png>
 </p>
 
 ## Creating default CRUD API's
@@ -1191,49 +1182,49 @@ Making and exposing access controlled CRUD API operations for new data model ent
 1. Open the "Data Modeler" from the Divblox setup page.
 
 <p align="left">
-  <img  src=_media/_screenshots/API-default-CRUD1.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud1.png>
 </p>
 
 2. This is the Default data model for Divblox. New Entities are added by "Double-clicking" in empty space.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-default-CRUD2.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud2.png>
 </p>
 
 3. Name your new data model entity and click "Create". The name of the data model entity is used as the CRUD API path as well. For this example an entity named "Car" will be created.
 
 <p align="left">
-  <img  src=_media/_screenshots/API-default-CRUD3.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud3.png>
 </p>
 
 4. Start by selecting the module where you want your new entity to be placed. Add new entity attributes by filling in the attribute "name" and "data type" and then add it with the green " + " at the end of the row. Add relationships in the same way, by selecting the entity you need a relationship with and add it using the green " + " at the end of the row. Finish by saving the changes made to the entity
 
 <p align="canter">
-  <img  src=_media/_screenshots/API-default-CRUD4.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud4.png>
 </p>
 
 5.  Sync your data model. Ensure that Divblox's data model is synced so that the CRUD operations can be used.
 
 <p align="left">
-  <img  src=_media/_screenshots/API-default-CRUD5.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud5.png>
 </p>
 
 6. View the auto-generated documentation for the newly created entity using the entity name from before and the path "/api/[your API name]/doc". These are the default CRUD operations that get created with new data model entities.
 
 <p align="left">
-  <img  src=_media/_screenshots/API-default-CRUD6.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud6.png>
 </p>
 
 7. Divblox automatically requires an API key for any auto generated operation as they get added and listed in "api_operation_adminstration" (For more see [Securing API operations with an API key](#Securing-API-operations-with-an-API-key)). Therefore we must create an API key and link it to the operations we want to expose, thus still keeping them secure with a key. Create the key in the "api_key_administration" component. Select the new key and add the operations using the " + Api Operation" button and select the operations you want from the drop down menu.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-default-CRUD7.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud7.png>
 </p>
 
 8. The API operations are now exposed and can be accessed using the key that was just created. Testing the "Create Car" operation we will get back a confirmation that the data entry was successful and the "List Car" operation will show the new car that was created.
 
 <p align="center">
-  <img  src=_media/_screenshots/API-default-CRUD8.png>
+  <img  src=_the-basics-media/_5-divblox-apis-media/api-default-crud8.png>
 </p>
 
 # Native Support
@@ -1243,7 +1234,7 @@ To export to a native project you need the following:
 
 -   Your web app needs to be deployed on a server with an ssl certificate
 -   You need to configure your environment for native export:
-    ![Native Export Config](_media/_screenshots/native-environment-config.png)
+    ![Native Export Config](_the-basics-media/_6-native-support-media/native-environment-config.png)
 -   Follow the steps in the "Export to Native" section on the Divblox setup page to configure React Native and export your environment of choice
 
 You can export a native app project for any of your configured environments. The export creates the following:
