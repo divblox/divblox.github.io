@@ -12,6 +12,6 @@
 -   [**Advanced Training Exercise**](advanced-training-exercise.md)
 -   [**Advanced Training Evaluation**](advanced-training-evaluation.md)
 -   [**Common Examples**](common-examples.md)
--   [**Useful Code Snippets**](code-snippets.md)
+-   [**Useful Resources**](useful-resources.md)
 -   [**Deployment**](deployment.md)
 -   [**Troubleshooting**](troubleshooting.md)

@@ -1,4 +1,6 @@
-# Useful Code Snippets
+# Useful Resources
+
+## Code Snippets
 
 This section is dedicated to giving the user an easy to use copy-paste template library of common Divblox functions.
 
@@ -34,3 +36,8 @@ getComponentElementById(this, "ElementId").on("click", function () {
     //Function to be implemented
 });
 ```
+
+## Divblox Public Shared
+
+Divblox shares a public Google Drive folder with various resources to ease your development workflow. 
+This shared folder can be found [here](https://drive.google.com/drive/folders/1JaZH9vFj7-ub0QmlrOlKdwtiBVPDiVdF) 
