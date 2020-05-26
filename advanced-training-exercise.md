@@ -434,6 +434,93 @@ after which we just insert them into our ticket_crud_update' component (in their
 <i class="fa fa-expand"></i>
 </button>
 
+#### Ticket progression functionality
+
+The ticket progression idea is somewhat loosely defined as a concept, so we need to define what we actually mean by it. The definition we will follow is as follows:
+
+1. If a ticket has no subtasks, then if it's status is completed its TicketProgression will be 100% and if it is anything else it will be 0%.
+2. If a ticket has subtasks, then the ticket's status is ignored and the number of subtasks with status Complete divided by the number of subtasks that are not complete will give us the percentage TicketProgression.
+
+This logic will be defined directly in the Ticket entity `Save()` function, which can be overridden in the Ticket.class.php file (`divblox/config/database/data_model_orm/Ticket.class.php`). Below are the `Save()` and `Delete()` functions with the changes made. You will also see the changes made to store the categoryCount value as explained in the basic training exercise.
+
+```php
+
+public function Save($blnForceInsert = false, $blnForceUpdate = false) {
+    $ExistingObj = Ticket::Load($this->intId);
+
+    // Calculating TicketProgression ///////////////////////////////////////
+    // Total number of subtasks (int)
+    $TotalInt = SubTask::QueryCount(
+        dxQ::Equal(
+            dxQN::SubTask()->TicketObject->Id,
+            $this->intId
+        )
+    );
+
+    // Completed number of subtasks (int)
+    $CompletedInt = SubTask::QueryCount(
+        dxQ::AndCondition(
+            dxQ::Equal(
+            dxQN::SubTask()->TicketObject->Id,
+            $this->intId
+            ), dxQ::Equal(
+            dxQN::SubTask()->SubTaskStatus,
+            "Complete"
+        )
+        )
+    );
+
+
+    $TicketProgress = 0;
+    if ($ExistingObj) {
+        // If there are SubTasks
+        if ($TotalInt !== 0) {
+            $TicketProgress = round(($CompletedInt / $TotalInt) * 100);
+        // if there aren't subtasks, and TicketStatus is Complete
+        } else if ($ExistingObj->TicketStatus == "Complete") {
+            $TicketProgress = 100;
+        }
+        // If it is not Complete, the default value of 0 remains
+    }
+    ////////////////////////////////////////////////////////////////////
+
+    $this->intTicketProgress = $TicketProgress;
+    $mixToReturn = parent::Save($blnForceInsert, $blnForceUpdate);
+
+    // Category Count logic /////////////////////////////////////
+    // Count the number of tickets in each category
+    $CategoryObj = Category::Load($this->intCategory);
+    if (!is_null($CategoryObj)) {
+        $TicketCount = Ticket::QueryCount(
+            dxQ::Equal(
+            dxQN::Ticket()->CategoryObject->Id,
+            $CategoryObj->Id
+            )
+        );
+        $CategoryObj->TicketCount = $TicketCount;
+        $CategoryObj->Save();
+    }
+    ///////////////////////////////////////////////////////////////
+    return $mixToReturn;
+}
+
+public function Delete() {
+    // Update category count when tickets are deleted.
+    $CategoryObj = Category::Load($this->intCategory);
+    parent::Delete();
+    if (!is_null($CategoryObj)) {
+        $TicketCount = Ticket::QueryCount(
+            dxQ::Equal(
+            dxQN::Ticket()->CategoryObject->Id,
+            $CategoryObj->Id
+            )
+        );
+        $CategoryObj->TicketCount = $TicketCount;
+        $CategoryObj->Save();
+    }
+}
+```
+
 #### Customizing the SubTask CRUD
 
 The sub tasks are already constrained by the parent Ticket ID, so all we need to do is make the HTML formatting a little bit more to our liking.
@@ -768,7 +855,7 @@ We will now build a dashboard which should give us a summary overview of the tic
 
 Once we have our page set up and navigation configured, we can proceed with our dashboard. The final product will look something like this:
 
-![](_advanced-training-exercise-media/dashboard-screenshot-partial.png)
+![](_advanced-training-exercise-media/dashboard-screenshot.png)
 
 To create the dashboard we will create a few individual components, that can be reused anywhere:
 
@@ -823,10 +910,16 @@ We will look at the relevant component files individually. These are:
 
 The full HTML file looks like this:
 
-```
-<div xmlns="http://www.w3.org/1999/xhtml" id="ComponentWrapper" class="component-wrapper">
+```html
+<div
+    xmlns="http://www.w3.org/1999/xhtml"
+    id="ComponentWrapper"
+    class="component-wrapper"
+>
     <div
-        id="ComponentPlaceholder" class="component_placeholder component_placeholder_general">
+        id="ComponentPlaceholder"
+        class="component_placeholder component_placeholder_general"
+    >
         <div id="ComponentFeedback"></div>
     </div>
     <div id="ComponentContent" class="component-content" style="display:none;">
@@ -834,12 +927,18 @@ The full HTML file looks like this:
             <div id="StatusWrapper" class="dashboard-tile">
                 <div class="row">
                     <div class="col-9">
-                        <div id="StatusLabel" class="StatusLabel float-left ml-1">
+                        <div
+                            id="StatusLabel"
+                            class="StatusLabel float-left ml-1"
+                        >
                             {Status}
                         </div>
                     </div>
                     <div class="col-3">
-                        <div id="StatusCount" class="StatusCount float-right mr-4">
+                        <div
+                            id="StatusCount"
+                            class="StatusCount float-right mr-4"
+                        >
                             {X}
                         </div>
                     </div>
@@ -1507,13 +1606,13 @@ We will now look at the two graph components we want to create for our dashboard
 
 Now that we have created (identical to the default) graph components, let's go through the changes we make to display the correct data and graph types.
 
-#### Ticket Status Graph
+### Ticket Status Graph
 
 This component is a bar chart showing the number of tickets in each of the status's.
 
 ![ticket status graph](_advanced-training-exercise-media/ticket_status_graph.png)
 
-Below we show the ticket_status_graph component's component.js and component.php files:
+We will not discuss the chartJS-specific code, as their documentation is thorough and well-defined. Below we show the ticket_status_graph component's component.js and component.php files.
 
 ```js
 if (
@@ -1592,6 +1691,7 @@ class StatusBarChartController extends ProjectComponentController {
 
     // Query relevant data
     public function getData() {
+        // This is the actual graph data we query from database and set into an array
         $TicketStatusArray = ["New", "In Progress", "Due Soon", "Urgent", "Complete", "Overdue"];
         foreach($TicketStatusArray as $TicketStatus) {
             $TicketStatusCountArray[] = Ticket::QueryCount(
@@ -1631,7 +1731,7 @@ $ComponentObj = new StatusBarChartController("status_bar_chart");
 ?>
 ```
 
-#### Main Category Graph
+### Main Category Graph
 
 This pie chart is supposed to show us the proportion of tickets in each of the main categories, i.e. Work, Sport and Leisure.
 
@@ -1662,6 +1762,7 @@ if (
         }
 
         updateChart() {
+            // Call to the backend
             dxRequestInternal(
                 getComponentControllerPath(this),
                 { f: "getData" },
@@ -1725,6 +1826,7 @@ class CategoryPieChartController extends ProjectComponentController {
 
     // Query the relevant data
     public function getData() {
+        // Graph data we query from database and set into an array
         $CategoryLabelCountArray = [];
         $CategoryLabelArray = ["Sport", "Leisure", "Work"];
         foreach($CategoryLabelArray as $Category) {
@@ -1766,3 +1868,14 @@ class CategoryPieChartController extends ProjectComponentController {
 $ComponentObj = new CategoryPieChartController("category_pie_chart");
 ?>
 ```
+
+# Conclusion
+
+That's the end of the advanced training exercise! You should now be more familiar with core DIvblox concepts:
+
+-   How frondend/backend communication is handled with `dxRequestInternal()`
+-   Inheritance of parameters through child components
+-   Page setup and navigation
+-   How to create custom components as well as use prebuilt defaults to ease your workflow
+
+In the next section there will be an advanced training evaluation testing the understanding developed in the exercise. To obtain an advanced Divblox certification, attempt the exercise and send your attempt to us at support@divblox.com.
