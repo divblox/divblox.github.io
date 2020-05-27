@@ -6,7 +6,7 @@ We need to talk about installation checker, export to native, UI config, global 
 
 Next we will take you through interface of Divblox's setup and what each part entails. Below is a screenshot of what you should expect upon loading into the Divblox environment. We will first discuss the sections which have more to do with configuration of your Divblox application.
 
-![Divblox Setup](_the-basics-media/_1-config-media/divbloxsetup1.png)
+![Divblox Setup](_the-basics-media/_1-config-media/dx-setup.png)
 
 ### Modules
 
@@ -18,7 +18,7 @@ Modules are essentially separate databases that ring-fence certain data objects.
 Divblox allows you to define multiple environments for your project (local, staging, testing, production, etc).
 When you start up Divblox for the first time, it will automatically generate the default (local) environment for your current project.
 
-![Environments Screenshot](_the-basics-media/_1-config-media/setup-environments.png)
+![Environments Screenshot](_the-basics-media/_1-config-media/dx-setup-environment.png)
 
 > For an environment to function correctly, the following needs to be configured:
 
@@ -44,7 +44,7 @@ When you start up Divblox for the first time, it will automatically generate the
 
 -   If you have any trouble creating your project and getting a key, please [contact us](https://Divblox.com/#contact) (support@divblox.com) to request your _FREE_ Api key
 
-![Divblox Api Key](_the-basics-media/_1-config-media/setup-configure-api-key.png)
+![Divblox Api Key](_the-basics-media/_1-config-media/dx-setup-api-key.png)
 
 ### dx Admin Password
 
@@ -52,18 +52,18 @@ This password is used to manage your Divblox project and allows access to the se
 
 !>It is important to select a secure password as your admin password for public and/or production solutions
 
-![Admin password](_the-basics-media/_1-config-media/setup-configure-admin-password.png)
+![Admin password](_the-basics-media/_1-config-media/dx-setup-admin-password.png)
 
 ### UI Config
 
 The UI configuration panel gives quick access to your project logo, project icon and theme.css file. Note that Divblox stores your project logo and icon as app_logo.png and favicon.ico. Submitting either in the UI config tab will rename your file and save it accordingly. You are also able to edit the `theme.css` file in-browser. This is great due to the order of dependencies executed in Divblox's start up. Divblox first loads Bootstrap 4, then Font-Awesome, followed by `project.css` and finally `theme.css` meaning that any changes you make in `theme.css` will over-ride any default project settings.
 
-![UI Config](_the-basics-media/_1-config-media/divbloxsetup-ui-config.png)
+![UI Config](_the-basics-media/_1-config-media/dx-setup-ui-config.png)
 
 ### JS Config
 
 The main configurable items for the Divblox javascript engine can be configured from the JS Config setup block.
-![JS Config](_the-basics-media/_1-config-media/setup-js-config.png)
+![JS Config](_the-basics-media/_1-config-media/dx-setup-js-config.png)
 
 #### SPA Mode
 
@@ -100,7 +100,7 @@ This will allow you to collect feature requests and bug reports for your pages. 
 
 This set of files represents all the functions (set up into classes) that need to be available globally in your project. It is split up into 5 main files, as seen in the screenshot below. This includes both front-end javascript files as well as back-end php files. As mentioned before, whatever is edited in the project folder will override default Divblox functionality. The bulk of your project code will be either in these files, or in component-specific files.
 
-![GlobalFunctions](_the-basics-media/_1-config-media/global-functions.png)
+![GlobalFunctions](_the-basics-media/_1-config-media/dx-setup-global-functions.png)
 
 #### Divblox.js
 
@@ -269,6 +269,12 @@ Once the upload is complete you can view:
 </p>
 
 <!-- tabs:end -->
+
+### Navigation
+
+Divblox tries to simplify the generic processes of app creation as much as possible. As such, the navigation tab is where you can create menus whihc can be later placed into navigation components across your project easily.
+
+![navigation](_the-basics-media/_1-config-media/dx-setup-navigation.png)
 
 ### Updates
 
