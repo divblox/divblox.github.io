@@ -10,9 +10,11 @@ dxRequestInternal(getComponentControllerPath(this), {
     // parameters fed to the backend
     f: "backend_function_name",
     additional_parameters: "parameter1"
-    }, function (data_obj) {
+    }, 
+    function (data_obj) {
         // Success function
-    }.bind(this), function (data_obj) {
+    }.bind(this), 
+    function (data_obj) {
         // Failure function
     }.bind(this));
 ```
