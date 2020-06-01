@@ -227,11 +227,11 @@ getComponentElementById(this, "n3CEV_btn").on(
 public function checkEmailAddress() {
     $EmailAddressStr = $this->getInputValue('email_address');
     if (is_null($EmailAddressStr) || (strlen($EmailAddressStr) < 2)) {
-        $this->setReturnValue("Result","Failed");
+        $this->setResult(false);
         $this->setReturnValue("Message","No email address provided");
         $this->presentOutput();
     }
-    $this->setReturnValue("Result","Success");
+    $this->setResult(true);
     $this->setReturnValue("Message","You provided the email: $EmailAddressStr");
     $this->presentOutput();
 }

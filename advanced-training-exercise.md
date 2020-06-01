@@ -278,7 +278,7 @@ Now in the component.php file, we define the `getBreadCrumbs()` function referen
         $ReturnArr = ProjectFunctions::getBreadCrumbsRecursive($CategoryObj);
         $ReturnArr = array_reverse($ReturnArr);
 
-        $this->setReturnValue("Result", "Success");
+        $this->setResult(true);
         $this->setReturnValue("ReturnData", $ReturnArr);
         $this->presentOutput();
     }
@@ -609,7 +609,7 @@ public function handleFilePost() {
         'uploadDir' => $this->UploadPath,
         'title' => 'auto'
     ));
-    $this->setReturnValue("Result","Success");
+    $this->setResult(true);
     // call to upload the files
     $data = $FileUploader->upload();
     $this->setReturnValue("Message",$data);
@@ -835,7 +835,7 @@ class NoteController extends EntityInstanceComponentController {
             $RelationshipList = $this->getRelationshipList($EntityObj,$Relationship);
             $this->setReturnValue($Relationship."List",$RelationshipList);
         }
-        $this->setReturnValue("Result","Success");
+        $this->setResult(true);
         $this->setReturnValue("Message","");
         $this->setReturnValue("AttachmentPath", $AttachmentPathStr);
         $this->presentOutput();
@@ -1106,7 +1106,7 @@ class TicketStatusIndicatorController extends ProjectComponentController {
         $StatusPercentage = $StatusTicketCountInt/$TotalTicketCountInt;
 
         // Set and present required data
-        $this->setReturnValue("Result", "Success");
+        $this->setResult(true);
         $this->setReturnValue("Count", $StatusTicketCountInt);
         $this->setReturnValue("Percentage", $StatusPercentage);
         $this->presentOutput();
@@ -1346,13 +1346,13 @@ class AccountController extends EntityDataSeriesComponentController
         $DefaultSortAttribute = $this->IncludedAttributeArray[0];
 
         if (is_null($this->getInputValue("ItemsPerPage"))) {
-            $this->setReturnValue("Result", "Failed");
+            $this->setResult(false);
             $this->setReturnValue("Message", "No items per page provided");
             $this->presentOutput();
         }
         $AccessArray = ProjectAccessManager::getObjectAccess(ProjectFunctions::getCurrentAccountId(), $this->EntityNameStr);
         if (!in_array(AccessOperation::READ_STR, $AccessArray)) {
-            $this->setReturnValue("Result", "Failed");
+            $this->setResult(false);
             $this->setReturnValue("Message", "Read access denied");
             $this->presentOutput();
         }
@@ -1482,7 +1482,7 @@ class AccountController extends EntityDataSeriesComponentController
             array_push($EntityReturnArray, $CompleteReturnArray);
         }
 
-        $this->setReturnValue("Result", "Success");
+        $this->setResult(true);
         $this->setReturnValue("Message", "");
         $this->setReturnValue("Page", $EntityReturnArray);
         $this->setReturnValue("TotalCount", $EntityNodeNameStr::QueryCount($QueryCondition));
@@ -1736,7 +1736,7 @@ class StatusBarChartController extends ProjectComponentController {
                                         'rgba(153, 102, 255, 1)',
                                         'rgba(255, 159, 64, 1)'],
                         "borderWidth" => 1],));
-        $this->setReturnValue("Result","Success");
+        $this->setResult(true);
         $this->setReturnValue("Data",$ReturnData);
         $this->presentOutput();
     }
@@ -1873,7 +1873,7 @@ class CategoryPieChartController extends ProjectComponentController {
                                         'rgba(153, 102, 255, 1)',
                                         'rgba(255, 159, 64, 1)'],
                         "borderWidth" => 1],));
-        $this->setReturnValue("Result","Success");
+        $this->setResult(true);
         $this->setReturnValue("Data",$ReturnData);
         $this->setReturnValue("DataArray",$CategoryLabelCountArray);
         $this->presentOutput();

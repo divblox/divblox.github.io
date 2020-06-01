@@ -691,11 +691,11 @@ class DemoComponentController extends ProjectComponentController {
         if (is_null($ExpectedInputValue)) {
             // We did not receive the input we were expecting.
             // Let's fail the request
-            $this->setReturnValue("Result","Failed");
+            $this->setResult(false);
             $this->setReturnValue("Message","InputValue not provided");
             $this->presentOutput();
         }
-        $this->setReturnValue("Result","Success");
+        $this->setResult(true);
         $this->setReturnValue("Message","InputValue is $ExpectedInputValue");
         $this->presentOutput();
     }
@@ -762,7 +762,7 @@ public function ourFunctionName() {
     // when the script completes. We always need to set the value for "Result" to either
     // "Success" or "Failed" in order for the component JavaScript to know
     // how to treat the response
-    $this->setReturnValue("Result","Success");
+    $this->setResult(true);
     // It is always a good idea to populate a "Message" for the front-end
     $this->setReturnValue("Message", "Some message about your result");
     // Here we set the value of any additional parameters to return

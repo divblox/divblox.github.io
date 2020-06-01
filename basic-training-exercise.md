@@ -248,7 +248,7 @@ public function getNewTicketUniqueId() {
         //when the script completes. We always need to set the value for "Result" to either
         // "Success" or "Failed" in order for the component JavaScript to know
         // how to treat the response
-        $this->setReturnValue("Result","Success");
+        $this->setResult(true);
         // It is always a good idea to populate a "Message" for the front-end
         $this->setReturnValue("Message", "New unique ID created");
         // Here we set the value of any additional parameters to return
@@ -604,7 +604,7 @@ public function Function1() {
         $CategoryObj->Save();
     }
     // Prepare the result we will send to the front end
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", "$TicketDataSize Tickets created");
     $this->presentOutput();
 }
@@ -643,7 +643,7 @@ public function Function2() {
         $ReturnArray[] = json_decode($TicketObj->getJson());
     }
     // Set what we are returning to the front end
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $ReturnArray);
     $this->presentOutput();
 }
@@ -681,7 +681,7 @@ public function Function3() {
     foreach($TicketArray as $TicketObj) {
         $ReturnArray[] = json_decode($TicketObj->getJson());
     }
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $ReturnArray);
     $this->presentOutput();
 }
@@ -733,7 +733,7 @@ public function Function4() {
     foreach($TicketArray as $TicketObj) {
         $ReturnArray[] = json_decode($TicketObj->getJson());
     }
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $ReturnArray);
     $this->presentOutput();
 }
@@ -763,7 +763,7 @@ public function Function5() {
             )
         );
     }
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $ReturnArray);
     $this->presentOutput();
 }
@@ -817,7 +817,7 @@ public function Function6() {
               ["GrandTotal"=> $TotalCountInt, "AccountTotal"=> $AccountCountInt];
         }
     }
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $ReturnArray);
     $this->presentOutput();
 }
@@ -883,7 +883,7 @@ The new code can be seen below:
                  ["GrandTotal"=> $TotalCountArray[$CategoryObj->Id], "AccountTotal"=> $AccountCountInt];
             }
         }
-        $this->setReturnValue("Result", "Success");
+        $this->setResult(true);
         $this->setReturnValue("ReturnData", $ReturnArray);
         $this->presentOutput();
     }
@@ -1014,7 +1014,7 @@ public function Function7() {
                     ["GrandTotal"=> $CategoryObj->TicketCount, "AccountTotal"=> $AccountCountInt];
             }
         }
-        $this->setReturnValue("Result", "Success");
+        $this->setResult(true);
         $this->setReturnValue("ReturnData", $ReturnArray);
         $this->presentOutput();
     }

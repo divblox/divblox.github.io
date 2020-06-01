@@ -25,7 +25,7 @@ dxRequestInternal(getComponentControllerPath(this), {
 public function FunctionName() {
     // Function operations
     $SomeReturnValue = [];
-    $this->setReturnValue("Result", "Success");
+    $this->setResult(true);
     $this->setReturnValue("ReturnData", $SomeReturnValue);
     $this->presentOutput();
 }
