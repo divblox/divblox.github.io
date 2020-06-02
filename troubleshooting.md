@@ -6,6 +6,15 @@ to iOS, to function correctly. However, both Windows and Linux are also supporte
 
 ## Most common issues
 
+### Browser cache
+
+All of your Divblox app's assets (html, javascript & css files) will, by default, be cached by your browser.
+It is therefore important to take this into account when building new functionality. If something does not
+work the way you expect it to, the most common cause is that the old functionality was cached.
+
+The easiest way around this is to have the browser's console open while developing and to disable caching through the 
+options provided. It is also a good idea to always perform a cache-refresh when refreshing your page.
+
 ### Browser console
 
 Divblox makes use of the browser console to inform the developer of errors. Ensure that the browser console is open during
