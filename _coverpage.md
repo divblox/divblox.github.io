@@ -2,7 +2,7 @@
 
 ![logo](_media/divblox-logo-1.png)
 
-# Divblox <small>3.1.7</small>
+# Divblox <small>3.1.8</small>
 
 > Create experiences. Not just apps.
 
