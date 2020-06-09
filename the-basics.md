@@ -272,7 +272,7 @@ Once the upload is complete you can view:
 
 ### Navigation
 
-Divblox tries to simplify the generic processes of app creation as much as possible. As such, the navigation tab is where you can create menus whihc can be later placed into navigation components across your project easily.
+Divblox tries to simplify the generic processes of app creation as much as possible. As such, the navigation tab is where you can create menus which can be later placed into navigation components across your project easily.
 
 ![navigation](_the-basics-media/_1-config-media/dx-setup-navigation.png)
 
