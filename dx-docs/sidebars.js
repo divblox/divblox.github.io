@@ -1,6 +1,13 @@
 module.exports = {
-  someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
-  },
+    someSidebar: {
+        Introduction: ['doc1', 'getting-started'],
+        'Getting Started': ['doc2'],
+        'The Basics': [
+            'the-basics-configuration',
+            'the-basics-data-modeler',
+            'the-basics-divblox-components',
+            'the-basics-divblox-apis',
+            'the-basics-native-support'],
+        Setup: ['mdx'],
+    },
 };

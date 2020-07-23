@@ -1,0 +1,119 @@
+---
+id: getting-started
+title: Getting Started
+---
+
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Ways to get started
+
+To start creating an app with Divblox, you need to configure a development environment (also known as a deployment environment). To do this you have a number of options:
+
+1. The first and easiest way is to spin up a **Divblox sandbox** where you can get a feel for the Divblox environment and play around with most of Divblox's features
+
+2. A slightly more advanced option that allows for more complex features, is to download the **Divblox VirtualBox image** and import that as a virtual machine on a local machine of your choosing
+3. The third, and most hands on option, is to configure a **Divblox deployment environment from scratch** on a machine of your choosing
+
+### Sandbox vs local deployment
+
+> In a local deployment environment, more advanced features are available:
+
+-   You can configure your server variables and modules
+-   You can configure your database connections
+-   You can export to native
+-   You have full access to your entire code base
+-   You can deploy your app to another deployment environment
+
+> A deployment environment is defined as an instance of a project, that is hosted on a web server, which is accessible by a user.
+> These can include, but are not limited to:
+
+-   A local web server on a development computer
+-   A cloud based web server
+
+Sign in to [basecamp.divblox.com](https://basecamp.Divblox.com/?view=login)
+
+<Tabs
+    defaultValue="apple"
+    values={[
+        {label: '1.', value: '1_basecamp'},
+        {label: '2.', value: '2_sandbox'},
+        {label: '3.', value: '3_data_modeler'},
+        {label: '4.', value: '4_component_builder'},
+        {label: '5.', value: '5_local_environment'},
+        {label: '6.', value: '6_server'},
+    ]}>
+    <TabItem value="1_basecamp">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="1_basecamp" src={useBaseUrl('_getting-started-media/1_basecamp.png')} />
+        </div>
+        Sign in to [basecamp.divblox.com](https://basecamp.Divblox.com/?view=login)
+    </TabItem>
+    <TabItem value="2_sandbox">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="2_basecamp" src={useBaseUrl('_getting-started-media/2_sandbox.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="3_data_modeler">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="3_basecamp" src={useBaseUrl('_getting-started-media/3_data_modeler.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="4_component_builder">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="4_basecamp" src={useBaseUrl('_getting-started-media/4_component_builder.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="5_local_environment">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="5_basecamp" src={useBaseUrl('_getting-started-media/5_local_environment.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="6_server">
+        <div style={{ padding: '0px 0px', backgroundColor: '#fff', height: '100px', width: '100px'}}>
+            <img alt="6_basecamp" src={useBaseUrl('_getting-started-media/6_server.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+
+### Initializing a new Sandbox
+
+Creating a new sandbox is easy:
+
+<Tabs
+    defaultValue="1"
+    values={[
+        {label: 'Step 1', value: '1'},
+        {label: 'Step 2', value: '2'},
+        {label: 'Step 3', value: '3'},
+    ]}>
+    <TabItem value="1">
+            <ul>
+                <li> Start by creating your project at <a href="https://basecamp.Divblox.com/?view=login" target="_blank">basecamp.Divblox.com</a></li>
+            </ul>
+            <img  alt="sandbox-step1" src={useBaseUrl('_getting-started-media/sandbox-step1.png')}  style={{height: '350px'}}/>
+    </TabItem>
+    <TabItem value="2">
+            <ul>
+                <li> Complete the required fields and click "Create"</li>
+            </ul>
+            <img  alt="sandbox-step2" src={useBaseUrl('_getting-started-media/sandbox-step2.png')}  style={{height: '350px'}}/>
+    </TabItem>
+    <TabItem value="3">
+            <ul>
+                <li>You are now ready to launch your sandbox by clicking on "Open in Sandbox"</li>
+            </ul>
+            <img  alt="sandbox-step3" src={useBaseUrl('_getting-started-media/sandbox-step3.png')}  style={{height: '350px'}}/>
+    </TabItem>
+</Tabs>
+
+:::note
+This should be a note
+:::
+
+:::warning
+This is a warning
+:::
