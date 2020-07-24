@@ -15,6 +15,23 @@ module.exports = {
         'Common Examples': [
             'common-examples-hello-world-example',
             'common-examples-other-common-examples'
+        ],
+        'Divblox Best Practices': [
+            'divblox-best-practices'
+        ],
+        'Basic Training':[
+            'basic-training-exercise',
+            'basic-training-evaluation'
+        ],
+        "Advanced Training": [
+            'advanced-training-exercise',
+            'advanced-training-evaluation'
+        ],
+        "Useful Resources": [
+            'useful-resources'
+        ],
+        "Deployment": [
+            'linux-deployment'
         ]
     },
 };
