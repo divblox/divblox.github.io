@@ -1,0 +1,82 @@
+---
+id: getting-started-2-virtualbox
+title: "2. Starting with VirtualBox"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Option 2. Starting with VirtualBox
+
+Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start building Divblox apps in no time. The purpose of having this Virtual Machine (VM) is to be able to setup Divblox in a single neat package that is already pre-configured to simplify the installation process. Divblox can also be installed on your local OS (see [Option 3. Starting from scratch](#option-3-starting-from-scratch)).
+
+> Start developing with Divblox in 3 easy steps:
+
+1. Download VirtualBox and the Image containing Divblox
+2. Import the image into VirtualBox and boot the VM
+3. Start a new project and configure the API
+
+:::info
+Note: Minimal system requirements:
+:::
+
+-   At least 30 GB of free storage on your main storage device
+-   8 GB RAM (allocating at least 4 GB to the VM)
+-   Dual core CPU
+
+### VirtualBox Download
+
+:::info
+Note: the virtual machine image is a 7 GB download.
+:::
+
+The latest version of Oracle's VirtualBox can be downloaded [here](https://www.virtualbox.org/wiki/Downloads) to ensure that the VirtualBox image runs properly.
+
+The VM (.ova) file that contains Divblox and all the accompanying software can be downloaded [here](https://drive.google.com/drive/folders/1JaZH9vFj7-ub0QmlrOlKdwtiBVPDiVdF?usp=sharing).
+
+### Loading the Virtual machine
+
+After installing VirtualBox on your device and running the application, add the image by opening "File" -> "Import Appliance".
+
+<div className="text--center">
+    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup1.png')}/>
+</div>
+
+From here, find and add the Divblox VM image file (.ova). On the following window you will be prompted to "Import". Adding the image may take several minutes to install and configure.
+
+<div className="text--center">
+    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup2.png')}/>
+</div>
+
+Once your VM has been loaded, it can be started by "double-clicking" on the newly added machine in the VirtualBox application. This will open a separate window and begin booting up the Divblox image.
+
+:::info
+Note: The boot sequence is complete when you are greeted by the Welcome page.
+:::
+
+### Initialize Divblox
+
+<div className="text--center">
+    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup3.png')}/>
+</div>
+
+The Welcome page is necessary to read through in order to operate the virtual machine.
+It contains information such as:
+
+-   Username and passwords for the VM
+-   Relevant file locations and permissions
+-   Quick start links
+-   Information about the VM software
+
+After you have familiarised yourself with the introduction page, the first thing you should do is to configure your project's _Free_ Divblox API key.
+
+1. To generate your new API see [Divblox API key](the-basics?id=divblox-api-key).
+
+2. Open the "local starter project" from the link located under "Quick Start links" on the welcome Page.
+
+3. Click "dx API key" to open the dialog that allows you to copy in and update your API key.
+
+<div className="text--center">
+    <img alt="Sign in" src={useBaseUrl('_getting-started-media/setup-configure-api-key.png')}/>
+</div>
