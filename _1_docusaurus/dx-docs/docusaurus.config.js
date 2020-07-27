@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
     title: 'Divblox',
     tagline: 'Create experiences. Not just apps.',
@@ -125,7 +126,9 @@ module.exports = {
             },
         ],
     ],
-    plugins: [],
+    plugins: [
+        require.resolve('docusaurus-lunr-search')
+    ],
     customFields: {
         dxlogo: '/img/_media/divblox-logo-1.png',
         keywords: [],
