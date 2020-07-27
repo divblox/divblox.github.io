@@ -6,10 +6,11 @@ title: "Basic Training Exercise"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 This exercise assumes that you have managed to configure your Divblox project and that you understand the basic concepts.
-If you are not sure that you do understand the basics, you can look at the [common examples](common-examples.md) and perhaps first try the 'Hello World' exercise.
+If you are not sure that you do understand the basics, you can look at the [common examples](common-examples-hello-world-example).
 
 > In this exercise we will go into a bit more detail about the main Divblox concepts that are used in every project.
 > These concepts include:
@@ -46,7 +47,7 @@ This can be represented as follows:
     <img alt="UML diagram" src={useBaseUrl('_basic-training-media/training-exercise1.png')} />
 </div>
 
-If you need a refresh on Divblox data modelling, click [here](data-modeler.md). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
+If you need a refresh on Divblox data modelling, click [here](the-basics-data-modeler). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
 
 <video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-1.1.mp4')} type="video/mp4"/>
@@ -424,7 +425,7 @@ Once we have defined our endpoint, we can test to see if everything works. Note 
 In the following examples, you will gain a deeper understanding of the Divblox PHP query language that is used to communicate with the database. We will also be building on your existing knowledge on how to communicate between the frontend and backend of your Divblox application.
 
 :::info
-In this section we will focus on the dxQuery language explained [here](the-basics.md?id=divbox-ORM-Queries).
+In this section we will focus on the dxQuery language explained [here](the-basics-data-modeler#orm-code-generation).
 :::
 
 You will build the following:

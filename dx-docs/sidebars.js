@@ -1,3 +1,4 @@
+
 module.exports = {
     someSidebar: {
         'Getting Started': [
@@ -32,6 +33,9 @@ module.exports = {
         ],
         "Deployment": [
             'linux-deployment'
+        ],
+        "Troubleshooting": [
+            'troubleshooting'
         ]
     },
 };

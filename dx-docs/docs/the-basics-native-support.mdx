@@ -6,6 +6,8 @@ title: Native Support
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 Divblox allows you to export your progressive web app to a native project using [React Native](https://reactnative.dev/).
 To export to a native project you need the following:
@@ -55,10 +57,12 @@ $PushRegistrationArray = PushRegistration::QueryArray(
         dxQN::PushRegistration()->AccountObject->UserRoleObject->Role, "Administrator"
     )
 );
+
 $TokenArray = [];
 foreach ($PushRegistrationArray as $PushRegistrationObj) {
     $TokenArray[] = $PushRegistrationObj->RegistrationId;
 }
+
 ProjectFunctions::deliverBatchedPushPayload(
     $TokenArray,
     "Admin message title",

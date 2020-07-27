@@ -6,6 +6,8 @@ title: "Advanced Training Exercise"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 ## Introduction
 
@@ -218,9 +220,11 @@ The following code will be added to the 'category_update' page component's javas
 1. The first event handler is to navigate back to the admin page when 'All Categories' is clicked
 2. The second is to reset the global constraining ID for the entity 'Category' to the clicked on category and then refresh the page to load it up accordingly
 
-!> Note how we attach the event to a click on the document, after which we specify where on the document the click should be.
+:::note
+Note how we attach the event to a click on the document, after which we specify where on the document the click should be.
 This is because if we set the event handler to listen directly for a click on '.category-breadcrumb', we will get unexpected
 output because during page load-up, this sub component is not defined yet.
+:::
 
 ```js
 initCustomFunctions() {

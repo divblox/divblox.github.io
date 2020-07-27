@@ -6,6 +6,8 @@ title: "Hello World Example"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 Now that we have Divblox configured and we understand the basic concepts, let's create a single-page "Hello World" app.
 
@@ -19,8 +21,8 @@ Now that we have Divblox configured and we understand the basic concepts, let's 
 
 Let's create a new component that will serve as our app's page.
 
--   Login to the Divblox setup page at /Divblox in your project's folder on localhost.
-    For example: http://localhost/my-app/divblox or http://localhost/divblox (if you project is in the webserver's root path)
+-   Login to the Divblox setup page at /divblox in your project's folder on localhost.
+    For example: `http://localhost/my-app/divblox` or `http://localhost/divblox` (if you project is in the webserver's root path)
 -   Open the Component Builder and create a new custom component called "hello world". This component should be placed in the grouping "pages" in order to be used as a page.
 
 <video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
@@ -235,7 +237,7 @@ let user_role_landing_pages = {
 ```
 
 And that's it! We just created a basic app that touches on the core Divblox concepts. We can now view our app at:
-http://localhost/my-app/ or http://localhost/ (if you project is in the webserver's root path)
+`http://localhost/my-app/` or `http://localhost/` (if you project is in the webserver's root path)
 
 <video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_hello-world-videos/hello-world6.mp4')} type="video/mp4"/>

@@ -6,7 +6,8 @@ title: Divblox APIs
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 ## Exposing a custom API
 
@@ -138,10 +139,10 @@ function dummyOperation2() {
 
 When creating your own API it will be completely exposed and wont require and API key to be accessed. To secure your API operations we can add them to the list of API operations that are under "api_operation_administration" and create a key to control its accessibility.
 
-1. Using the "api_example" (see [Exposing an API](#Exposing-a-custom-API)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change.
+1. Using the "api_example" (see [Exposing an API](#exposing-a-custom-api)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change.
 
 <div className="text--center">
-    <img alt="Securing an API 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api1.png')} />
+    <img alt="Securing an API 1" src={uFseBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api1.png')} />
 </div>
 
 2. Add the API operation to the list of controlled operations by opening "api_operation_administration" component in the "Component Builder".
@@ -251,7 +252,7 @@ Making and exposing access controlled CRUD API operations for new data model ent
     <img alt="API Default CRUD 6" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud6.png')} />
 </div>
 
-7. Divblox automatically requires an API key for any auto generated operation as they get added and listed in "api_operation_adminstration" (For more see [Securing API operations with an API key](#Securing-API-operations-with-an-API-key)). Therefore we must create an API key and link it to the operations we want to expose, thus still keeping them secure with a key. Create the key in the "api_key_administration" component. Select the new key and add the operations using the " + Api Operation" button and select the operations you want from the drop down menu.
+7. Divblox automatically requires an API key for any auto generated operation as they get added and listed in "api_operation_adminstration" (For more see [Securing API operations with an API key](#securing-api-operations-with-an-api-key)). Therefore we must create an API key and link it to the operations we want to expose, thus still keeping them secure with a key. Create the key in the "api_key_administration" component. Select the new key and add the operations using the " + Api Operation" button and select the operations you want from the drop down menu.
 
 <div className="text--center">
     <img alt="API Default CRUD 7" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud7.png')} />

@@ -6,11 +6,10 @@ title: "3. Starting from scratch"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
-
-## Option 3. Starting from scratch
-
-### Prerequisites
+## Prerequisites
 
 :::info
 The following sections are only relevant for local and/or self provisioned server setup.
@@ -18,7 +17,7 @@ The following sections are only relevant for local and/or self provisioned serve
 
 > The Divblox server-side functionality is built in php and therefore requires a php environment to be setup in order to function correctly.
 
-1. Download your favourite Apache/Php/Mysql distribution (MAMP, WAMP, XAMPP etc...) and configure to use the following:
+1. Download your favourite Apache/PHP/MySQL distribution (MAMP, WAMP, XAMPP etc...) and configure to use the following:
 
     - Latest version of Apache
     - Php 7.3 or later
@@ -28,12 +27,13 @@ The following sections are only relevant for local and/or self provisioned serve
 
 2. Some of the core Divblox code is encoded using IonCube. To ensure that your Divblox installation functions correctly, download and install the IonCube loader for Php 7.3 or later for your operating system.
 
-    - Download here: https://www.ioncube.com/loaders.php
-    - Don't worry if you have some trouble installing this. The [Installation checker](#installation-checker) will guide you through this process a bit later on as well.
+    - Download [here](https://www.ioncube.com/loaders.php)
+    - Don't worry if you have some trouble installing this. The [Installation checker](#installation-checker) will guide
+    you through this process a bit later on as well.
 
-3. For an example of how to do this with Ubuntu 18.04, click [here](deployment?id=Install-Ubuntu-18.04-image)
+3. For an example of how to do this with Ubuntu 18.04, click [here](linux-deployment#Install-Ubuntu-18.04-image)
 
-### Download Divblox
+## Download Divblox
 
 -   You can download or fork the Divblox public repo on github here: https://github.com/divblox/divblox
 -   Add the downloaded content to your apache "public_html" or "www" folder
@@ -42,7 +42,7 @@ The following sections are only relevant for local and/or self provisioned serve
 -   To open the Divblox setup page, browse to http://localhost/divblox or http://localhost/[your-project-folder]/divblox, depending on your installation
 -   Open the installation checker to ensure that all systems indicate an OK status. Once the installation checker indicates all is OK, you are ready to build with Divblox
 
-### Installation checker
+## Installation checker
 
 The Divblox installation checker is designed to ensure that your Divblox project meets all the [prerequisites](#prerequisites) described above. It will also provide useful guidelines on how to solve installation related problems.
 The main checks performed are listed below:

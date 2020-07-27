@@ -6,7 +6,8 @@ title: Configuration
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 We need to talk about installation checker, export to native, UI config, global functions, media library.
 
@@ -32,9 +33,8 @@ When you start up Divblox for the first time, it will automatically generate the
 </div>
 
 
-:::success Important
+:::info
 For an environment to function correctly, the following needs to be configured:
-:::
 
 -   **Environment Name** - Can be anything. This is just used to identify the environment
 -   **App Name** - The name of your app. This will be displayed as the document title
@@ -43,6 +43,7 @@ For an environment to function correctly, the following needs to be configured:
 -   **The document root** - The path to your web server's www folder
 -   **Subdirectory** - The sub directory in which your Divblox project resides (can be empty)
 -   **The Database configuration for each module** - The connection information for every module's database
+:::
 
 <div className="text--center">
     <img alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-configure-environments.png')} />
@@ -110,11 +111,8 @@ If you are building for web only, it is recommended to turn SPA mode off.
 
 Divblox allows you to configure a service worker to handle and cache requests. You can decide to toggle it on or off. It is also sometimes useful to force the service worker to reload when assets are modified. The service worker is the premise on which the idea of progressive applications are built. It acts as a form of advanced cache manager allowing offline browsing, push notifications and other 'native app' functionality.
 
-::info
-When the service worker is on during development (debug), ensure that you have the option to "Update on reload" enabled in your browser.
-:::
-
 :::info
+When the service worker is on during development (debug), ensure that you have the option to "Update on reload" enabled in your browser.
 It is recommended to disable the service worker during development, since this can cause assets to be loaded from cache.
 :::
 

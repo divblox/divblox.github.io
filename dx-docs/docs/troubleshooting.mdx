@@ -4,8 +4,8 @@ title: Troubleshooting
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-# Troubleshooting
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 Because of the nature of web development, Divblox supports multiple operating systems.
 The recommended OS for Divblox development is MacOS, since it will allow for all functionality, including export
@@ -29,9 +29,9 @@ installation and/or development to quickly diagnose the most common problems.
 
 ### Installation checker
 
-The [installation checker](getting-started.md?id=installation-checker) might fail if you do not already have a database
+The [installation checker](getting-started-3-from-scratch#installation-checker) might fail if you do not already have a database
 connection configured. If your minimum database requirements are not met according to the installation checker, please first
-[configure your database settings](getting-started.md?id=environments) before checking again.
+[configure your database settings](getting-started-3-from-scratch) before checking again.
 
 ### Linux
 
@@ -103,7 +103,9 @@ has not been installed. Please follow [these steps](https://www.ioncube.com/load
 
 You can re-initialize your sandbox at any time by simply removing it and initializing it again.
 
-!>Important! This process removes ALL files and data from your sandbox
+:::note
+Important! This process removes ALL files and data from your sandbox
+:::
 
 1. Click the "Modify Project" icon to open your project
 
@@ -111,15 +113,11 @@ You can re-initialize your sandbox at any time by simply removing it and initial
     <img alt="Create Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-create.png')} />
 </div>
 
-![Sandbox Step Re-init 1](_media/_screenshots/sandbox-re-init-step1.png)
-
 2. Click "Manage Deployment Environments"
 
 <div className="text--center">
     <img alt="Create Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-create.png')} />
 </div>
-
-![Sandbox Step Re-init 2](_media/_screenshots/sandbox-re-init-step2.png)
 
 3. Click remove on your sandbox
 
@@ -127,6 +125,4 @@ You can re-initialize your sandbox at any time by simply removing it and initial
     <img alt="Sandbox Step Re-init 3" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-create.png')} />
 </div>
 
-![Sandbox Step Re-init 3](_media/_screenshots/sandbox-re-init-step3.png)
-
-4. Follow the steps in [Getting Started](getting-started.md?id=initializing-a-new-sandbox) to initialize a new sandbox for your project
+4. Follow the steps in [Getting Started](getting-started-1-sandbox) to initialize a new sandbox for your project

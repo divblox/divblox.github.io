@@ -6,20 +6,12 @@ title: "1. Starting with a Sandbox"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
-export const Highlight = ({children, color}) => (
-  <span
-    style={{
-      backgroundColor: color,
-      borderRadius: '2px',
-      color: '#fff',
-      padding: '0.2rem',
-    }}>
-    {children}
-  </span>
-);
+> A Divblox sandbox is a special type of deployment environment that is created and owned by Divblox. This environment runs on Divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
 
-<Highlight color="#25c2a0">Docusaurus green</Highlight> and <Highlight color="#1877F2">Facebook blue</Highlight> are my favorite colors.
+Below is a visualization of how to spin up a sandbox.
 
 export const Box = ({children, color}) => (
   <div
@@ -76,7 +68,7 @@ export const Box = ({children, color}) => (
         <img alt="Sign in" src={useBaseUrl('_getting-started-media/5_local_environment.png')} style={{height: '150px'}}/>
     </div>
     <div className="text--center">
-        5. <a style={{color: 'black'}} href="#option-2-starting-with-virtualbox">Initialize a local deployment environment</a> to pull down your sandbox changes and get your project ready to be published
+        5. <a style={{color: 'black'}} href="/docs/getting-started-2-virtualbox">Initialize a local deployment environment</a> to pull down your sandbox changes and get your project ready to be published
     </div>
 </Box>
 <Box color="#25c2a0">
@@ -87,13 +79,6 @@ export const Box = ({children, color}) => (
         6. Deploy your app to another deployment environment (any server of your choice)
     </div>
 </Box>
-
-
-
-> A Divblox sandbox is a special type of deployment environment that is created and owned by Divblox. This environment runs on Divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
-
-Below is a visualization of how to spin up a sandbox.
-
 
 ### Initializing a new Sandbox
 
@@ -138,7 +123,7 @@ Creating a new sandbox is easy:
 Sandboxes are great for prototyping and even to deploy small projects, but if you are serious about your project,
 at some point you will need to download your sandbox progress and continue on a local development environment.
 
-To download your sandbox, all you need is a [local installation of Divblox](#download-Divblox) with your [project's API key](the-basics?id=divblox-api-key) configured.
+To download your sandbox, all you need is a [local installation of Divblox](getting-started-3-from-scratch#download-divblox) with your [project's API key](the-basics-divblox-api-key) configured.
 From here you can click on the "Sandboxes" setup block to download your sandbox or deploy your local changes to your sandbox.
 
 <div className="text--center">

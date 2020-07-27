@@ -6,6 +6,8 @@ title: Data Modeler
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 ## Start at the beginning
 
@@ -68,7 +70,7 @@ Below is a visual representation of a complete Divblox data model for the exampl
 > Based on the data model, the following is generated or can be generated as required:
 
 -   **The project's ORM:** These are the ORM classes that describe the current underlying database. For each database table there will be corresponding ORM classes that will allow for the CRUD behaviour for that entity. In essence, the ORM caters for the communication with the database without the need for the developer to write sql queries.
--   **Data model related components:** These are the components that allow for exposing the entity's CRUD functionality to the front-end. More on this can be found in the [components](component-builder.md) section.
+-   **Data model related components:** These are the components that allow for exposing the entity's CRUD functionality to the front-end. More on this can be found in the [components](the-basics-divblox-components) section.
 
 > Code is generated using the following approach:
 
@@ -113,10 +115,11 @@ $TaskCount = Task::QueryCount(dxQ::All());
 //Retrieve all Tasks from the database where the TaskName is "A test task"
 $TaskArray = Task::QueryArray(dxQ::Equal(dxQN::Task()->TaskName,"A test task"));
 ```
-
-> Notice that dxQuery doesn't have any construct to describe what would normally be your SELECT clause.
-> This is because we take advantage of the code generation process to allow dxQuery to automagically "know" which fields should be SELECT-ed based on the query, conditions and clauses you are performing.
-> This will allow a lot greater flexibility in your data model. Because the framework is now taking care of column names, etc., instead of the developer needing to manually hard code it, you can make changes to columns in your tables without needing to rewrite your dxQuery calls.
+:::note
+Notice that dxQuery doesn't have any construct to describe what would normally be your SELECT clause.
+This is because we take advantage of the code generation process to allow dxQuery to automagically "know" which fields should be SELECT-ed based on the query, conditions and clauses you are performing.
+This will allow a lot greater flexibility in your data model. Because the framework is now taking care of column names, etc., instead of the developer needing to manually hard code it, you can make changes to columns in your tables without needing to rewrite your dxQuery calls.
+:::
 
 #### dxQuery Nodes
 

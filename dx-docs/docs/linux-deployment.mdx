@@ -6,6 +6,8 @@ title: "Linux Deployment"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 ## Linux Deployment
 
@@ -19,7 +21,9 @@ At time of writing, the latest stable version is Ubuntu 18.04, found [here](http
 
 You will need a USB stick or portable hard drive with at least 8 GB of memory. Note that your memory device will be formatted upon completion of this step.
 
-!> NOTE: All previous data will be erased!
+:::danger
+All previous data will be erased!
+:::
 
 Download Rufus (recommended) [here](https://rufus.ie/), or another similar application which will enable you to turn your memory stick into a bootable device.
 
@@ -60,8 +64,8 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
     values={[
         {label: 'Install Ubuntu', value: 'ubuntu1'},
         {label: 'Select Language', value: 'ubuntu2'},
-        {label: 'Installation options', value: 'ubuntu3'},
-        {label: 'Installation Type', value: 'ubuntu4'},
+        {label: 'Install options', value: 'ubuntu3'},
+        {label: 'Install Type', value: 'ubuntu4'},
         {label: 'Location', value: 'ubuntu5'},
         {label: 'Personal', value: 'ubuntu6'},
         {label: 'Install Process', value: 'ubuntu7'},
@@ -166,42 +170,42 @@ In this step we will make minor changes to suite our needs. As you log in you wi
         {label: 'Ubuntu Update', value: 'in5'},
     ]}>
     <TabItem value="in1">
+        <ul>
+            <li>Note the changes to UX in newer version of Ubuntu</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Note the changes to UX in newer version of Ubuntu</li>
-            </ul>
             <img alt="in1" src={useBaseUrl('_deployment-media/in1.png')} />
         </div>
     </TabItem>
     <TabItem value="in2">
+        <ul>
+            <li>There is no need to set up LivePatch for now</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>There is no need to set up LivePatch for now</li>
-            </ul>
             <img alt="in2" src={useBaseUrl('_deployment-media/in2.png')} />
         </div>
     </TabItem>
     <TabItem value="in3">
+        <ul>
+            <li>You can decide whether or not to provide information to improve Ubuntu</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>You can decide whether or not to provide information to improve Ubuntu</li>
-            </ul>
             <img alt="in3" src={useBaseUrl('_deployment-media/in3.png')} />
         </div>
     </TabItem>
     <TabItem value="in4">
+        <ul>
+            <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
-            </ul>
             <img alt="in4" src={useBaseUrl('_deployment-media/in4.png')} />
         </div>
     </TabItem>
     <TabItem value="in5">
+        <ul>
+            <li>Allow Ubuntu to update (not compulsory)</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Allow Ubuntu to update (not compulsory)</li>
-            </ul>
             <img alt="in5" src={useBaseUrl('_deployment-media/in5.png')} />
         </div>
     </TabItem>
@@ -428,19 +432,19 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
         {label: 'DB-Config', value: 'myphpadmin2'},
     ]}>
     <TabItem value="myphpadmin1">
+        <ul>
+            <li>Select Apache Server.</li>
+            <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Select Apache Server.</li>
-                <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
-            </ul>
             <img alt="myphpadmin1" src={useBaseUrl('_deployment-media/phpmyadmin1.png')} />
         </div>
     </TabItem>
     <TabItem value="myphpadmin2">
+        <ul>
+            <li>Select Yes</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Select Yes</li>
-            </ul>
             <img alt="myphpadmin2" src={useBaseUrl('_deployment-media/phpmyadmin2.png')} />
         </div>
     </TabItem>
@@ -524,19 +528,19 @@ Start with the right side of the page, downloading the IonCube zip and file requ
         {label: 'After', value: 'ioncube2'},
     ]}>
     <TabItem value="ioncube1">
+        <ul>
+            <li>Select Apache Server.</li>
+            <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Select Apache Server.</li>
-                <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
-            </ul>
             <img alt="ioncube1" src={useBaseUrl('_deployment-media/ion_cube_initial.png')} />
         </div>
     </TabItem>
     <TabItem value="ioncube2">
+        <ul>
+            <li>Select Yes</li>
+        </ul>
         <div className="text--center">
-            <ul>
-                <li>Select Yes</li>
-            </ul>
             <img alt="ioncube2" src={useBaseUrl('_deployment-media/ion_cube_final.png')} />
         </div>
     </TabItem>

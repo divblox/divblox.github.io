@@ -8,32 +8,29 @@ import styles from './styles.module.css';
 
 const features = [
     {
-        title: <>Easy to Use</>,
-        imageUrl: 'img/undraw_docusaurus_mountain.svg',
+        title: <>The framework behind great software</>,
+        imageUrl: 'img/divblox-screens.png',
         description: (
             <>
-                Docusaurus was designed from the ground up to be easily installed and
-                used to get your website up and running quickly.
+                Whether you’re a business owner or a software creator, Divblox will save you time & money.
             </>
         ),
     },
     {
-        title: <>Focus on What Matters</>,
-        imageUrl: 'img/undraw_docusaurus_tree.svg',
+        title: <>Full stack apps</>,
+        imageUrl: 'img/dx-iphone-x.png',
         description: (
             <>
-                Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-                ahead and move your docs into the <code>docs</code> directory.
+                Divblox is a web and mobile app development framework that allows anyone to, from designers and analysts, to hard-core developers, to collaborate and create amazing experiences in no time.
             </>
         ),
     },
     {
-        title: <>Powered by React</>,
-        imageUrl: 'img/undraw_docusaurus_react.svg',
+        title: <>Web-first approach</>,
+        imageUrl: 'img/web_based_developers.jpg',
         description: (
             <>
-                Extend or customize your website layout by reusing React. Docusaurus can
-                be extended while reusing the same header and footer.
+                Divblox promotes a web-first approach which allows you to create all of your solutions with the same language stack. This means you will always create a web app first, built on languages like HTML, JavaScript and CSS. Your web app can then be exported as a native app for iOS &amp; Android.
             </>
         ),
     },
@@ -54,9 +51,18 @@ function Feature({imageUrl, title, description}) {
     );
 }
 
+function checkUrlScroll() {
+    setTimeout(function() {
+        // var elmnt = document.getElementById("content");
+        // elmnt.scrollIntoView();
+        console.log("AA");
+    },1000);
+}
+
 function Home() {
     const context = useDocusaurusContext();
     const {siteConfig = {}} = context;
+    checkUrlScroll();
     return (
         <Layout
             title={`Hello from ${siteConfig.title}`}

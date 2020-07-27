@@ -6,6 +6,8 @@ title: "Other Common Examples"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 # Common Examples
 
@@ -183,7 +185,9 @@ Since these applications can be placed on a home screen the app requires feature
     <img alt="Example Change logo 2" src={useBaseUrl('_media/_screenshots/example-change-plogo2.png')} />
 </div>
 
-!> Do not change the file paths in "manifest.json" and "index.html" to match your images.
+:::note
+Do not change the file paths in "manifest.json" and "index.html" to match your images.
+:::
 
 ### Displaying your logo
 

@@ -6,6 +6,8 @@ title: "Divblox Best Practices"
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
 
 Divblox is a unique tool for web development as opposed to more traditional software development tools. As a result a few "good practices" have emerged. These came about to ensure consistency across your application, increase development productivity and maximize the functionality that Divblox provides.
 
@@ -29,7 +31,7 @@ Divblox is a unique tool for web development as opposed to more traditional soft
 
 ## Customizing Components
 
-> Divblox comes with default components like pages and navigation bars, but you might not want yours to look the same or behave the same. To do this we can create custom versions of the existing components and to load them in place of the default ones. This will reduce the amount of time it would take to make a custom item by easing the process required to create new components. This is illustrated in the example below, where an existing navigation bar is duplicated, edited and then used to replace the existing navigation bar on a default page (see [Default pages](#Default-pages) ).
+> Divblox comes with default components like pages and navigation bars, but you might not want yours to look the same or behave the same. To do this we can create custom versions of the existing components and to load them in place of the default ones. This will reduce the amount of time it would take to make a custom item by easing the process required to create new components. This is illustrated in the example below, where an existing navigation bar is duplicated, edited and then used to replace the existing navigation bar on a default page (see [Default pages](#default-pages) ).
 
 1. Start by creating a new navigation bar from the existing "top_navbar" component.
 
@@ -63,7 +65,7 @@ Divblox is a unique tool for web development as opposed to more traditional soft
 
 ## Overwriting default functions
 
-> In Divblox it is common place to use the components provided as default, seen in [Customizing Components](#Customizing-Components). These components have been created with this purpose in mind and each component, such as the navigation bars, are filled with function place holders waiting for the a developer to fill them up with functionality. This example will uncover these place holder functions, specifically the ones located in the instance navigation bar, and to show where the functionality should be placed.
+> In Divblox it is common place to use the components provided as default, seen in [Customizing Components](#customizing-components). These components have been created with this purpose in mind and each component, such as the navigation bars, are filled with function place holders waiting for the a developer to fill them up with functionality. This example will uncover these place holder functions, specifically the ones located in the instance navigation bar, and to show where the functionality should be placed.
 
 1. Create a new navigation bar from the existing "top_instance_navbar".
 
