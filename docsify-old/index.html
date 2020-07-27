@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Divblox - Documentation</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" href="_media/cropped-divblox-favicon-192x192.png">
+  <link rel="stylesheet" href="assets/css/vue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+  <style>
+    .sidebar>h1 {
+      padding: 0 2rem;
+    }
+
+    video {
+      width: 100%;
+      box-shadow: 0px 6px 12px -6px #8a8a8a;
+    }
+
+    .video-control-button {
+      float: right;
+      background: none;
+      border: none;
+      color: #2c5f7c;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .video-control-button:focus {
+      outline: none !important;
+    }
+
+    .img-vertical-middle img {
+      vertical-align: middle;
+      height: 85px;
+      width: 85px;
+    }
+
+    .img-vertical-middle {
+      text-align: center;
+    }
+
+    .dev-approach-step {
+      padding: 0px 15px 5px;
+    }
+
+    .fa-arrow-down {
+      margin-top: 22px;
+      color: #2c5e7c;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">Please wait...</div>
+  <script>
+    window.$docsify = {
+      name: 'Divblox',
+      repo: '',
+      maxLevel: 1,
+      coverpage: true,
+      loadSidebar: '_toc.md',
+      subMaxLevel: 10,
+      logo: '/_media/divblox-logo-1.png',
+      auto2top: true,
+      // complete configuration parameters
+      search: {
+        paths: 'auto',
+        placeholder: 'Type to search',
+        noData: 'No Results!'
+      },
+      themeColor: '#2c5f7c',
+      tabs: {
+        persist: true, // default
+        sync: true, // default
+        theme: 'classic', // default
+        tabComments: true, // default
+        tabHeadings: true // default
+
+      },
+      copyCode: {
+        buttonText: 'Copy to clipboard',
+        errorText: 'Error',
+        successText: 'Copied'
+      }
+    }
+  </script>
+  <script src="assets/js/docsify.min.js"></script>
+  <script src="assets/js/search.min.js"></script>
+  <script src="assets/js/docsify-copy-code.min.js"></script>
+  <script src="assets/js/docsify-pagination.min.js"></script>
+  <script src="assets/js/zoom-image.min.js"></script>
+  <script src="//unpkg.com/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
+  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+  <script>
+    function replayVideo(element_id) {
+      let vid = document.getElementById(element_id);
+      vid.pause();
+      vid.currentTime = 0;
+      vid.load();
+      return false;
+    }
+
+    function fullScreenVideo(element_id) {
+      let vid = document.getElementById(element_id);
+      vid.requestFullscreen();
+      return false;
+    }
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143023187-1"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-143023187-1');
+  </script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/5e53c25f298c395d1ce97d78/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+</body>
+
+</html>
