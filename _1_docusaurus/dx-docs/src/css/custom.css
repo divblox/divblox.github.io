@@ -41,3 +41,34 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.pagination-nav__label, .pagination-nav__sublabel {
+  line-height: 1.25;
+  line-height: var(--ifm-heading-line-height);
+  color: #4c35f1;
+}
+.menu__link--active:not(.menu__link--sublist) {
+  color: #4c35f1;
+}
+.menu__link--active, .menu__link--active:hover {
+  color: #3578e5;
+  color: var(--ifm-menu-color-active);
+  color: #4c35f1;
+}
+.table-of-contents__link--active, .table-of-contents__link--active code, .table-of-contents__link:hover, .table-of-contents__link:hover code {
+  color: #4c35f1;
+}
+.pagination-nav__link:hover {
+  border-color: #4c35f1;
+}
+.navbar__link--active, .navbar__link:hover {
+  color: #4c35f1;
+}
+
+a {
+  color: #4C35F1;
+}
+
+a:active, a:hover {
+  color: #05011B;
+}

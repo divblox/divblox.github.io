@@ -37,63 +37,63 @@ module.exports = {
         },
         colorMode: {
             // "light" | "dark"
-            defaultMode: 'light',
+            defaultMode: "light",
             // Hides the switch in the navbar
             // Useful if you want to support a single color mode
-            disableSwitch: false,
+            disableSwitch: true,
             // Should we use the prefers-color-scheme media-query,
             // using user system preferences, instead of the hardcoded defaultMode
             respectPrefersColorScheme: false,
         },
         // footer: {
         //     style: 'dark',
-        //     // links: [
-        //     //     {
-        //     //         title: 'Docs',
-        //     //         items: [
-        //     //             {
-        //     //                 label: 'Style Guide',
-        //     //                 to: 'docs/',
-        //     //             },
-        //     //             {
-        //     //                 label: 'Second Doc',
-        //     //                 to: 'docs/doc2/',
-        //     //             },
-        //     //         ],
-        //     //     },
-        //     //     {
-        //     //         title: 'Community',
-        //     //         items: [
-        //     //             {
-        //     //                 label: 'Stack Overflow',
-        //     //                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     //             },
-        //     //             {
-        //     //                 label: 'Discord',
-        //     //                 href: 'https://discordapp.com/invite/docusaurus',
-        //     //             },
-        //     //             {
-        //     //                 label: 'Twitter',
-        //     //                 href: 'https://twitter.com/docusaurus',
-        //     //             },
-        //     //         ],
-        //     //     },
-        //     //     {
-        //     //         title: 'More',
-        //     //         items: [
-        //     //             {
-        //     //                 label: 'Blog',
-        //     //                 to: 'blog',
-        //     //             },
-        //     //             {
-        //     //                 label: 'GitHub',
-        //     //                 href: 'https://github.com/facebook/docusaurus',
-        //     //             },
-        //     //         ],
-        //     //     },
-        //     // ],
+        //     links: [
+        //         {
+        //             title: 'Docs',
+        //             items: [
+        //                 {
+        //                     label: 'Style Guide',
+        //                     to: 'docs/',
+        //                 },
+        //                 {
+        //                     label: 'Second Doc',
+        //                     to: 'docs/doc2/',
+        //                 },
+        //             ],
+        //         },
+        //         {
+        //             title: 'Community',
+        //             items: [
+        //                 {
+        //                     label: 'Stack Overflow',
+        //                     href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //                 },
+        //                 {
+        //                     label: 'Discord',
+        //                     href: 'https://discordapp.com/invite/docusaurus',
+        //                 },
+        //                 {
+        //                     label: 'Twitter',
+        //                     href: 'https://twitter.com/docusaurus',
+        //                 },
+        //             ],
+        //         },
+        //         {
+        //             title: 'More',
+        //             items: [
+        //                 {
+        //                     label: 'Blog',
+        //                     to: 'blog',
+        //                 },
+        //                 {
+        //                     label: 'GitHub',
+        //                     href: 'https://github.com/facebook/docusaurus',
+        //                 },
+        //             ],
+        //         },
+        //     ],
         //     copyright: `Copyright © ${new Date().getFullYear()} Divblox by Stratusolve`,
-        // }/*,
+        // },
         // announcementBar: {
         //     id: 'covid_alert', // Any value that will identify this message.
         //     content:
