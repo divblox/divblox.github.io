@@ -19,12 +19,51 @@ checkUrlScroll();
 
 ## What is Divblox?
 
-Divblox is a full stack web and mobile app development framework that allows anyone, from designers and analysts, to hard core developers, to collaborate and create amazing experiences in no time.
+Divblox is a full stack web and mobile app development framework that allows anyone, from designers and analysts, to hard-core developers, to collaborate and create amazing experiences in no time.
 With Divblox you can build progressive web apps that can also seamlessly be converted to native mobile apps, all with ONE code base.
+
+<div className="text--center">
+    <img alt="JS" src={useBaseUrl('_getting-started-media/web_based_developers.jpg')} />
+</div>
 
 ## Core Ingredients
 
-### Front End
+### Backend
+
+Traditionally, PHP frameworks produce the HTML from the backend and serve it to the front end. This dated approach is suboptimal as your entire
+page drops if connection drops. Divblox tries to address this issue by allowing the developer to handle as much of the
+UI  as they need using JS in the front end. Using browser caching, you will be able to navigate through all the pages and components you have already visited
+even if the connection drops.
+Server calls are only made when necessary, giving your website a more app-like feel.
+
+Divblox communication between front and back end is done exclusively via JSON. This is useful in a few ways, mainly because it makes our
+backend headless. Although Divblox comes as a full stack solution with
+what we consider an amazing front end developer experience, it is extremely simple to plug it into any popular JS framework or an existing front end.
+Using exclusively JSON is also a benefit when it comes to consistency of data type, as having a universal formt of information transfer yields less head scratching.
+
+Divblox also provides you with a very sophisticated ORM design, and automates most of the database connections and entity CRUD functionality.
+
+
+<div className="text--center">
+    <img alt="PHP" src={useBaseUrl('_media/php.png')} style={{height: '150px'}} />
+</div>
+<div className="text--center">
+    <img alt="MYSQL" src={useBaseUrl('_media/mysql_logo.png')} style={{height: '150px', margin: '5px'}} />
+    <img alt="MARIADB" src={useBaseUrl('_media/mariadb.png')} style={{height: '150px', margin: '5px'}} />
+</div>
+
+
+### Frontend
+
+Divblox's front end uses vanilla JS, Jquery, CSS (using SASS) and Bootstrap 4. The recommended development workflow would be
+to process only necessary server-side information from PHP, and write
+any further logic and HTML using JS. This is how Divblox apps are able to remain as functional as possible even without network connect.
+The HTML is used as a shell, or starting point, which the javascript will fill in an manipulate. This also allows Divblox to VERY simply and quickly export apps to native
+using React Native to create a native shell to house your web application. Further native-specific functionality can then be added as needed.
+
+Divblox makes use of SASS to lighten the load of CSS adjustment in larger projects (and smaller too). You can set up the
+theme variables for your entire project and
+the SASS preprocessor will create all the necessary CSS. This makes setting up universal themes a breeze.
 
 <div className="text--center">
  <img alt="HTML" src={useBaseUrl('_media/html.ico')} style={{height: '150px'}}/>
@@ -36,15 +75,44 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
  <img alt="JQuery" src={useBaseUrl('_media/jquery.png')} style={{height: '150px'}} />
 </div>
 
+### Frontend/Backend Communication
 
-### Back-end
+The format of data communication between front end and backend is simple yet effective.
 
-<div className="text--center">
-    <img alt="PHP" src={useBaseUrl('_media/php.png')} style={{height: '150px'}} />
-</div>
-<div className="text--center">
-    <img alt="MYSQL" src={useBaseUrl('_media/mysql_logo.png')} style={{height: '150px'}} />
-    <img alt="MARIADB" src={useBaseUrl('_media/mariadb.png')} style={{height: '150px'}} />
-</div>
+The JS `dxRequestInternal()` function is the center-piece of how Divblox communication works. This function is called anytime a server call is made.
 
+```js
+dxRequestInternal(
+    // Reference .php script
+    getComponentControllerPath(this),
+    // Parameter object
+    {
+        f:"getData", // function to call
+        parameter1: selected_id // additional parameters
+    },
+    function(data_obj) {
+        // Success function
+        // Update DOM or perform logic etc
 
+    }.bind(this),
+    function(data_obj) {
+        // Failure function
+        throw new Error(data_obj.Message);
+    }
+);
+```
+
+The PHP side would look something like this:
+
+```php
+// Boolean defining which JS function will be called (Success or Failure)
+$this->setResult(true);
+// All the necessary data we want to send, JSON encoded
+$this->setReturnValue("Message","Result received from the backend");
+$this->setReturnValue("ReturnData", $ReturnDataArr);
+$this->setReturnValue("Additional", $ParameterArr);
+// Send packet to front end
+$this->presentOutput();
+```
+
+Combining these 2 sets of code is all you need for complete JSON encoded communication between the dx frontend and backend.
