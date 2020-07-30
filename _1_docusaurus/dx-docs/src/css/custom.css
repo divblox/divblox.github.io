@@ -5,16 +5,26 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* You can override the default Infima variables here.*/
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #4c35f1;
+  --ifm-color-primary-dark: #341aef;
+  --ifm-color-primary-darker: #2b10ea;
+  --ifm-color-primary-darkest: #230dc0;
+  --ifm-color-primary-light: #6450f3;
+  --ifm-color-primary-lighter: #715ef4;
+  --ifm-color-primary-lightest: #9587f7;
   --ifm-code-font-size: 95%;
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #8FD1FA;
+  --ifm-color-primary-dark: #63BFF6;
+  --ifm-color-primary-darker: #3DB1F0;
+  --ifm-color-primary-darkest: #20A6E8;
+  --ifm-color-primary-light: #C0E5FD;
+  --ifm-color-primary-lighter: #D9EFFE;
+  --ifm-color-primary-lightest: #F2FAFF;
 }
 
 .docusaurus-highlight-code-line {
@@ -42,33 +52,3 @@
   box-sizing: border-box;
 }
 
-.pagination-nav__label, .pagination-nav__sublabel {
-  line-height: 1.25;
-  line-height: var(--ifm-heading-line-height);
-  color: #4c35f1;
-}
-.menu__link--active:not(.menu__link--sublist) {
-  color: #4c35f1;
-}
-.menu__link--active, .menu__link--active:hover {
-  color: #3578e5;
-  color: var(--ifm-menu-color-active);
-  color: #4c35f1;
-}
-.table-of-contents__link--active, .table-of-contents__link--active code, .table-of-contents__link:hover, .table-of-contents__link:hover code {
-  color: #4c35f1;
-}
-.pagination-nav__link:hover {
-  border-color: #4c35f1;
-}
-.navbar__link--active, .navbar__link:hover {
-  color: #4c35f1;
-}
-
-a {
-  color: #4C35F1;
-}
-
-a:active, a:hover {
-  color: #05011B;
-}

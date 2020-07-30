@@ -332,11 +332,31 @@ This is a visual tool to help with importing media for those who prefer a 'drag 
 ## Navigation
 
 Divblox tries to simplify the generic processes of app creation as much as possible. As such, the navigation tab is where you can create menus which can be later placed into navigation components across your project easily.
+Below is a screenshot of how to use the navigation tab in the setup page. Menus are defined here, and later placed into navigation components.
 
 <div className="text--center">
     <img alt="Navigation" src={useBaseUrl('_the-basics-media/_1-config-media/dx-setup-navigation.png')}/>
 </div>
 
+You can create the menus here, defining how many navigation items you have and what text and/or icons are displayed.
+
+<div className="text--center">
+    <img alt="Menu Modal" src={useBaseUrl('_the-basics-media/_1-config-media/menu-modal.png')}/>
+</div>
+
+It is then as simple as editing the class name in the navigation component to include or remove any project-wide menu you have created.
+
+<div className="text--center">
+    <img alt="Navbar JS Edit" src={useBaseUrl('_the-basics-media/_1-config-media/navbar-js-menu-edit.png')}/>
+</div>
+
+The suggestion approach to handling navigation components is as follows:
+
+1. Create your desired menu (via navigation tab in setup page).
+2. Pick a suitable navigation bar and duplicate it using the component builder (naming it according to your project).
+3. Edit the classname in your newly created navigation component to `menu-your-menu-name`.
+
+Duplicating the navigation component is suggested so that the default navigation remain as templates. More importantly, this means that if any future Divblox updates change the default navigation, your project will not be affected.
 ## Updates
 
 When Divblox updates become available, you will be notified in the bottom right corner of the setup page.
