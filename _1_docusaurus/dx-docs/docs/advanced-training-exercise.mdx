@@ -556,40 +556,18 @@ You can make the input boxes full-width and arrange them in a bootstrap layout t
     <img alt="subtask update layout" src={useBaseUrl('_advanced-training-exercise-media/subtask_update_arrangement.png')} />
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Customizing the Note CRUD
 
-The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which need to be constrained to the currently opened ticket. Let's start off by creating a 'note_attachment_uploader' component which we will tailor to our needs, based off of the default 'native_file_uploader' component.
-This is done via the component builder. Below is a video walk through, followed by a breakdown of the code changes made.
+The `Note` section is a bit more complicated, for a few reasons. Firstly, we want to be able to attach files here, which
+need to be constrained to the currently opened ticket.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
-    <source src={useBaseUrl('_advanced-training-exercise-media/update-note-crud.mp4')} type="video/mp4"/>
-</video>
+Let's start off by creating a 'note_attachment_uploader' component
+which we will tailor to our needs, based off of the default 'native_file_uploader' component.
+This is done via the component builder, simply by creating a new component from the existing component "default_file_uploader".
 
-As before, there is a lot of background code functionality we will not discuss here, but encourage you to sift through to understand. We will outline the changes made and why we made them. In the component.js file, we just had to add an additional input parameter (note_id) into the Jquery upload in the `initFileUploader()` function, as we need this ID so as to constrain the attachment to the current note.
+As before, there is a lot of background code functionality we will not discuss here, but encourage you to sift through to understand.
+We will outline the changes made and why we made them. In the component.js file, we just had to add an additional input parameter
+(note_id) into the JQuery upload in the `initFileUploader()` function, as we need this ID so as to constrain the attachment to the current note.
 
 ```js
 initFileUploader() {
@@ -605,6 +583,7 @@ initFileUploader() {
          data: {f:"handleFilePost",
                 AuthenticationToken:getValueFromAppState('dxAuthenticationToken'),
                 // NEW INPUT PARAMETER DEFINED
+                // highlight-next-line
                 note_id: this_component.getLoadArgument("note_id")},
          type: 'POST',
          enctype: 'multipart/form-data',
@@ -638,9 +617,12 @@ initFileUploader() {
 }
 ```
 
-On the PHP side, we override the default functionality of the `handleFilePost()` function, adding the code snippet indicated below. We query the Note table by the note_id passed, and proceed with a few checks. If the Note object is null, we delete the corresponding file upload (this is to prevent having orphaned data). If the Note object exists, we delete whatever file (if any) was uploaded before and save the new file. With this simple set up each note will only be able to have none or one attachment.
+On the PHP side, we override the default functionality of the `handleFilePost()` function, adding the code snippet indicated
+below. We query the `Note` table by the "note_id" passed, and proceed with a few checks. If the `Note` object is null, we delete
+the corresponding file upload (this is to prevent having orphaned data). If the Note object exists, we delete whatever file
+(if any) was uploaded before and save the new file. With this simple set up each note will only be able to have none or one attachment.
 
-```php
+```php {21-30}
 public function handleFilePost() {
     // initialize FileUploader
     $FileUploader = new FileUploader('files', array(
