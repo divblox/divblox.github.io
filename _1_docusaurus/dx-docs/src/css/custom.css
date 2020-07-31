@@ -15,6 +15,7 @@
   --ifm-color-primary-lighter: #715ef4;
   --ifm-color-primary-lightest: #9587f7;
   --ifm-code-font-size: 95%;
+  --custom-card-discrete: #EAECED;
 }
 
 [data-theme="dark"] {
@@ -25,6 +26,7 @@
   --ifm-color-primary-light: #C0E5FD;
   --ifm-color-primary-lighter: #D9EFFE;
   --ifm-color-primary-lightest: #F2FAFF;
+  --custom-card-discrete: #2A333F;
 }
 
 .docusaurus-highlight-code-line {
@@ -51,4 +53,12 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+
+.card{
+  /*background-color: #D6F5FE;*/
+  background-color: var(--custom-card-discrete);
+  margin-top: 10px;
+}
+
 
