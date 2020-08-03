@@ -49,7 +49,7 @@ This can be represented as follows:
 
 If you need a refresh on Divblox data modelling, click [here](the-basics-data-modeler). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-1.1.mp4')} type="video/mp4"/>
 </video>
 
@@ -58,13 +58,13 @@ If you need a refresh on Divblox data modelling, click [here](the-basics-data-mo
 Now that our data model is created and synchronized with our database,
 let's generate some CRUD components (using the component builder) for `Ticket` and `Category`. Below is a walk-through of how to create full CRUD functionality for the `Category` entity.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-2.1.mp4')} type="video/mp4"/>
 </video>
 
 > And now we will create the CRUD functionality for the `Ticket` entity, which although more complex, is just as easy with Divblox.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-2.2.mp4')} type="video/mp4"/>
 </video>
 
@@ -80,7 +80,7 @@ This logic also applies when using 'create' and 'update' functionality and using
 
 You may want to change the display of certain attributes, in all of the components they feature. In our example, let's say we have a set predetermined list of ticket statuses the user should be able to chose from. This can be manually done in the `data_lists.json` and `entity_definitions.json` files. A walk-through of this is shown in the below video.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-2.3.mp4')} type="video/mp4"/>
 </video>
 
@@ -89,7 +89,9 @@ You may want to change the display of certain attributes, in all of the componen
 In order for us to be able to use our newly generated CRUD components, or any other component for that matter, we need to put them inside pages.
 Pages are also just components, but they can be navigated to by the user in the browser, while individual components can not.
 
-!>A component is considered a page component when it is located in the "pages" grouping (the folder /project/components/pages/[component_name])
+:::info
+A component is considered a page component when it is located in the "pages" grouping (the folder `/project/components/pages/[component_name]`)
+:::
 
 The pages we will build for this exercise are:
 
@@ -98,13 +100,13 @@ The pages we will build for this exercise are:
 
 To do this we will use a pre-made page template with a side navbar. As you will see, the navigation bar is pre-populated with links we will later override or delete to suite our needs.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-3.1.mp4')} type="video/mp4"/>
 </video>
 
 Now we can create the 'Tickets' page where users can create tickets. Note that we are not creating any new functionality, just reusing the 'create' component previously generated and placing it on its own page.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-3.2.mp4')} type="video/mp4"/>
 </video>
 
@@ -167,7 +169,7 @@ Add the button in our `ticket_crud_create` component that will generate a unique
 
 Below is a video running through step 1:
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-5.1.mp4')} type="video/mp4"/>
 </video>
 
@@ -181,7 +183,7 @@ Call the global function from `component.php`, sending information to the front 
 
 Below is a video running through step 2 and 3:
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-5.2.mp4')} type="video/mp4"/>
 </video>
 
@@ -209,7 +211,7 @@ And the code added into the `ticket_crud_create` component.php file:
 
 ```php
 // The function on our component controller that will return a new unique ticket ID for us.
-// This function is executed when we pass "getNewTaskUniqueId" as
+// This function is executed when we pass "getNewTicketUniqueId" as
 // the value for "f" from our component JavaScript
 public function getNewTicketUniqueId() {
         // setReturnValue() sets the values in an array that will be returned as JSON
@@ -233,7 +235,7 @@ Add the JavaScript functionality that auto-populates the input box with the newl
 
 Below is a video of step 4:
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step5.3.mp4')} type="video/mp4"/>
 </video>
 
@@ -247,10 +249,10 @@ dxRequestInternal(
     // getComponentControllerPath(this) returns the path to current component's php script
     getComponentControllerPath(this),
     // Tell component.php which function to execute
-    { f: "getNewTaskUniqueId" },
+    { f: "getNewTicketUniqueId" },
     function (data_obj) {
         // Success function
-        getComponentElementById(this, "TicketUniqueId").val(data_obj.TaskId);
+        getComponentElementById(this, "TicketUniqueId").val(data_obj.TicketId);
     }.bind(this),
     function (data_obj) {
         // Fail function
@@ -300,7 +302,7 @@ You can access the register page by navigating to `[your_project_root]/?view=reg
 
 !> It is also good practice to test user role access in incognito/private mode, as you are typically logged in as a Divblox admin (dxAdmin) most of the time in your application and this may cause confusion.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-6.1.mp4')} type="video/mp4"/>
 </video>
 
@@ -308,7 +310,7 @@ As you can see, our new user is unable to view any of the pages we built. This i
 
 In the below video we will firstly give our user full access to any `Ticket` and `Category` components. This will allow us to see how the _Data Model_ access works (we will observe this on our admin page). Once the _Data Model_ access is configured, we will then give our user access only to the `create` components of both `Ticket` and `Category`, allowing the user to view the _New Ticket_ page, but not the admin page.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-6.2.mp4')} type="video/mp4"/>
 </video>
 
@@ -324,7 +326,7 @@ Now that we have all the groundwork completed, let's provide the world with an A
 -   Delete the remaining tickets
 -   Return the new merged ticket as output
 
-We will be using a program called 'PostMan' to test our API functionality. It comes pre-installed on the Divblox VM image.
+We will be using a program called 'PostMan' to test our API functionality. It comes pre-installed on the Divblox VM image. You can view their website [here](https://www.postman.com/).
 
 :::info
 Divblox automatically handles the routing for your API endpoint. API endpoints are available at [your_project_root]/api/[endpoint_name]
@@ -332,7 +334,7 @@ Divblox automatically handles the routing for your API endpoint. API endpoints a
 
 Below we will briefly explore the `api_example` functionality, how to navigate the URL and what the expected output looks like.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-7.1.mp4')} type="video/mp4"/>
 </video>
 
@@ -414,9 +416,25 @@ function mergeTickets() {
 }
 ```
 
-Once we have defined our endpoint, we can test to see if everything works. Note that this specific API operation updates and deletes data in our database, we need to update the `Data Model` permissions so that 'any' users can 'update' and 'delete' (Recall that default permissions are only to 'create' and 'read'). Once this is done, our API operation should be set up and permissions for operations granted. We use Postman this time, as it makes it easier to input parameters and has a great user interface.
+Once we have defined our endpoint, we can test to see if everything works. Note that this specific API operation updates and
+deletes data in our database, so we need to update the `Data Model` permissions so that 'any' users can 'update' and 'delete'
+(Recall that default permissions are only to 'create' and 'read'). The file where we define the data model (database) user permission is
+located at `/project/assets/php/data_model_role_based_access.php`.
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<div className="text--center">
+    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-location.png')} />
+</div>
+
+We add full permission for the `Ticket` and `Category` entities.
+
+<div className="text--center">
+    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-code.png')} />
+</div>
+
+Once this is done, our API operation should be set up and
+permissions for operations granted. We use Postman this time, as it makes it easier to input parameters and has a great user interface.
+
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-7.3.mp4')} type="video/mp4"/>
 </video>
 
@@ -444,7 +462,7 @@ You will build the following:
 
 Create a custom component with two equally sized columns. In the left column we will house three elements, namely a drop down list of functions to select, an additional input box and a button to execute the chosen functionality. In the right column we will just create and empty div with ID = "ResultWrapper" so we can instruct `dxRequestInternal()` where to display any output. Below is a video walk through of the process:
 
-<video width="100%" height="100%" playsInline  muted loop poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
     <source src={useBaseUrl('_basic-training-media/bte-step-8.1.mp4')} type="video/mp4"/>
 </video>
 
