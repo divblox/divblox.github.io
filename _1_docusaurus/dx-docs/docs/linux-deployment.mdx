@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 ## Linux Deployment
@@ -38,17 +40,17 @@ Continuing with Rufus: When you insert your USB stick, the device field should a
     ]}>
     <TabItem value="usb">
         <div className="text--center">
-            <img alt="RufusBefore" src={useBaseUrl('_deployment-media/rufus_before.png')} />
+            <img data-action="zoom"  alt="RufusBefore" src={useBaseUrl('_deployment-media/rufus_before.png')} />
         </div>
     </TabItem>
     <TabItem value="usb-iso">
         <div className="text--center">
-            <img alt="RufusAfter" src={useBaseUrl('_deployment-media/rufus_after.png')} />
+            <img data-action="zoom"  alt="RufusAfter" src={useBaseUrl('_deployment-media/rufus_after.png')} />
         </div>
     </TabItem>
     <TabItem value="complete">
         <div className="text--center">
-            <img alt="RufusComplete" src={useBaseUrl('_deployment-media/rufus_complete.png')} />
+            <img data-action="zoom"  alt="RufusComplete" src={useBaseUrl('_deployment-media/rufus_complete.png')} />
         </div>
     </TabItem>
 </Tabs>
@@ -78,7 +80,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>You are also able to try Ubuntu without installing it. </li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu1" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+            <img data-action="zoom"  alt="Ubuntu1" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu2">
@@ -87,7 +89,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>Note that English UK and English US have a few special characters swapped around.</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu2" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+            <img data-action="zoom"  alt="Ubuntu2" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu3">
@@ -97,7 +99,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>It is advised to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation process</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu3" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+            <img data-action="zoom"  alt="Ubuntu3" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu4">
@@ -107,7 +109,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu4" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+            <img data-action="zoom"  alt="Ubuntu4" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu5">
@@ -116,7 +118,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>If you have internet connection, this should be auto-populated</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu5" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+            <img data-action="zoom"  alt="Ubuntu5" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu6">
@@ -126,7 +128,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>You can also decide whether to be remembered or not</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu6" src={useBaseUrl('_deployment-media/ubuntu6.png')} />
+            <img data-action="zoom"  alt="Ubuntu6" src={useBaseUrl('_deployment-media/ubuntu6.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu7">
@@ -134,7 +136,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>Screenshot of the installation</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu7" src={useBaseUrl('_deployment-media/ubuntu7.png')} />
+            <img data-action="zoom"  alt="Ubuntu7" src={useBaseUrl('_deployment-media/ubuntu7.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu8">
@@ -142,7 +144,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>Screenshot of the completed installation</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu8" src={useBaseUrl('_deployment-media/ubuntu8.png')} />
+            <img data-action="zoom"  alt="Ubuntu8" src={useBaseUrl('_deployment-media/ubuntu8.png')} />
         </div>
     </TabItem>
     <TabItem value="ubuntu9">
@@ -150,7 +152,7 @@ To boot with Linux Ubuntu, you need to restart your chosen computer with the fla
             <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
         </ul>
         <div className="text--center">
-            <img alt="Ubuntu9" src={useBaseUrl('_deployment-media/ubuntu9.png')} />
+            <img data-action="zoom"  alt="Ubuntu9" src={useBaseUrl('_deployment-media/ubuntu9.png')} />
         </div>
     </TabItem>
 </Tabs>
@@ -174,7 +176,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
             <li>Note the changes to UX in newer version of Ubuntu</li>
         </ul>
         <div className="text--center">
-            <img alt="in1" src={useBaseUrl('_deployment-media/in1.png')} />
+            <img data-action="zoom"  alt="in1" src={useBaseUrl('_deployment-media/in1.png')} />
         </div>
     </TabItem>
     <TabItem value="in2">
@@ -182,7 +184,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
             <li>There is no need to set up LivePatch for now</li>
         </ul>
         <div className="text--center">
-            <img alt="in2" src={useBaseUrl('_deployment-media/in2.png')} />
+            <img data-action="zoom"  alt="in2" src={useBaseUrl('_deployment-media/in2.png')} />
         </div>
     </TabItem>
     <TabItem value="in3">
@@ -190,7 +192,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
             <li>You can decide whether or not to provide information to improve Ubuntu</li>
         </ul>
         <div className="text--center">
-            <img alt="in3" src={useBaseUrl('_deployment-media/in3.png')} />
+            <img data-action="zoom"  alt="in3" src={useBaseUrl('_deployment-media/in3.png')} />
         </div>
     </TabItem>
     <TabItem value="in4">
@@ -198,7 +200,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
             <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
         </ul>
         <div className="text--center">
-            <img alt="in4" src={useBaseUrl('_deployment-media/in4.png')} />
+            <img data-action="zoom"  alt="in4" src={useBaseUrl('_deployment-media/in4.png')} />
         </div>
     </TabItem>
     <TabItem value="in5">
@@ -206,7 +208,7 @@ In this step we will make minor changes to suite our needs. As you log in you wi
             <li>Allow Ubuntu to update (not compulsory)</li>
         </ul>
         <div className="text--center">
-            <img alt="in5" src={useBaseUrl('_deployment-media/in5.png')} />
+            <img data-action="zoom"  alt="in5" src={useBaseUrl('_deployment-media/in5.png')} />
         </div>
     </TabItem>
 </Tabs>
@@ -233,7 +235,7 @@ sudo apt install apache2
 You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
 
 <div className="text--center">
-    <img alt="Installs 1" src={useBaseUrl('_deployment-media/installs1.png')} />
+    <img data-action="zoom"  alt="Installs 1" src={useBaseUrl('_deployment-media/installs1.png')} />
 </div>
 
 1. Start the Apache Server
@@ -255,7 +257,7 @@ sudo systemctl status apache2
 ```
 
 <div className="text--center">
-    <img alt="Installs 2" src={useBaseUrl('_deployment-media/installs2.png')} />
+    <img data-action="zoom"  alt="Installs 2" src={useBaseUrl('_deployment-media/installs2.png')} />
 </div>
 
 And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
@@ -295,7 +297,7 @@ php -v
 This should give us:
 
 <div className="text--center">
-    <img alt="Installs 3" src={useBaseUrl('_deployment-media/installs3.png')} />
+    <img data-action="zoom"  alt="Installs 3" src={useBaseUrl('_deployment-media/installs3.png')} />
 </div>
 
 Now, we will install the most commonly used PHP modules with the following command:
@@ -339,13 +341,13 @@ Once it is installed you can find it with your other applications. Both Nautilus
 You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
 
 <div className="text--center">
-    <img alt="Installs 4" src={useBaseUrl('_deployment-media/installs4.png')} />
+    <img data-action="zoom"  alt="Installs 4" src={useBaseUrl('_deployment-media/installs4.png')} />
 </div>
 
 Once the code is saved, you can navigate to any browser, and search the URL `http://localhost/phpTest.php` and you should be able to see the following:
 
 <div className="text--center">
-    <img alt="Installs 5" src={useBaseUrl('_deployment-media/installs5.png')} />
+    <img data-action="zoom"  alt="Installs 5" src={useBaseUrl('_deployment-media/installs5.png')} />
 </div>
 
 If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed and configured, we can move on and setup our database management.
@@ -408,7 +410,7 @@ SELECT User, Host, authentication_string FROM mysql.user;
 We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
 
 <div className="text--center">
-    <img alt="MySQL 1" src={useBaseUrl('_deployment-media/mysql1.png')} />
+    <img data-action="zoom"  alt="MySQL 1" src={useBaseUrl('_deployment-media/mysql1.png')} />
 </div>
 
 YOu can exit the MySQL shell at any time by entering 'exit' and hitting enter.
@@ -437,7 +439,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
             <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
         </ul>
         <div className="text--center">
-            <img alt="myphpadmin1" src={useBaseUrl('_deployment-media/phpmyadmin1.png')} />
+            <img data-action="zoom"  alt="myphpadmin1" src={useBaseUrl('_deployment-media/phpmyadmin1.png')} />
         </div>
     </TabItem>
     <TabItem value="myphpadmin2">
@@ -445,7 +447,7 @@ For server selection: Select Apache 2. Note that no option is selected by defaul
             <li>Select Yes</li>
         </ul>
         <div className="text--center">
-            <img alt="myphpadmin2" src={useBaseUrl('_deployment-media/phpmyadmin2.png')} />
+            <img data-action="zoom"  alt="myphpadmin2" src={useBaseUrl('_deployment-media/phpmyadmin2.png')} />
         </div>
     </TabItem>
 </Tabs>
@@ -533,7 +535,7 @@ Start with the right side of the page, downloading the IonCube zip and file requ
             <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
         </ul>
         <div className="text--center">
-            <img alt="ioncube1" src={useBaseUrl('_deployment-media/ion_cube_initial.png')} />
+            <img data-action="zoom"  alt="ioncube1" src={useBaseUrl('_deployment-media/ion_cube_initial.png')} />
         </div>
     </TabItem>
     <TabItem value="ioncube2">
@@ -541,7 +543,7 @@ Start with the right side of the page, downloading the IonCube zip and file requ
             <li>Select Yes</li>
         </ul>
         <div className="text--center">
-            <img alt="ioncube2" src={useBaseUrl('_deployment-media/ion_cube_final.png')} />
+            <img data-action="zoom"  alt="ioncube2" src={useBaseUrl('_deployment-media/ion_cube_final.png')} />
         </div>
     </TabItem>
 </Tabs>

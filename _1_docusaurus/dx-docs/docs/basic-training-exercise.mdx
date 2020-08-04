@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 This exercise assumes that you have managed to configure your Divblox project and that you understand the basic concepts.
@@ -44,7 +46,7 @@ We will be creating a data model with the following entities and attributes:
 This can be represented as follows:
 
 <div className="text--center">
-    <img alt="UML diagram" src={useBaseUrl('_basic-training-media/training-exercise1.png')} />
+    <img data-action="zoom"  alt="UML diagram" src={useBaseUrl('_basic-training-media/training-exercise1.png')} />
 </div>
 
 If you need a refresh on Divblox data modelling, click [here](the-basics-data-modeler). Below is a walk-through of how to add the necessary entities using Divblox's Data Modeller.
@@ -73,7 +75,7 @@ let's generate some CRUD components (using the component builder) for `Ticket` a
 Notice that in both examples we did not tick the `Constrain To` checkbox. If you constrain by a certain attribute, you are filtering to see only results that satisfy that criteria. An example would be to constrain Tickets by the current user account. This will display only tickets created by the current user. These constraints can only be done with entities that have a singular relationship. Singular relationships mean that an entity instance is linked to one, and only one, instance of another entity. E.g. Each ticket can only be linked to one account at any given time.
 
 <div className="text--center">
-    <img alt="Singular relationship" src={useBaseUrl('_basic-training-media/bte-3-1.png')} />
+    <img data-action="zoom"  alt="Singular relationship" src={useBaseUrl('_basic-training-media/bte-3-1.png')} />
 </div>
 
 This logic also applies when using 'create' and 'update' functionality and using the `Constrain By` checkbox. An example here would be to automatically link a ticket to the current user upon creation.
@@ -119,13 +121,13 @@ Divblox incorporates an easy to use seperation between the actual navigation bar
 You will see the following:
 
 <div className="text--center">
-    <img alt="Navigation Menu" src={useBaseUrl('_basic-training-media/navigation-menu.png')} />
+    <img data-action="zoom"  alt="Navigation Menu" src={useBaseUrl('_basic-training-media/navigation-menu.png')} />
 </div>
 
 There are a few default menus, and we will create a basic-training-exercise-menu with the necessary items.
 
 <div className="text--center">
-    <img alt="Navigation Menu Modal" src={useBaseUrl('_basic-training-media/navigation-menu-modal.png')} />
+    <img data-action="zoom"  alt="Navigation Menu Modal" src={useBaseUrl('_basic-training-media/navigation-menu-modal.png')} />
 </div>
 
 Here we add the HTML that we want to be displayed as our item, in our case we want an icon and page name. We give our two pages the following:
@@ -145,7 +147,7 @@ New Ticket
 We also set the action we want to occur when clicking on the menu item to load up the corresponding page. The navigation bar component HTML looks like this:
 
 <div className="text--center">
-    <img alt="Navigation Menu HTML" src={useBaseUrl('_basic-training-media/navigation-menu-html.png')} />
+    <img data-action="zoom"  alt="Navigation Menu HTML" src={useBaseUrl('_basic-training-media/navigation-menu-html.png')} />
 </div>
 
 ## Step 5 - Global Functions
@@ -160,7 +162,7 @@ Global functions are defined for functionality that will be used multiple times,
 > We will create the unique ID in the backend, as we need to verify whether or not it is indeed unique by checking our database.
 
 <div className="text--center">
-    <img alt="Flowchart of frontend/backend communication" src={useBaseUrl('_basic-training-media/basic-training-exercise-step5.png')} />
+    <img data-action="zoom"  alt="Flowchart of frontend/backend communication" src={useBaseUrl('_basic-training-media/basic-training-exercise-step5.png')} />
 </div>
 
 ### Step 5.1 - Adding button
@@ -281,19 +283,19 @@ Additional user roles can be defined in the data modeller.
 It is important to define a user role hierarchy in the abstract class 'UserRoleHierarchy' (project/assets/php/user_role_hierarchy.class.php), so as to prevent duplicate writing of components and data model access for different user types. This allows for user roles to inherit access from lower user roles, so you only need to specify what access the user role has above and beyond previously defined access.
 
 <div className="text--center">
-    <img alt="UserRoleHierarchy" src={useBaseUrl('_basic-training-media/userrole-hierarchy.jpg')} />
+    <img data-action="zoom"  alt="UserRoleHierarchy" src={useBaseUrl('_basic-training-media/userrole-hierarchy.jpg')} />
 </div>
 
 The Component default settings are as follows:
 
 <div className="text--center">
-    <img alt="Component Access" src={useBaseUrl('_basic-training-media/basic-training-exercise-component-access.png')} />
+    <img data-action="zoom"  alt="Component Access" src={useBaseUrl('_basic-training-media/basic-training-exercise-component-access.png')} />
 </div>
 
 And the Data Model settings seen below. It is also important to note that by default users are able to `create` and `read` data, even if not explicitly stated in the `$AccessArray`.
 
 <div className="text--center">
-    <img alt="Data Model Access" src={useBaseUrl('_basic-training-media/basic-training-exercise-data-model-access.png')} />
+    <img data-action="zoom"  alt="Data Model Access" src={useBaseUrl('_basic-training-media/basic-training-exercise-data-model-access.png')} />
 </div>
 
 For our exercise we created 2 pages (The 'admin' and 'new ticket' pages). Let's assume that we only want administrators to access the admin page.
@@ -426,7 +428,7 @@ We will briefly highlight some of this functionality for the TicketGen class spe
 
 Firstly we have class wide methods which are simply wrappers for the most common dxQuery statements a developer might use.
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-class-wide-loadandcount.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-class-wide-loadandcount.png')} />
 </div>
 
 Then there are index-based load methods. It is important to note how types of attributes and data model structure are translated into generated functions.
@@ -437,16 +439,16 @@ We are also able to `LoadArrayByEntityName` and `CountByEntityName` for any enti
 hence we can load/count an array of tickets constrained by each of these entities.
 
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-index-based-load-methods.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-index-based-load-methods.png')} />
 </div>
 
 We are also able to perform certain further actions onto any associated entities as well, shown below for the `SubTask` and `Note` entities.
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-subtask-related.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-subtask-related.png')} />
 </div>
 
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-note-related.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-note-related.png')} />
 </div>
 
 There are more functions in this class, as well as some background Divblox-related query functions which you may look at in your own time.
@@ -457,13 +459,13 @@ deletes data in our database, so we need to update the `Data Model` permissions 
 located at `/project/assets/php/data_model_role_based_access.php`.
 
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-location.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-location.png')} />
 </div>
 
 We add full permission for the `Ticket` and `Category` entities.
 
 <div className="text--center">
-    <img alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-code.png')} />
+    <img data-action="zoom"  alt="Data model role based access 1" src={useBaseUrl('_basic-training-media/bte-step-7-data-model-role-based-access-code.png')} />
 </div>
 
 Once this is done, our API operation should be set up and
@@ -764,7 +766,7 @@ public function Function5() {
 You will end up with a nested array of objects, structured something like this:
 
 <div className="text--center">
-    <img alt="Function 6 diagram" src={useBaseUrl('_divblox-best-practices-media/example-bottom-nav2.png')} />
+    <img data-action="zoom"  alt="Function 6 diagram" src={useBaseUrl('_divblox-best-practices-media/example-bottom-nav2.png')} />
 </div>
 
 For each account (defined by it's email address) we want to see an array of all the categories used in their tickets. For each of those account-used categories, we want to see both the category's total tickets, as well as the account's category total ticket count.
@@ -883,7 +885,7 @@ Using the browser's network monitoring tool, the difference with just these mino
 
 
 <div className="text--center">
-    <img alt="bte-8-8TimeComparison" src={useBaseUrl('_basic-training-media/bte-8-8-time_comparison.png')} />
+    <img data-action="zoom"  alt="bte-8-8TimeComparison" src={useBaseUrl('_basic-training-media/bte-8-8-time_comparison.png')} />
 </div>
 
 ### Final Optimizations

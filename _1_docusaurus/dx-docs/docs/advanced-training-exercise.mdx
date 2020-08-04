@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 ## Introduction
@@ -22,7 +24,7 @@ Specifically, we will be extending the basic exercise functionality with the fol
 The new data model we will be making is as follows:
 
 <div className="text--center">
-    <img alt="ATE-data-model" src={useBaseUrl('_advanced-training-exercise-media/ate-data-model.png')} />
+    <img data-action="zoom"  alt="ATE-data-model" src={useBaseUrl('_advanced-training-exercise-media/ate-data-model.png')} />
 </div>
 
 As you can see, the data model is starting to look more complicated. Let's break this down:
@@ -50,7 +52,7 @@ Similarly with the HierarchyPath, we want this to be automatically generated for
 This HierarchyPath value will be used in the frontend to indicate the actual category, including its entire hierarchy, for the ticket.
 
 <div className="text--center">
-    <img alt="Category_Entity" src={useBaseUrl('_advanced-training-exercise-media/new-category.png')} />
+    <img data-action="zoom"  alt="Category_Entity" src={useBaseUrl('_advanced-training-exercise-media/new-category.png')} />
 </div>
 
 In the 'category_crud_create' component we can immediately add the code to auto-populate the two new attributes accordingly.
@@ -179,13 +181,13 @@ Now that our create component correctly saves all necessary information to the d
 -   SubCategory list, based on the currently clicked category (green)
 
 <div className="text--center">
-    <img alt="category update page" src={useBaseUrl('_advanced-training-exercise-media/category_update_page.png')} />
+    <img data-action="zoom"  alt="category update page" src={useBaseUrl('_advanced-training-exercise-media/category_update_page.png')} />
 </div>
 
 This is the page a user will be redirected to only by clicking on a category to edit on the main page, and will not be accessible via navigation bar. The reason we would want a seperate page to display and update our categories is because of their hierarchical nature, and it may be a lot easier for the user to visualize parent child relationships of categories in this way.
 
 <div className="text--center">
-    <img alt="admin category click" src={useBaseUrl('_advanced-training-exercise-media/admin_category_select.png')} />
+    <img data-action="zoom"  alt="admin category click" src={useBaseUrl('_advanced-training-exercise-media/admin_category_select.png')} />
 </div>
 
 ### Breadcrumbs
@@ -317,19 +319,19 @@ Now in the component.php file, we define the `getBreadCrumbs()` function referen
 On the 'category_update' page we want to also be able to display and manage the sub categories for the current category. In this section we will build the subcategory_list component displayed below.
 
 <div className="text--center">
-    <img alt="subcategory highlighted" src={useBaseUrl('_advanced-training-exercise-media/subcategory_highlight.png')} />
+    <img data-action="zoom"  alt="subcategory highlighted" src={useBaseUrl('_advanced-training-exercise-media/subcategory_highlight.png')} />
 </div>
 
 We will also to create a modal pop up that will allow us to create more subcategories. (Note that this will have to reference the constraining category to make sure the hierarchy is correct).
 
 <div className="text--center">
-    <img alt="subcategory modal" src={useBaseUrl('_advanced-training-exercise-media/subcategory_modal.png')} />
+    <img data-action="zoom"  alt="subcategory modal" src={useBaseUrl('_advanced-training-exercise-media/subcategory_modal.png')} />
 </div>
 
 For this, we will create a new list-only CRUD component for the 'Category' entity using the component builder, displaying only the category name and subsequent ticket count.
 
 <div className="text--center">
-    <img alt="subcategory comp builder" src={useBaseUrl('_advanced-training-exercise-media/subcategory_list_compbuilder.png')} />
+    <img data-action="zoom"  alt="subcategory comp builder" src={useBaseUrl('_advanced-training-exercise-media/subcategory_list_compbuilder.png')} />
 </div>
 
 The component created is not constrained in any way. We need to constrain it to only display child categories of the category currently defined on the page. (That we defined using the `setGlobalConstrainById()` function). We do this by overriding the `getPage()` function in the component.php file to only query the constrained array of categories from the database. The getPage() function is quite long, and you can go through it on your own time. Below is the adaptation we made to the query.
@@ -553,7 +555,7 @@ The sub tasks are already constrained by the parent Ticket ID, so all we need to
 You can make the input boxes full-width and arrange them in a bootstrap layout to your liking. We change the create layout to maximize the space we have:
 
 <div className="text--center">
-    <img alt="subtask update layout" src={useBaseUrl('_advanced-training-exercise-media/subtask_update_arrangement.png')} />
+    <img data-action="zoom"  alt="subtask update layout" src={useBaseUrl('_advanced-training-exercise-media/subtask_update_arrangement.png')} />
 </div>
 
 ### Customizing the Note CRUD
@@ -685,7 +687,7 @@ We can also go ahead and remove the modal footer as those buttons are not needed
 
 
 <div className="text--center">
-    <img alt="modal footer removal" src={useBaseUrl('_advanced-training-exercise-media/modal-footer-removal.png')} />
+    <img data-action="zoom"  alt="modal footer removal" src={useBaseUrl('_advanced-training-exercise-media/modal-footer-removal.png')} />
 </div>
 
 Now we will proceed to inspect the necessary code changes applied to create the functionality we need. Starting with the update component javascript:
@@ -881,7 +883,7 @@ Once we have our page set up and navigation configured, we can proceed with our 
 The final product will look something like this:
 
 <div className="text--center">
-    <img alt="dashboard screenshot" src={useBaseUrl('_advanced-training-exercise-media/dashboard-screenshot.png')} />
+    <img data-action="zoom"  alt="dashboard screenshot" src={useBaseUrl('_advanced-training-exercise-media/dashboard-screenshot.png')} />
 </div>
 
 To create the dashboard we will create a few individual components, that can be reused anywhere:
@@ -903,7 +905,7 @@ Let's create the tiles that display a summary of the breakdown of statuses of al
 As you can see, we will create a single component, and reuse it on our Dashboard page with different input parameters. These input parameters are specified in the javascript of the parent element, i.e. our dashboard page itself. This is done in the subcomponent definitions of the page by adding a secondary load argument as seen below:
 
 <div className="text--center">
-    <img alt="subcomponent" src={useBaseUrl('_advanced-training-exercise-media/subcomponent-par-input.png')} />
+    <img data-action="zoom"  alt="subcomponent" src={useBaseUrl('_advanced-training-exercise-media/subcomponent-par-input.png')} />
 </div>
 
 Now, to build our component. Once created, we add a fullwidth container and two rows, the first split into a 9-width bootstrap column and a 3-width bootstrap column, and the second a full 12-width column. These 3 sections will be the sections for the:
@@ -1266,7 +1268,7 @@ if (
             // We append the necessary formatting and information
             // The col-2 section for the profile picture
             profile_picture_html +=
-                '<img class="dashboard-tile-profile-picture" src="' +
+                '<img data-action="zoom"  class="dashboard-tile-profile-picture" src="' +
                 row_data_obj["ProfilePicturePath"] +
                 '" alt="Profile Picture">' +
                 "</div>";
@@ -1318,7 +1320,7 @@ if (
 Adding this component to our dashboard is shown below. Note that all of the CSS will be shown at the end, but is not the purpose of this exercise, so we encourange you to style it as you see fit.
 
 <div className="text--center">
-    <img alt="adding account summary" src={useBaseUrl('_advanced-training-exercise-media/added-account-summary.png')} />
+    <img data-action="zoom"  alt="adding account summary" src={useBaseUrl('_advanced-training-exercise-media/added-account-summary.png')} />
 </div>
 
 Now looking at the component.php file. This is a long one. Feel free to browse through the entire code to familiarize yourself with the background process, but the changes we have made will be defined with prepended comments.
@@ -1595,7 +1597,7 @@ if (
 ```
 
 <div className="text--center">
-    <img alt="overdue tickets" src={useBaseUrl('_advanced-training-exercise-media/overdue_tickets.png')} />
+    <img data-action="zoom"  alt="overdue tickets" src={useBaseUrl('_advanced-training-exercise-media/overdue_tickets.png')} />
 </div>
 
 ### Graph components
@@ -1616,7 +1618,7 @@ Now that we have created (identical to the default) graph components, let's go t
 This component is a bar chart showing the number of tickets in each of the status's.
 
 <div className="text--center">
-    <img alt="ticket status graph" src={useBaseUrl('_advanced-training-exercise-media/ticket_status_graph.png')} />
+    <img data-action="zoom"  alt="ticket status graph" src={useBaseUrl('_advanced-training-exercise-media/ticket_status_graph.png')} />
 </div>
 
 We will not discuss the chartJS-specific code, as their documentation is thorough and well-defined. Below we show the ticket_status_graph component's component.js and component.php files.
@@ -1741,7 +1743,7 @@ $ComponentObj = new StatusBarChartController("status_bar_chart");
 This pie chart is supposed to show us the proportion of tickets in each of the main categories, i.e. Work, Sport and Leisure.
 
 <div className="text--center">
-    <img alt="category pie chart" src={useBaseUrl('_advanced-training-exercise-media/category_pie_chart.png')} />
+    <img data-action="zoom"  alt="category pie chart" src={useBaseUrl('_advanced-training-exercise-media/category_pie_chart.png')} />
 </div>
 
 Below we show the category_pie_chart's component's component.js and component.php files:

@@ -14,7 +14,8 @@
     "clsx": "^1.1.1",
     "docusaurus-lunr-search": "^2.1.6",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "zoom-vanilla.js": "^2.0.6"
   },
   "browserslist": {
     "production": [

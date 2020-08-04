@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 ## Start at the beginning
@@ -31,7 +33,7 @@ The data model allows you define the following:
 -   The user roles that your app will allow for
 
 <div className="text--center">
-    <img alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-basic-concepts.png')} />
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-basic-concepts.png')} />
 </div>
 
 The data model in the above example describes the following:
@@ -52,7 +54,7 @@ The data model in the above example describes the following:
 Below is a visual representation of the Divblox System Entities. These entities should not be edited, but rather reused where needed, since they might be affected by future Divblox updates. The developer is free to create relationships to these entities to leverage their existing functionality.
 
 <div className="text--center">
-    <img alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-system-entities.png')} />
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-system-entities.png')} />
 </div>
 
 The final data model for your app will be the combination of the system entities and the project entities. Once this is defined, Divblox can generate the app's object relational model and CRUD (Create, Read, Update, Delete) components.  
@@ -60,7 +62,7 @@ The final data model for your app will be the combination of the system entities
 Below is a visual representation of a complete Divblox data model for the example provided [above](#basic-data-modeling-concepts).
 
 <div className="text--center">
-    <img alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-example.png')} />
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-example.png')} />
 </div>
 
 ## The Divblox ORM (Server side)

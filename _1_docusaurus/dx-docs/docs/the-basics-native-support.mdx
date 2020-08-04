@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 Divblox allows you to export your progressive web app to a native project using [React Native](https://reactnative.dev/).
@@ -15,7 +17,7 @@ To export to a native project you need the following:
 -   Your web app needs to be deployed on a server with an ssl certificate
 -   You need to configure your environment for native export:
     <div className="text--center">
-        <img alt="Native Export Config" src={useBaseUrl('_the-basics-media/_6-native-support-media/native-environment-config.png')} />
+        <img data-action="zoom"  alt="Native Export Config" src={useBaseUrl('_the-basics-media/_6-native-support-media/native-environment-config.png')} />
     </div>
 -   Follow the steps in the "Export to Native" section on the Divblox setup page to configure React Native and export your environment of choice
 
