@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 Virtually everything in Divblox is a component. Components are used as the building blocks for your project. You can create any type of component for your specific requirement, from a basic image viewer to a full blown page that is made up of multiple individual components. There are templates for navigation bars, page setups, CRUD functionality and more. Each component can be modified and reused as required, dynamically across your whole project.
@@ -29,7 +31,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
     -   Processes the request to the server to create a new instance of your entity and store it in the database
 
 <div className="text--center">
-    <img alt="Create Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-create.png')} />
+    <img data-action="zoom"  alt="Create Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-create.png')} />
 </div>
 
 -   **Update component:**
@@ -37,7 +39,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
     -   Processes the request to the server to update or delete the existing instance of your entity in the database.
 
 <div className="text--center">
-    <img alt="Update Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-update.png')} />
+    <img data-action="zoom"  alt="Update Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-update.png')} />
 </div>
 
 -   **Data Table component:**
@@ -45,7 +47,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
     -   Allows multiple functions to be executed on the data set, including Excel,csv or text export and bulk deletion.
 
 <div className="text--center">
-    <img alt="Data Table Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-data-table.png')} />
+    <img data-action="zoom"  alt="Data Table Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-data-table.png')} />
 </div>
 
 -   **Data List component:**
@@ -53,7 +55,7 @@ Data model components allow for the CRUD behaviour of any of your data model ent
     -   The data can be searched and/or constrained as required. This is intended to be a more mobile friendly way of viewing data for a specific entity.
 
 <div className="text--center">
-    <img alt="Data List Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-data-list.png')} />
+    <img data-action="zoom"  alt="Data List Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-example-data-list.png')} />
 </div>
 
 ### Custom components
@@ -76,7 +78,7 @@ Create anything from an image viewer or an html editor, to file uploaders and ch
 Page components are the parent components to any functionality in your application. You have default template options to choose from, each with a different navigation bar type, or even without one.
 
 <div className="text--center">
-    <img alt="Page Types" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/page-types.png')} />
+    <img data-action="zoom"  alt="Page Types" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/page-types.png')} />
 </div>
 
 ### Basic components
@@ -203,7 +205,7 @@ The component's JSON file is used for component configuration. By default this i
 Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
 
 <div className="text--center">
-    <img alt="Page Types" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/divblox_fundamental.png')} />
+    <img data-action="zoom"  alt="Page Types" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/divblox_fundamental.png')} />
 </div>
 
 :::info
@@ -299,7 +301,7 @@ To kick off Divblox's initialization workflow, the function `initDx();` from div
 The Divblox component builder allows you to create and manage your project’s components in a visual environment and to combine various different components to create specific components for your project’s needs.
 
 <div className="text--center">
-    <img alt="Main Component Builder Page" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-overview.png')} />
+    <img data-action="zoom"  alt="Main Component Builder Page" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-overview.png')} />
 </div>
 
 > From the default component builder page you can do the following:
@@ -313,7 +315,7 @@ The Divblox component builder allows you to create and manage your project’s c
 Clicking the + Component button brings up the following modal:
 
 <div className="text--center">
-    <img alt="Component Builder - New Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-component.png')} />
+    <img data-action="zoom"  alt="Component Builder - New Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-component.png')} />
 </div>
 
 Here you can give your new component a name and select the type of component you want to create.
@@ -323,24 +325,24 @@ Here you can give your new component a name and select the type of component you
 Selecting a [Data Model Component](#data-model-components) will provide you with the options to select the entity for which you want to generate, as well as the type of data model component to create:
 
 <div className="text--center">
-    <img alt="Component Builder - New Data Model Component Select Entity" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-entity-select.png')} />
+    <img data-action="zoom"  alt="Component Builder - New Data Model Component Select Entity" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-entity-select.png')} />
 </div>
 
 <div className="text--center">
-    <img alt="Component Builder - New Data Model Component Select Type" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-type-select.png')} />
+    <img data-action="zoom"  alt="Component Builder - New Data Model Component Select Type" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-type-select.png')} />
 </div>
 
 Once you selected your entity and component type, you can configure the attributes and/or validations that you would like Divblox to generate for the component.  
 The example below shows a typical configuration modal for a "CREATE" type of component, which allows you to configure which attributes to display and to select the specific validations you require for them:
 
 <div className="text--center">
-    <img alt="Component Builder - New Data Model Component Create Config" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-create-config.png')} />
+    <img data-action="zoom"  alt="Component Builder - New Data Model Component Create Config" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-create-config.png')} />
 </div>
 
 The example below shows a typical configuration modal for a "DATA TABLE" type of component, which allows you to configure which attributes to display in the table:
 
 <div className="text--center">
-    <img alt="Component Builder - New Data Model Component Data Table Config" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-data-table-config.png')} />
+    <img data-action="zoom"  alt="Component Builder - New Data Model Component Data Table Config" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-new-datamodel-component-data-table-config.png')} />
 </div>
 
 #### Creating from an existing component
@@ -348,7 +350,7 @@ The example below shows a typical configuration modal for a "DATA TABLE" type of
 You can easily copy the functionality from an existing component be selecting the "**From Existing Component**" option. This will allow you to specialize the functionality of that component for your needs.
 
 <div className="text--center">
-    <img alt="Component Builder - From Existing" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-from-existing.png')} />
+    <img data-action="zoom"  alt="Component Builder - From Existing" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-from-existing.png')} />
 </div>
 
 :::info
@@ -360,7 +362,7 @@ Notice the "Grouping" field above. This field allows you to group certain compon
 You can also create a custom component by selecting the "**Custom Component**" option. This simply allows you to provide a name and grouping for your component.
 
 <div className="text--center">
-    <img alt="Component Builder - Custom Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-custom.png')} />
+    <img data-action="zoom"  alt="Component Builder - Custom Component" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/component-builder-custom.png')} />
 </div>
 
 :::info
@@ -381,7 +383,7 @@ Using Bootstrap's grid system, it allows you to place the following containing e
 -   Learn more about Bootstrap's grid system [here](https://getbootstrap.com/docs/4.3/layout/grid/#how-it-works)
 
 <div className="text--center">
-    <img alt="Component Builder - Containing Elements" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/vbi-01.png')} />
+    <img data-action="zoom"  alt="Component Builder - Containing Elements" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/vbi-01.png')} />
 </div>
 
 #### Adding a sub component
@@ -420,7 +422,7 @@ The builder interface allows you to modify your component in the browser at any 
 Now that we have gone through what components actually are and how they work, let us look at the system components that come standard with any Divblox application. Below is a screenshot of the system components that ship with Divblox.
 
 <div className="text--center">
-    <img alt="Pages" src={useBaseUrl('_the-basics-media/_4-system-components-media/system-components.png')} />
+    <img data-action="zoom"  alt="Pages" src={useBaseUrl('_the-basics-media/_4-system-components-media/system-components.png')} />
 </div>
 
 ### Account Registration and Authentication
@@ -443,7 +445,7 @@ The account registration and authentication components take care of user registr
             <li>Creates an instance of the Account entity with provided details</li>
         </ul>
         <div style={{margin: 'auto'}}>
-            <img alt="Account Registration" src={useBaseUrl('_the-basics-media/_4-system-components-media/account-registration.png')} />
+            <img data-action="zoom"  alt="Account Registration" src={useBaseUrl('_the-basics-media/_4-system-components-media/account-registration.png')} />
         </div>
     </TabItem>
     <TabItem value="authentication">
@@ -457,7 +459,7 @@ The account registration and authentication components take care of user registr
                 </li>
                 <li>Once authenticated, the current authentication token/client connection is linked to the account object</li>
             </ul>
-            <img alt="Authentication" src={useBaseUrl('_the-basics-media/_4-system-components-media/authentication.png')} />
+            <img data-action="zoom"  alt="Authentication" src={useBaseUrl('_the-basics-media/_4-system-components-media/authentication.png')} />
         </div>
     </TabItem>
 </Tabs>

@@ -16,6 +16,7 @@
   --ifm-color-primary-lightest: #9587f7;
   --ifm-code-font-size: 95%;
   --custom-card-discrete: #EAECED;
+  --zoom-img-background: #fff;
 }
 
 [data-theme="dark"] {
@@ -27,6 +28,7 @@
   --ifm-color-primary-lighter: #D9EFFE;
   --ifm-color-primary-lightest: #F2FAFF;
   --custom-card-discrete: #2A333F;
+  --zoom-img-background: #191A1B;
 }
 
 .docusaurus-highlight-code-line {

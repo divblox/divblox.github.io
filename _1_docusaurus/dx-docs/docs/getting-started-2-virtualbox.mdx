@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 Divblox provides a fully configured [VirtualBox](https://www.virtualbox.org/wiki/VirtualBox) image that allows you to start
@@ -45,13 +47,13 @@ The VM (.ova) file that contains Divblox and all the accompanying software can b
 After installing VirtualBox on your device and running the application, add the image by opening "File" -> "Import Appliance".
 
 <div className="text--center">
-    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup1.png')}/>
+    <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup1.png')}/>
 </div>
 
 From here, find and add the Divblox VM image file (.ova). On the following window you will be prompted to "Import". Adding the image may take several minutes to install and configure.
 
 <div className="text--center">
-    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup2.png')}/>
+    <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup2.png')}/>
 </div>
 
 Once your VM has been loaded, it can be started by "double-clicking" on the newly added machine in the VirtualBox application. This will open a separate window and begin booting up the Divblox image.
@@ -63,7 +65,7 @@ The boot sequence is complete when you are greeted by the Welcome page.
 ### Initialize Divblox
 
 <div className="text--center">
-    <img alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup3.png')}/>
+    <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/virtual-machine-setup3.png')}/>
 </div>
 
 The Welcome page is necessary to read through in order to operate the virtual machine.
@@ -83,5 +85,5 @@ After you have familiarised yourself with the introduction page, the first thing
 3. Click "dx API key" to open the dialog that allows you to copy in and update your API key.
 
 <div className="text--center">
-    <img alt="Sign in" src={useBaseUrl('_getting-started-media/setup-configure-api-key.png')}/>
+    <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/setup-configure-api-key.png')}/>
 </div>

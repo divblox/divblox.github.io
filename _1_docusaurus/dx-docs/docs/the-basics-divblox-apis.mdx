@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 ## Exposing a custom API
@@ -108,31 +110,31 @@ function dummyOperation2() {
 7. Divblox provides comprehensive documentation for your API's that can be viewed at "/api/[your API name]/doc". In the case of this example, where our API is called "api_example", the documentation is generated and can be viewed at "/api/api_example/doc".
 
 <div className="text--center">
-    <img alt="Exposing an API 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api1.png')} />
+    <img data-action="zoom"  alt="Exposing an API 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api1.png')} />
 </div>
 
 8. By following this documentation the newly exposed API's operation can be accessed by making a request to the given URL endpoint.
 
 <div className="text--center">
-    <img alt="Exposing an API 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api2.png')} />
+    <img data-action="zoom"  alt="Exposing an API 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api2.png')} />
 </div>
 
 9. The documentation will indicate to the reader whether or not the request requires an API key to access the operation, and in our case this API requires no authentication but does require other parameters such as a header, "content-type", and input parameters, "first_name" and "last_name", which are placed in the POST request body.
 
 <div className="text--center">
-    <img alt="Exposing an API 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api3.png')} />
+    <img data-action="zoom"  alt="Exposing an API 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api3.png')} />
 </div>
 
 10. After the request has been made the expected output should be inline with the expected output. Using an application, such as [Postman](https://www.getpostman.com/) as a test platform to see whether or not the API was successfully created, or alternatively by using the URL "/api/api_example/dummyOperation/first_name=ACoolName/last_name=ACoolSurname" we can compare the collected output to the expected response.
 
 <div className="text--center">
-    <img alt="Exposing an API 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api4.png')} />
+    <img data-action="zoom"  alt="Exposing an API 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api4.png')} />
 </div>
 
 11. Lastly , in the documentation, a dropdown menu is provided containing snippets of code that can be copied and placed into your project and language of choice to ease the integration. These snippets come in the most common languages that handle API requests.
 
 <div className="text--center">
-    <img alt="Exposing an API 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api5.png')} />
+    <img data-action="zoom"  alt="Exposing an API 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/exposing-an-api5.png')} />
 </div>
 
 ## Securing API operations with an API key
@@ -142,73 +144,73 @@ When creating your own API it will be completely exposed and wont require and AP
 1. Using the "api_example" (see [Exposing an API](#exposing-a-custom-api)) to demonstrate this. It is shown in the documentation that the custom API does not require a key which is what we want to change.
 
 <div className="text--center">
-    <img alt="Securing an API 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api1.png')} />
+    <img data-action="zoom"  alt="Securing an API 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api1.png')} />
 </div>
 
 2. Add the API operation to the list of controlled operations by opening "api_operation_administration" component in the "Component Builder".
 
 <div className="text--center">
-    <img alt="Securing an API 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api2.png')} />
+    <img data-action="zoom"  alt="Securing an API 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api2.png')} />
 </div>
 
 3. This component allows you to add or remove API operations from the list of access controlled API operations. Add your operation by clicking the "+ Api Operation"
 
 <div className="text--center">
-    <img alt="Securing an API 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api3.png')} />
+    <img data-action="zoom"  alt="Securing an API 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api3.png')} />
 </div>
 
 4. Add the "User Readable Name" (API operation name)to the box and click "Create". This name is from your "addApiOperation()" (in your API's .php file) and is case and white space sensitive.
 
 <div className="text--center">
-    <img alt="Securing an API 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api4.png')} />
+    <img data-action="zoom"  alt="Securing an API 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api4.png')} />
 </div>
 
 5. By checking the API documentation we can compare the changes. Note that now the API does require a key to access the operation, and a API key can now be placed in the request body when the request is made to access the operation.
 
 <div className="text--center">
-    <img alt="Securing an API 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api5.png')} />
+    <img data-action="zoom"  alt="Securing an API 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api5.png')} />
 </div>
 
 6. To get a key that will link to your operation and allow you to access it, open the "api_key_administration" component from the "Component Builder" page and add a new API key by clicking the "+ API key".
 
 <div className="text--center">
-    <img alt="Securing an API 6" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api6.png')} />
+    <img data-action="zoom"  alt="Securing an API 6" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api6.png')} />
 </div>
 
 7. The key itself is auto-generated to avoid any internal clashes, as well as providing a strong key string. A start date is required. The end date can be left open which results in the key remaining active indefinitely. Fill in any additional information you may require and click "Create" to finish making the key.
 
 <div className="text--center">
-    <img alt="Securing an API 7" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api7.png')} />
+    <img data-action="zoom"  alt="Securing an API 7" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api7.png')} />
 </div>
 
 8. Your newly generated key should be visible in the "api_key_administration" component. Open up the new key to start adding operations to this key.
 
 <div className="text--center">
-    <img alt="Securing an API 8" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api8.png')} />
+    <img data-action="zoom"  alt="Securing an API 8" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api8.png')} />
 </div>
 
 9. Start adding operations to this key by clicking "+ API Operation"
 
 <div className="text--center">
-    <img alt="Securing an API 9" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api9.png')} />
+    <img data-action="zoom"  alt="Securing an API 9" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api9.png')} />
 </div>
 
 10. Select the operation you want to link with the API key. Operations that have been newly added are place at the bottom of the list.
 
 <div className="text--center">
-    <img alt="Securing an API 10" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api10.png')} />
+    <img data-action="zoom"  alt="Securing an API 10" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api10.png')} />
 </div>
 
 11. To verify that the operation has been added, it should be visible when viewing the API key. It will show the activity status of the operation which can be toggled to manage access.
 
 <div className="text--center">
-    <img alt="Securing an API 11" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api11.png')} />
+    <img data-action="zoom"  alt="Securing an API 11" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api11.png')} />
 </div>
 
 12. Testing the API operation with the API key gives back a "Success" status message and completed the API operation.
 
 <div className="text--center">
-    <img alt="Securing an API 12" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api12.png')} />
+    <img data-action="zoom"  alt="Securing an API 12" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/securing-an-api12.png')} />
 </div>
 
 ## Creating default CRUD API's
@@ -218,48 +220,48 @@ Making and exposing access controlled CRUD API operations for new data model ent
 1. Open the "Data Modeler" from the Divblox setup page.
 
 <div className="text--center">
-    <img alt="API Default CRUD 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud1.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 1" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud1.png')} />
 </div>
 
 
 2. This is the Default data model for Divblox. New Entities are added by "Double-clicking" in empty space.
 
 <div className="text--center">
-    <img alt="API Default CRUD 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud2.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 2" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud2.png')} />
 </div>
 
 3. Name your new data model entity and click "Create". The name of the data model entity is used as the CRUD API path as well. For this example an entity named "Car" will be created.
 
 <div className="text--center">
-    <img alt="API Default CRUD 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud3.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 3" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud3.png')} />
 </div>
 
 4. Start by selecting the module where you want your new entity to be placed. Add new entity attributes by filling in the attribute "name" and "data type" and then add it with the green " + " at the end of the row. Add relationships in the same way, by selecting the entity you need a relationship with and add it using the green " + " at the end of the row. Finish by saving the changes made to the entity
 
 <div className="text--center">
-    <img alt="API Default CRUD 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud4.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 4" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud4.png')} />
 </div>
 
 5.  Sync your data model. Ensure that Divblox's data model is synced so that the CRUD operations can be used.
 
 <div className="text--center">
-    <img alt="API Default CRUD 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud5.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 5" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud5.png')} />
 </div>
 
 6. View the auto-generated documentation for the newly created entity using the entity name from before and the path "/api/[your API name]/doc". These are the default CRUD operations that get created with new data model entities.
 
 <div className="text--center">
-    <img alt="API Default CRUD 6" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud6.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 6" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud6.png')} />
 </div>
 
 7. Divblox automatically requires an API key for any auto generated operation as they get added and listed in "api_operation_adminstration" (For more see [Securing API operations with an API key](#securing-api-operations-with-an-api-key)). Therefore we must create an API key and link it to the operations we want to expose, thus still keeping them secure with a key. Create the key in the "api_key_administration" component. Select the new key and add the operations using the " + Api Operation" button and select the operations you want from the drop down menu.
 
 <div className="text--center">
-    <img alt="API Default CRUD 7" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud7.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 7" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud7.png')} />
 </div>
 
 8. The API operations are now exposed and can be accessed using the key that was just created. Testing the "Create Car" operation we will get back a confirmation that the data entry was successful and the "List Car" operation will show the new car that was created.
 
 <div className="text--center">
-    <img alt="API Default CRUD 8" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud8.png')} />
+    <img data-action="zoom"  alt="API Default CRUD 8" src={useBaseUrl('_the-basics-media/_5-divblox-apis-media/api-default-crud8.png')} />
 </div>

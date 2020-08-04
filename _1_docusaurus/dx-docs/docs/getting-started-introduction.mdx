@@ -7,10 +7,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import {checkUrlScroll} from './custom.js';
+import "zoom-vanilla.js/dist/zoom.css"
+import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
 checkUrlScroll();
 
 <div className="text--center">
- <img alt="Create Component" src={useBaseUrl('_media/divblox-logo-1.png')} />
+ <img data-action="zoom"  alt="Create Component" src={useBaseUrl('_media/divblox-logo-1.png')} />
 </div>
 
 <div className="text--center">
@@ -23,7 +25,7 @@ Divblox is a full stack web and mobile app development framework that allows any
 With Divblox you can build progressive web apps that can also seamlessly be converted to native mobile apps, all with ONE code base.
 
 <div className="text--center">
-    <img alt="JS" src={useBaseUrl('_getting-started-media/web_based_developers.jpg')} />
+    <img data-action="zoom"  alt="JS" src={useBaseUrl('_getting-started-media/web_based_developers.jpg')} />
 </div>
 
 ## Core Ingredients
@@ -35,7 +37,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="PHP" src={useBaseUrl('_media/php.png')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="PHP" src={useBaseUrl('_media/php.png')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>PHP</h3> Divblox's server-side is driven by PHP. It is designed to be headless, returning data in JSON format. This means that although Divblox ships
@@ -51,7 +53,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="PHP" src={useBaseUrl('_media/mysql_logo.png')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="PHP" src={useBaseUrl('_media/mysql_logo.png')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>MySQL</h3> Divblox provides you with a very sophisticated ORM design,
@@ -69,7 +71,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="HTML" src={useBaseUrl('_media/html.ico')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="HTML" src={useBaseUrl('_media/html.ico')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>HTML 5</h3> HTML is used only as a shell, or starting point, which we will fill in and manipulate using JavaScript. Most if not all
@@ -85,7 +87,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="CSS" src={useBaseUrl('_media/css.png')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="CSS" src={useBaseUrl('_media/css.png')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>CSS 3 </h3> CSS preprocessed using SASS allowing for quick and easy setting up of global theming. This allows both developers
@@ -101,7 +103,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="BOOTSTRAP" src={useBaseUrl('_media/bootstrap.png')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="BOOTSTRAP" src={useBaseUrl('_media/bootstrap.png')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>Bootstrap 4</h3> Bootstrap 4 is our CSS framework of choice, providing convenient grid layouts, a variety of basic components out of the box,
@@ -118,7 +120,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="JS" src={useBaseUrl('_media/js.jpg')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="JS" src={useBaseUrl('_media/js.jpg')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>JavaScript</h3> JavaScript runs the front end of any Divblox application. Any and all DOM manipulation is done here, as well as
@@ -134,7 +136,7 @@ With Divblox you can build progressive web apps that can also seamlessly be conv
         <div className="container">
             <div className="row">
                 <div className="col col--3 text--center" style={{margin:'auto'}}>
-                    <img alt="JQUERY" src={useBaseUrl('_media/jquery.png')} style={{height: '100px'}} />
+                    <img data-action="zoom"  alt="JQUERY" src={useBaseUrl('_media/jquery.png')} style={{height: '100px'}} />
                 </div>
                 <div className="col col--9">
                     <h3>JQuery</h3> A tried and tested JavaScript framework implemented to make use of it's simpler syntax and modern browser compatibility.
