@@ -18,9 +18,9 @@ module.exports = {
             'common-examples-hello-world-example',
             'common-examples-other-common-examples'
         ],
-        'Divblox Best Practices': [
-            'divblox-best-practices'
-        ],
+        // 'Divblox Best Practices': [
+        //     'divblox-best-practices'
+        // ],
         'Basic Training':[
             'basic-training-exercise',
             'basic-training-evaluation'
