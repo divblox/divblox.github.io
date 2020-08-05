@@ -16,6 +16,8 @@ module.exports = {
             'the-basics-native-support'],
         'Common Examples': [
             'common-examples-hello-world-example',
+            'common-examples-media-library-and-image-viewer',
+            'common-examples-data-model-changes',
             'common-examples-other-common-examples'
         ],
         'Divblox Best Practices': [
