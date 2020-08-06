@@ -20,7 +20,7 @@ There are three (maybe more, if you are creative) ways to add an image into your
 1. Use a basic Divblox component (Simple HMTL image tag) and fill in the necessary file path. This is perfectly fine for individual images here and there.
 2. Use the default image viewer component, and make sure to update the image path in the page's `reset()` function. Note how we define the image viewer's UID
 so that we can call the `updateImage()` function on it uniquely. (If you do not specify it, the UID will be a unique random string)
-3. Use the default image viewer component, and pass it the image path as an input parameter i.e. `"arguments:{"image_path": "project/uploads/media/filename.png"}"`.
+3. Use the default image viewer component, and pass it the relative image path as an input parameter i.e. `"arguments:{"image_path": "project/uploads/media/filename.png"}"`.
 
 The page's component.js is given below.
 
