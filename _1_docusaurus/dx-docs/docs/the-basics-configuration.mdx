@@ -12,10 +12,10 @@ import {checkUrlScroll} from './custom.js';
 checkUrlScroll();
 
 In this section it is assumed that you have configured Divblox to function locally, either in the VM or natively. This includes having a local version of the base
-divblox public repo. It is also assumed that you have created a Divblox basecamp account and have at least one project.
+divblox public repo. It is also assumed that you have created a Divblox account.
 
 When navigating to your project root, usually at `localhost/[project_name]` you will be greeted by a login page.
-These as the steps followed to initially configure your local project.
+These are the steps followed to initially configure your local project.
 <Tabs
     defaultValue="1"
     values={[
@@ -27,7 +27,7 @@ These as the steps followed to initially configure your local project.
     <TabItem value="1">
         <div style={{margin: 'auto'}}>
             <ul>
-                <li> Log in using your basecamp details</li>
+                <li> Log in using your Divblox account</li>
             </ul>
             <img data-action="zoom"  alt="Upload" src={useBaseUrl('_the-basics-media/_1-config-media/divblox1-login.png')} />
         </div>
@@ -36,7 +36,7 @@ These as the steps followed to initially configure your local project.
         <div  style={{margin: 'auto'}}>
             <ul>
                 <li> Select an existing project to link or</li>
-                <li> Follow the link to create a new project on Basecamp</li>
+                <li> Click the "+ New Project" button to create a new project on Basecamp</li>
             </ul>
             <img data-action="zoom"  alt="Edit" src={useBaseUrl('_the-basics-media/_1-config-media/divblox2-project.png')} />
         </div>
@@ -44,10 +44,10 @@ These as the steps followed to initially configure your local project.
     <TabItem value="3">
         <div  style={{margin: 'auto'}}>
             <ul>
-                <li>Link an available environment to your local setup</li>
+                <li>Link an available environment to your local machine</li>
                 <li>If you do not see any environments, you will need to go to basecamp and either:</li>
                 <ul>
-                    <li>Create a new environment</li>
+                    <li>Create a new environment or</li>
                     <li>Unlink an existing environment to free it for your local deployment</li>
                 </ul>
             </ul>
@@ -57,16 +57,16 @@ These as the steps followed to initially configure your local project.
         <TabItem value="4">
             <div  style={{margin: 'auto'}}>
                 <ul>
-                    <li>Set up your database connection details</li>
+                    <li>Set up your default database connection details</li>
                 </ul>
                 <img data-action="zoom"  alt="Information" src={useBaseUrl('_the-basics-media/_1-config-media/divblox4-database.png')}/>
             </div>
         </TabItem>
 </Tabs>
 
-Once you complete these steps successfully you will be logged into the Divblox setup page.
-We will take you through the interface of Divblox's setup and what each part entails. Below is a screenshot of what you should expect upon loading
-into the Divblox environment. We will first discuss the sections which have more to do with configuration of your Divblox application.
+Once you complete these steps successfully you will be logged into the backend of your Divblox project.
+We will take you through the interface of Divblox's backend and what each part entails. Below is a screenshot of what you should expect upon loading
+into the Divblox backend. We will first discuss the sections which have more to do with configuration of your Divblox application.
 
 <div className="text--center">
     <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-page.png')} />
