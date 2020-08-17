@@ -74,7 +74,7 @@ If you want to include them with custom bootstrap sizing and/or styles, just cop
 </div>
 ```
 
-Where you replace 'AttributeName' with the relevant attribute name. You can also then add CSS classes as needed. Any remaining included attributes without token placeholders will
+Where you replace the '{AttributeName}' token as well as the div id with the relevant attribute name (In our case it will be "Weight"). You can also then add CSS classes as needed. Any remaining included attributes without token placeholders will
 be placed  in the AdditionalInputFieldsWrapper section. The final step would be to customise the way dxRenderer actually displays attribute fields
 in the DOM. By default it will create the input field based on the data type of the attribute. But, there are many data types available.
 Below is a screenshot of the renderInputField method of the dxRenderer object. The case statements are all possible input types, which the developer can manipuate as they like.
@@ -164,7 +164,7 @@ Firstly, you can go ahead and delete your CRUD_create component. Then you need t
 </div>
 ```
 
-2. Remove any orphaned JavaScript functionality relating to the CRUD_creae component.
+2. Remove any orphaned JavaScript functionality relating to the CRUD_create component.
 
 ```js {17-21,34-37,42,57-62,70}
 if (typeof component_classes['data_model_car_crud'] === "undefined") {
