@@ -4,6 +4,7 @@ module.exports = {
         'Getting Started': [
             'getting-started-introduction',
             'getting-started-ways-to-get-started',
+            'getting-started-basecamp',
             'getting-started-1-sandbox',
             'getting-started-2-virtualbox',
             'getting-started-3-from-scratch'
