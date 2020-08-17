@@ -63,7 +63,7 @@ function Home() {
                     {/*<h1 className="hero__title">{siteConfig.title}</h1>*/}
                     <img alt="Create Component" src={useBaseUrl('_media/divblox-logo-1.png')} />
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
-                    <p>v4.0.1</p>
+                    <p>v4.1.0a</p>
                     <div className={styles.buttons}>
                         <Link
                             className={clsx(
