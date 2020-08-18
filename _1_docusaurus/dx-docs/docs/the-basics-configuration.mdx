@@ -110,11 +110,19 @@ For an environment to function correctly, the following needs to be configured:
 
 ## UI Config
 
-The UI configuration panel gives quick access to your project logo, project icon and theme.css file. Note that Divblox stores your project logo and icon as app_logo.png and favicon.ico. Submitting either in the UI config tab will rename your file and save it accordingly. You are also able to edit the `theme.css` file in-browser. This is great due to the order of dependencies executed in Divblox's start up. Divblox first loads Bootstrap 4, then Font-Awesome, followed by `project.css` and finally `theme.css` meaning that any changes you make in `theme.css` will over-ride any default project settings.
+The UI configuration panel gives you quick access to your project logo and icon as well as your projects global theme CSS. Divblox uses SCSS to allow the user
+to define variables in the `_theme-variables.scss` file, and define the global themes in the `theme.scss` file. These files are located in the 'project/assets/css/scss/' folder.
+Upon saving these files in the setup page, the final `theme.css` file is compiled.
 
 <div className="text--center">
     <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-ui-config.png')} />
 </div>
+
+:::info
+Please note that to generate your final CSS you need to click 'save' in the setup page. If you edited the files in an IDE, the changes will only reflect once
+you have instructed Divblox to compile the CSS.
+:::
+
 
 ## JS Config
 
