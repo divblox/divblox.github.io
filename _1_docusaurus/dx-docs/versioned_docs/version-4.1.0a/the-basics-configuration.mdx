@@ -1,0 +1,397 @@
+---
+id: the-basics-configuration
+title: Configuration
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+// import "zoom-vanilla.js/dist/zoom.css"
+// import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
+checkUrlScroll();
+
+In this section it is assumed that you have configured Divblox to function locally, either in the VM or natively. This includes having a local version of the base
+divblox public repo. It is also assumed that you have created a Divblox account.
+
+When navigating to your project root, usually at `localhost/[project_name]` you will be greeted by a login page.
+These are the steps followed to initially configure your local project.
+<Tabs
+    defaultValue="1"
+    values={[
+        {label: 'Log In', value: '1'},
+        {label: 'Project', value: '2'},
+        {label: 'Environment', value: '3'},
+        {label: 'Database', value: '4'},
+    ]}>
+    <TabItem value="1">
+        <div style={{margin: 'auto'}}>
+            <ul>
+                <li> Log in using your Divblox account</li>
+            </ul>
+            <img data-action="zoom"  alt="Upload" src={useBaseUrl('_the-basics-media/_1-config-media/divblox1-login.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="2">
+        <div  style={{margin: 'auto'}}>
+            <ul>
+                <li> Select an existing project to link or</li>
+                <li> Click the "+ New Project" button to create a new project on Basecamp</li>
+            </ul>
+            <img data-action="zoom"  alt="Edit" src={useBaseUrl('_the-basics-media/_1-config-media/divblox2-project.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="3">
+        <div  style={{margin: 'auto'}}>
+            <ul>
+                <li>Link an available environment to your local machine</li>
+                <li>If you do not see any environments, you will need to go to basecamp and either:</li>
+                <ul>
+                    <li>Create a new environment or</li>
+                    <li>Unlink an existing environment to free it for your local deployment</li>
+                </ul>
+            </ul>
+            <img data-action="zoom"  alt="Information" src={useBaseUrl('_the-basics-media/_1-config-media/divblox3-environment.png')}/>
+        </div>
+    </TabItem>
+        <TabItem value="4">
+            <div  style={{margin: 'auto'}}>
+                <ul>
+                    <li>Set up your default database connection details</li>
+                </ul>
+                <img data-action="zoom"  alt="Information" src={useBaseUrl('_the-basics-media/_1-config-media/divblox4-database.png')}/>
+            </div>
+        </TabItem>
+</Tabs>
+
+Once you complete these steps successfully you will be logged into the backend of your Divblox project.
+We will take you through the interface of Divblox's backend and what each part entails. Below is a screenshot of what you should expect upon loading
+into the Divblox backend. We will first discuss the sections which have more to do with configuration of your Divblox application.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-page.png')} />
+</div>
+
+## Modules
+
+Divblox allows you to define multiple modules for your project. Modules are useful for grouping related data objects. At least one module (The _Main_ module) is required.
+Modules are essentially separate databases that ring-fence certain data objects.
+
+
+## Environments
+
+Divblox allows you to define multiple environments for your project (local, staging, testing, production, etc).
+When you start up Divblox for the first time, it will automatically generate the default (local) environment for your current project.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="dx-setup-environment" src={useBaseUrl('_the-basics-media/_1-config-media/setup-environments.png')} />
+</div>
+
+
+:::info
+For an environment to function correctly, the following needs to be configured:
+
+-   **Environment Name** - Can be anything. This is just used to identify the environment
+-   **App Name** - The name of your app. This will be displayed as the document title
+-   **Maintenance Password** - This is a password used internally by Divblox for sensitive operations, for example to drop a database
+-   **The server's host name or IP address** - The url or IP address where this environment is deployed
+-   **The document root** - The path to your web server's www folder
+-   **Subdirectory** - The sub directory in which your Divblox project resides (can be empty)
+-   **The Database configuration for each module** - The connection information for every module's database
+:::
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-configure-environments.png')} />
+</div>
+
+<div className="text--center">
+    <img data-action="zoom"  align="center" alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-configure-database.png')} />
+</div>
+
+## UI Config
+
+The UI configuration panel gives quick access to your project logo, project icon and theme.css file. Note that Divblox stores your project logo and icon as app_logo.png and favicon.ico. Submitting either in the UI config tab will rename your file and save it accordingly. You are also able to edit the `theme.css` file in-browser. This is great due to the order of dependencies executed in Divblox's start up. Divblox first loads Bootstrap 4, then Font-Awesome, followed by `project.css` and finally `theme.css` meaning that any changes you make in `theme.css` will over-ride any default project settings.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-ui-config.png')} />
+</div>
+
+## JS Config
+
+The main configurable items for the Divblox javascript engine can be configured from the JS Config setup block.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-js-config.png')} />
+</div>
+
+### SPA Mode
+
+**Single Page Application mode** is ideal for apps that will function in multiple forms, from web, to progressive, to native.
+Divblox allows you to configure your web app to run as a single page application or as a normal web application.
+When in SPA mode, Divblox does not open a new web page when loading a new page, but rather updates the DOM with the new page content. Divblox also handles the rooting challenges in the background.
+
+:::info
+If you are building for web only, it is recommended to turn SPA mode off.
+:::
+
+### Service Worker
+
+Divblox allows you to configure a service worker to handle and cache requests. You can decide to toggle it on or off. It is also sometimes useful to force the service worker to reload when assets are modified. The service worker is the premise on which the idea of progressive applications are built. It acts as a form of advanced cache manager allowing offline browsing, push notifications and other 'native app' functionality.
+
+:::info
+When the service worker is on during development (debug), ensure that you have the option to "Update on reload" enabled in your browser.
+It is recommended to disable the service worker during development, since this can cause assets to be loaded from cache.
+:::
+
+### Debug Mode
+
+Debug mode enables robust logging of your web application. This is useful when in development mode, but can slow down your app in production environments. Disabling this mode disables the Divblox function `dxLog();`, removing all development logs with a switch of a button when your app is ready. Debug mode also changes the way the `loadComponent()` function works: when enabled, all caching is disabled.
+
+:::info
+It is recommended to turn debug mode off for production environments, but to keep it on in local/development environments.
+:::
+
+### Allow Feedback
+
+Divblox allows you to toggle the project-wide feedback functionality on/off. When this is on, the user will always see a feedback button on the right of the screen.
+This will allow you to collect feature requests and bug reports for your pages. You can choose to have this enabled for use by end users, but it's strength lies in the fact that it can log the feedback to a specific component on a specific page, allowing developers, testers and the business side of the project to integrate more seamlessly.
+
+:::info
+Feedback is stored at basecamp.Divblox.com. This means that feedback is accessible project-wide, for any environment.
+:::
+
+## Global Functions
+
+This set of files represents all the functions (set up into classes) that need to be available globally in your project. It is split up into 5 main files, as seen in the screenshot below. This includes both front-end javascript files as well as back-end php files. As mentioned before, whatever is edited in the project folder will override default Divblox functionality. The bulk of your project code will be either in these files, or in component-specific files.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_1-config-media/setup-global-functions.png')} />
+</div>
+
+### Divblox.js
+
+:::info
+Divblox.js is located at /Divblox/assets/js/Divblox.js
+:::
+
+Divblox.js is the main javascript function library that provides all of the core front-end Divblox functionality as globally available functions. It is required for Divblox to run and does the following:
+
+-   Manages the core dependencies
+-   Initializes and prepares the DOM
+-   Manages the state of your app
+-   Manages the routing of your app
+-   Manages the loading of components and component events
+-   Provides functions for components to communicate with their server side scripts
+-   Provides various helper functions to simplify your app development
+
+Some commonly used Divblox.js functions are:
+
+```js
+dxLog(Message, show_stack_trace);
+// A wrapper for console.log that provides more advanced logging capability
+// and can be turned off when in production mode
+dxRequestInternal(
+    url,
+    parameters,
+    on_success,
+    on_fail,
+    queue_on_offline,
+    element,
+    loading_text
+);
+// A wrapper for the jQuery $.post method with some additional Divblox functionality:
+// - Ensures that the on_success and on_fail callbacks receive a structured object
+// - Provides for queuing of request, either on- or offline
+// - Provides for disabling the calling element and displaying an appropriate message while
+//   the request is handled
+// - Also manages authentication tokens between the front-end and back-end
+showAlert(
+    AlertStr,
+    Icon,
+    ButtonArray,
+    AutoHide,
+    TimeUntilAutoHide,
+    ConfirmFunction,
+    CancelFunction
+);
+// A wrapper for the sweetalert library that provides for nicer alerts
+showToast(
+    title,
+    toast_message,
+    position,
+    icon_path,
+    toast_time_stamp,
+    auto_hide
+);
+// Allows for presenting a Bootstrap toast type message on the screen
+```
+
+:::info
+Divblox.js should not be modified since the framework relies on its integrity. The developer should rather use `project.js` to override specific functions as required
+:::
+
+### Project.js
+
+:::info
+project.js is located at /project/assets/js/project.js
+:::
+
+project.js is where the developer can add variables and functions that should always be globally available. It is a core dependency for Divblox and is always loaded directly after Divblox.js.
+This means that it can also be used to override specific Divblox.js functions as required.
+
+### Divblox Global Functions
+
+:::info
+The API endpoint for the global functions is located at `/project/api/global_functions.php`
+:::
+
+The main purpose of the global functions is to handle any system-wide server requests. This is very useful when you want to create a general server function that can be reused in multiple places, instead of individually implemented per component. The script should always return a JSON string with at least one parameter called "Result".
+
+You can send a request to this script by using the following snippet:
+
+```js
+dxRequestInternal(
+    // The path to the global request handler on the server
+    getServerRootPath() + "project/assets/php/global_request_handler.php",
+    // The function to execute, along with additional inputs
+    {
+        f: "aFunctionToExecute",
+        additional_input_variable: "example",
+    },
+    function (data_obj) {
+        // If the request was successful
+    },
+    function (data) {
+        // If the request was not successful
+    }
+);
+```
+
+### Project Functions
+
+:::info
+ProjectFunctions is an abstract class that is located at /project/assets/php/project_functions.php
+:::
+
+ProjectFunctions is intended to be used as a space where php functions that should be globally available can be housed.
+It extends the core Divblox class "FrameworkFunctions" that provides many of the core Divblox server side features.
+This means that you can call the following from any php script the requires Divblox.php:
+
+```php
+    ProjectFunctions::myFunction();
+```
+
+### Project Classes
+
+:::info
+project_classes.php is a collection of globally available php classes and is located at /project/assets/php/project_classes.php.
+:::
+You can add any custom classes to the project_classes.php script to make them globally available.
+
+The core project classes are:
+
+-   **ProjectAccessManager**, which extends AccessManager and is responsible for managing access to components and objects,
+    based on the currently logged in user
+
+:::info
+By default, component access is open to **ANY** user to allow the developer to get started quickly. This should be removed
+:::
+as soon as possible to enforce proper security for your solution:
+
+```php
+public static function getComponentAccess($AccountId = -1, $ComponentName = '') {
+    $InitialReturn = parent::getComponentAccess($AccountId,$ComponentName);
+    if ($InitialReturn == true) {
+        return true;
+    }
+    // THIS LINE SHOULD BE REMOVED
+    return true;
+    // TODO: This is a temporary measure to allow you to get
+    // started quickly without restrictions. Remove this and implement correctly
+    // for your solution. NB! THIS GIVES ACCESS TO ALL COMPONENTS TO ANY USER!!!
+}
+```
+
+-   **ProjectComponentController**, which extends ComponentController and allows for component php scripts to function correctly
+-   **FileUploader**, which deals with storing files as data objects once they are uploaded to the server
+-   **PublicApi**, which extends PublicApi_Base and provides the outline for how to expose a Divblox api via an endpoint
+
+## Media Library
+
+This is a visual tool to help with importing media for those who prefer a 'drag and drop' approach.
+
+<Tabs
+    defaultValue="upload"
+    values={[
+        {label: 'Uploading a file', value: 'upload'},
+        {label: 'Editing an upload', value: 'edit'},
+        {label: 'Upload info', value: 'info'},
+    ]}>
+    <TabItem value="upload">
+        <div style={{margin: 'auto'}}>
+            <img data-action="zoom"  alt="Upload" src={useBaseUrl('_the-basics-media/_1-config-media/setup-medialibrary1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="edit">
+        <div  style={{margin: 'auto'}}>
+            <ul>
+                <li>You can do basic editing on the upload such as cropping and resizing.</li>
+            </ul>
+            <img data-action="zoom"  alt="Edit" src={useBaseUrl('_the-basics-media/_1-config-media/setup-medialibrary2.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="info">
+        <div  style={{margin: 'auto'}}>
+            Once the upload is complete you can view:
+                <ul>
+                    <li>The autogenerated file name of the image</li>
+                    <li>The absolute and relative path to the image</li>
+                </ul>
+            <img data-action="zoom"  alt="Information" src={useBaseUrl('_the-basics-media/_1-config-media/setup-medialibrary3.png')}/>
+        </div>
+    </TabItem>
+</Tabs>
+
+## Navigation
+
+Divblox tries to simplify the generic processes of app creation as much as possible. As such, the navigation tab is where you can create menus which can be later placed into navigation components across your project easily.
+Below is a screenshot of how to use the navigation tab in the setup page. Menus are defined here, and later placed into navigation components.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Navigation" src={useBaseUrl('_the-basics-media/_1-config-media/setup-navigation.png')}/>
+</div>
+
+You can create the menus here, defining how many navigation items you have and what text and/or icons are displayed.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Menu Modal" src={useBaseUrl('_the-basics-media/_1-config-media/menu-modal.png')}/>
+</div>
+
+It is then as simple as editing the class name in the navigation component to include or remove any project-wide menu you have created.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Navbar JS Edit" src={useBaseUrl('_the-basics-media/_1-config-media/navbar-js-menu-edit.png')}/>
+</div>
+
+The suggestion approach to handling navigation components is as follows:
+
+1. Create your desired menu (via navigation tab in setup page).
+2. Pick a suitable navigation bar and duplicate it using the component builder (naming it according to your project).
+3. Edit the classname in your newly created navigation component to `menu-your-menu-name`.
+
+Duplicating the navigation component is suggested so that the default navigation remain as templates. More importantly, this means that if any future Divblox updates change the default navigation, your project will not be affected.
+## Updates
+
+When Divblox updates become available, you will be notified in the bottom right corner of the setup page.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Update" src={useBaseUrl('_the-basics-media/_1-config-media/update1.png')}/>
+</div>
+
+To prevent unexpected data loss, it is important to understand how the Divblox auto-updater works. When the auto-updater is run, core Divblox files will be replaced on your local machine with newer versions. This is why it is highly encouraged to leave Divblox-specific files untouched and use project-specific files to override any functionality. This is also a good time to stress the importance of using some sort of version control system like git to make sure that you have the ability to revert unintended changes.
+
+For users who would like to review each file change, or if the updater seems to not be working, you can update Divblox using a patch. This is found in basecamp. All that is required is for you to enter your current Divblox version. A zipped patch file will then be downloaded containing only the files changed between your version and the current version.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Update2" src={useBaseUrl('_the-basics-media/_1-config-media/update2.png')}/>
+</div>

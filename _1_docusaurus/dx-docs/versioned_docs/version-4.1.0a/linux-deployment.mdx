@@ -1,0 +1,551 @@
+---
+id: linux-deployment
+title: "Linux Deployment"
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+// import "zoom-vanilla.js/dist/zoom.css"
+// import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
+checkUrlScroll();
+
+## Linux Deployment
+
+This section will take you through how to get a linux (Ubuntu 18.04 LTS) system up and running to build with Divblox. We will configure a LAMP stack, necessary permissions and IonCube to run Divblox.
+
+### Install Ubuntu 18.04 image
+
+At time of writing, the latest stable version is Ubuntu 18.04, found [here](https://ubuntu.com/download/desktop). Download the .iso file (approx. 5 GB).
+
+### Create a bootable flashdrive
+
+You will need a USB stick or portable hard drive with at least 8 GB of memory. Note that your memory device will be formatted upon completion of this step.
+
+:::danger
+All previous data will be erased!
+:::
+
+Download Rufus (recommended) [here](https://rufus.ie/), or another similar application which will enable you to turn your memory stick into a bootable device.
+
+Continuing with Rufus: When you insert your USB stick, the device field should automatically update. You want to select the chosen memory stick, and _FreeDOS_ as your boot selection. Now you can select the image you want to use. The default search folder is Downloads, so if this is your first attempt you should only see the newly downloaded image file. Leave all the other settings as default. You may rename the device as you wish. Below are some snapshots of the process.
+
+<Tabs
+    defaultValue="usb"
+    values={[
+        {label: 'Without USB stick', value: 'usb'},
+        {label: 'With USB stick and .iso selected', value: 'usb-iso'},
+        {label: 'Complete installation', value: 'complete'}
+    ]}>
+    <TabItem value="usb">
+        <div className="text--center">
+            <img data-action="zoom"  alt="RufusBefore" src={useBaseUrl('_deployment-media/rufus_before.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="usb-iso">
+        <div className="text--center">
+            <img data-action="zoom"  alt="RufusAfter" src={useBaseUrl('_deployment-media/rufus_after.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="complete">
+        <div className="text--center">
+            <img data-action="zoom"  alt="RufusComplete" src={useBaseUrl('_deployment-media/rufus_complete.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+Once you are done, you can click _Close_ and eject your newly bootable flash disk.
+
+### Restart machine with flashdrive inserted
+
+To boot with Linux Ubuntu, you need to restart your chosen computer with the flash drive inserted. Your computer may automatically boot up from the drive, but if not, you need to press `F1`, `F2`, `ESC`, `F8` or `F10` as your PC is starting (depending on system). Below are screenshots of the Ubuntu installation process.
+
+<Tabs
+    defaultValue="ubuntu1"
+    values={[
+        {label: 'Install Ubuntu', value: 'ubuntu1'},
+        {label: 'Select Language', value: 'ubuntu2'},
+        {label: 'Install options', value: 'ubuntu3'},
+        {label: 'Install Type', value: 'ubuntu4'},
+        {label: 'Location', value: 'ubuntu5'},
+        {label: 'Personal', value: 'ubuntu6'},
+        {label: 'Install Process', value: 'ubuntu7'},
+        {label: 'Install Complete', value: 'ubuntu8'},
+        {label: 'Sign In', value: 'ubuntu9'},
+    ]}>
+    <TabItem value="ubuntu1">
+        <ul>
+            <li> Select Install Ubuntu. </li>
+            <li>You are also able to try Ubuntu without installing it. </li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu1" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu2">
+        <ul>
+            <li> Select your prefered language.</li>
+            <li>Note that English UK and English US have a few special characters swapped around.</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu2" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu3">
+        <ul>
+            <li>Select 'Normal Installation'. This comes with the default bundle of apps and utilities including a music player, games and lauchpad for Linux apps.</li>
+            <li>If however, you are comfortable with what you want and need, you can proceed to the custom installation which will be a much more lightweight installation.</li>
+            <li>It is advised to have 'Download Updates' checked and to be connected to the internet so Ubuntu can update during the installation process</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu3" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu4">
+        <ul>
+            <li>We want to erase our entire disk and install a clean Ubuntu OS</li>
+            <li>The other options allow you to install Ubuntu alongside your current OS,</li>
+            <li>and for advanced users, you can configure the installation by checking 'Something Else'</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu4" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu5">
+        <ul>
+            <li>Select your location</li>
+            <li>If you have internet connection, this should be auto-populated</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu5" src={useBaseUrl('_deployment-media/ubuntu1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu6">
+        <ul>
+            <li>Fill in your personal details and password</li>
+            <li>Remember that this will be your user password, so make it a secure</li>
+            <li>You can also decide whether to be remembered or not</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu6" src={useBaseUrl('_deployment-media/ubuntu6.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu7">
+        <ul>
+            <li>Screenshot of the installation</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu7" src={useBaseUrl('_deployment-media/ubuntu7.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu8">
+        <ul>
+            <li>Screenshot of the completed installation</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu8" src={useBaseUrl('_deployment-media/ubuntu8.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ubuntu9">
+        <ul>
+            <li>Screenshot of the sign in screen, meaning you have successfully installed and booted Ubuntu 18.04!</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="Ubuntu9" src={useBaseUrl('_deployment-media/ubuntu9.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+### Configure base Ubuntu OS
+
+In this step we will make minor changes to suite our needs. As you log in you will be prompted to do a few things:
+
+
+<Tabs
+    defaultValue="in1"
+    values={[
+        {label: 'Welcome', value: 'in1'},
+        {label: 'Livepatch', value: 'in2'},
+        {label: 'Ubuntu Feedback', value: 'in3'},
+        {label: 'App Store', value: 'in4'},
+        {label: 'Ubuntu Update', value: 'in5'},
+    ]}>
+    <TabItem value="in1">
+        <ul>
+            <li>Note the changes to UX in newer version of Ubuntu</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="in1" src={useBaseUrl('_deployment-media/in1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="in2">
+        <ul>
+            <li>There is no need to set up LivePatch for now</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="in2" src={useBaseUrl('_deployment-media/in2.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="in3">
+        <ul>
+            <li>You can decide whether or not to provide information to improve Ubuntu</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="in3" src={useBaseUrl('_deployment-media/in3.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="in4">
+        <ul>
+            <li>You can search and download Linux-ready applications from the Ubuntu software store</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="in4" src={useBaseUrl('_deployment-media/in4.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="in5">
+        <ul>
+            <li>Allow Ubuntu to update (not compulsory)</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="in5" src={useBaseUrl('_deployment-media/in5.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+
+### Configuring a deployment environment
+
+To do this, we need a webserver, backend support as well as database system.
+
+#### Webserver: Apache2
+
+There are two main web servers you can use, namely Apache and Nginx, and either would work as they are both fast, secure, reliable and most importantly well-supported. We will be using Apache as it is the most popular.
+
+We will now be working in the Linux terminal, which can be found in your applications or opened by pressing `CTRL+ALT+T`. It is important to note that Linux works differently to Windows when it comes to permissions. When running any memory-changing commands like `install`, `update` or `delete` you will not be able to unless you do it as a superuser. Luckily this is very simple to do. All you have to do is type `sudo` before any of the commands. Another thing to note is that to cancel any given command while it is still running, all you need to do is press `CTRL+C`.
+
+The following commands will:
+
+1. Install Apache
+
+```
+sudo apt install apache2
+```
+
+You will be prompted to confirm whether you want to continue, and will be shown how much memory will be stored. You will also see all the files being unpacked.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Installs 1" src={useBaseUrl('_deployment-media/installs1.png')} />
+</div>
+
+1. Start the Apache Server
+
+```
+sudo systemctl start apache2
+```
+
+3. Enable Apache to automatically start up when the server boots up
+
+```
+sudo systemctl enable apache2
+```
+
+4. Check the current status of the web service
+
+```
+sudo systemctl status apache2
+```
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Installs 2" src={useBaseUrl('_deployment-media/installs2.png')} />
+</div>
+
+And now we can press `CTRL+C` to exit the status command. We can see that Apache is up and running.
+
+#### Server Language: PHP 7.3
+
+For this step we will use Ondřej Surý’s PPA (Personal Package Archive) as it has everything we will need. To do this we will firstly need to install software-properties-common and python-software-properties package.
+
+```
+sudo apt install software-properties-common python-software-properties
+```
+
+Once the installations are complete we can proceed to add the PPA:
+
+```
+LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+```
+
+You can read about what is included in the PPA and click enter to start the download. We then update the sources to reflect any changes.
+
+```
+apt update
+```
+
+We now install PHP 7.3 by running and confirming the following command.
+
+```
+sudo apt install php7.3 php7.3-cli php7.3-common
+```
+
+We can also check if we already have PHP 7.3 by checking the current version:
+
+```
+php -v
+```
+
+This should give us:
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Installs 3" src={useBaseUrl('_deployment-media/installs3.png')} />
+</div>
+
+Now, we will install the most commonly used PHP modules with the following command:
+
+```
+sudo apt install php-pear php7.3-curl php7.3-dev php7.3-gd php7.3-mbstring php7.3-zip php7.3-mysql php7.3-xml php7.3-fpm libapache2-mod-php7.3 php7.3-imagick php7.3-recode php7.3-tidy php7.3-xmlrpc php7.3-intl
+```
+
+If you want to install any further modules you can search for them with this command:
+
+```
+sudo apt-cache search php7.3
+```
+
+Or if you want to see all PHP modules available in Ubuntu, you can do so with:
+
+```
+sudo apt-cache search --names-only ^php
+```
+
+To make PHP 7.3 the default (although it should already be it), run:
+
+```
+sudo update-alternatives --set php /usr/bin/php7.3
+```
+
+To reflect any changes, we must always resstart the apache server:
+
+```
+sudo systemctl restart apache2
+```
+
+Our PHP should now be working, but we can't yet test it as Linux permissions will not let us write into files so easily. Lets install a different File Explorer which can open up files as a superuser. The original file explorer is called Nautilus and we will be replacing it with Nemo. To download Nemo:
+
+```
+sudo apt install nemo
+```
+
+Once it is installed you can find it with your other applications. Both Nautilus and Nemo are called 'Files', but you can distiguish them by the icons. We want to use Nemo, which is the orange file icon. Once opened, navigate to File System and then /var/www/html . Right-click and open as root. You will be prompted to input your root password, after which you have writing access to that folder.
+
+You can now create an empty document with extension `.php`. (Ours is called phpTest.php) Copy the following code into your test php file: `<?php phpinfo(); ?>`. This function just displays current php version and information when called. If the file states 'read-only' it means you did not enter the folder with root access.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Installs 4" src={useBaseUrl('_deployment-media/installs4.png')} />
+</div>
+
+Once the code is saved, you can navigate to any browser, and search the URL `http://localhost/phpTest.php` and you should be able to see the following:
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Installs 5" src={useBaseUrl('_deployment-media/installs5.png')} />
+</div>
+
+If this is not the page you see, you have done something wrong. Check each step and make sure you have saved the file in the correct folder. Once PHP is installed and configured, we can move on and setup our database management.
+
+#### Database Server: MySQL
+
+MySQL is a relational database management system based off of the language SQL. We create databases to structure collections of data. To install MySQL and all the relevant dependacies we run the following commands:
+
+```
+sudo apt-get update
+sudo apt-get install mysql-server
+```
+
+To set up some configurations we run:
+
+```
+sudo mysql_secure_installation utility
+```
+
+The following options can be answered on the preference of the user, but here is what settings we used:
+
+1. Validate Password Plugin: NO
+2. Enter own password
+3. Confirm new password
+4. Remove Anonymous Users: YES
+5. Disallow root login remotely: YES
+6. Remove Test Database and access to it: YES
+7. Reload Privilege Tables Now: YES
+
+To ensure that the database server launches automatically even after a reboot:
+
+```
+sudo systemctl enable mysql
+```
+
+Now start the mysql shell (the most basic way of working with the mysql server):
+
+```
+sudo mysql -u root -p
+```
+
+You will be prompted for a password, this is the root password you set up on installation. Once you are in the mysql shell, you can execute mysql commands and queries. Note that using all caps for sql query commands is standard, but is not syntax-enforced. Lets start with how to reset the root password:
+
+```
+UPDATE mysql.user SET authentication_string = PASSWORD('new_password') WHERE User = 'root';
+```
+
+Whenever we need to change user information, we must run the following command to reflect the changes:
+
+```
+FLUSH PRIVILEGES;
+```
+
+To see what users are stored in the database, we run the following command:
+
+```
+SELECT User, Host, authentication_string FROM mysql.user;
+```
+
+We select the columns User, Host and authentication_string from the table user in the database mysql. This is the expected result:
+
+<div className="text--center">
+    <img data-action="zoom"  alt="MySQL 1" src={useBaseUrl('_deployment-media/mysql1.png')} />
+</div>
+
+YOu can exit the MySQL shell at any time by entering 'exit' and hitting enter.
+
+#### Database Manager: phpMyAdmin
+
+phpMyAdmin is a web interface for database management. It is by far the most popular MySQL administration tool. To install it we run:
+
+```
+sudo apt update
+sudo apt install phpmyadmin php-mbstring php-gettext
+```
+
+For server selection: Select Apache 2. Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.
+
+
+<Tabs
+    defaultValue="myphpadmin1"
+    values={[
+        {label: 'Select Server', value: 'myphpadmin1'},
+        {label: 'DB-Config', value: 'myphpadmin2'},
+    ]}>
+    <TabItem value="myphpadmin1">
+        <ul>
+            <li>Select Apache Server.</li>
+            <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="myphpadmin1" src={useBaseUrl('_deployment-media/phpmyadmin1.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="myphpadmin2">
+        <ul>
+            <li>Select Yes</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="myphpadmin2" src={useBaseUrl('_deployment-media/phpmyadmin2.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+Once the installation is done, we need to explicitly enable the `mbstring` Php extension,
+
+```
+sudo phpenmod mbstring
+```
+
+And now restart the Apache2 server to reflect changes.
+
+```
+sudo systemctl restart apache2
+```
+
+Now that phpMyAdmin is installed and configured, the last step is to make sure that your MySQL users have the permissions to interact with the program. Ubuntu systems running newer MySQL versions (5.7 or later) authenticate the root user using an `auth-socket` instead of a password. This methos is more secure and allows for more usability in some cases, but is also troublesome when trying to give external programs like phpMyAdmin access to the user.
+
+To circumvent this and be able to log into phpMyAdmin as your current user, we need to set the authentication method to `mysql_native_password`.
+
+Enter the MySQL shell and enter your password
+
+```
+sudo mysql -u root -p
+```
+
+We can check the authentication type of each of your MySQL users running the following command:
+
+```
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+```
+
+### Permissions
+
+Now we have a basic LAMP stack set up, and can proceed to download the latest version of Divblox [here](https://github.com/Divblox/Divblox/). Once the zipped file is downloaded, copy it into /var/www/html and unzip it.
+
+To allow Divblox and ourselves to edit and write to that destination, we will have to edit the linux user and group permissions to that directory. This is done by giving the web server access to local storage.
+
+First we add our current user to the 'www-data' group
+
+```
+sudo usermod -a -G www-data divblox
+```
+
+Then we give recursive ownership of `/var/www/html` to 'www-data'.
+
+```
+sudo chown -R www-data /var/www/html
+```
+
+We then set the permissions of the `/var/www/html` folder recursively to give read, write and execute permissions to the group of `/var/www/html`. This is necessary as we need to have the permission to edit files from a local editor, as well as let Divblox auto-generate files from the web server.
+
+```
+sudo chmod -R 2770 /var/www/html
+sudo chmod -R g+rwxs /var/www/html
+```
+
+<!-- ```
+sudo chown -R www-data /var/www/html/divblox-master
+sudo chgrp -R www-data /var/www/html/divblox-master
+sudo chmod -R 2770 /var/www/html/divblox-master
+sudo chmod -R g+rwxs /var/www/html
+``` -->
+
+### Download and configure Divblox
+
+You should now be ready to install Divblox. Go to Github and download the zip file. Extract it in the `/var/www/html` folder. Ensure that your web server is running and navigate to `http://localhost/` or `http://localhost/[your-project-folder]` (if you placed Divblox within a sub folder). You should create an account with a secure password. Creating a project is explained <a href="https://divblox.github.io/#/getting-started?id=Initializing-a-new-Sandbox" target="_blank">here</a>. Remember to copy the free Divblox license key to authenticate yourself in the setup page.
+
+To open the Divblox setup page, browse to `http://localhost/Divblox` or `http://localhost/[your-project-folder]/Divblox`, depending on your installation. You should be able to log in as the user Divblox using the password "1".
+
+Once in the Divblox setup page, we want to go to the Installation Checker. You will be prompted to log in as Divblox admin to proceed. The page provided is there to monitor and make sure all relevant dependencies are installed and configured to run Divblox, providing useful feedback on how to solve installation related problems.
+
+Start with the right side of the page, downloading the IonCube zip and file requested. Place them in the required folders and restart the Apache2 server. If everything was installed correctly, you should have green boxes indicating that the Divblox config files are all there, correct versions of PHP, MySQL and Apache2 are installed and configured, as well as the fact that we have the necessary permissions needed for Divblox basecamp to operate.
+
+
+<Tabs
+    defaultValue="ioncube1"
+    values={[
+        {label: 'Before', value: 'ioncube1'},
+        {label: 'After', value: 'ioncube2'},
+    ]}>
+    <TabItem value="ioncube1">
+        <ul>
+            <li>Select Apache Server.</li>
+            <li>Note that no option is selected by default. You need to press `SPACE`, `TAB` and then `ENTER` to confirm Apache as the option.</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="ioncube1" src={useBaseUrl('_deployment-media/ion_cube_initial.png')} />
+        </div>
+    </TabItem>
+    <TabItem value="ioncube2">
+        <ul>
+            <li>Select Yes</li>
+        </ul>
+        <div className="text--center">
+            <img data-action="zoom"  alt="ioncube2" src={useBaseUrl('_deployment-media/ion_cube_final.png')} />
+        </div>
+    </TabItem>
+</Tabs>
+
+That's it! Everything is now configured and you are ready to start building apps with Divblox.

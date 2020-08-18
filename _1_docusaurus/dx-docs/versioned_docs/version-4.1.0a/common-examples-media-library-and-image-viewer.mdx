@@ -1,0 +1,74 @@
+---
+id: common-examples-media-library-and-image-viewer
+title: Media Library and Image Viewer
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {checkUrlScroll} from './custom.js';
+checkUrlScroll();
+
+Divblox allows you to handle all of your images from one place. This is done in the "Media Library" tab in the setup page, as show below.
+
+<div className="text--center">
+    <img alt="Create Component" src={useBaseUrl('_common-examples-media/media-library.png')} />
+</div>
+
+There are three (maybe more, if you are creative) ways to add an image into your Divblox page.
+
+1. Use a basic Divblox component (Simple HMTL image tag) and fill in the necessary file path. This is perfectly fine for individual images here and there.
+2. Use the default image viewer component, and make sure to update the image path in the page's `reset()` function. Note how we define the image viewer's UID
+so that we can call the `updateImage()` function on it uniquely. (If you do not specify it, the UID will be a unique random string)
+3. Use the default image viewer component, and pass it the relative image path as an input parameter i.e. `"arguments:{"image_path": "project/uploads/media/filename.png"}"`.
+
+The page's component.js is given below.
+
+```js
+if (typeof component_classes['pages_image_page'] === "undefined") {
+    class pages_image_page extends DivbloxDomBaseComponent {
+        constructor(inputs, supports_native, requires_native) {
+            super(inputs, supports_native, requires_native);
+            // Sub component config start
+            this.sub_component_definitions =
+                [{
+                    "component_load_path": "ungrouped/imageviewer",
+                    "parent_element": "jrPkd",
+                    "arguments": {
+                        // Set a UID for this component
+                        // highlight-next-line
+                        "uid": "imageviewer_1",
+                    }
+                },
+                    {
+                        "component_load_path": "ungrouped/imageviewer",
+                        "parent_element": "01DIl",
+                        // Set the image_path load argument for the image viewer
+                        // highlight-next-line
+                        "arguments": {"image_path": "project/uploads/media/fbd1be7af8321d83f139005dae538b23.jpg"}
+                    }];
+            // Sub component config end
+        }
+
+        reset(inputs, propagate) {
+            setActivePage("image_page", "image_page");
+            super.reset(inputs, propagate);
+            // Update the image every time the page refreshes
+            // highlight-next-line
+            getRegisteredComponent("imageviewer_1").updateImage("project/uploads/media/3a3f3a509b33b16bdb5c9bf362c63f8a.jpg");
+        }
+    }
+
+    component_classes['pages_image_page'] = pages_image_page;
+}
+```
+
+Below is a video runthrough of the 3 suggested ways of using the media library and using images in your project.
+
+<video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
+    <source src={useBaseUrl('_common-examples-media/MediaLibrary_ImageViewer.mp4')} type="video/mp4"/>
+</video>
+
+Using the image viewer component may not make sense if you are adding images ad hoc, as it is simpler to just add it using plain HTML.
+If you would like to theme your images with consistent borders, sizing and shadows for example, using a single image viewer component to
+display all of your system images would save you a lot of time. The developer is encouraged to create a copy of the default image viewer and experiment with this.
