@@ -32,6 +32,8 @@ The data model allows you define the following:
 -   All of your entities, their attributes, attribute types and their relationships to other entities
 -   The user roles that your app will allow for
 
+Below is the data model for a simple example we will use iin this section.
+
 <div className="text--center">
     <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/data-modeler-basic-concepts.png')} />
 </div>
@@ -80,6 +82,90 @@ Each entity will have its own base classes for the ORM. These base classes will 
 Each entity will then also have implemented classes that inherit from their base classes. These classes allow for the developer to change the way a certain class works from the default way, since the code in these classes will never be regenerated.
 This base class/implemented class approach is true for every area where Divblox generates ORM code.
 
+### ORM example case
+
+Let's take some time to familiarize ourselves with where this ORM code is generated, how it is structured, and what is available. You can find all the ORM-related classes
+in `project/assets/php/data_model_orm`.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/ORM-file-path.png')} />
+</div>
+
+Divblox generates all of the ORM-based code for each entity in `EntityNameGen.class.php`, and also generates a near-empty `EntityName.class.php` class for developers to use to override any necessary functionality. We will look through the task entity's `TaskGen.class.php` file and sift through what functions are available and which a developer will rarely use.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/taskgen.class.php.png')} />
+</div>
+
+The file contains 3 classes. The last two are only used for background functionality and developers should not worry about them too much. The first class, `TaskGen` is the
+important one that we will discuss.
+
+You are encouraged to peruse through these generated files further to acquant youself with the structure and available functionality. You will see that the first block of code sets all the necessary constants and variables needed in the specific entity. It then initializes each property with default values from the database. Next we will see the following:
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/1-load-and-count.png')} />
+</div>
+
+These are the class-wide load and count methods avaiable for this entity. The most commonly used functions are the last 3, where:
+
+1. Load() loads an instance of the Task entity by ID, allowing for optional clauses.
+2. LoadAll() retrieves all instances of the Task entity, again allowing optional clauses.
+3. CountAll() returns an integer count of rows (instances) of the Task entity table. 
+
+
+We then have Divblox query related methods. The functions BuildQueryStatement(), QueryCursor() and GetSelectedFields() are used in the background by dxQuery. The function QueryArrayCached() is a remnant of old days when PHP was largely inefficient and MySQL queries and results were cached for improved performance. You should not need to use this.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/2-query-related.png')} />
+</div>
+
+The remaining functions are:
+
+1. QuerySingle() 
+2. QuerryArray()
+3. QueryCount() 
+
+which return a single task object, an array of task objects or an integer count of objects respoectively. These functions will be discussed further in the next section.
+
+We then have index-based load methods, which perform 'select' queries by unique ID. These will be different for each entity depending on what relationships you have defined in the data model, as Divblox autogenerates methods for easy loading of relational data as well. 
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/3-index-based-load.png')} />
+</div>
+
+As you can see, we are able to call functions LoadArrayByProject() and LoadArrayByPerson() as each task has a singlular relationship to these two entities. You can also perform "count" operations in a likewise manner. 
+
+
+We then move on to the save, delete and reload methods. 
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/4-save-delete-reload.png')} />
+</div>
+
+We will again skip over the DeleteCache() function as it won't be used in majority of cases.
+
+The remaining functions allow us to save and delete instances of tasks individually, as well as delete or truncate entire tables. The reload() function reloads the data from the database to try make sure you have the latest version.
+
+You also have access to the public overriders `__get()`and `__set()` which can be used to save you time by allowing dynamic access to attributes in the entity. The getVirtualAttribute() function is also not used as Divblox does not currently use virtualisation.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/5-public-overriders.png')} />
+</div>
+
+We also have a set of functions that return information about the database.
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/6-class-info.png')} />
+</div>
+
+The first two are fairly straight-forward. The third function, `getDatabaseIndex()` is useful when you have more than one module (database connected to this project), as when working with intermodular relationships it makes quering easier. 
+
+Finally, we have the `Iterator()` and `getJson()` functions which work hand in hand. The `Iterator()` function returns an associative array of the entity attributes, and the `getJson() function converts this to valid JSON and returns that. 
+
+<div className="text--center">
+    <img data-action="zoom"  alt="Environments Screenshot" src={useBaseUrl('_the-basics-media/_2-data-modeler-media/7-iterator-json.png')} />
+</div>
+
 ### Divbox ORM Queries
 
 The querying logic behind all the Load methods in Divblox ORM classes is powered by dxQuery, or dxQ for short. Put simply, dxQ is a completely object oriented API to perform any SELECT-based query on your database to return any result or hierarchy of your ORM objects.
@@ -94,7 +180,7 @@ At its core, any dxQ query will return a collection of objects of the same type 
 -   **QueryArray**: to perform a dxQuery to return just an array of objects
 -   **QueryCount**: to perform a dxQuery to return an integer of the count of rows (e.g. "COUNT (\*)")
 
-> All three dxQuery methods expect two parameters, a dxQ Condition and an optional set of dxQ Clauses.
+> All three dxQuery methods can take two parameters, a dxQ Condition and an optional set of dxQ Clauses.
 
 -   dxQ Conditions are typically conditions that you would expect to find in a SQL WHERE clause, including Equal, GreaterThan, IsNotNull, etc.
 -   dxQ Clauses are additional clauses that you could add to alter your SQL statement, including methods to perform SQL equivalents of JOIN, DISTINCT, GROUP BY, ORDER BY and LIMIT.
@@ -108,13 +194,13 @@ At its core, any dxQ query will return a collection of objects of the same type 
 // Retrieve a single Task from the database
 $TaskObj = Task::QuerySingle(dxQ::All());
 
-//Retrieve all Tasks from the database
+// Retrieve all Tasks from the database
 $TaskArray = Task::QueryArray(dxQ::All());
 
-//Count all Tasks in the database
+// Count all Tasks in the database
 $TaskCount = Task::QueryCount(dxQ::All());
 
-//Retrieve all Tasks from the database where the TaskName is "A test task"
+// Retrieve all Tasks from the database where the TaskName is "A test task"
 $TaskArray = Task::QueryArray(dxQ::Equal(dxQN::Task()->TaskName,"A test task"));
 ```
 :::note
@@ -125,7 +211,7 @@ This will allow a lot greater flexibility in your data model. Because the framew
 
 #### dxQuery Nodes
 
-dxQ Nodes are any object table or association table (type tables are excluded), as well as any column within those tables. dxQ Node classes for your entire data model is generated for you during the code generation process.
+A dxQ Node is any object table or association table (type tables are excluded), as well as any column within those tables. dxQ Node classes for your entire data model are generated for you during the code generation process.
 
 But in addition to this, dxQ Nodes are completely interlinked together, matching the relationships that you have defined as foreign keys (or virtual foreign keys using a relationships script) in your database.
 
@@ -165,7 +251,7 @@ For almost all of the above dxQ Conditions, you are comparing a column with some
 -   `dxQ::Not()` - "Not" can only take in one dxQ Condition class (conditions can be passed in as parameters and/or as arrays).
     Because And/Or/Not conditions can take in any other condition, including other And/Or/Not conditions, you can embed these conditions into other conditions to create what ends up being a logic tree for your entire SQL Where clause.
 
-> Example
+Below are a few examples of dxQuery in practice.
 
 ```php
 //Select all Tasks where the TaskName is alphabetically "greater than" the Description
@@ -224,7 +310,7 @@ All dxQuery method calls take in an optional set of dxQ Clauses. dxQ Clauses all
 -   OrderBy and GroupBy follow the conventions of SQL ORDER BY and GROUP BY. It takes in a list of one or more dxQ Column Nodes. This list could be a parameterized list and/or an array.
      Specifically for OrderBy, to specify a dxQ Node that you wish to order by in descending order, add a "false" after the dxQ Node. So for example, `dxQ::OrderBy(dxQN::Task()->Description, false,dxQN::Task()->TaskName)` will do the SQL equivalent of "ORDER BY Description DESC, TaskName ASC".
 
--   Count, Minimum, Maximum , Average and Sum are aggregation-related clauses, and only work when GroupBy is specified. These methods take in an attribute name, which can then be restored using GetVirtualAttribute() on the object.
+-   Count, Minimum, Maximum , Average and Sum are aggregation-related clauses, and only work when GroupBy is specified.
 
 -   Having adds a SQL Having clause, which allows you to filter the results of your query based on the results of the aggregation-related functions. Having requires a Subquery, which is a SQL code snippet you create to specify the criteria to filter on. (See the Subquery section later in this tutorial for more information on those).
 
@@ -234,9 +320,11 @@ All dxQuery method calls take in an optional set of dxQ Clauses. dxQ Clauses all
 
 -   The select clause will allow you to manually specify the specific columns you wish to return for the query.
 
-!>All clauses must be wrapped around a single dxQ::Clause() call, which takes in any number of clause classes for your query.
+:::info
+All clauses must be wrapped around a single dxQ::Clause() call, which takes in any number of clause classes for your query.
+:::
 
-> Example
+Further example using dxQ::Clause: 
 
 ```php
 //Select all Tasks, Ordered by Description then TaskName
