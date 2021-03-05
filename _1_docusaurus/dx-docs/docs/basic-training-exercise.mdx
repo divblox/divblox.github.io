@@ -433,7 +433,7 @@ function mergeTickets() {
 ```
 
 Referring to the `Ticket::LoadByTicketUniqueId()` function that was called above: every Entity has an `EntityNameGen.class.php` file
-where Divblox generates ORM related functionality (located at `/divblox/config/database/data_model_orm/EntityNameGen.class.php`). It is a good idea to look through
+where Divblox generates ORM related functionality (located at `/project/assets/php/data_model_orm/generated/EntityNameGen.class.php`). It is a good idea to look through
 these classes once your data model is synchronised with a database, and familiarise yourself with what is available.
 We will briefly highlight some of this functionality for the TicketGen class specifically.
 
@@ -777,7 +777,7 @@ public function Function5() {
 You will end up with a nested array of objects, structured something like this:
 
 <div className="text--center">
-    <img data-action="zoom"  alt="Function 6 diagram" src={useBaseUrl('_divblox-best-practices-media/example-bottom-nav2.png')} />
+    <img data-action="zoom"  alt="bte-8-8TimeComparison" src={useBaseUrl('_basic-training-media/bte-8-8-beastObject.png')} />
 </div>
 
 For each account (defined by it's email address) we want to see an array of all the categories used in their tickets. For each of those account-used categories, we want to see both the category's total tickets, as well as the account's category total ticket count.
@@ -905,7 +905,7 @@ In this last step, we will have to change our data model slightly. Let us includ
 
 This optimization is intended for when our dataset becomes extremely large, and the cost of making even an optimized query in a loop becomes too high. In this optimization we are focusing on preparing our data for reporting purposes rather than aggregating after the fact.
 
-We will need to write the functionality that calculates the `TicketCount` into the `Save()` and `Delete()` functions of the Ticket ORM class, meaning that any time a ticket is saved or deleted, the `TicketCount` will be updated. We can do this by overriding their default behaviour defined in `TicketGen.class.php` (`divblox/config/database/data_model_orm/generated/TicketGen.class.php`) in `Ticket.class.php` (`divblox/config/database/data_model_orm/Ticket.class.php`). We do this in accordance with the Divblox code-generation philosophy: never touch auto-generated files, but rather add functionality in classes that extend base Divblox functionality to prevent loss of work.
+We will need to write the functionality that calculates the `TicketCount` into the `Save()` and `Delete()` functions of the Ticket ORM class, meaning that any time a ticket is saved or deleted, the `TicketCount` will be updated. We can do this by overriding their default behaviour defined in `TicketGen.class.php` (`/project/assets/php/data_model_orm/generated/TicketGen.class.php`) in `Ticket.class.php` (`/project/assets/php/data_model_orm/generated/Ticket.class.php`). We do this in accordance with the Divblox code-generation philosophy: never touch auto-generated files, but rather add functionality in classes that extend base Divblox functionality to prevent loss of work.
 
 The code added to the class `Ticket` which extends the class `TicketGen` was:
 
