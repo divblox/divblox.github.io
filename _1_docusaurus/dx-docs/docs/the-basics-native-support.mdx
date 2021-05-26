@@ -6,10 +6,9 @@ title: Native Support
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {checkUrlScroll} from './custom.js';
-// import "zoom-vanilla.js/dist/zoom.css"
-// import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
+import {checkUrlScroll, loadTawkChatWidget} from './custom.js';
 checkUrlScroll();
+loadTawkChatWidget();
 
 Divblox allows you to export your progressive web app to a native project using [React Native](https://reactnative.dev/).
 To export to a native project you need the following:

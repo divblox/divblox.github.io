@@ -6,10 +6,9 @@ title: Configuration
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {checkUrlScroll} from './custom.js';
-// import "zoom-vanilla.js/dist/zoom.css"
-// import "zoom-vanilla.js/dist/zoom-vanilla.min.js"
+import {checkUrlScroll, loadTawkChatWidget} from './custom.js';
 checkUrlScroll();
+loadTawkChatWidget();
 
 In this section it is assumed that you have configured Divblox to function locally, either in the VM or natively. This includes having a local version of the base
 divblox public repo. It is also assumed that you have created a Divblox account.
