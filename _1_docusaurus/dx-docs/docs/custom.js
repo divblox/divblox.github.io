@@ -15,13 +15,15 @@ const checkUrlScroll = () => {
 };
 
 const loadTawkChatWidget = () => {
-    let s1 = document.createElement("script");
-    let s0 = document.getElementsByTagName("script")[0];
+    if (typeof window !== "undefined") {
+        let s1 = document.createElement("script");
+        let s0 = document.getElementsByTagName("script")[0];
 
-    s1.async = true;
-    s1.src='https://embed.tawk.to/5e2aa42bdaaca76c6fcfa354/default';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
+        s1.async = true;
+        s1.src='https://embed.tawk.to/5e2aa42bdaaca76c6fcfa354/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    }
 };
 export {checkUrlScroll, loadTawkChatWidget};
