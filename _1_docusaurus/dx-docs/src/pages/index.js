@@ -79,7 +79,7 @@ function Home() {
                         src={useBaseUrl("_media/divblox-logo-1.png")}
                     />
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
-                    <p>v4.1.4</p>
+                    <p>v4.2.0</p>
                     <div className={styles.buttons}>
                         <Link
                             className={clsx(
