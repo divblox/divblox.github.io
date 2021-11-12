@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:minor-fixes-dsv" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="70917735-4586-4f2c-8c1d-9c212cc46f62" name="Default Changelist" comment="Updated to v4.4.0 and some minor advanced training bug fixes">
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" afterDir="false" />
+    </list>
+    <list id="38709168-796d-4c59-bd85-72159c150745" name="Added tawk chat widget" comment="Added tawk chat widget" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="updated-training-exercise-brief-dsv" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="9fc9f161-6933-4a1d-a583-c7be98c152f8" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9fc9f161-6933-4a1d-a583-c7be98c152f8" />
+        <option name="url" value="https://github.com/divblox/divblox.github.io.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectId" id="1f2R6S6IQgZTY0EY6FaJ1fZd4I8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Markdown" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_the-basics-media/_1-config-media" />
+      <recent name="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs" />
+      <recent name="$PROJECT_DIR$/dx-docs/static" />
+      <recent name="$PROJECT_DIR$/dx-docs/docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_basic-training-media" />
+      <recent name="$PROJECT_DIR$/docusaurus" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="70917735-4586-4f2c-8c1d-9c212cc46f62" name="Default Changelist" comment="" />
+      <changelist id="38709168-796d-4c59-bd85-72159c150745" name="Added tawk chat widget" comment="" />
+      <created>1595414025203</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595414025203</updated>
+      <workItem from="1595414026698" duration="21666000" />
+      <workItem from="1595512536301" duration="3936000" />
+      <workItem from="1595578731079" duration="12073000" />
+      <workItem from="1595784660701" duration="17285000" />
+      <workItem from="1595917022574" duration="3593000" />
+      <workItem from="1595931975353" duration="6686000" />
+      <workItem from="1596047336474" duration="204000" />
+      <workItem from="1596089999763" duration="14015000" />
+      <workItem from="1596190245140" duration="711000" />
+      <workItem from="1596438317355" duration="3659000" />
+      <workItem from="1596460064314" duration="227000" />
+      <workItem from="1596467346227" duration="285000" />
+      <workItem from="1596522035758" duration="14193000" />
+      <workItem from="1596617856789" duration="2915000" />
+      <workItem from="1596625397883" duration="9167000" />
+      <workItem from="1596695626801" duration="1082000" />
+      <workItem from="1596793659985" duration="5221000" />
+      <workItem from="1597655046287" duration="16223000" />
+      <workItem from="1597736098985" duration="7001000" />
+      <workItem from="1597927749793" duration="1853000" />
+      <workItem from="1598261214407" duration="223000" />
+      <workItem from="1598343601891" duration="476000" />
+      <workItem from="1598858910762" duration="3460000" />
+      <workItem from="1598871127910" duration="17000" />
+      <workItem from="1598877673406" duration="356000" />
+      <workItem from="1599222873453" duration="312000" />
+      <workItem from="1599468196215" duration="18000" />
+      <workItem from="1599821462038" duration="772000" />
+      <workItem from="1605269822975" duration="1127000" />
+      <workItem from="1605682892138" duration="142000" />
+      <workItem from="1605693692171" duration="22000" />
+      <workItem from="1614929429427" duration="2039000" />
+      <workItem from="1618407741736" duration="939000" />
+      <workItem from="1618470354722" duration="40000" />
+      <workItem from="1622029059724" duration="5152000" />
+      <workItem from="1622119527063" duration="2062000" />
+      <workItem from="1623140834946" duration="213000" />
+      <workItem from="1623142728854" duration="36000" />
+      <workItem from="1623142786894" duration="697000" />
+      <workItem from="1623147118687" duration="508000" />
+      <workItem from="1623399134028" duration="15000" />
+      <workItem from="1623399212853" duration="203000" />
+      <workItem from="1633078648617" duration="1603000" />
+      <workItem from="1633098258633" duration="105000" />
+      <workItem from="1633098561746" duration="114000" />
+      <workItem from="1635239413023" duration="2000" />
+      <workItem from="1636711712521" duration="1938000" />
+    </task>
+    <task id="LOCAL-00001" summary="Minor changes, updated to v4.1.2 and built for production">
+      <created>1605270284976</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605270284976</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added tawk chat widget">
+      <created>1622032774707</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622032774707</updated>
+    </task>
+    <task id="LOCAL-00003" summary="updated advanced exercise vrief">
+      <created>1622032978779</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622032978779</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added tawk chat widget">
+      <created>1622033043991</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622033043991</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added window existence check to not trip stupid React build rules">
+      <created>1622034054640</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1622034054640</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Built for prod">
+      <created>1622034289772</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622034289772</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated for v4.2.0, Added maintenance mode">
+      <created>1622121440037</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1622121440037</updated>
+    </task>
+    <task id="LOCAL-00008" summary="built for prod">
+      <created>1622121878382</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1622121878382</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated to v4.4.0 and some minor advanced training bug fixes">
+      <created>1636716137500</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1636716137500</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Minor changes, updated to v4.1.2 and built for production" />
+    <MESSAGE value="updated advanced exercise brief" />
+    <MESSAGE value="Added tawk chat widget" />
+    <MESSAGE value="Added window existence check to not trip stupid React build rules" />
+    <MESSAGE value="Built for prod" />
+    <MESSAGE value="Updated for v4.2.0, Added maintenance mode" />
+    <MESSAGE value="built for prod" />
+    <MESSAGE value="Updated to v4.4.0 and some minor advanced training bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to v4.4.0 and some minor advanced training bug fixes" />
+  </component>
+</project>
