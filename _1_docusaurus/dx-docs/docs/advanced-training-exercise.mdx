@@ -55,7 +55,7 @@ This HierarchyPath value will be used in the frontend to indicate the actual cat
 </div>
 
 In the 'category_crud_create' component we can immediately add the code to auto-populate the two new attributes accordingly.
-In the javascript component.js file, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. This is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default Divblox functionality.
+In the javascript component.js file, we override the `saveEntity()` function to NOT set the global constrain ID to the current one. This is because we want to keep the constrainID we initially started with in that variable. The rest of the code is default divbloxPHP functionality.
 
 ```js
 saveEntity() {
@@ -191,7 +191,7 @@ This is the page a user will be redirected to only by clicking on a category to 
 
 ### Breadcrumbs
 
-The breadcrumb basic component can be easily added via Divblox's component builder. We will do this in the 'category_update' page component. The following default HTML code:
+The breadcrumb basic component can be easily added via divbloxPHP's component builder. We will do this in the 'category_update' page component. The following default HTML code:
 
 ```html
 <nav aria-label="breadcrumb">
@@ -246,7 +246,7 @@ initCustomFunctions() {
 }
 ```
 
-The `updateBreadCrumbs()` function handles the request to the server using Divblox's `dxRequestInternal()` function. The parameters we send to the backend are the function name we want to call and the category ID. The success function deals with formatting the returned array into HTML and displaying it.
+The `updateBreadCrumbs()` function handles the request to the server using divbloxPHP's `dxRequestInternal()` function. The parameters we send to the backend are the function name we want to call and the category ID. The success function deals with formatting the returned array into HTML and displaying it.
 
 ```js
 updateBreadCrumbs() {
@@ -356,7 +356,7 @@ On the javascript side, we do a few things. Below you will see the whole javascr
 
 1. We change the behaviour of the `on_item_clicked()` function to reload the current page with the new category constraint ID.
 2. There is a lot of auto-generated boilerplate code relating to the modal, which we will not use. However, we do want to put a 'category_create' component in the modal. This is again as easy as a few clicks in the the component builder.
-3. Change the outcome of the event 'category_created'. Divblox has built in boilerplate code for such events, which we fill in to both hide the modal and refresh the page.
+3. Change the outcome of the event 'category_created'. DivbloxPHP has built in boilerplate code for such events, which we fill in to both hide the modal and refresh the page.
 
 <!-- ```js -->
 <!-- if (typeof component_classes['data_model_subcategory_list'] === "undefined") { -->
@@ -451,7 +451,7 @@ We have already set up our 'create' and 'update' components to work in a streaml
 -   after which you are navigated to the ticket_update page where you can complete all other relevant fields.
 
 We now want to have a sub tasks list and a notes list in this component.
-We first create the CRUD components for each using the Divblox Component Builder,
+We first create the CRUD components for each using the divbloxPHP Component Builder,
 after which we just insert them into our ticket_crud_update' component (in their own row, taking up equal 6 columns each in bootstrap terms).
 
 <video width="100%" height="100%" playsInline  muted poster={useBaseUrl('img/video-placeholder.png')}   preload="true" controls>
@@ -815,7 +815,7 @@ Now for the backend side. Below is the note update component.php file.
 Firstly, we override the default `getObjectData()` function. What we added here is backend validation for the existence and validity of the attachment by checking the relational entity `FileDocument`. The only return values the front end can receive is an empty string or a valid attachment path string that points to a file that exists in the database.
 
 Secondly, we need to make sure that if we delete any notes, we do not accidentally leave behind any orphaned files/images.
-This is done using Divblox's `doBeforeDeleteActions()` function.
+This is done using divbloxPHP's `doBeforeDeleteActions()` function.
 
 ```php
 require("../../../../divblox/divblox.php");

@@ -10,7 +10,7 @@ import {checkUrlScroll, loadTawkChatWidget} from './custom.js';
 checkUrlScroll();
 loadTawkChatWidget();
 
-> A Divblox sandbox is a special type of deployment environment that is created and owned by Divblox. This environment runs on Divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
+> A divbloxPHP sandbox is a special type of deployment environment that is created and owned by Divblox. This environment runs on Divblox's servers and is accessible to the public. This environment can only be managed by the user that initiated it.
 
 Below is a visualization of how to spin up a sandbox.
 
@@ -53,7 +53,7 @@ export const Box = ({children, color}) => (
         <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/3_data_modeler.png')} style={{height: '150px'}}/>
     </div>
     <div className="text--center">
-        3. Start by modeling your data structure using the Divblox data modeler
+        3. Start by modeling your data structure using the divbloxPHP data modeler
     </div>
 </Box>
 <Box color="#3578e5">
@@ -61,7 +61,7 @@ export const Box = ({children, color}) => (
         <img data-action="zoom"  alt="Sign in" src={useBaseUrl('_getting-started-media/4_component_builder.png')} style={{height: '150px'}}/>
     </div>
     <div className="text--center">
-        4. Create a variety of divblox components and pages using the component builder
+        4. Create a variety of divbloxPHP components and pages using the component builder
     </div>
 </Box>
 <Box color="#3578e5">
@@ -123,7 +123,7 @@ Creating a new sandbox is easy:
 Sandboxes are great for prototyping and even to deploy small projects, but if you are serious about your project,
 at some point you will need to download your sandbox progress and continue on a local development environment.
 
-To download your sandbox, all you need is a [local installation of Divblox](getting-started-3-from-scratch#download-divblox) with your [project's API key](the-basics-divblox-api-key) configured.
+To download your sandbox, all you need is a [local installation of divbloxPHP](getting-started-3-from-scratch#download-divblox) with your [project's API key](the-basics-divblox-api-key) configured.
 From here you can click on the "Sandboxes" setup block to download your sandbox or deploy your local changes to your sandbox.
 
 <div className="text--center">
@@ -135,7 +135,7 @@ From here you can click on the "Sandboxes" setup block to download your sandbox 
 
 ### Sandbox best practices
 
-Divblox makes it super easy to transfer content between your local deployment environments and your sandboxes, but this can also be risky.
+divbloxPHP makes it super easy to transfer content between your local deployment environments and your sandboxes, but this can also be risky.
 When downloading your sandbox to a local environment, always make sure that you have backed up your local project files. The following is a
 shortlist of tips to help you get the most out of sandboxes:
 

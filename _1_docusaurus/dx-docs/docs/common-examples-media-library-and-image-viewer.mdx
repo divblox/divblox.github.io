@@ -10,15 +10,15 @@ import {checkUrlScroll, loadTawkChatWidget} from './custom.js';
 checkUrlScroll();
 loadTawkChatWidget();
 
-Divblox allows you to handle all of your images from one place. This is done in the "Media Library" tab in the setup page, as show below.
+divbloxPHP allows you to handle all of your images from one place. This is done in the "Media Library" tab in the setup page, as show below.
 
 <div className="text--center">
     <img alt="Create Component" src={useBaseUrl('_common-examples-media/media-library.png')} />
 </div>
 
-There are three (maybe more, if you are creative) ways to add an image into your Divblox page.
+There are three (maybe more, if you are creative) ways to add an image into your divbloxPHP page.
 
-1. Use a basic Divblox component (Simple HMTL image tag) and fill in the necessary file path. This is perfectly fine for individual images here and there.
+1. Use a basic divbloxPHP component (Simple HMTL image tag) and fill in the necessary file path. This is perfectly fine for individual images here and there.
 2. Use the default image viewer component, and make sure to update the image path in the page's `reset()` function. Note how we define the image viewer's UID
 so that we can call the `updateImage()` function on it uniquely. (If you do not specify it, the UID will be a unique random string)
 3. Use the default image viewer component, and pass it the relative image path as an input parameter i.e. `"arguments:{"image_path": "project/uploads/media/filename.png"}"`.

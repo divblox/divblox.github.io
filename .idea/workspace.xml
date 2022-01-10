@@ -25,17 +25,20 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70917735-4586-4f2c-8c1d-9c212cc46f62" name="Default Changelist" comment="Updated to v4.4.0 and some minor advanced training bug fixes">
-      <change afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_media/divblox_php_black.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_media/divblox_php_white.png" afterDir="false" />
+    <list default="true" id="70917735-4586-4f2c-8c1d-9c212cc46f62" name="Default Changelist" comment="Synced to new M1 and updated dependencies and dxPHP images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-introduction.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-introduction.mdx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/styles.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/advanced-training-evaluation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/advanced-training-evaluation.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/advanced-training-exercise.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/advanced-training-exercise.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/basic-training-evaluation.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/basic-training-evaluation.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/basic-training-exercise.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/basic-training-exercise.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/common-examples-media-library-and-image-viewer.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/common-examples-media-library-and-image-viewer.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/divblox-best-practices.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/divblox-best-practices.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-1-sandbox.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-1-sandbox.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-2-virtualbox.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-2-virtualbox.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-3-from-scratch.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-3-from-scratch.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-data-modeler.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-data-modeler.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-divblox-components.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-divblox-components.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-native-support.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/the-basics-native-support.mdx" afterDir="false" />
     </list>
     <list id="38709168-796d-4c59-bd85-72159c150745" name="Added tawk chat widget" comment="Added tawk chat widget" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,7 +174,7 @@
       <workItem from="1633098561746" duration="114000" />
       <workItem from="1635239413023" duration="2000" />
       <workItem from="1636711712521" duration="1938000" />
-      <workItem from="1641816395849" duration="1689000" />
+      <workItem from="1641816395849" duration="2338000" />
     </task>
     <task id="LOCAL-00001" summary="Minor changes, updated to v4.1.2 and built for production">
       <created>1605270284976</created>
@@ -236,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636716137500</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Synced to new M1 and updated dependencies and dxPHP images">
+      <created>1641818215593</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641818215593</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +286,7 @@
     <MESSAGE value="Updated for v4.2.0, Added maintenance mode" />
     <MESSAGE value="built for prod" />
     <MESSAGE value="Updated to v4.4.0 and some minor advanced training bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to v4.4.0 and some minor advanced training bug fixes" />
+    <MESSAGE value="Synced to new M1 and updated dependencies and dxPHP images" />
+    <option name="LAST_COMMIT_MESSAGE" value="Synced to new M1 and updated dependencies and dxPHP images" />
   </component>
 </project>

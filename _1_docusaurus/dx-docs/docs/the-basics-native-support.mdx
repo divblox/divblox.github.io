@@ -10,7 +10,7 @@ import {checkUrlScroll, loadTawkChatWidget} from './custom.js';
 checkUrlScroll();
 loadTawkChatWidget();
 
-Divblox allows you to export your progressive web app to a native project using [React Native](https://reactnative.dev/).
+divbloxPHP allows you to export your progressive web app to a native project using [React Native](https://reactnative.dev/).
 To export to a native project you need the following:
 
 -   Your web app needs to be deployed on a server with an ssl certificate
@@ -18,14 +18,14 @@ To export to a native project you need the following:
     <div className="text--center">
         <img data-action="zoom"  alt="Native Export Config" src={useBaseUrl('_the-basics-media/_6-native-support-media/native-environment-config.png')} />
     </div>
--   Follow the steps in the "Export to Native" section on the Divblox setup page to configure React Native and export your environment of choice
+-   Follow the steps in the "Export to Native" section on the divbloxPHP setup page to configure React Native and export your environment of choice
 
 You can export a native app project for any of your configured environments. The export creates the following:
 
--   A React Native project, from the Divblox template, that acts as a wrapper for your web app
+-   A React Native project, from the divbloxPHP template, that acts as a wrapper for your web app
 -   The project already has supporting functions to communicate with your app environment's web server
 -   The project has a boot screen pre-installed (You can edit this for your app)
--   The project has Divblox icons pre-installed (You can edit these for your app)
+-   The project has divbloxPHP icons pre-installed (You can edit these for your app)
 -   The project checks for internet connectivity before trying to load your web environment and shows a helpful error message when it cannot connect
 -   The project automatically registers a device with a permanent authentication token as a native device to ensure ease of use in terms of user authentication
     (Meaning, once a user logs in they will stay logged in by default)
@@ -34,7 +34,7 @@ You can export a native app project for any of your configured environments. The
 ## Push Notifications
 
 :::info
-Divblox push notifications implement Firebase Cloud Messaging. API integration to register and send push notifications is already present in every Divblox project
+divbloxPHP push notifications implement Firebase Cloud Messaging. API integration to register and send push notifications is already present in every Divblox project
 :::
 
 Support for push notifications on the native device is provided for by an API that allows for the registration of devices and their push registration tokens.
@@ -43,13 +43,13 @@ The developer needs to implement the native library of their choice to handle pu
 ### Server-side
 
 In order to be able to send push notifications we need to have devices registered with push registration tokens.
-This data is stored in the entity "PushRegistration". A PushRegistration is device-specific, but Divblox will link the PushRegistration to the relevant
+This data is stored in the entity "PushRegistration". A PushRegistration is device-specific, but divbloxPHP will link the PushRegistration to the relevant
 Account if an authentication takes place.
 
 -   To register a device's push registration token we will use this api operation: `/api/global_functions/updatePushRegistration`.
 -   You can read more about how this operation works by visiting its docs page: `/api/global_functions/updatePushRegistration/docs`
 
-Push notifications can be sent from the server using the built-in Divblox Project Functions.
+Push notifications can be sent from the server using the built-in divbloxPHP Project Functions.
 In this example we want to send a push notification to all users with the role "Administrator":
 
 ```php
