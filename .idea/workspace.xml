@@ -26,7 +26,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70917735-4586-4f2c-8c1d-9c212cc46f62" name="Default Changelist" comment="Updated to v4.4.0 and some minor advanced training bug fixes">
+      <change afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_media/divblox_php_black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_media/divblox_php_white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-introduction.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/docs/getting-started-introduction.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/styles.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/src/pages/styles.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_1_docusaurus/dx-docs/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/_1_docusaurus/dx-docs/yarn.lock" afterDir="false" />
     </list>
     <list id="38709168-796d-4c59-bd85-72159c150745" name="Added tawk chat widget" comment="Added tawk chat widget" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +73,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1f2R6S6IQgZTY0EY6FaJ1fZd4I8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -95,6 +107,7 @@
       <recent name="$PROJECT_DIR$/dx-docs/docs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_media" />
       <recent name="$PROJECT_DIR$/_1_docusaurus/dx-docs/static/_basic-training-media" />
       <recent name="$PROJECT_DIR$/docusaurus" />
     </key>
@@ -158,6 +171,7 @@
       <workItem from="1633098561746" duration="114000" />
       <workItem from="1635239413023" duration="2000" />
       <workItem from="1636711712521" duration="1938000" />
+      <workItem from="1641816395849" duration="1689000" />
     </task>
     <task id="LOCAL-00001" summary="Minor changes, updated to v4.1.2 and built for production">
       <created>1605270284976</created>
@@ -250,7 +264,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />

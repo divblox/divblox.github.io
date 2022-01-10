@@ -75,11 +75,15 @@ function Home() {
                 <div className="container">
                     {/*<h1 className="hero__title">{siteConfig.title}</h1>*/}
                     <img
-                        alt="Create Component"
-                        src={useBaseUrl("_media/divblox-logo-1.png")}
+                        alt="Create Component" className={"hide-in-dark-mode"}
+                        src={useBaseUrl("_media/divblox_php_black.png")}
                     />
-                    <p className="hero__subtitle">{siteConfig.tagline}</p>
-                    <p>v4.4.0</p>
+                    <img
+                        alt="Create Component" className={"show-in-dark-mode"}
+                        src={useBaseUrl("_media/divblox_php_white.png")}
+                    />
+                    <p className="hero__subtitle dark-mode-adaptive-text">{siteConfig.tagline}</p>
+                    <p className={"dark-mode-adaptive-text"}>v4.5.0</p>
                     <div className={styles.buttons}>
                         <Link
                             className={clsx(

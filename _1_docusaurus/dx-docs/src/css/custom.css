@@ -17,6 +17,10 @@
   --ifm-code-font-size: 95%;
   --custom-card-discrete: #EAECED;
   --zoom-img-background: #fff;
+  --display-in-dark-mode: none;
+  --hide-in-dark-mode: block;
+  --custom-hero-background-color: var(--ifm-background-surface-color);
+  --paragraph-text-color: black;
 }
 
 [data-theme="dark"] {
@@ -29,6 +33,10 @@
   --ifm-color-primary-lightest: #F2FAFF;
   --custom-card-discrete: #2A333F;
   --zoom-img-background: #191A1B;
+  --display-in-dark-mode: block;
+  --hide-in-dark-mode: none;
+  --custom-hero-background-color: --ifm-navbar-background-color;
+  --paragraph-text-color: white;
 }
 
 .docusaurus-highlight-code-line {
@@ -56,11 +64,23 @@
   box-sizing: border-box;
 }
 
-
 .card{
   /*background-color: #D6F5FE;*/
   background-color: var(--custom-card-discrete);
   margin-top: 10px;
 }
+
+.show-in-dark-mode {
+  display: var(--display-in-dark-mode);
+}
+
+.hide-in-dark-mode {
+  display: var(--hide-in-dark-mode);
+}
+
+.dark-mode-adaptive-text {
+  color: var(--paragraph-text-color);
+}
+
 
 
