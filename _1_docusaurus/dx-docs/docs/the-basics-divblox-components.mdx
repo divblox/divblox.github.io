@@ -23,7 +23,7 @@ Virtually everything in divbloxPHP is a component. Components are used as the bu
 
 ### Data model components
 
-Data model components allow for the CRUD behaviour of any of your data model entities. Divblox can generate the following CRUD components from your data model:
+Data model components allow for the CRUD behaviour of any of your data model entities. divbloxPHP can generate the following CRUD components from your data model:
 
 -   **Create component:**
     -   Displays input boxes for the relevant attributes of your entity along with a save button.
@@ -86,7 +86,7 @@ Basic components are typically components that do not necessarily have a server-
 These can range from simple alerts and buttons, to modals and progress bars.
 
 :::info
-Divblox ships standard with the majority of [bootstrap's](https://getbootstrap.com/docs/4.3/components/alerts/) UI components
+divbloxPHP ships standard with the majority of [bootstrap's](https://getbootstrap.com/docs/4.3/components/alerts/) UI components
 :::
 
 ## Component DNA
@@ -147,7 +147,7 @@ if (typeof component_classes["ungrouped_demo_component"] === "undefined") {
 }
 ```
 
-As seen above, this class `ungrouped_demo_component` extends the `DivbloxDomBaseComponent` class from which every Divblox component inherits. This class manages the following behaviour for each component:
+As seen above, this class `ungrouped_demo_component` extends the `DivbloxDomBaseComponent` class from which every divbloxPHP component inherits. This class manages the following behaviour for each component:
 
 -   Loading workflow, which includes checking of prerequisites and dependencies
 -   Error handling
@@ -160,8 +160,8 @@ The component's Php file handles server-side requests for the component.
 The basic structure of any component's Php follows the following pattern:
 
 ```php
-// We need to require the Divblox initialization in order to
-// have access to Divblox's classes and functions
+// We need to require the divbloxPHP initialization in order to
+// have access to divbloxPHP's classes and functions
 require("../../../../Divblox/Divblox.php");
 /* Every component controller class will inherit from the ProjectComponentController class.
   The ProjectComponentController handles things like
@@ -201,7 +201,7 @@ The component's JSON file is used for component configuration. By default this i
 
 ## How components work
 
-Every Divblox component follows a certain recipe. The extremely high-level view of this is diagrammed below.
+Every divbloxPHP component follows a certain recipe. The extremely high-level view of this is diagrammed below.
 
 <div className="text--center">
     <img data-action="zoom"  alt="Page Types" src={useBaseUrl('_the-basics-media/_3-divblox-components-media/divblox_fundamental.png')} />
