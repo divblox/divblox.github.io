@@ -83,7 +83,7 @@ function Home() {
                         src={useBaseUrl("_media/divblox_php_white.png")}
                     />
                     <p className="hero__subtitle dark-mode-adaptive-text">{siteConfig.tagline}</p>
-                    <p className={"dark-mode-adaptive-text"}>v4.5.0</p>
+                    <p className={"dark-mode-adaptive-text"}>v4.6.0</p>
                     <div className={styles.buttons}>
                         <Link
                             className={clsx(
